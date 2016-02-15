@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
     "name": "Account Invoice - Stock Picking Reference",
-    "summary": "Add a field in account_invoice that references to its stock_picking",
+    "summary": "Add a field in the invoice referencing to its stock_picking",
     "version": "9.0.1.0.0",
     "category": "Uncategorized",
     "website": "https://odoo-community.org/",
@@ -16,7 +16,7 @@
         "bin": [],
     },
     "depends": [
-        "base",
+        "base", "account",
     ],
     "data": [
         "views/account_invoice_view.xml",
