@@ -3,8 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
     "name": "Account Accounting System",
-    "summary": "Add a field boolean in account_account, \
-               indicates if the account can only used by the system.",
+    "summary": "Add field, indicates if the account can used by the system",
     "version": "9.0.1.0.0",
     "category": "Accounting & Finance",
     "website": "https://odoo-community.org/",
