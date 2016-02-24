@@ -1,7 +1,7 @@
 .. image:: https://img.shields.io/badge/licence-AGPL--3-blue.svg
     :alt: License
 
-Refence of account analytic from various models
+Modified analytic_id in purchase_order_line
 ==============================
 
 Modified analytic_id in purchase_order_line to copy from purchase order.
