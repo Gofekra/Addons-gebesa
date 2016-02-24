@@ -7,7 +7,7 @@
     "version": "9.0.1.0.0",
     "category": "Accounting & Finance",
     "website": "https://odoo-community.org/",
-    "author": "<Deysy Mascorro>, Odoo Community Association (OCA)",
+    "author": "<Deysy Mascorro Preciado>, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "application": False,
     "installable": True,
