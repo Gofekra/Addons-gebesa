@@ -19,7 +19,7 @@
         "base",
     ],
     "data": [
-        "views/",
+         "views/base_partner_view.xml",
     ],
     "demo": [
 
