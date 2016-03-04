@@ -2,7 +2,7 @@
     :alt: License
 
 Refence of stock warehouse from employee
-==============================
+========================================
 
 Add two field in hr_employee that reference to stock_warehouse.
 

@@ -28,8 +28,8 @@ class HrEmployee(models.Model):
             return {
                 'warning': {
                     'title': _(u"Invalid defaul warehouse"),
-                    'message': _(u"The default warehouse must be selected in"
-                                 " the warehouse of employee"),
+                    'message': _(u"The default warehouse must be selected in\
+                                  the warehouse of employee"),
                 },
             }
 
@@ -40,5 +40,5 @@ class HrEmployee(models.Model):
                 return {}
             if r.default_warehouse_id not in r.warehouse_ids:
                 raise ValidationError(
-                    _(u"The default warehouse must be selected in the "
-                        "warehouse of employee"))
+                    _(u"The default warehouse must be selected in the \
+                      warehouse of employee"))
