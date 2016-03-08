@@ -18,16 +18,16 @@ msgstr ""
 #. module: account_invoice_sale_order_id
 #: model:ir.model,name:account_invoice_sale_order_id.model_account_invoice
 msgid "Invoice"
-msgstr ""
+msgstr "Factura"
 
 #. module: account_invoice_sale_order_id
 #: code:addons/account_invoice_sale_order_id/models/account_invoice.py:14
 #: model:ir.model.fields,field_description:account_invoice_sale_order_id.field_account_invoice_sale_id
 #, python-format
 msgid "Sale Order"
-msgstr ""
+msgstr "Orden de Venta"
 
 #. module: account_invoice_sale_order_id
 #: model:ir.model,name:account_invoice_sale_order_id.model_sale_order
 msgid "Sales Order"
-msgstr ""
+msgstr "Órdenes de Venta"
