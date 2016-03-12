@@ -12,7 +12,7 @@
                 <xpath expr="//field[@name='state']" position="before">
                     <button name="action_closed" states="draft,sent,sale" type="object" string="Closed"/>
                 </xpath>                
-                <xpath expr="//sheet/notebook/page[@string='Order Lines']/field[@name='order_line']" position="attributes">
+                <xpath expr="//sheet/notebook//field[@name='order_line']" position="attributes">
                     <attribute name="attrs">{'readonly': [('state', 'in', ('done','cancel','closed'))]}</attribute>                    
                 </xpath>
                 <xpath expr="//field[@name='order_line']/form//field[@name='state']" position="replace">

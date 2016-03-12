@@ -19,10 +19,17 @@ class SaleOrder(models.Model):
         copy=False, index=True, track_visibility='onchange', default='draft')
 
     @api.multi
-    def action_closed(self, cr, uid, ids, context=None):        
-        self.write(cr, uid, ids, {'state': 'closed'})
-        return True
+    def action_closed(self):
+        for order in self:
+            for pick in order.picking_ids:
+                if pick.state in ['draft', 'assigned', 'confirmed']:
+                    for rec in pick:
+                        moves = [move.id for move in rec.move_lines]
+                        self.pool.get('stock.move').action_cancel(
+                            self._cr, self._uid, moves, self._context)
 
+        self.write({'state': 'closed'})
+        return True
 
 class SaleOrderLine(models.Model):
     _name = 'sale.order.line'
