@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model='ir.ui.view' id='view_move_form'>
+            <field name='name'>view_move_manual_form</field>
+            <field name='model'>account.move</field>
+            <field name='inherit_id' ref='account.view_move_form'/>
+            <field name='arch' type='xml'>
+                <xpath expr="//field[@name='ref']" position="after">
+                    <field name='user' readonly='True'/>
+                </xpath>
+                <xpath expr="//notebook/page[1]" position="after">
+                    <page string="Other information">
+                        <group>
+                            <field name='manual' readonly='True'/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>
