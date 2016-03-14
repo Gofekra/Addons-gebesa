@@ -31,6 +31,7 @@ class SaleOrder(models.Model):
         self.write({'state': 'closed'})
         return True
 
+
 class SaleOrderLine(models.Model):
     _name = 'sale.order.line'
     _inherit = 'sale.order.line'
@@ -42,5 +43,5 @@ class SaleOrderLine(models.Model):
         ('closed', 'Closed'),
         ('done', 'Done'),
         ('cancel', 'Cancelled'),
-    ], related='order_id.state', string=_('Order Status'),
+    ], related='order_id.state', string=_(u'Order Status'),
         readonly=True, copy=False, store=True, default='draft')
