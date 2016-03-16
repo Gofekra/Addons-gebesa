@@ -24,6 +24,7 @@
         "security/ir.model.access.csv",
         "views/factoring_customer_view.xml",
         "views/factoring_supplier_view.xml",
+        "views/factoring_secuence.xml",
     ],
     "demo": [
 
