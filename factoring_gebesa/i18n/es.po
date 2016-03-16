@@ -343,3 +343,10 @@ msgstr "Mensajes de sitios web"
 #: model:ir.model.fields,help:factoring_gebesa.field_factoring_supplier_website_message_ids
 msgid "Website communication history"
 msgstr "Historia de la comunicación sitio web"
+
+#. module: factoring_gebesa
+#: code:addons/factoring_gebesa/models/factoring_customer.py:89
+#: code:addons/factoring_gebesa/models/factoring_supplier.py:89
+#, python-format
+msgid "You can not perform factoring!                                     You must select at leats one bill."
+msgstr "No se puede realizar el factoraje!                                Debes seleccionar al menos una factura"

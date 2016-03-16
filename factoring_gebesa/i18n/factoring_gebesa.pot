@@ -344,3 +344,9 @@ msgstr ""
 msgid "Website communication history"
 msgstr ""
 
+#. module: factoring_gebesa
+#: code:addons/factoring_gebesa/models/factoring_customer.py:89
+#: code:addons/factoring_gebesa/models/factoring_supplier.py:89
+#, python-format
+msgid "You can not perform factoring!                                     You must select at leats one bill."
+msgstr ""
