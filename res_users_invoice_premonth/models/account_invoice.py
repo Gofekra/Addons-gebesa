@@ -12,7 +12,7 @@ class AccountInvoice(models.Model):
     @api.multi
     def action_move_create(self):
         if self.date_invoice and not self.env.user.has_group(
-                'res_user_invoice_premonth.group_invoice_premonth'):
+                'res_users_invoice_premonth.group_invoice_premonth'):
             date_inv = self.date_invoice.split('-', 3)
             today = str(fields.Date.today()).split('-', 3)
             if date_inv[1] != today[1] or date_inv[0] != today[0]:
