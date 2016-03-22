@@ -35,12 +35,11 @@ class AccountPayment(models.Model):
             Return the journal entry.
         """
 
-        self.set_payment_id_to_lines()
-
-        if not self.register_payment_id:
+        if not self.register_payment_id and not self.register_payment_id.id:
             res = super(AccountPayment, self)._create_payment_entry(amount)
             return res
 
+        self.set_payment_id_to_lines()
         aml_obj = self.env[
             'account.move.line'].with_context(check_move_validity=False)
         debit, credit, amount_currency = \
