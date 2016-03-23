@@ -62,3 +62,4 @@ odoo.tar.gz
 sftp-config.json
 crear_modulo.sh
 *.bak
+stdout.log
