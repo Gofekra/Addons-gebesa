@@ -61,8 +61,5 @@ odoo.tar.gz
 .coveragerc
 sftp-config.json
 crear_modulo.sh
-<<<<<<< HEAD
 *.bak
-=======
 stdout.log
->>>>>>> af19cafe9176a5bca199d2b749ea4ba146ca4c94
