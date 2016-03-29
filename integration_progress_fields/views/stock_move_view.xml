@@ -8,9 +8,9 @@
             <field name='arch' type='xml'>
                 <field name="name" position="after">
                     <field name="numctrl_progress" readonly="1"/>
-        			<field name="folio_progress" readonly="1"/>
-        			<field name="date_progress" readonly="1"/>
-        		</field>
+                    <field name="folio_progress" readonly="1"/>
+                    <field name="date_progress" readonly="1"/>
+                </field>
         	</field>
         </record>
     </data>
