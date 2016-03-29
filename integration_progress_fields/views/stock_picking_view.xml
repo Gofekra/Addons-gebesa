@@ -10,7 +10,7 @@
                     <field name="numctrl_progress" readonly="1"/>
                     <field name="folio_progress" readonly="1"/>
                     <field name="date_progress" readonly="1"/>
-        		</field>
+                </field>
         	</field>
         </record>
     </data>
