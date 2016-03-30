@@ -39,3 +39,15 @@ class SaleOrderLine(models.Model):
         string=_(u'Profit margin'),
         digits_compute=dp.get_precision('Account'),
     )
+
+    fulfilled = fields.Float(
+        string=_(u'Fulfilled'),
+        digits_compute=dp.get_precision('Account'),
+        help=_(u'Fulfilled'),
+    )
+
+    invoiced = fields.Float(
+        string=_(u'Invoiced'),
+        digits_compute=dp.get_precision('Account'),
+        help=_(u'Invoiced')
+    )
