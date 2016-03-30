@@ -1,0 +1,2 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+move_type_manager,stock_move_type_manager,model_stock_move_type,group_stock_picking_type,1,1,1,1
