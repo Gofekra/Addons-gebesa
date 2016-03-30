@@ -1,1 +1,1 @@
-addons-vauxoo https://github.com/Vauxoo/addons-vauxoo.git 9.0
+addons-vauxoo https://github.com/Jarsa-dev/addons-vauxoo.git 9.0
