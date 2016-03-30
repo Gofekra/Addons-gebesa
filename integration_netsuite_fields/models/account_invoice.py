@@ -22,13 +22,3 @@ class AccountInvoice(models.Model):
         readonly=True,
         store=True,
     )
-
-
-class AccountInvoiceLine(models.Model):
-    _name = 'account.invoice.line'
-    _inherit = 'account.invoice.line'
-
-    netsuite_line = fields.Integer(
-        _('Line NS'),
-        help='Line number on Netsuite',
-    )

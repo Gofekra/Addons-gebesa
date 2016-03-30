@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model='ir.ui.view' id='sale_view_order_form'>
+        	<field name='name'>sale.view.order.form</field>
+        	<field name='model'>sale.order</field>
+        	<field name='inherit_id' ref="sale.view_order_form"/>
+        	<field name='arch' type='xml'>
+                <xpath expr="//field[@name='payment_term_id']" position="before">
+                    <field name="date_netsuite"/>
+                </xpath>
+                <xpath expr="//field[@name='total_installation']" position="after">
+                    <field name="total_nste" readonly="1"/>
+                </xpath>
+                <xpath expr="//field[@name='respo_reple']" position="after">
+                    <field name="ok_etl" readonly="1"/>
+                </xpath>
+                <xpath expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='name']" position="after">
+                    <field name="options"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>
