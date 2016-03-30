@@ -1,0 +1,80 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* integration_netsuite_fields
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0c\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-03-29 23:55+0000\n"
+"PO-Revision-Date: 2016-03-29 23:55+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: integration_netsuite_fields
+#: code:addons/integration_netsuite_fields/models/product.py:13
+#: model:ir.model.fields,field_description:integration_netsuite_fields.field_product_template_id_ns
+#: model:ir.ui.view,arch_db:integration_netsuite_fields.product_template_form_ns_inherit_view
+#, python-format
+msgid "Internal ID in Netsuite"
+msgstr ""
+
+#. module: integration_netsuite_fields
+#: model:ir.model,name:integration_netsuite_fields.model_account_invoice
+msgid "Invoice"
+msgstr ""
+
+#. module: integration_netsuite_fields
+#: model:ir.model,name:integration_netsuite_fields.model_account_invoice_line
+msgid "Invoice Line"
+msgstr ""
+
+#. module: integration_netsuite_fields
+#: code:addons/integration_netsuite_fields/models/account_invoice.py:21
+#: model:ir.model.fields,help:integration_netsuite_fields.field_account_invoice_netsuite_ok
+#, python-format
+msgid "It indicates whether update the order status in NetSuite"
+msgstr ""
+
+#. module: integration_netsuite_fields
+#: code:addons/integration_netsuite_fields/models/account_invoice.py:13
+#: model:ir.model.fields,field_description:integration_netsuite_fields.field_account_invoice_msj
+#, python-format
+msgid "Last Message"
+msgstr ""
+
+#. module: integration_netsuite_fields
+#: code:addons/integration_netsuite_fields/models/account_invoice.py:32
+#: model:ir.model.fields,field_description:integration_netsuite_fields.field_account_invoice_line_netsuite_line
+#, python-format
+msgid "Line NS"
+msgstr ""
+
+#. module: integration_netsuite_fields
+#: model:ir.model.fields,help:integration_netsuite_fields.field_account_invoice_line_netsuite_line
+msgid "Line number on Netsuite"
+msgstr ""
+
+#. module: integration_netsuite_fields
+#: code:addons/integration_netsuite_fields/models/account_invoice.py:16
+#: model:ir.model.fields,help:integration_netsuite_fields.field_account_invoice_msj
+#, python-format
+msgid "Message generated to upload XML to sign"
+msgstr ""
+
+#. module: integration_netsuite_fields
+#: code:addons/integration_netsuite_fields/models/account_invoice.py:20
+#: model:ir.model.fields,field_description:integration_netsuite_fields.field_account_invoice_netsuite_ok
+#, python-format
+msgid "Netsuite Updated"
+msgstr ""
+
+#. module: integration_netsuite_fields
+#: model:ir.model,name:integration_netsuite_fields.model_product_template
+msgid "Product Template"
+msgstr ""
+
