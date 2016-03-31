@@ -64,7 +64,6 @@ class SaleOrder(models.Model):
             ('replenishment', _(u'Replenishment')),
             ('semi_special', _(u'Semi special'))],
         string=_(u"Manufacture"),
-
     )
 
     executive = fields.Char(
@@ -75,4 +74,35 @@ class SaleOrder(models.Model):
     respo_reple = fields.Char(
         string=_(u'Responsible of replenishment'),
         size=200,
+    )
+
+    priority = fields.Selection(
+        [('low', _(u'Low')), ('medium', _(u'Medium')),
+         ('high', _(u'High')), ('replenishment', _(u'Replenishment')),
+         ('express', _(u'Express')), ('sample', _(u'Sample')),
+         ('complement', _(u'Complement'))],
+        _(u'Manufacturing priority'),)
+
+    complement_saleorder_id = fields.Many2one(
+        'sale.order',
+        string=_(u'In complement:'),
+        help=_(u'Displays a list of sales orders'),
+    )
+
+    manufacturing_observations = fields.Text(
+        string=_(u'Observations Manufacturing'),
+    )
+
+    replenishing_motif = fields.Text(
+        string=_(u'Reason for the replenishment'),
+    )
+
+    credit_status = fields.Selection(
+        [('normal', _(u'Normal')),
+         ('suspended', _(u'Suspended for Collection')),
+         ('conditioned', _(u'Conditioned'))],
+        _(u'Credit status'),)
+
+    credit_note = fields.Text(
+        string=_(u'Note Credit and Collections'),
     )
