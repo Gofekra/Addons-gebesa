@@ -13,7 +13,7 @@ class SaleConfiguration(models.TransientModel):
         string=_(u'Default account freight'),
     )
 
-    installation_accoumt_id = fields.Many2one(
+    installation_account_id = fields.Many2one(
         'account.account',
         string=_(u'Default account installation'),
     )

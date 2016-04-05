@@ -8,7 +8,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//div/group/field[@name='deposit_product_id_setting']" position="after">
                     <field name="freight_account_id" class="oe_inline"/>
-                    <field name="installation_accoumt_id" class="oe_inline"/>
+                    <field name="installation_account_id" class="oe_inline"/>
                 </xpath>
             </field>
         </record>
