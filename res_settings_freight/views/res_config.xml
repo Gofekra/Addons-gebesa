@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
-        <record id="view_sale_config_settings" model="ir.ui.view">
+        <record id="view_account_config_settings" model="ir.ui.view">
             <field name="name">res settings freight</field>
-            <field name="model">sale.config.settings</field>
-            <field name="inherit_id" ref="sale.view_sales_config"/>
+            <field name="model">account.config.settings</field>
+            <field name="inherit_id" ref="account.view_account_config_settings"/>
             <field name="arch" type="xml">
-                <xpath expr="//div/group/field[@name='deposit_product_id_setting']" position="after">
-                    <field name="freight_account_id" class="oe_inline"/>
-                    <field name="installation_account_id" class="oe_inline"/>
+                <xpath expr="//group[2]" position="after">
+                    <group string="Default account">  
+                        <field name="freight_account_id" class="oe_inline"/>
+                        <field name="installation_account_id" class="oe_inline"/>
+                        <field name="return_account_id" class="oe_inline"/>
+                    </group>
                 </xpath>
             </field>
         </record>
