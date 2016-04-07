@@ -5,9 +5,9 @@
             <field name="name">product.template.view.form</field>
             <field name="model">product.template</field>
             <field eval="3" name="priority"/>
-            <field name="inherit_id" ref="integration_netsuite_fields.product_template_form_ns_inherit_view"/>
+            <field name="inherit_id" ref="integration_progress_fields.product_template_form_inherit_view"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='taxes_id']" position="replace">
+                <xpath expr="//field[@name='property_account_creditor_price_difference']" position="replace">
                     <field name="property_account_creditor_price_difference" domain="[('deprecated','=',False)]" attrs="{'readonly':[('purchase_ok', '=', 0)]}" />
                 </xpath>
             </field>
