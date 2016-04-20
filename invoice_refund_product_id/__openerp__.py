@@ -17,6 +17,7 @@
     },
     "depends": [
         "base", "account",
+        "account_analytic_everywhere"
     ],
     "data": [
         "views/account_invoice_refund.xml",
