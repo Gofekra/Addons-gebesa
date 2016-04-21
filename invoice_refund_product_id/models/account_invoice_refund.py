@@ -27,6 +27,8 @@ class AccountInvoiceRefund(models.Model):
         ctx = self._context.copy()
 
         invoice_obj = self.env['account.invoice']
+        account_m_line = self.env['account.move.line']
+        wf_service = netsvc.LocalService('workflow')
 
         for ref in self:
             product_id = ref.product_id.id
@@ -48,5 +50,21 @@ class AccountInvoiceRefund(models.Model):
 
         res = super(AccountInvoiceRefund, self.with_context(
                     ctx)).compute_refund(mode)
+        refund_id = res['domain'][1][2][0]
 
+        wf_service.trg_validate(self._uid, 'account.invoice', refund_id,
+                                'invoice_open', self._cr)
+
+        for form in self:
+            for invoice in invoice_obj.browse(self._context.get('active_ids')):
+                if mode == 'refund':
+                    to_reconcile_ids = {}
+                    refund = invoice_obj.browse(refund_id)
+                    for tmp_line in refund.move_id.line_ids:
+                        if tmp_line.account_id.id == inv.account_id.id:
+                            to_reconcile_ids[tmp_line.account_id.id] = [
+                                tmp_line.id]
+                    for account in to_reconcile_ids:
+                        invoice.register_payment(account_m_line.browse(
+                            to_reconcile_ids[account]))
         return res
