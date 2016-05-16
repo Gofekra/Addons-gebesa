@@ -12,3 +12,8 @@ class ProductTemplate(models.Model):
     numctrl_progress = fields.Integer(
         _('Num. Ctrl. Progress'),
     )
+
+    _sql_constraints = [
+        ('default_uniq', 'unique (default_code)',
+         _('The field Num. Ctrl. Progress must be unique!'))
+    ]
