@@ -2,10 +2,10 @@
 # © <YEAR(S)> <AUTHOR(S)>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
-    "name": "Invoice refund product",
-    "summary": "Invoice refund product",
+    "name": "Stock picking account location",
+    "summary": "Stock picking account location",
     "version": "9.0.1.0.0",
-    "category": "Accounting",
+    "category": "Account",
     "website": "https://odoo-community.org/",
     "author": "<Samuel Barron>, Odoo Community Association (OCA)",
     "license": "AGPL-3",
@@ -16,12 +16,9 @@
         "bin": [],
     },
     "depends": [
-        "base", "account",
-        "account_analytic_everywhere"
+        "base", "stock_account", "stock_location_account_account",
     ],
     "data": [
-        "views/account_invoice_refund.xml",
-        "views/account_tax.xml"
     ],
     "demo": [
     ],

@@ -2,10 +2,10 @@
 # © <YEAR(S)> <AUTHOR(S)>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
-    "name": "Invoice refund product",
-    "summary": "Invoice refund product",
+    "name": "GEBESA integration cost",
+    "summary": "Gebesa integration cost",
     "version": "9.0.1.0.0",
-    "category": "Accounting",
+    "category": "Sale",
     "website": "https://odoo-community.org/",
     "author": "<Samuel Barron>, Odoo Community Association (OCA)",
     "license": "AGPL-3",
@@ -17,11 +17,14 @@
     },
     "depends": [
         "base", "account",
-        "account_analytic_everywhere"
+        "account_invoice_stock_picking_id",
+        "integration_progress_fields",
     ],
     "data": [
-        "views/account_invoice_refund.xml",
-        "views/account_tax.xml"
+        "security/security.xml",
+        "security/ir.model.access.csv",
+        "views/account_invoice.xml",
+        "views/integration_cost_gebesa.xml",
     ],
     "demo": [
     ],
