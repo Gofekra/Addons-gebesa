@@ -68,6 +68,13 @@ msgid "Stock Move"
 msgstr ""
 
 #. module: integration_progress_fields
+#: code:addons/integration_progress_fields/models/product.py:18
+#: sql_constraint:product.template:0
+#, python-format
+msgid "The field Num. Ctrl. Progress must be unique!"
+msgstr ""
+
+#. module: integration_progress_fields
 #: model:ir.model,name:integration_progress_fields.model_stock_picking
 msgid "Transfer"
 msgstr ""
