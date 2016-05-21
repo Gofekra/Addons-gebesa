@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="mrp_bom_line_detail_form_view">
+            <field name="name">mrp.bom.line.detail.form.view</field>
+            <field name="model">mrp.bom.line.detail</field>
+            <field name="arch" type="xml">
+                <form string='BoM Line Detail'>
+                    <sheet>
+                        <h4>
+                            <separator string='BoM Line Detail'/>
+                        </h4>
+                        <group col='4'>
+                            <group col='2'>
+                                <field name="bom_line_id" readonly="1"/>
+                            </group>
+                            <group col='2'>
+                                <field name="product_id"/>
+                            </group>
+                        </group>
+                        <group col='4'>
+                            <group col='2'>
+                                <field name="row"/>
+                                <label for="width_cut"/>
+                                <div class="o_row">
+                                    <field digits="(14, 3)" name="width_cut"/>
+                                    <span> cms.</span>
+                                </div>
+                                <field name="thickness"/>
+                                <field name="material"/>
+                            </group>
+                            <group col='2'>
+                                <!-- <field name="color_id"/> -->
+                                <!-- <field name="caliber_id"/> -->
+                                <field name="quantity"/>
+                                <label for="long_cut"/>
+                                <div class="o_row">
+                                    <field digits="(14, 3)" name="long_cut"/>
+                                    <span> cms.</span>
+                                </div>
+                                <field name="side"/>
+                            </group>
+                        </group>
+                        <group col='4'>
+                            <group col='2'>
+                                <field name="meters2" readonly="1"/>
+                            </group>
+                            <group col='2'>
+                                <field name="kilos" readonly="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>   
+    </data>
+</openerp>
