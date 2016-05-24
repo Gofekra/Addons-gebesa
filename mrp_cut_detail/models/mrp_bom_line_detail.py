@@ -8,7 +8,7 @@ from openerp import api, _, fields, models
 class MrpBomLineDetail(models.Model):
     _name = 'mrp.bom.line.detail'
     _order = "row"
-    _rec_name = 'row'
+    _rec_name = 'bom_line_id'
 
     @api.model
     def _default_row(self):
@@ -59,6 +59,7 @@ class MrpBomLineDetail(models.Model):
 
     meters2 = fields.Float(
         _('Meters2'),
+        compute='_compute_m2',
     )
 
     # color_id = fields.Many2one(
@@ -84,10 +85,40 @@ class MrpBomLineDetail(models.Model):
     )
 
     variants = fields.Char(
-        string='Filed Label',
+        string=_('Variants'),
+        compute='_compute_variants',
+        store=True,
     )
 
     _sql_constraints = [
         ('row_uniq', 'unique (row)',
          _('The row must be unique !')),
     ]
+
+    @api.depends('width_cut', 'long_cut')
+    def _compute_m2(self):
+        for reg in self:
+            width = reg.width_cut / 100
+            longs = reg.long_cut / 100
+            if not width and longs:
+                reg.meters2 = 0.00
+            else:
+                reg.meters2 = width * longs
+
+    @api.depends('bom_line_id.product_id')
+    def _compute_variants(self):
+        for record in self:
+            product = self.env['product.product'].search(
+                [('id', '=', record.bom_line_id.product_id.id)])
+            prod = product.attribute_value_ids
+            resul = []
+            for reg in prod:
+                name = reg.name
+                med = self.env['product.attribute'].search(
+                    [('id', '=', reg.attribute_id.id)])
+                med_name = med.name
+                resul.append(str(med_name or '') + " - " + str(name or ''))
+                lista = tuple(resul)
+                self.variants = lista
+
+            return self.variants

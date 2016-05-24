@@ -43,12 +43,17 @@
                         </group>
                         <group col='4'>
                             <group col='2'>
-                                <field name="meters2" readonly="1"/>
+                                <field digits="(14, 5)" name="meters2" readonly="1"/>
                             </group>
                             <group col='2'>
                                 <field name="kilos" readonly="1"/>
                             </group>
                         </group>
+                        <notebook>
+                            <page string="Variants">
+                                <field name="variants" style="font-size:10pt;" readonly="1"/>
+                            </page>
+                        </notebook>
                     </sheet>
                 </form>
             </field>
