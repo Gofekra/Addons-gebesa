@@ -1,0 +1,189 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* mrp_cut_detail
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0c\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-05-24 18:01+0000\n"
+"PO-Revision-Date: 2016-05-24 18:01+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: mrp_cut_detail
+#: model:ir.ui.view,arch_db:mrp_cut_detail.mrp_bom_line_detail_form_view
+msgid "<span> cms.</span>"
+msgstr "cms."
+
+#. module: mrp_cut_detail
+#: model:ir.ui.view,arch_db:mrp_cut_detail.mrp_bom_line_form_view
+msgid "BoM Line"
+msgstr "Línea BoM"
+
+#. module: mrp_cut_detail
+#: model:ir.ui.view,arch_db:mrp_cut_detail.mrp_bom_line_detail_form_view
+msgid "BoM Line Detail"
+msgstr "Línea Detalle LBoM"
+
+#. module: mrp_cut_detail
+#: code:addons/mrp_cut_detail/models/mrp_bom_line.py:14
+#: model:ir.model.fields,field_description:mrp_cut_detail.field_mrp_bom_line_bom_line_detail_ids
+#: model:ir.ui.view,arch_db:mrp_cut_detail.mrp_bom_line_form_view
+#, python-format
+msgid "BoM Line Details"
+msgstr "Línea Detalles BoM"
+
+#. module: mrp_cut_detail
+#: code:addons/mrp_cut_detail/models/mrp_bom_line_detail.py:34
+#: model:ir.model.fields,field_description:mrp_cut_detail.field_mrp_bom_line_detail_product_id
+#, python-format
+msgid "Composite Article"
+msgstr "Artículo Compuesto"
+
+#. module: mrp_cut_detail
+#: model:ir.model.fields,field_description:mrp_cut_detail.field_mrp_bom_line_detail_create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: mrp_cut_detail
+#: model:ir.model.fields,field_description:mrp_cut_detail.field_mrp_bom_line_detail_create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: mrp_cut_detail
+#: code:addons/mrp_cut_detail/models/mrp_bom_line_detail.py:76
+#: model:ir.model.fields,field_description:mrp_cut_detail.field_mrp_bom_line_detail_long_cut
+#, python-format
+msgid "Cut Long"
+msgstr "Largo Corte"
+
+#. module: mrp_cut_detail
+#: code:addons/mrp_cut_detail/models/mrp_bom_line_detail.py:49
+#: model:ir.model.fields,field_description:mrp_cut_detail.field_mrp_bom_line_detail_width_cut
+#, python-format
+msgid "Cut Width"
+msgstr "Ancho Corte"
+
+#. module: mrp_cut_detail
+#: model:ir.model.fields,field_description:mrp_cut_detail.field_mrp_bom_line_detail_display_name
+msgid "Display Name"
+msgstr "Mostrar Nombre"
+
+#. module: mrp_cut_detail
+#: code:addons/mrp_cut_detail/models/mrp_bom_line_detail.py:41
+#: model:ir.model.fields,help:mrp_cut_detail.field_mrp_bom_line_detail_row
+#, python-format
+msgid "Gives the row order when displaying."
+msgstr "Da el orden de las filas cuando se muestran."
+
+#. module: mrp_cut_detail
+#: model:ir.model.fields,field_description:mrp_cut_detail.field_mrp_bom_line_detail_id
+msgid "ID"
+msgstr "ID"
+
+#. module: mrp_cut_detail
+#: code:addons/mrp_cut_detail/models/mrp_bom_line_detail.py:84
+#: model:ir.model.fields,field_description:mrp_cut_detail.field_mrp_bom_line_detail_kilos
+#, python-format
+msgid "Kilos"
+msgstr "Kilos"
+
+#. module: mrp_cut_detail
+#: model:ir.model.fields,field_description:mrp_cut_detail.field_mrp_bom_line_detail___last_update
+msgid "Last Modified on"
+msgstr "Ultima Modificacion en"
+
+#. module: mrp_cut_detail
+#: model:ir.model.fields,field_description:mrp_cut_detail.field_mrp_bom_line_detail_write_uid
+msgid "Last Updated by"
+msgstr "Última Actualización por"
+
+#. module: mrp_cut_detail
+#: model:ir.model.fields,field_description:mrp_cut_detail.field_mrp_bom_line_detail_write_date
+msgid "Last Updated on"
+msgstr "Última Actualización en"
+
+#. module: mrp_cut_detail
+#: model:ir.ui.view,arch_db:mrp_cut_detail.mrp_bom_line_form_view
+msgid "List Details"
+msgstr "Lista de Detalles"
+
+#. module: mrp_cut_detail
+#: code:addons/mrp_cut_detail/models/mrp_bom_line_detail.py:57
+#: model:ir.model.fields,field_description:mrp_cut_detail.field_mrp_bom_line_detail_material
+#, python-format
+msgid "Material"
+msgstr "Materiales"
+
+#. module: mrp_cut_detail
+#: code:addons/mrp_cut_detail/models/mrp_bom_line_detail.py:61
+#: model:ir.model.fields,field_description:mrp_cut_detail.field_mrp_bom_line_detail_meters2
+#, python-format
+msgid "Meters2"
+msgstr "Metros2"
+
+#. module: mrp_cut_detail
+#: code:addons/mrp_cut_detail/models/mrp_bom_line_detail.py:26
+#: model:ir.model.fields,field_description:mrp_cut_detail.field_mrp_bom_line_detail_bom_line_id
+#, python-format
+msgid "Parent BoM Line"
+msgstr "Padre Lista BoM"
+
+#. module: mrp_cut_detail
+#: code:addons/mrp_cut_detail/models/mrp_bom_line_detail.py:45
+#: model:ir.model.fields,field_description:mrp_cut_detail.field_mrp_bom_line_detail_quantity
+#, python-format
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: mrp_cut_detail
+#: code:addons/mrp_cut_detail/models/mrp_bom_line_detail.py:39
+#: model:ir.model.fields,field_description:mrp_cut_detail.field_mrp_bom_line_detail_row
+#, python-format
+msgid "Row"
+msgstr "Renglón"
+
+#. module: mrp_cut_detail
+#: code:addons/mrp_cut_detail/models/mrp_bom_line_detail.py:80
+#: model:ir.model.fields,field_description:mrp_cut_detail.field_mrp_bom_line_detail_side
+#, python-format
+msgid "Sides"
+msgstr "Caras"
+
+#. module: mrp_cut_detail
+#: code:addons/mrp_cut_detail/models/mrp_bom_line_detail.py:95
+#: sql_constraint:mrp.bom.line.detail:0
+#, python-format
+msgid "The row must be unique !"
+msgstr "El renglón debe ser unico !"
+
+#. module: mrp_cut_detail
+#: code:addons/mrp_cut_detail/models/mrp_bom_line_detail.py:53
+#: model:ir.model.fields,field_description:mrp_cut_detail.field_mrp_bom_line_detail_thickness
+#, python-format
+msgid "Thickness"
+msgstr "Espesor"
+
+#. module: mrp_cut_detail
+#: code:addons/mrp_cut_detail/models/mrp_bom_line_detail.py:88
+#: model:ir.model.fields,field_description:mrp_cut_detail.field_mrp_bom_line_detail_variants
+#: model:ir.ui.view,arch_db:mrp_cut_detail.mrp_bom_line_detail_form_view
+#, python-format
+msgid "Variants"
+msgstr "Variantes"
+
+#. module: mrp_cut_detail
+#: model:ir.model,name:mrp_cut_detail.model_mrp_bom_line
+msgid "mrp.bom.line"
+msgstr "mrp.bom.line"
+
+#. module: mrp_cut_detail
+#: model:ir.model,name:mrp_cut_detail.model_mrp_bom_line_detail
+msgid "mrp.bom.line.detail"
+msgstr "mrp.bom.line.detail"
+
