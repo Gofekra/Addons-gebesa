@@ -10,11 +10,11 @@ class AccountInvoice(models.Model):
 
     prepayment_ok = fields.Boolean(
         string=_('Advance Invoice'),
+        copy=False,
     )
 
     @api.multi
     def action_move_create(self):
-        res = super(AccountInvoice, self).action_move_create()
         if self.type == 'out_invoice':
             for line in self.invoice_line_ids:
                 product = line.product_id.id
@@ -23,7 +23,5 @@ class AccountInvoice(models.Model):
                                          'deposit_product_id_setting') or False
                 if product == deposit:
                     self.prepayment_ok = True
-                else:
-                    self.prepayment_ok = False
 
-        return res
+        return super(AccountInvoice, self).action_move_create()
