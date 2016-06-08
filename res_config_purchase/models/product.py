@@ -6,7 +6,6 @@ from openerp import _, fields, models
 
 
 class ProductTemplate(models.Model):
-    _name = 'product.template'
     _inherit = 'product.template'
 
     def _default_price_account(self):

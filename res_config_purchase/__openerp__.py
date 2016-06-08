@@ -16,7 +16,8 @@
         "bin": [],
     },
     "depends": [
-        "base", "purchase",
+        "base",
+        "purchase",
     ],
     "data": [
         "views/res_config_view.xml",
