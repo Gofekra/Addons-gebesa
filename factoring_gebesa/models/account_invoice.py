@@ -6,13 +6,12 @@ from openerp import _, fields, models
 
 
 class AccountInvoice(models.Model):
-    _name = 'account.invoice'
     _inherit = 'account.invoice'
 
     factoring_customer_id = fields.Many2one(
         'factoring.customer',
-        string=_(u'Factoring Customer'))
+        string=_('Factoring Customer'))
 
     factoring_supplier_id = fields.Many2one(
         'factoring.supplier',
-        string=_(u'Factoring Supplier'))
+        string=_('Factoring Supplier'))
