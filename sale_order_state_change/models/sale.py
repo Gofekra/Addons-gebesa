@@ -6,7 +6,6 @@ from openerp import _, api, fields, models
 
 
 class SaleOrder(models.Model):
-    _name = 'sale.order'
     _inherit = 'sale.order'
 
     state = fields.Selection([
@@ -15,8 +14,13 @@ class SaleOrder(models.Model):
         ('sale', 'Sale Order'),
         ('closed', 'Closed'),
         ('done', 'Done'),
-        ('cancel', 'Cancelled'), ], string=_(u'Status'), readonly=True,
-        copy=False, index=True, track_visibility='onchange', default='draft')
+        ('cancel', 'Cancelled'), ],
+        string=_('Status'),
+        readonly=True,
+        copy=False,
+        index=True,
+        track_visibility='onchange',
+        default='draft')
 
     @api.multi
     def action_closed(self):
@@ -43,5 +47,9 @@ class SaleOrderLine(models.Model):
         ('closed', 'Closed'),
         ('done', 'Done'),
         ('cancel', 'Cancelled'),
-    ], related='order_id.state', string=_(u'Order Status'),
-        readonly=True, copy=False, store=True, default='draft')
+    ], related='order_id.state',
+        string=_('Order Status'),
+        readonly=True,
+        copy=False,
+        store=True,
+        default='draft')
