@@ -6,7 +6,6 @@ from openerp import _, fields, models
 
 
 class AccountJournal(models.Model):
-    _name = 'account.journal'
     _inherit = 'account.journal'
 
     active = fields.Boolean(
