@@ -17,6 +17,8 @@
     },
     "depends": [
         "base",
+        "account",
+        "base_vat",
     ],
     "data": [
         "views/base_partner_view.xml",
