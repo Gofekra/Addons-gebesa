@@ -16,7 +16,8 @@
         "bin": [],
     },
     "depends": [
-        "base", "account",
+        "base",
+        "account",
     ],
     "data": [
     ],
