@@ -16,7 +16,8 @@
         "bin": [],
     },
     "depends": [
-        "base", "account",
+        "base",
+        "account",
     ],
     "data": [
         "views/account_invoice_view.xml",

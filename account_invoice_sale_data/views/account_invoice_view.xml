@@ -7,7 +7,7 @@
         	<field name='inherit_id' ref='account.invoice_form'/>
         	<field name='arch' type='xml'>
         		<xpath expr="//notebook/page[2]" position="after">
-        			<page string="Sale data">
+        			<page string="Sale Data">
         				<group>
         					<group>
         						<field name='total_net_sale' widget="monetary"/>
