@@ -11,5 +11,5 @@ class StockMove(models.Model):
 
     netsuite_line = fields.Integer(
         _('Line NS'),
-        help='Line number on Netsuite',
+        help=_('Line number on Netsuite'),
     )
