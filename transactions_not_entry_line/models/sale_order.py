@@ -7,7 +7,6 @@ from openerp.exceptions import UserError
 
 
 class SaleOrder(models.Model):
-    _name = 'sale.order'
     _inherit = 'sale.order'
 
     @api.multi
