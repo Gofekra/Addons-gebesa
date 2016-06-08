@@ -6,7 +6,6 @@ from openerp import _, fields, models
 
 
 class StockPicking(models.Model):
-    _name = 'stock.picking'
     _inherit = 'stock.picking'
 
     numctrl_progress = fields.Integer(

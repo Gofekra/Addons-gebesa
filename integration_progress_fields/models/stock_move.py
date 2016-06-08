@@ -6,7 +6,6 @@ from openerp import _, fields, models
 
 
 class StockMove(models.Model):
-    _name = 'stock.move'
     _inherit = 'stock.move'
 
     numctrl_progress = fields.Integer(

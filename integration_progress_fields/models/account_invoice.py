@@ -6,7 +6,6 @@ from openerp import _, fields, models
 
 
 class AccountInvoice(models.Model):
-    _name = 'account.invoice'
     _inherit = 'account.invoice'
 
     freight_expense_id = fields.Integer(
