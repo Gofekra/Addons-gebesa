@@ -3,12 +3,11 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from datetime import date, timedelta
-from openerp import _, fields, models
+from openerp import _, models
 from openerp.exceptions import UserError
 
 
 class AccountInvoice(models.Model):
-    _name = 'account.invoice'
     _inherit = 'account.invoice'
 
     def action_move_create(self):

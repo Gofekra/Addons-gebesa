@@ -2,11 +2,10 @@
 # © <YEAR(S)> <AUTHOR(S)>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import api, fields, models
+from openerp import api, models
 
 
 class PurchaseOrder(models.Model):
-    _name = 'purchase.order'
     _inherit = 'purchase.order'
 
     @api.model

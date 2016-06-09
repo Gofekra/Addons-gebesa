@@ -7,7 +7,6 @@ from openerp.exceptions import UserError
 
 
 class AccountInvoice(models.Model):
-    _name = 'account.invoice'
     _inherit = 'account.invoice'
 
     @api.multi

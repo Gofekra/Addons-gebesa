@@ -6,7 +6,6 @@ from openerp import _, models
 
 
 class ProductProduct(models.Model):
-    _name = 'product.product'
     _inherit = 'product.product'
 
     _sql_constraints = [

@@ -6,7 +6,6 @@ from openerp import _, models, fields
 
 
 class ProductTemplate(models.Model):
-    _name = 'product.template'
     _inherit = 'product.template'
 
     numctrl_progress = fields.Integer(

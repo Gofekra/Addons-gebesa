@@ -6,7 +6,6 @@ from openerp import _, fields, models
 
 
 class AccountInvoiceRefund(models.Model):
-    _name = 'account.invoice.refund'
     _inherit = 'account.invoice.refund'
 
     replacement = fields.Boolean(
@@ -15,5 +14,5 @@ class AccountInvoiceRefund(models.Model):
 
     responsible_id = fields.Many2one(
         'res.users',
-        string='Responsible',
+        string=_('Responsible'),
     )

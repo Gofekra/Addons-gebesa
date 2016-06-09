@@ -10,32 +10,32 @@ class AccountInvoiceLine(models.Model):
     _inherit = 'account.invoice.line'
 
     margin_justification = fields.Char(
-        string=_(u'P. M. justification'),
+        string=_('P. M. Justification'),
         size=100,
-        help=_(u'Low-margin justification for the invoice'),
+        help=_('Low-margin justification for the invoice'),
     )
 
     net_sale = fields.Float(
-        string=_(u'Net sales'),
+        string=_('Net Sales'),
         digits_compute=dp.get_precision('Account'),
     )
 
     freight_amount = fields.Float(
-        string=_(u'Freight amount'),
+        string=_('Freight Amount'),
         digits_compute=dp.get_precision('Account'),
     )
 
     installation_amount = fields.Float(
-        string=_(u'Installation amount'),
+        string=_('Installation Amount'),
         digits_compute=dp.get_precision('Account'),
     )
 
     standard_cost = fields.Float(
-        string=_(u'Standard cost'),
+        string=_('Standard Cost'),
         digits_compute=dp.get_precision('Account'),
     )
 
     profit_margin = fields.Float(
-        string=_(u'Profit margin'),
+        string=_('Profit Margin'),
         digits_compute=dp.get_precision('Account'),
     )

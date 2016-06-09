@@ -6,10 +6,9 @@ from openerp import _, fields, models
 
 
 class StockPicking(models.Model):
-    _name = 'stock.picking'
     _inherit = 'stock.picking'
 
     purchase_id = fields.Many2one('purchase.order',
                                   ondelete='set null',
-                                  string=_(u'Purchase Order'),
+                                  string=_('Purchase Order'),
                                   select=True)

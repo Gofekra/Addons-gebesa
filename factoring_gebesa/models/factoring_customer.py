@@ -14,7 +14,7 @@ class FactoringCustomer(models.Model):
     _rec_name = 'consecutive'
 
     consecutive = fields.Char(
-        string=_(u'Folio'),
+        string=_('Folio'),
         size=250,
         required=True,
         select=True,
@@ -29,42 +29,42 @@ class FactoringCustomer(models.Model):
 
     partner_id = fields.Many2one(
         'res.partner',
-        string=_(u'Customer'),
+        string=_('Customer'),
         track_visibility='onchange')
 
     journal_id = fields.Many2one(
         'account.journal',
-        string=_(u'Bank'),
+        string=_('Bank'),
         domain="[('type', 'in', ('bank','cash'))]",
         track_visibility='onchange')
 
     company_id = fields.Many2one(
         'res.company',
-        string=_(u'Company'),
+        string=_('Company'),
         default=lambda self: self.env['res.company']._company_default_get(
             'factoring.customer'),
         track_visibility='always')
 
     date = fields.Date(
-        string=_(u'Date'),
+        string=_('Date'),
         default=fields.Date.today,
         track_visibility='always')
 
     invoice_ids = fields.Many2many(
         'account.invoice',
-        string=_(u'Customer Invoices'),
+        string=_('Customer Invoices'),
         track_visibility='onchange')
 
     state = fields.Selection([
         ('draft', 'Draft'),
         ('done', 'Done'),
         ('cancel', 'Cancelled')],
-        string=_(u'Status'),
+        string=_('Status'),
         track_visibility='onchange',
         default='draft')
 
     date_bank = fields.Date(
-        string=_(u'Payment Date the Bank'),
+        string=_('Payment Date the Bank'),
         track_visibility='always')
 
     _sql_constraints = [
@@ -79,20 +79,18 @@ class FactoringCustomer(models.Model):
                 'factoring.customer') or '/'
         return super(FactoringCustomer, self).create(vals)
 
-    def integrated_factoring(self, _cr, _uid, _ids, _context=None):
-        ids = isinstance(_ids, (int, long)) and [_ids] or _ids
-        inv_obj = self.pool.get('account.invoice')
-        int_brw = self.browse(_cr, _uid, ids[0], context=_context)
+    @api.multi
+    def integrated_factoring(self):
+        fac_brw = self[0]
         res = []
-        res.append(int_brw.invoice_ids and True or False)
+        res.append(fac_brw.invoice_ids and True or False)
         if not all(res):
             raise UserError(_('You can not perform factoring! \
                                     You must select at leats one bill.'))
-        for inv_brw in int_brw.invoice_ids:
-            inv_obj.write(_cr, _uid, [
-                          inv_brw.id], {'factoring_customer_id': int_brw.id},
-                          context=_context)
-        self.write(_cr, _uid, [int_brw.id], {'state': 'done'},
-                   context=_context)
+        for fac in fac_brw.invoice_ids:
+            inv = self.env['account.invoice'].search(
+                          [('id', '=', fac.id)])
+            inv.write({'factoring_customer_id': fac_brw.id})
+        self.write({'state': 'done'})
 
         return res

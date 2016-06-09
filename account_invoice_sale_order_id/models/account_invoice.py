@@ -6,10 +6,9 @@ from openerp import _, fields, models
 
 
 class AccountInvoice(models.Model):
-    _name = 'account.invoice'
     _inherit = 'account.invoice'
 
     sale_id = fields.Many2one('sale.order',
                               ondelete='set null',
-                              string=_(u'Sale Order'),
+                              string=_('Sale Order'),
                               select=True)

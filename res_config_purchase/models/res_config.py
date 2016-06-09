@@ -7,7 +7,6 @@ from openerp import _, fields, models
 
 
 class PurchaseConfiguration(models.TransientModel):
-    _name = 'purchase.config.settings'
     _inherit = 'purchase.config.settings'
 
     purchase_price_account_id = fields.Many2one(

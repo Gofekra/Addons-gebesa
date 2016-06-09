@@ -1,8 +1,8 @@
 .. image:: https://img.shields.io/badge/licence-AGPL--3-blue.svg
     :alt: License
 
-Invoice - Refund Data
-==============================
+Invoice - Refund Mode
+=====================
 
 Add in the context the data from invoice for refund.
 
@@ -11,7 +11,8 @@ Installation
 ============
 
 Take a look at the installation section in the description of the module 
-'account_invoice_refund_data'.
+'account_invoice_refund_mode'.
+
 
 Bug Tracker
 ===========

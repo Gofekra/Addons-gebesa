@@ -3,12 +3,11 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from datetime import date, timedelta
-from openerp import _, fields, models, api
+from openerp import _, models, api
 from openerp.exceptions import UserError
 
 
 class AccountPayment(models.Model):
-    _name = "account.payment"
     _inherit = 'account.payment'
 
     @api.multi

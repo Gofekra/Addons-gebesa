@@ -21,6 +21,7 @@
         "stock",
         "product",
         "integration_progress_fields",
+        "sale_order_gebesa",
     ],
     "data": [
         "views/account_invoice_view.xml",

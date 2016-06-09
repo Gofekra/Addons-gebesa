@@ -1,17 +1,17 @@
 .. image:: https://img.shields.io/badge/licence-AGPL--3-blue.svg
     :alt: License
 
-Factoring Gebesa
-================
+Account Invoice Pre Payment
+============================
 
-Adds a new module for Customers and Suppliers , to add some bills consider factoring in the bank.
+Add new field that indicates whether the invoice is an advance type.
 
 
 Installation
 ============
 
 Take a look at the installation section in the description of the module 
-'factoring_gebesa'.
+'account_invoice_prepayment'.
 
 
 Bug Tracker

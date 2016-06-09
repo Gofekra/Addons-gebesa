@@ -7,7 +7,6 @@ from openerp.exceptions import UserError
 
 
 class PurchaseOrder(models.Model):
-    _name = 'purchase.order'
     _inherit = 'purchase.order'
 
     def button_confirm(self, cr, uid, ids, context=None):

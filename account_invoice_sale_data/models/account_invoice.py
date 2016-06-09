@@ -10,49 +10,49 @@ class AccountInvoice(models.Model):
     _inherit = 'account.invoice'
 
     total_net_sale = fields.Float(
-        string=_(u'Total net sale'),
+        string=_('Total Net Sale'),
         digits_compute=dp.get_precision('Account'),
     )
 
     perc_freight = fields.Float(
-        string=_(u'Freight percentage'),
+        string=_('Freight Percentage'),
         digits_compute=dp.get_precision('Account'),
     )
 
     total_freight = fields.Float(
-        string=_(u'Total Freight'),
+        string=_('Total Freight'),
         digits_compute=dp.get_precision('Account'),
     )
 
     perc_installation = fields.Float(
-        string=_(u'Installation percentage'),
+        string=_('Installation Percentage'),
         digits_compute=dp.get_precision('Account'),
     )
 
     total_installation = fields.Float(
-        string=_(u'Total installation'),
+        string=_('Total Installation'),
         digits_compute=dp.get_precision('Account'),
     )
 
     profit_margin = fields.Float(
-        string=_(u'Profit margin'),
+        string=_('Profit Margin'),
         digits_compute=dp.get_precision('Account'),
     )
 
     not_be_billed = fields.Boolean(
-        string=_(u'Not be billed'),
+        string=_('Not be Billed'),
     )
 
     manufacture = fields.Selection(
-        [('special', _(u'Special')),
-            ('line', _(u'Line')),
-            ('replenishment', _(u'Replenishment')),
-            ('semi_special', _(u'Semi special'))],
-        string=_(u"Manufacture"),
+        [('special', _('Special')),
+            ('line', _('Line')),
+            ('replenishment', _('Replenishment')),
+            ('semi_special', _('Semi special'))],
+        string=_("Manufacture"),
 
     )
 
     executive = fields.Char(
-        string=_(u'Executive'),
+        string=_('Executive'),
         size=100,
     )

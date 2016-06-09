@@ -6,7 +6,8 @@ from openerp import _, fields, models
 
 
 class AccountAccount(models.Model):
-    _name = 'account.account'
     _inherit = 'account.account'
 
-    system = fields.Boolean(string=_(u'System'))
+    system = fields.Boolean(
+        string=_('System')
+    )
