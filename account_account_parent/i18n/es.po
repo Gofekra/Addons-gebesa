@@ -34,3 +34,10 @@ msgstr "Cuenta padre"
 #, python-format
 msgid "Parent"
 msgstr "Padre"
+
+#. module: account_account_parent
+#: sql_constraint:account.account:0
+#: code:addons/account_account_parent/models/account_account.py:34
+#, python-format
+msgid "The account cannot be parent of itself"
+msgstr "La cuenta no puede ser padre de si misma"

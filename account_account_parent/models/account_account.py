@@ -27,3 +27,9 @@ class AccountAccount(models.Model):
         string=_(u'Parent'),
         help=_(u'Account parent'),
     )
+
+    _sql_constraints = [
+        ('id_parent_id',
+         'CHECK(id != parent_id)',
+         _("The account cannot be parent of itself")),
+    ]
