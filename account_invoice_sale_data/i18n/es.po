@@ -16,11 +16,39 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: account_invoice_sale_data
+#: selection:account.invoice,portfolio_type:0
+#: code:addons/account_invoice_sale_data/models/account_invoice.py:68
+#, python-format
+msgid "Agreement"
+msgstr "Convenio"
+
+#. module: account_invoice_sale_data
+#: selection:account.invoice,portfolio_type:0
+#: code:addons/account_invoice_sale_data/models/account_invoice.py:61
+#, python-format
+msgid "Attested copy"
+msgstr "Compulsa"
+
+#. module: account_invoice_sale_data
+#: selection:account.invoice,portfolio_type:0
+#: code:addons/account_invoice_sale_data/models/account_invoice.py:66
+#, python-format
+msgid "Bad debt"
+msgstr "Incobrable"
+
+#. module: account_invoice_sale_data
 #: code:addons/account_invoice_sale_data/models/account_invoice.py:56
 #: model:ir.model.fields,field_description:account_invoice_sale_data.field_account_invoice_executive
 #, python-format
 msgid "Executive"
 msgstr "Ejecutivo"
+
+#. module: account_invoice_sale_data
+#: selection:account.invoice,portfolio_type:0
+#: code:addons/account_invoice_sale_data/models/account_invoice.py:63
+#, python-format
+msgid "Foreign"
+msgstr "Extranjero"
 
 #. module: account_invoice_sale_data
 #: code:addons/account_invoice_sale_data/models/account_invoice_line.py:24
@@ -61,6 +89,13 @@ msgid "Invoice Line"
 msgstr "Línea de Factura"
 
 #. module: account_invoice_sale_data
+#: selection:account.invoice,portfolio_type:0
+#: code:addons/account_invoice_sale_data/models/account_invoice.py:69
+#, python-format
+msgid "Legal"
+msgstr "Juridico"
+
+#. module: account_invoice_sale_data
 #: selection:account.invoice,manufacture:0
 #: code:addons/account_invoice_sale_data/models/account_invoice.py:48
 #, python-format
@@ -80,6 +115,13 @@ msgstr "Justificación margen bajo para la factura"
 #, python-format
 msgid "Manufacture"
 msgstr "Manufactura"
+
+#. module: account_invoice_sale_data
+#: selection:account.invoice,portfolio_type:0
+#: code:addons/account_invoice_sale_data/models/account_invoice.py:62
+#, python-format
+msgid "National"
+msgstr "Nacional"
 
 #. module: account_invoice_sale_data
 #: code:addons/account_invoice_sale_data/models/account_invoice_line.py:19
@@ -103,6 +145,13 @@ msgid "P. M. justification"
 msgstr "Justificación M.B."
 
 #. module: account_invoice_sale_data
+#: code:addons/account_invoice_sale_data/models/account_invoice.py:70
+#: model:ir.model.fields,field_description:account_invoice_sale_data.field_account_invoice_portfolio_type
+#, python-format
+msgid "Portfolio type"
+msgstr "Tipo Cartera"
+
+#. module: account_invoice_sale_data
 #: code:addons/account_invoice_sale_data/models/account_invoice.py:38
 #: code:addons/account_invoice_sale_data/models/account_invoice_line.py:39
 #: model:ir.model.fields,field_description:account_invoice_sale_data.field_account_invoice_line_profit_margin
@@ -112,16 +161,30 @@ msgid "Profit margin"
 msgstr "Margen de utilidad"
 
 #. module: account_invoice_sale_data
+#: selection:account.invoice,portfolio_type:0
+#: code:addons/account_invoice_sale_data/models/account_invoice.py:65
+#, python-format
+msgid "Replacement"
+msgstr "Reposicion"
+
+#. module: account_invoice_sale_data
 #: selection:account.invoice,manufacture:0
 #: code:addons/account_invoice_sale_data/models/account_invoice.py:49
 #, python-format
 msgid "Replenishment"
-msgstr "Reposición"
+msgstr "Reposicion"
 
 #. module: account_invoice_sale_data
 #: model:ir.ui.view,arch_db:account_invoice_sale_data.account_invoice_view_form
 msgid "Sale data"
 msgstr "Datos de venta"
+
+#. module: account_invoice_sale_data
+#: selection:account.invoice,portfolio_type:0
+#: code:addons/account_invoice_sale_data/models/account_invoice.py:67
+#, python-format
+msgid "Sample"
+msgstr "Muestra"
 
 #. module: account_invoice_sale_data
 #: selection:account.invoice,manufacture:0
@@ -143,6 +206,13 @@ msgstr "Especial"
 #, python-format
 msgid "Standard cost"
 msgstr "Costo estandar"
+
+#. module: account_invoice_sale_data
+#: selection:account.invoice,portfolio_type:0
+#: code:addons/account_invoice_sale_data/models/account_invoice.py:64
+#, python-format
+msgid "Street market"
+msgstr "Tianguis"
 
 #. module: account_invoice_sale_data
 #: code:addons/account_invoice_sale_data/models/account_invoice.py:23

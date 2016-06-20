@@ -19,6 +19,7 @@
         					<group>
         						<field name='profit_margin'/>
         						<field name='not_be_billed'/>
+                                <field name='portfolio_type'/>
         						<field name='manufacture'/>
         						<field name='executive'/>        						
         					</group>
