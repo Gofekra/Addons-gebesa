@@ -56,3 +56,20 @@ class AccountInvoice(models.Model):
         string=_('Executive'),
         size=100,
     )
+
+    portfolio_type = fields.Selection(
+        [('attested_copy', _(u'Attested copy')),
+         ('national', _(u'National')),
+         ('foreign', _(u'Foreign')),
+         ('street_market', _(u'Street market')),
+         ('replacement', _(u'Replacement')),
+         ('bad_debt', _(u'Bad debt')),
+         ('sample', _(u'Sample')),
+         ('agreement', _(u'Agreement')),
+         ('legal', _(u'Legal'))],
+        string=_(u"Portfolio type"),
+        states={'cancel': [('readonly', True)]},
+        store=True,
+        select=True,
+        default='national',
+    )
