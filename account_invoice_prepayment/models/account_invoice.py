@@ -13,6 +13,11 @@ class AccountInvoice(models.Model):
         copy=False,
     )
 
+    advance_applied = fields.Boolean(
+        string=_('Advance Applied'),
+        help=_('The advance has already been applied'),
+    )
+
     @api.multi
     def action_move_create(self):
         if self.type == 'out_invoice':
