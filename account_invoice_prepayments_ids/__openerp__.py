@@ -19,6 +19,7 @@
         "base",
         "account",
         "sale",
+        "account_invoice_prepayment"
     ],
     "data": [
     ],
