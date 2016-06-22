@@ -8,6 +8,7 @@
     		<field name='arch' type='xml'>
     			<xpath expr="//field[@name='date_due']" position="after">
     				<field name="prepayment_ok" readonly='1'/>
+                    <field name="advance_applied" readonly='1'/>
     			</xpath>
     		</field>
         </record>

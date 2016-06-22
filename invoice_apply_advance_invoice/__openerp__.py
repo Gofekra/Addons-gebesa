@@ -2,12 +2,12 @@
 # © <YEAR(S)> <AUTHOR(S)>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
-    "name": "Account Invoice Prepayments",
-    "summary": "Add new field that it indicates bills in advance",
+    "name": "Apply Advance Invoice",
+    "summary": "Apply advance invoice to an invoice",
     "version": "9.0.1.0.0",
-    "category": "Account",
+    "category": "MPR",
     "website": "https://odoo-community.org/",
-    "author": "<Deysy Mascorro, Odoo Community Association (OCA)",
+    "author": "<Deysy Mascorro>, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "application": False,
     "installable": True,
@@ -18,16 +18,16 @@
     "depends": [
         "base",
         "account",
-        "sale",
-        "account_invoice_prepayment"
+        "account_invoice_prepayment",
+        "account_invoice_sale_order_id",
+        "account_analytic_everywhere",
+        "account_invoice_line_analytic",
     ],
     "data": [
-        "views/account_invoice_view.xml"
+        "views/account_invoice_view.xml",
     ],
     "demo": [
-
     ],
     "qweb": [
-
     ]
 }
