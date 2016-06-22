@@ -76,7 +76,7 @@ class AccountInvoice(models.Model):
                 }
                 inv_line_obj = self.env['account.invoice.line']
                 inv_line_id = inv_line_obj.create(inv_line_values2)
-                # self.write({'advance_applied': True})
+
                 inv.advance_id.advance_applied = True
 
         super(AccountInvoice, self).action_move_create()
