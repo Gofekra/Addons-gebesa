@@ -26,7 +26,7 @@ class AccountInvoice(models.Model):
                 deposit = self.pool['ir.values'].get_default(
                     self._cr, self._uid, 'sale.config.settings',
                                          'deposit_product_id_setting') or False
-                if product == deposit:
+                if product == deposit and line.price_subtotal > 0:
                     self.prepayment_ok = True
 
         return super(AccountInvoice, self).action_move_create()
