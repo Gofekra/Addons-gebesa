@@ -13,7 +13,7 @@ class AccountInvoice(models.Model):
     def action_cancel(self):
         for inv in self:
             if inv.date_invoice:
-                if inv.state != 'draf':
+                if inv.state != 'draft':
                     date_inv = self.date_invoice.split('-', 3)
                     today = str(fields.Date.today()).split('-', 3)
                     if date_inv[1] != today[1] or date_inv[0] != today[0]:
