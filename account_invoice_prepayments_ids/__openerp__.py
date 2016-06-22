@@ -22,6 +22,7 @@
         "account_invoice_prepayment"
     ],
     "data": [
+        "views/account_invoice_view.xml"
     ],
     "demo": [
 
