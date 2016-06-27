@@ -21,6 +21,7 @@
     ],
     "data": [
         "views/account_invoice_view.xml",
+        "views/res_partner.xml",
     ],
     "demo": [
 
