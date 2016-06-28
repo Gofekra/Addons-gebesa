@@ -37,6 +37,13 @@ msgid "Bad debt"
 msgstr ""
 
 #. module: account_invoice_sale_data
+#: code:addons/account_invoice_sale_data/models/res_partner.py:13
+#: model:ir.model.fields,field_description:account_invoice_sale_data.field_res_partner_collection_manager_id
+#, python-format
+msgid "Collection manager"
+msgstr ""
+
+#. module: account_invoice_sale_data
 #: code:addons/account_invoice_sale_data/models/account_invoice.py:56
 #: model:ir.model.fields,field_description:account_invoice_sale_data.field_account_invoice_executive
 #, python-format
