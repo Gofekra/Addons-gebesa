@@ -15,6 +15,7 @@
         						<field name='total_freight' widget="monetary"/>
         						<field name='perc_installation'/>
         						<field name='total_installation' widget="monetary"/>
+                                <field name='total_cost' widget="monetary"/>
         					</group>
         					<group>
         						<field name='profit_margin'/>
@@ -28,6 +29,7 @@
         		</xpath>
         		<xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='price_subtotal']" position="after">
                     <field name="standard_cost" widget="monetary"/>
+                    <field name="total_cost" widget="monetary"/>
                     <field name="net_sale" widget="monetary"/>
                     <field name="freight_amount" widget="monetary"/>
                     <field name="installation_amount" widget="monetary"/>                    

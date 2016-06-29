@@ -35,6 +35,11 @@ class AccountInvoiceLine(models.Model):
         digits_compute=dp.get_precision('Account'),
     )
 
+    total_cost = fields.Float(
+        string=_('Total Cost'),
+        digits_compute=dp.get_precision('Account'),
+    )
+
     profit_margin = fields.Float(
         string=_('Profit Margin'),
         digits_compute=dp.get_precision('Account'),
