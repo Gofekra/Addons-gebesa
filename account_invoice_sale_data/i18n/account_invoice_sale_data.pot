@@ -222,6 +222,15 @@ msgid "Street market"
 msgstr ""
 
 #. module: account_invoice_sale_data
+#: code:addons/account_invoice_sale_data/models/account_invoice_line.py:39
+#: code:addons/account_invoice_sale_data/models/account_invoice.py:56
+#: model:ir.model.fields,field_description:account_invoice_sale_data.field_account_invoice_line_total_cost
+#: model:ir.model.fields,field_description:account_invoice_sale_data.field_account_invoice_total_cost
+#, python-format
+msgid "Total Cost"
+msgstr ""
+
+#. module: account_invoice_sale_data
 #: code:addons/account_invoice_sale_data/models/account_invoice.py:23
 #: model:ir.model.fields,field_description:account_invoice_sale_data.field_account_invoice_total_freight
 #, python-format

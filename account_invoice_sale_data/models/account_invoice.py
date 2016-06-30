@@ -52,6 +52,11 @@ class AccountInvoice(models.Model):
 
     )
 
+    total_cost = fields.Float(
+        string=_('Total Cost'),
+        digits_compute=dp.get_precision('Account'),
+    )
+
     executive = fields.Char(
         string=_('Executive'),
         size=100,
