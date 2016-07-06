@@ -16,9 +16,15 @@ class ProductTemplate(models.Model):
     property_account_creditor_price_difference_id = fields.Many2one(
         'account.account',
         string="Price Difference Account",
+<<<<<<< HEAD
+        default=_default_price_account,
+        help=_("This account will be used to value price difference"
+               "between purchase price and cost price.")
+=======
         help=_("This account will be used to value price difference \
                between purchase price and cost price."),
         default=_default_get_price_account,
+>>>>>>> e447ba18edea70496049747342782ef3ba5ddbe0
     )
 
     # def create(self, cr, uid, vals, context=None):

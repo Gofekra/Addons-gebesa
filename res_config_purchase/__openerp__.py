@@ -18,6 +18,7 @@
     "depends": [
         "base",
         "purchase",
+        "integration_progress_fields",
     ],
     "data": [
         "views/res_config_view.xml",
