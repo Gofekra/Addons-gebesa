@@ -7,7 +7,7 @@
     "version": "9.0.1.0.0",
     "category": "Uncategorized",
     "website": "https://odoo-community.org/",
-    "author": "<César Barrón Bautista>, Odoo Community Association (OCA)",
+    "author": "<Cesar Barrón Bautista>, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "application": False,
     "installable": True,
