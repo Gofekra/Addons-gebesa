@@ -22,7 +22,6 @@
     ],
     "data": [
         "views/res_config_view.xml",
-        "views/product_view.xml",
 
     ],
     "demo": [

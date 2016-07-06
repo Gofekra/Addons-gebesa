@@ -13,25 +13,25 @@ class ProductTemplate(models.Model):
             'purchase.config.settings', 'purchase_price_account_id')
         return res
 
-    property_account_creditor_price_difference_id = fields.Many2one(
+    property_account_creditor_price_difference = fields.Many2one(
         'account.account',
-        string="Price Difference Account",
+        string=_('Price Difference Account'),
+        company_dependent=True,
         default=_default_get_price_account,
-        help=_("This account will be used to value price difference"
-               "between purchase price and cost price.")
+        help=_('This account will be used to value price difference'
+               'between purchase price and cost price.')
     )
 
-    # def create(self, cr, uid, vals, context=None):
-    #     product_template_id = super(ProductTemplate, self).create(
-    #         cr, uid, vals, context=context)
+    def create(self, cr, uid, vals, context=None):
+        product_template_id = super(ProductTemplate, self).create(
+            cr, uid, vals, context=context)
 
-    #     generate_account_price = self.pool['ir.values'].get_default(
-    #         cr, uid, 'purchase.config.settings',
-    #         'purchase_price_account_id')
+        generate_account_price = self.pool['ir.values'].get_default(
+            cr, uid, 'purchase.config.settings',
+            'purchase_price_account_id')
 
-    #     self.write(cr, uid, product_template_id,
-    #                {'property_account_creditor_price_difference':
-    #                 generate_account_price},
-    #                context=None)
+        self.write(cr, uid, product_template_id,
+                   {'property_account_creditor_price_difference':
+                    generate_account_price}, context=None)
 
-    #     return product_template_id
+        return product_template_id
