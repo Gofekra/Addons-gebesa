@@ -22,6 +22,7 @@
         "views/product_family.xml",
         "views/product_group.xml",
         "views/product_line.xml",
+        "views/product_type.xml",
         "views/product_template.xml",
         "security/ir.model.access.csv",
     ],
