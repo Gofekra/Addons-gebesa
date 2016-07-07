@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-01 21:57+0000\n"
-"PO-Revision-Date: 2016-07-01 17:04-0600\n"
+"POT-Creation-Date: 2016-07-07 17:44+0000\n"
+"PO-Revision-Date: 2016-07-07 12:51-0600\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -20,9 +20,11 @@ msgstr ""
 #: code:addons/product_structure_gebesa/models/product_family.py:21
 #: code:addons/product_structure_gebesa/models/product_group.py:21
 #: code:addons/product_structure_gebesa/models/product_line.py:33
+#: code:addons/product_structure_gebesa/models/product_type.py:21
 #: model:ir.model.fields,field_description:product_structure_gebesa.field_product_family_active
 #: model:ir.model.fields,field_description:product_structure_gebesa.field_product_group_active
 #: model:ir.model.fields,field_description:product_structure_gebesa.field_product_line_active
+#: model:ir.model.fields,field_description:product_structure_gebesa.field_product_type_active
 #, python-format
 msgid "Active"
 msgstr "Activo"
@@ -38,6 +40,7 @@ msgstr "Clave"
 #: model:ir.model.fields,field_description:product_structure_gebesa.field_product_family_create_uid
 #: model:ir.model.fields,field_description:product_structure_gebesa.field_product_group_create_uid
 #: model:ir.model.fields,field_description:product_structure_gebesa.field_product_line_create_uid
+#: model:ir.model.fields,field_description:product_structure_gebesa.field_product_type_create_uid
 msgid "Created by"
 msgstr "Creado por"
 
@@ -45,6 +48,7 @@ msgstr "Creado por"
 #: model:ir.model.fields,field_description:product_structure_gebesa.field_product_family_create_date
 #: model:ir.model.fields,field_description:product_structure_gebesa.field_product_group_create_date
 #: model:ir.model.fields,field_description:product_structure_gebesa.field_product_line_create_date
+#: model:ir.model.fields,field_description:product_structure_gebesa.field_product_type_create_date
 msgid "Created on"
 msgstr "Creado en"
 
@@ -52,6 +56,7 @@ msgstr "Creado en"
 #: model:ir.model.fields,field_description:product_structure_gebesa.field_product_family_display_name
 #: model:ir.model.fields,field_description:product_structure_gebesa.field_product_group_display_name
 #: model:ir.model.fields,field_description:product_structure_gebesa.field_product_line_display_name
+#: model:ir.model.fields,field_description:product_structure_gebesa.field_product_type_display_name
 msgid "Display Name"
 msgstr "Mostrar nombre"
 
@@ -87,6 +92,7 @@ msgstr "Nombre de la grupo del producto"
 #: model:ir.model.fields,field_description:product_structure_gebesa.field_product_family_id
 #: model:ir.model.fields,field_description:product_structure_gebesa.field_product_group_id
 #: model:ir.model.fields,field_description:product_structure_gebesa.field_product_line_id
+#: model:ir.model.fields,field_description:product_structure_gebesa.field_product_type_id
 msgid "ID"
 msgstr "Id"
 
@@ -94,6 +100,7 @@ msgstr "Id"
 #: model:ir.model.fields,field_description:product_structure_gebesa.field_product_family___last_update
 #: model:ir.model.fields,field_description:product_structure_gebesa.field_product_group___last_update
 #: model:ir.model.fields,field_description:product_structure_gebesa.field_product_line___last_update
+#: model:ir.model.fields,field_description:product_structure_gebesa.field_product_type___last_update
 msgid "Last Modified on"
 msgstr "Ultima modificacion en"
 
@@ -101,6 +108,7 @@ msgstr "Ultima modificacion en"
 #: model:ir.model.fields,field_description:product_structure_gebesa.field_product_family_write_uid
 #: model:ir.model.fields,field_description:product_structure_gebesa.field_product_group_write_uid
 #: model:ir.model.fields,field_description:product_structure_gebesa.field_product_line_write_uid
+#: model:ir.model.fields,field_description:product_structure_gebesa.field_product_type_write_uid
 msgid "Last Updated by"
 msgstr "Ultima actualizacion por"
 
@@ -108,6 +116,7 @@ msgstr "Ultima actualizacion por"
 #: model:ir.model.fields,field_description:product_structure_gebesa.field_product_family_write_date
 #: model:ir.model.fields,field_description:product_structure_gebesa.field_product_group_write_date
 #: model:ir.model.fields,field_description:product_structure_gebesa.field_product_line_write_date
+#: model:ir.model.fields,field_description:product_structure_gebesa.field_product_type_write_date
 msgid "Last Updated on"
 msgstr "Ultima actualizacion en"
 
@@ -136,9 +145,11 @@ msgstr "Nombre de la linea del producto"
 #: code:addons/product_structure_gebesa/models/product_family.py:14
 #: code:addons/product_structure_gebesa/models/product_group.py:14
 #: code:addons/product_structure_gebesa/models/product_line.py:21
+#: code:addons/product_structure_gebesa/models/product_type.py:14
 #: model:ir.model.fields,field_description:product_structure_gebesa.field_product_family_name
 #: model:ir.model.fields,field_description:product_structure_gebesa.field_product_group_name
 #: model:ir.model.fields,field_description:product_structure_gebesa.field_product_line_name
+#: model:ir.model.fields,field_description:product_structure_gebesa.field_product_type_name
 #, python-format
 msgid "Name"
 msgstr "Nombre"
@@ -172,6 +183,14 @@ msgid "Product Template"
 msgstr "Product Template"
 
 #. module: product_structure_gebesa
+#: model:ir.actions.act_window,name:product_structure_gebesa.action_product_type
+#: model:ir.ui.menu,name:product_structure_gebesa.product_type_menu
+#: model:ir.ui.view,arch_db:product_structure_gebesa.product_type_form
+#: model:ir.ui.view,arch_db:product_structure_gebesa.product_type_tree
+msgid "Product Type"
+msgstr "Tipo de producto"
+
+#. module: product_structure_gebesa
 #: model:ir.ui.view,arch_db:product_structure_gebesa.product_template_form_view
 msgid "Product classification"
 msgstr "Clasificacion del producto"
@@ -194,6 +213,20 @@ msgid "Product structure gebesa"
 msgstr "Estructura producto gebesa"
 
 #. module: product_structure_gebesa
+#: code:addons/product_structure_gebesa/models/product_template.py:28
+#: model:ir.model.fields,field_description:product_structure_gebesa.field_product_template_type_id
+#, python-format
+msgid "Type"
+msgstr "Tipo"
+
+#. module: product_structure_gebesa
+#: code:addons/product_structure_gebesa/models/product_type.py:17
+#: model:ir.model.fields,help:product_structure_gebesa.field_product_type_name
+#, python-format
+msgid "Type name product"
+msgstr "Nombre del tipo de producto"
+
+#. module: product_structure_gebesa
 #: code:addons/product_structure_gebesa/models/product_family.py:27
 #: model:ir.model.fields,field_description:product_structure_gebesa.field_product_family_warehouse_id
 #, python-format
@@ -214,3 +247,8 @@ msgstr "product.group"
 #: model:ir.model,name:product_structure_gebesa.model_product_line
 msgid "product.line"
 msgstr "product.line"
+
+#. module: product_structure_gebesa
+#: model:ir.model,name:product_structure_gebesa.model_product_type
+msgid "product.type"
+msgstr "product.type"

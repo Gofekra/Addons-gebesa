@@ -4,4 +4,5 @@
 from . import product_family
 from . import product_group
 from . import product_line
+from . import product_type
 from . import product_template

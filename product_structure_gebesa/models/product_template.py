@@ -22,3 +22,8 @@ class ProductTemplate(models.Model):
         'product.line',
         string=_('Line'),
     )
+
+    type_id = fields.Many2one(
+        'product.type',
+        string=_('Type'),
+    )
