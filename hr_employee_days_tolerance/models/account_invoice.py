@@ -14,7 +14,7 @@ class AccountInvoice(models.Model):
         """ Create the movements to the given date,
         according to the days of tolerance granted to the user"""
         employee_days = self.env['hr.employee'].search(
-            [('user_id', '=', self._uid)])[1].tolerance_days
+            [('user_id', '=', self._uid)])[0].tolerance_days
 
         for inv in self:
             if inv.date_invoice is not False:

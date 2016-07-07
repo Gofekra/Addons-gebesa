@@ -25,6 +25,7 @@
         "security/security.xml",
         "security/ir.model.access.csv",
         "views/account_invoice.xml",
+        "views/account_journal.xml",
         "views/integration_cost_gebesa.xml",
     ],
     "demo": [

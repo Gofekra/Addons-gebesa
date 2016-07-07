@@ -2,7 +2,7 @@
 # © <YEAR(S)> <AUTHOR(S)>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import _, fields, models
+from openerp import _, api, fields, models
 
 
 class AccountInvoice(models.Model):
@@ -19,3 +19,13 @@ class AccountInvoice(models.Model):
         string=_(u'integration',),
         help=_(u'Integration which is linked to a purchase'),
     )
+
+    @api.multi
+    def action_move_create(self):
+        for inv in self:
+            if inv.type == 'in_invoice':
+                for line in inv.invoice_line_ids:
+                    if line.product_id.landed_cost_ok is True:
+                        inv.is_additional = True
+
+        return super(AccountInvoice, self).action_move_create()

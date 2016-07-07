@@ -16,7 +16,7 @@ class IntegrationCostGebesa(models.Model):
         user = self.env['res.users'].browse(self._uid)
         company_id = self._context.get('company_id', user.company_id.id)
         domain = [('company_id', '=', company_id)]
-        domain.append(('code', '=', 'STJ'))
+        domain.append(('integration_cost', '=', True))
         res = journal_obj.search(domain)
         return res and res[0] or False
 
@@ -155,6 +155,23 @@ class IntegrationCostGebesa(models.Model):
 
                 for inv2 in int_cost.invoice_mp_ids:
                     for line_inv2 in inv2.invoice_line_ids:
+                        account_expense = line_inv.product_id.categ_id.\
+                            property_account_expense_categ_id.id or False
+                        account_price_difference = line_inv2.product_id.\
+                            property_account_creditor_price_difference.id \
+                            or False
+
+                        if not account_expense:
+                            raise ValidationError(
+                                _(u"It is not set up an Expense Account in \
+                                  the category of the %s product" %
+                                  line_inv.product_id.name_template))
+                        if not account_price_difference:
+                            raise ValidationError(
+                                _(u"It is not set up an price difference Account in \
+                                    the product %s" %
+                                    line_inv2.product_id.name_template))
+
                         amount_line = line_inv2.quantity or 0.0
                         price_line = line_inv2.price_unit or 0.0
                         if int_cost.disc_additional == 'quantity':
@@ -183,8 +200,7 @@ class IntegrationCostGebesa(models.Model):
                             'credit': amount,
                             'name': line_inv.product_id.name + ' ' +
                             line_inv2.product_id.name,
-                            'account_id': line_inv.product_id.
-                            categ_id.property_account_expense_categ_id.id,
+                            'account_id': account_expense,
                             'analytic_account_id': int_cost.
                             account_analytic_id.id,
                             'debit': 0.0,
@@ -200,8 +216,7 @@ class IntegrationCostGebesa(models.Model):
                             'credit': 0.0,
                             'name': line_inv.product_id.name + ' ' +
                             line_inv2.product_id.name,
-                            'account_id': line_inv2.product_id.
-                            property_account_creditor_price_difference.id,
+                            'account_id': account_price_difference,
                             'analytic_account_id': int_cost.
                             account_analytic_id.id,
                             'debit': amount,
