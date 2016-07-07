@@ -6,7 +6,7 @@
         	<field name='model'>account.invoice</field>
         	<field name='inherit_id' ref='account.invoice_form'/>
         	<field name='arch' type='xml'>
-        		<xpath expr="//button[@name='310']" position="attributes">
+        		<xpath expr="//button[9]" position="attributes">
         			<attribute name="attrs">{'invisible': ['|',('type', '=', 'out_refund'), ('state', 'not in', ('open','proforma2'))]}</attribute>
         		</xpath>
         	</field>
@@ -17,7 +17,7 @@
         	<field name='model'>account.invoice</field>
         	<field name='inherit_id' ref='account.invoice_supplier_form'/>
         	<field name='arch' type='xml'>
-        		<xpath expr="//button[@name='310']" position="attributes">
+        		<xpath expr="//button[3]" position="attributes">
         			<attribute name="attrs">{'invisible': ['|',('type', '=', 'in_refund'),('state','not in',('open'))]}</attribute>
         		</xpath>
         	</field>
