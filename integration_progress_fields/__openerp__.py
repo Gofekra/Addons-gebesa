@@ -25,7 +25,7 @@
         "views/product_view.xml",
         "views/stock_picking_view.xml",
         "views/stock_move_view.xml",
-
+        "views/res_partner.xml",
     ],
     "demo": [
 

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-29 19:48+0000\n"
-"PO-Revision-Date: 2016-03-29 19:48+0000\n"
+"POT-Creation-Date: 2016-07-12 20:39+0000\n"
+"PO-Revision-Date: 2016-07-12 20:39+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: integration_progress_fields
-#: code:addons/integration_progress_fields/models/stock_move.py:21
-#: code:addons/integration_progress_fields/models/stock_picking.py:21
+#: code:addons/integration_progress_fields/models/stock_move.py:20
+#: code:addons/integration_progress_fields/models/stock_picking.py:20
 #: model:ir.model.fields,field_description:integration_progress_fields.field_stock_move_date_progress
 #: model:ir.model.fields,field_description:integration_progress_fields.field_stock_picking_date_progress
 #, python-format
@@ -25,15 +25,15 @@ msgid "Date Progress"
 msgstr ""
 
 #. module: integration_progress_fields
-#: code:addons/integration_progress_fields/models/account_invoice.py:13
+#: code:addons/integration_progress_fields/models/account_invoice.py:12
 #: model:ir.model.fields,field_description:integration_progress_fields.field_account_invoice_freight_expense_id
 #, python-format
 msgid "Expense on Progress"
 msgstr ""
 
 #. module: integration_progress_fields
-#: code:addons/integration_progress_fields/models/stock_move.py:17
-#: code:addons/integration_progress_fields/models/stock_picking.py:17
+#: code:addons/integration_progress_fields/models/stock_move.py:16
+#: code:addons/integration_progress_fields/models/stock_picking.py:16
 #: model:ir.model.fields,field_description:integration_progress_fields.field_stock_move_folio_progress
 #: model:ir.model.fields,field_description:integration_progress_fields.field_stock_picking_folio_progress
 #, python-format
@@ -46,9 +46,9 @@ msgid "Invoice"
 msgstr ""
 
 #. module: integration_progress_fields
-#: code:addons/integration_progress_fields/models/product.py:13
-#: code:addons/integration_progress_fields/models/stock_move.py:13
-#: code:addons/integration_progress_fields/models/stock_picking.py:13
+#: code:addons/integration_progress_fields/models/product.py:12
+#: code:addons/integration_progress_fields/models/stock_move.py:12
+#: code:addons/integration_progress_fields/models/stock_picking.py:12
 #: model:ir.model.fields,field_description:integration_progress_fields.field_product_template_numctrl_progress
 #: model:ir.model.fields,field_description:integration_progress_fields.field_stock_move_numctrl_progress
 #: model:ir.model.fields,field_description:integration_progress_fields.field_stock_picking_numctrl_progress
@@ -58,8 +58,20 @@ msgid "Num. Ctrl. Progress"
 msgstr ""
 
 #. module: integration_progress_fields
+#: model:ir.model,name:integration_progress_fields.model_res_partner
+msgid "Partner"
+msgstr ""
+
+#. module: integration_progress_fields
 #: model:ir.model,name:integration_progress_fields.model_product_template
 msgid "Product Template"
+msgstr ""
+
+#. module: integration_progress_fields
+#: code:addons/integration_progress_fields/models/res_partner.py:12
+#: model:ir.model.fields,field_description:integration_progress_fields.field_res_partner_numctrl_progress
+#, python-format
+msgid "Progress control number"
 msgstr ""
 
 #. module: integration_progress_fields
@@ -68,7 +80,7 @@ msgid "Stock Move"
 msgstr ""
 
 #. module: integration_progress_fields
-#: code:addons/integration_progress_fields/models/product.py:18
+#: code:addons/integration_progress_fields/models/product.py:17
 #: sql_constraint:product.template:0
 #, python-format
 msgid "The field Num. Ctrl. Progress must be unique!"
