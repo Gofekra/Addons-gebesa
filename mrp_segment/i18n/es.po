@@ -1,0 +1,333 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* mrp_segment
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0c\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-07-12 21:06+0000\n"
+"PO-Revision-Date: 2016-07-12 21:06+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: mrp_segment
+#: selection:mrp.segment,state:0
+msgid "Cancelled"
+msgstr "Cancelado"
+
+#. module: mrp_segment
+#: model:ir.actions.act_window,help:mrp_segment.action_segment_form
+msgid "Click to start a segment."
+msgstr "Click para iniciar un segmento."
+
+#. module: mrp_segment
+#: code:addons/mrp_segment/models/mrp_segment.py:137
+#: model:ir.model.fields,field_description:mrp_segment.field_mrp_segment_line_product_code
+#, python-format
+msgid "Code Product"
+msgstr "Código del Producto"
+
+#. module: mrp_segment
+#: code:addons/mrp_segment/models/mrp_segment.py:57
+#: model:ir.model.fields,field_description:mrp_segment.field_mrp_segment_company_id
+#, python-format
+msgid "Company"
+msgstr "Compañía"
+
+#. module: mrp_segment
+#: model:ir.model.fields,help:mrp_segment.field_mrp_segment_line_standard_cost
+msgid "Cost of the product template used for standard stock valuation in accounting and used as a base price on purchase orders. Expressed in the default unit of measure of the product."
+msgstr "El costo de la plantilla del producto utilizado para la valoración de las acciones estándar en la contabilidad y se utiliza como un precio base de órdenes de compra. Expresado en la unidad de medida por defecto del producto."
+
+#. module: mrp_segment
+#: model:ir.model.fields,field_description:mrp_segment.field_mrp_segment_create_uid
+#: model:ir.model.fields,field_description:mrp_segment.field_mrp_segment_line_create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: mrp_segment
+#: model:ir.model.fields,field_description:mrp_segment.field_mrp_segment_create_date
+#: model:ir.model.fields,field_description:mrp_segment.field_mrp_segment_line_create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: mrp_segment
+#: model:ir.model.fields,field_description:mrp_segment.field_mrp_segment_display_name
+#: model:ir.model.fields,field_description:mrp_segment.field_mrp_segment_line_display_name
+msgid "Display Name"
+msgstr "Mostrar Nombre"
+
+#. module: mrp_segment
+#: selection:mrp.segment,state:0
+msgid "Draft"
+msgstr "Borrador"
+
+#. module: mrp_segment
+#: model:ir.ui.view,arch_db:mrp_segment.view_segment_filter
+msgid "Group By"
+msgstr "Agrupar por"
+
+#. module: mrp_segment
+#: model:ir.model.fields,field_description:mrp_segment.field_mrp_segment_id
+#: model:ir.model.fields,field_description:mrp_segment.field_mrp_segment_line_id
+msgid "ID"
+msgstr "ID"
+
+#. module: mrp_segment
+#: selection:mrp.segment,state:0
+msgid "In Progress"
+msgstr "En progreso"
+
+#. module: mrp_segment
+#: model:ir.model.fields,field_description:mrp_segment.field_mrp_segment___last_update
+#: model:ir.model.fields,field_description:mrp_segment.field_mrp_segment_line___last_update
+msgid "Last Modified on"
+msgstr "Última Modificación en"
+
+#. module: mrp_segment
+#: model:ir.model.fields,field_description:mrp_segment.field_mrp_segment_line_write_uid
+#: model:ir.model.fields,field_description:mrp_segment.field_mrp_segment_write_uid
+msgid "Last Updated by"
+msgstr "Última Actualización por"
+
+#. module: mrp_segment
+#: model:ir.model.fields,field_description:mrp_segment.field_mrp_segment_line_write_date
+#: model:ir.model.fields,field_description:mrp_segment.field_mrp_segment_write_date
+msgid "Last Updated on"
+msgstr "Última Actualización en"
+
+#. module: mrp_segment
+#: model:ir.model,name:mrp_segment.model_mrp_segment
+msgid "MRP Segment"
+msgstr "MRP Segmento"
+
+#. module: mrp_segment
+#: code:addons/mrp_segment/models/mrp_segment.py:123
+#: model:ir.model.fields,field_description:mrp_segment.field_mrp_segment_line_mrp_production_id
+#, python-format
+msgid "Manufacturing Order"
+msgstr "Orden de Manufactura"
+
+#. module: mrp_segment
+#: code:addons/mrp_segment/models/mrp_segment.py:67
+#: code:addons/mrp_segment/models/mrp_segment.py:128
+#: model:ir.model.fields,field_description:mrp_segment.field_mrp_segment_line_ids
+#: model:ir.model.fields,field_description:mrp_segment.field_mrp_segment_line_mrp_production_line_id
+#, python-format
+msgid "Manufacturing Order Line"
+msgstr "Línea de Orden Manufactura"
+
+#. module: mrp_segment
+#: model:ir.ui.view,arch_db:mrp_segment.view_segment_form
+msgid "Manufacturing Orders Details"
+msgstr "Detalles Orden Manufactura"
+
+#. module: mrp_segment
+#: code:addons/mrp_segment/models/mrp_production_product_line.py:18
+#: model:ir.model.fields,field_description:mrp_segment.field_mrp_production_product_line_missing_qty
+#, python-format
+msgid "Missing Quantity"
+msgstr "Cantidad Faltante"
+
+#. module: mrp_segment
+#: code:addons/mrp_segment/models/mrp_segment.py:142
+#: code:addons/mrp_segment/models/mrp_segment.py:152
+#: model:ir.model.fields,field_description:mrp_segment.field_mrp_segment_line_product_name
+#: model:ir.model.fields,field_description:mrp_segment.field_mrp_segment_line_product_volume
+#, python-format
+msgid "Name Product"
+msgstr "Nombre Producto"
+
+#. module: mrp_segment
+#: model:ir.ui.view,arch_db:mrp_segment.view_segment_form
+msgid "Name for Segment"
+msgstr "Nombre para el Segmento"
+
+#. module: mrp_segment
+#: model:ir.ui.view,arch_db:mrp_segment.view_segment_form
+msgid "Proceed"
+msgstr "Proceso
+
+#. module: mrp_segment
+#: code:addons/mrp_segment/models/mrp_segment.py:133
+#: model:ir.model.fields,field_description:mrp_segment.field_mrp_segment_line_product_id
+#, python-format
+msgid "Product"
+msgstr "Producto"
+
+#. module: mrp_segment
+#: model:ir.model,name:mrp_segment.model_mrp_production_product_line
+msgid "Production Scheduled Product"
+msgstr "Producción de Productos Programados"
+
+#. module: mrp_segment
+#: code:addons/mrp_segment/models/mrp_segment.py:162
+#: model:ir.model.fields,field_description:mrp_segment.field_mrp_segment_line_quantity
+#, python-format
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: mrp_segment
+#: code:addons/mrp_segment/models/mrp_production_product_line.py:12
+#: code:addons/mrp_segment/models/mrp_segment.py:169
+#: model:ir.model.fields,field_description:mrp_segment.field_mrp_production_product_line_qty_segmented
+#: model:ir.model.fields,field_description:mrp_segment.field_mrp_segment_line_qty_segmented
+#, python-format
+msgid "Quantity Segmented"
+msgstr "Cantidad Segmentada"
+
+#. module: mrp_segment
+#: code:addons/mrp_segment/models/mrp_segment.py:166
+#: model:ir.model.fields,field_description:mrp_segment.field_mrp_segment_line_sale_name
+#, python-format
+msgid "Sale Order"
+msgstr "Orden de Venta"
+
+#. module: mrp_segment
+#: model:ir.ui.view,arch_db:mrp_segment.view_segment_filter
+msgid "Search Segment"
+msgstr "Buscar Segmento"
+
+#. module: mrp_segment
+#: code:addons/mrp_segment/models/mrp_production_product_line.py:26
+#: model:ir.model.fields,field_description:mrp_segment.field_mrp_production_product_line_segment_line_ids
+#, python-format
+msgid "Segment"
+msgstr "Segmento"
+
+#. module: mrp_segment
+#: code:addons/mrp_segment/models/mrp_segment.py:30
+#: model:ir.model.fields,field_description:mrp_segment.field_mrp_segment_date
+#, python-format
+msgid "Segment Date"
+msgstr "Fecha del Segmento"
+
+#. module: mrp_segment
+#: model:ir.ui.view,arch_db:mrp_segment.view_segment_form
+msgid "Segment Details"
+msgstr "Detalles del Segmento"
+
+#. module: mrp_segment
+#: code:addons/mrp_segment/models/mrp_segment.py:70
+#: model:ir.model.fields,help:mrp_segment.field_mrp_segment_line_ids
+#, python-format
+msgid "Segment Lines."
+msgstr "Líneas del Segmento"
+
+#. module: mrp_segment
+#: code:addons/mrp_segment/models/mrp_segment.py:49
+#: model:ir.model.fields,field_description:mrp_segment.field_mrp_segment_location_id
+#, python-format
+msgid "Segment Location"
+msgstr "Localización Segmento"
+
+#. module: mrp_segment
+#: model:ir.ui.view,arch_db:mrp_segment.view_segment_filter
+msgid "Segment Month"
+msgstr "Mes del Segmento"
+
+#. module: mrp_segment
+#: code:addons/mrp_segment/models/mrp_segment.py:27
+#: model:ir.model.fields,help:mrp_segment.field_mrp_segment_name
+#, python-format
+msgid "Segment Name."
+msgstr "Nombre del Segmento."
+
+#. module: mrp_segment
+#: code:addons/mrp_segment/models/mrp_segment.py:23
+#: model:ir.model.fields,field_description:mrp_segment.field_mrp_segment_name
+#: model:ir.ui.view,arch_db:mrp_segment.view_segment_filter
+#, python-format
+msgid "Segment Reference"
+msgstr "Referencia del Segmento"
+
+#. module: mrp_segment
+#: code:addons/mrp_segment/models/mrp_segment.py:117
+#: model:ir.model.fields,field_description:mrp_segment.field_mrp_segment_line_segment_id
+#: model:ir.ui.menu,name:mrp_segment.menu_mrp_segment_action
+#: model:ir.ui.view,arch_db:mrp_segment.view_segment_form
+#, python-format
+msgid "Segmentation"
+msgstr "Segmentación"
+
+#. module: mrp_segment
+#: model:ir.model,name:mrp_segment.model_mrp_segment_line
+msgid "Segmentation Line"
+msgstr ""Línea de Segmentación
+
+#. module: mrp_segment
+#: model:ir.actions.act_window,name:mrp_segment.action_segment_form
+#: model:ir.ui.view,arch_db:mrp_segment.view_segment_tree
+msgid "Segments"
+msgstr "Segmentos"
+
+#. module: mrp_segment
+#: model:ir.ui.view,arch_db:mrp_segment.view_segment_filter
+msgid "Segments by Month"
+msgstr "Segmentos por Mes"
+
+#. module: mrp_segment
+#: model:ir.actions.act_window,help:mrp_segment.action_segment_form
+msgid "Segments will help create clusters of Sale Orders."
+msgstr "Segmentos ayudarán a crear grupos de órdenes de venta"
+
+#. module: mrp_segment
+#: model:ir.ui.menu,name:mrp_segment.menu_mrp_segmentation
+msgid "Shipments"
+msgstr "Embarques"
+
+#. module: mrp_segment
+#: code:addons/mrp_segment/models/mrp_segment.py:157
+#: model:ir.model.fields,field_description:mrp_segment.field_mrp_segment_line_standard_cost
+#, python-format
+msgid "Standard Cost"
+msgstr "Costo Estandar"
+
+#. module: mrp_segment
+#: code:addons/mrp_segment/models/mrp_segment.py:41
+#: model:ir.model.fields,field_description:mrp_segment.field_mrp_segment_state
+#: model:ir.ui.view,arch_db:mrp_segment.view_segment_filter
+#, python-format
+msgid "Status"
+msgstr "Estado"
+
+#. module: mrp_segment
+#: code:addons/mrp_segment/models/mrp_segment.py:34
+#: model:ir.model.fields,help:mrp_segment.field_mrp_segment_date
+#, python-format
+msgid "The date that will be used for the segment."
+msgstr "La fecha que será utilizado para el segmento."
+
+#. module: mrp_segment
+#: code:addons/mrp_segment/models/mrp_segment.py:175
+#, python-format
+msgid "The quantity available is less than the quantity segmented"
+msgstr "La cantidad disponible es inferior a la cantidad segmentado"
+
+#. module: mrp_segment
+#: model:ir.model.fields,help:mrp_segment.field_mrp_segment_line_product_volume
+msgid "The volume in m3."
+msgstr "El Volumen en m3."
+
+#. module: mrp_segment
+#: model:ir.model.fields,help:mrp_segment.field_mrp_segment_line_product_weight
+msgid "The weight of the contents in Kg, not including any packaging, etc."
+msgstr "El peso de los contenidos en Kg, sin incluir cualquier envase, etc."
+
+#. module: mrp_segment
+#: selection:mrp.segment,state:0
+msgid "Validated"
+msgstr "Validado"
+
+#. module: mrp_segment
+#: code:addons/mrp_segment/models/mrp_segment.py:147
+#: model:ir.model.fields,field_description:mrp_segment.field_mrp_segment_line_product_weight
+#, python-format
+msgid "Weight Product"
+msgstr "Peso Producto"
+
