@@ -175,5 +175,5 @@ class MrpShipmentLine(models.Model):
     def _check_quantity_shipped(self):
         for line in self:
             if line.quantity_shipped > line.quantity:
-                raise ValidationError("The quantity available is less than \
-                                      the quantity shipped")
+                raise ValidationError(_("The quantity available is less than \
+                                      the quantity shipped"))
