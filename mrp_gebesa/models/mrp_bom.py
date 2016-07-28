@@ -11,7 +11,7 @@ class MrpBom(models.Model):
 
     warehouse_id = fields.Many2one(
         'stock.warehouse',
-        string='Warehouse',
+        string=_('Warehouse'),
         required=True)
 
 class MrpBomLine(models.Model):
@@ -20,13 +20,5 @@ class MrpBomLine(models.Model):
 
     location_id = fields.Many2one(
         'stock.location',
-        string='Location',
+        string=_('Location'),
         required=True)
-
-# class StockLocation(models.Model):
-#     _name = "stock.location"
-#     _inherit = "stock.location"
-
-#     code = fields.Char(
-#         string=_(u'code')
-#     )
