@@ -23,10 +23,10 @@ class MrpBomLine(models.Model):
         string='Location',
         required=True)
 
-class StockLocation(models.Model):
-    _name = "stock.location"
-    _inherit = "stock.location"
+# class StockLocation(models.Model):
+#     _name = "stock.location"
+#     _inherit = "stock.location"
 
-    code = fields.Char(
-        string=_(u'code')
-    )
+#     code = fields.Char(
+#         string=_(u'code')
+#     )
