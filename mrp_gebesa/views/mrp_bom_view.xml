@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="gebesa_mrp_bom_view" model="ir.ui.view">
+            <field name="name">gebesa_mrp_bom_view</field>
+            <field name="model">mrp.bom</field>
+            <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='product_id']" position="after">
+                    <field name="warehouse_id"/>
+                </xpath>
+
+                <xpath expr="//tree/field[@name='product_id']" position="before">
+                    <field name="location_id" readonly="1"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="gebesa_mrp_bom_line_view" model="ir.ui.view">
+            <field name="name">gebesa_mrp_bom_line_view</field>
+            <field name="model">mrp.bom.line</field>
+            <field name="inherit_id" ref="mrp_cut_detail.mrp_bom_line_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='product_id']" position="before">
+                    <field name="location_id" domain="[('stock_warehouse_id', '=', parent.warehouse_id), ('usage', 'in', ['internal','production'])]"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="gebesa_location_view_form" model="ir.ui.view">
+            <field name="name">gebesa_location_view_form</field>
+            <field name="model">stock.location</field>
+            <field name="inherit_id" ref="stock.view_location_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group/group/field[@name='name']" position="before">
+                    <field name='code' required="True"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>
