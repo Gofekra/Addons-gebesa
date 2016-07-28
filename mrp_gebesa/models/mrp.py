@@ -37,8 +37,26 @@ class MrpProduction(models.Model):
                                     limit=1, context=context)
             if pulls and pull_obj.browse(cr, uid, pulls[0],
                                          context=context).location_src_id:
-                source_location_id = pull_obj.browse(cr, uid, pulls[0],
-                                                     context=context).location_src_id.id
+                source_location_id = pull_obj.browse(
+                    cr, uid, pulls[0],
+                    context=context).location_src_id.id
+
+        # More Gebesa Friendly method
+        bom_id = production.bom_id.id
+        if bom_id:
+            bomline_obj = self.pool['mrp.bom.line']
+            blines = bomline_obj.search(
+                cr, uid, [
+                    ('bom_id', '=', bom_id),
+                    ('product_id', '=', product.id)],
+                limit=1, context=context)
+
+            if blines and bomline_obj.browse(
+                cr, uid, blines[0],
+                    context=context).location_id:
+                source_location_id = bomline_obj.browse(
+                    cr, uid, blines[0],
+                    context=context).location_id.id
 
         # Verificar si es necesario cambiar tambien prod_location_id
         prod_location_id = source_location_id
@@ -64,10 +82,10 @@ class MrpProduction(models.Model):
             'company_id': production.company_id.id,
             'procure_method': prev_move and 'make_to_stock' or
             self._get_raw_material_procure_method(
-                                            cr, uid, product,
-                                            location_id=source_location_id,
-                                            location_dest_id=destination_location_id,
-                                            context=context),
+                cr, uid, product,
+                location_id=source_location_id,
+                location_dest_id=destination_location_id,
+                context=context),
             # Make_to_stock avoids creating procurement
             'raw_material_production_id': production.id,
             # this saves us a browse in create()
