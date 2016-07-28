@@ -89,9 +89,6 @@ class IntegrationCostGebesa(models.Model):
                between the lines of the invoice'),
         default='value',
     )
-    concat_progress = fields.Text(
-        string=_(u'concatenated to progress'),
-    )
 
     def validate_data(self):
         ids = [res.id for res in self]
@@ -142,7 +139,7 @@ class IntegrationCostGebesa(models.Model):
 
         am_id = am_obj.create(am_vals)
 
-        concat = ''
+        concat = []
 
         for inv in int_cost.invoice_adi_ids:
             for line_inv in inv.invoice_line_ids:
@@ -223,15 +220,18 @@ class IntegrationCostGebesa(models.Model):
                         }
                         aml_obj.with_context(ctx).create(vals)
 
-                        concat += str(inv2.picking_id.numctrl_progress) \
-                            + ";" + str(line_inv.product_id.name) + " " \
-                            + str(line_inv2.product_id.name) + ";" \
-                            + str(amount) + ";" \
-                            + str(line_inv2.product_id.default_code) \
-                            + ";" + str(line_inv.product_id.name) + "|"
+                        concat_vals = (
+                            inv2.picking_id,
+                            line_inv.product_id.name,
+                            line_inv2.product_id.name,
+                            amount,
+                            line_inv2.product_id.default_code,
+                            line_inv.product_id.name
+                        )
+                        concat.append(concat_vals)
 
         am_id.post()
 
         self[0].move_id = am_id
         self[0].state = 'done'
-        self[0].concat_progress = concat
+        return concat

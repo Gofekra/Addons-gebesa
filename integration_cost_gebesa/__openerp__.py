@@ -18,7 +18,6 @@
     "depends": [
         "account",
         "account_invoice_stock_picking_id",
-        "integration_progress_fields",
         "account_analytic_everywhere",
     ],
     "data": [

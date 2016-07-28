@@ -20,6 +20,7 @@
         "account",
         "stock",
         "product",
+        "integration_cost_gebesa"
     ],
     "data": [
         "views/product_view.xml",
