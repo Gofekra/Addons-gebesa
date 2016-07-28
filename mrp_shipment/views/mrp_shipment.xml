@@ -39,7 +39,7 @@
                         </group>
                         <notebook attrs="{'invisible':[('state','=','draft')]}">
                         	<page string="Shipment Details" >
-                        		<field name="line_ids" string="Revaluation Details" >
+                        		<field name="line_ids" string="Shipment Details" >
                                     <tree string="Shipment Details" editable="bottom">
                                         <field name="partner_id" readonly="1"/>
                                         <field name='country_id'/>
