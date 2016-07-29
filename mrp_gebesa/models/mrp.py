@@ -26,20 +26,20 @@ class MrpProduction(models.Model):
         # production.product_id.property_stock_production.id y el tipo de
         # procurement sea Make_to_order, de esa regla tomar el
         # source_location y será nuestro source location
-        routes = product.route_ids
-        location_dest_id = production.product_id.property_stock_production.id
-        if location_dest_id:
-            pull_obj = self.pool['procurement.rule']
-            pulls = pull_obj.search(cr, uid, [
-                                    ('route_id', 'in', [x.id for x in routes]),
-                                    ('location_id', '=', location_dest_id),
-                                    ('procure_method', '=', "make_to_order")],
-                                    limit=1, context=context)
-            if pulls and pull_obj.browse(cr, uid, pulls[0],
-                                         context=context).location_src_id:
-                source_location_id = pull_obj.browse(
-                    cr, uid, pulls[0],
-                    context=context).location_src_id.id
+        # routes = product.route_ids
+        # location_dest_id = production.product_id.property_stock_production.id
+        # if location_dest_id:
+        #     pull_obj = self.pool['procurement.rule']
+        #     pulls = pull_obj.search(cr, uid, [
+        #                             ('route_id', 'in', [x.id for x in routes]),
+        #                             ('location_id', '=', location_dest_id),
+        #                             ('procure_method', '=', "make_to_order")],
+        #                             limit=1, context=context)
+        #     if pulls and pull_obj.browse(cr, uid, pulls[0],
+        #                                  context=context).location_src_id:
+        #         source_location_id = pull_obj.browse(
+        #             cr, uid, pulls[0],
+        #             context=context).location_src_id.id
 
         # More Gebesa Friendly method
         bom_id = production.bom_id.id
