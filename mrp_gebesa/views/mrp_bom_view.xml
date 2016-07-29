@@ -37,5 +37,30 @@
                 </xpath>
             </field>
         </record>
+
+        <record id="gebesa_mrp_production_form_view" model="ir.ui.view">
+            <field name="name">gebesa.mrp.production.form</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='move_lines']/tree/field[@name='product_id']" position="before">
+                    <field name="location_id"/>
+                </xpath>
+                <xpath expr="//field[@name='location_src_id']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="geb_production_tree_view" model="ir.ui.view">
+            <field name="name">geb.production.tree</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_tree_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='date_planned']" position="before">
+                    <field name="location_dest_id"/>
+                </xpath>
+            </field>
+        </record>
     </data>
 </openerp>
