@@ -16,7 +16,8 @@
         "bin": [],
     },
     "depends": [
-        "base", "account", "stock", "purchase", "mrp"
+        "base", "account", "stock",
+        "purchase", "mrp", "stock_warehouse_analytic_id"
     ],
     "data": [
         "views/account_invoice.xml",

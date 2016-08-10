@@ -8,6 +8,11 @@ from openerp import _, fields, models
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
+    is_line = fields.Boolean(
+        string=_('Line Product'),
+        default=False,
+    )
+
     family_id = fields.Many2one(
         'product.family',
         string=_('Family'),

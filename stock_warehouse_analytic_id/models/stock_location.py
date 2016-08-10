@@ -12,3 +12,9 @@ class StockLocation(models.Model):
         'stock.warehouse',
         string=_('Stock Warehouse'),
     )
+
+    account_analytic_id = fields.Many2one(
+        'account.analytic.account',
+        'Analytic Account',
+        related='stock_warehouse_id.account_analytic_id',
+        readonly=True)

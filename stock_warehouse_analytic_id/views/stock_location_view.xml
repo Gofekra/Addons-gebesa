@@ -8,6 +8,7 @@
         	<field name='arch' type='xml'>
                 <xpath expr="//group/group/field[@name='usage']" position="after">
                     <field name="stock_warehouse_id" readonly="1"/>
+                    <field name="account_analytic_id" readonly="1"/>
                 </xpath>        		
         	</field>
         </record>

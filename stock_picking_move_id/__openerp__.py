@@ -19,6 +19,7 @@
         "base",
         "stock",
         "account",
+        "mrp",
     ],
     "data": [
         "views/stock_picking_view.xml",

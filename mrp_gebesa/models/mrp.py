@@ -6,14 +6,15 @@ from openerp import models
 
 
 class MrpProduction(models.Model):
-
     _name = 'mrp.production'
     _inherit = 'mrp.production'
 
-    def _make_consume_line_from_data(self, cr, uid, production, product, uom_id, qty, context=None):
+    def _make_consume_line_from_data(
+            self, cr, uid, production, product,
+            uom_id, qty, context=None):
         ## ---> Set BreakPoint
-        import pdb
-        pdb.set_trace()
+        # import pdb
+        # pdb.set_trace()
         stock_move = self.pool.get('stock.move')
         loc_obj = self.pool.get('stock.location')
         # Internal shipment is created for Stockable and Consumer Products
@@ -22,26 +23,6 @@ class MrpProduction(models.Model):
 
         # Take routing location as a Source Location.
         source_location_id = production.location_src_id.id
-        # Buscar la regla de procurement donde el procurement_location sea
-        # production.product_id.property_stock_production.id y el tipo de
-        # procurement sea Make_to_order, de esa regla tomar el
-        # source_location y será nuestro source location
-        # routes = product.route_ids
-        # location_dest_id = production.product_id.property_stock_production.id
-        # if location_dest_id:
-        #     pull_obj = self.pool['procurement.rule']
-        #     pulls = pull_obj.search(cr, uid, [
-        #                             ('route_id', 'in', [x.id for x in routes]),
-        #                             ('location_id', '=', location_dest_id),
-        #                             ('procure_method', '=', "make_to_order")],
-        #                             limit=1, context=context)
-        #     if pulls and pull_obj.browse(cr, uid, pulls[0],
-        #                                  context=context).location_src_id:
-        #         source_location_id = pull_obj.browse(
-        #             cr, uid, pulls[0],
-        #             context=context).location_src_id.id
-
-        # More Gebesa Friendly method
         bom_id = production.bom_id.id
         if bom_id:
             bomline_obj = self.pool['mrp.bom.line']

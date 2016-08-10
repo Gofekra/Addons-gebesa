@@ -2,7 +2,7 @@
 # © <YEAR(S)> <AUTHOR(S)>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import fields, models, _
+from openerp import api, fields, models, _
 from openerp.addons import decimal_precision as dp
 
 
@@ -106,3 +106,13 @@ class SaleOrder(models.Model):
     credit_note = fields.Text(
         string=_(u'Note Credit and Collections'),
     )
+
+    @api.multi
+    @api.onchange('project_id')
+    def onchange_project_id(self):
+        """
+        Trigger the change of warehouse when the analytic account is modified.
+        """
+        if self.project_id and self.project_id.warehouse_id:
+            self.warehouse_id = self.project_id.warehouse_id
+        return {}
