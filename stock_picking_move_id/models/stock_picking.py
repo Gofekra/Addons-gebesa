@@ -10,5 +10,14 @@ class StockPicking(models.Model):
 
     am_ids = fields.Many2many('account.move',
                               string=_('Account Entries'),
-                              ondelete='set null',
+                              ondelete='restrict',
+                              select=True)
+
+
+class MrpProduction(models.Model):
+    _inherit = 'mrp.production'
+
+    am_ids = fields.Many2many('account.move',
+                              string=_('Account Entries'),
+                              ondelete='restrict',
                               select=True)

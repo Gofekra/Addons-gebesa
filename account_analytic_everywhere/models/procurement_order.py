@@ -5,11 +5,12 @@
 from openerp import fields, models, _
 
 
-class PurchaseOrder(models.Model):
-    _inherit = 'purchase.order'
+class ProcurementOrder(models.Model):
+    _inherit = 'procurement.order'
 
     account_analytic_id = fields.Many2one(
         'account.analytic.account',
-        related='picking_type_id.warehouse_id.account_analytic_id',
+        related='warehouse_id.account_analytic_id',
+        readonly=True,
         string=_(u'Analytic Account'),
     )

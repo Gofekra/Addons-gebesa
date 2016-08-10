@@ -17,9 +17,11 @@
     },
     "depends": [
         "base", "stock",
+        "stock_warehouse_analytic_id",
     ],
     "data": [
-        "views/sale_order.xml"
+        "views/sale_order.xml",
+        "views/account_analytic_account_view.xml"
     ],
     "demo": [
     ],

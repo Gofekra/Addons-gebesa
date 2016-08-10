@@ -9,6 +9,13 @@
         		<xpath expr="//group/group/field[@name='project_id']" position="after">
         			<field name="notify_approval" required="True" widget="email" />
         		</xpath>
+                <xpath expr="//group/group/field[@name='project_id']" position="attributes">
+                    <attribute name="required">True</attribute>
+                    <attribute name="domain">[('use_salesorder', '=', True)]</attribute>
+                </xpath>
+                <!--xpath expr="//notebook/page/field[@name='warehouse_id']" position="attributes">
+                    <attribute name="readonly">True</attribute>
+                </xpath-->
         		<xpath expr="//group/group/field[@name='validity_date']" position="after">
         			<field name="date_delivery" required="True" />
         			<field name="date_reception" required="True" />
