@@ -11,38 +11,6 @@ from openerp.exceptions import ValidationError
 class stock_quant(osv.osv):
     _inherit = 'stock.quant'
 
-    # @api.model
-    # def _get_accounting_data_for_valuation(self, move):
-    #     journal_id, acc_src, acc_dest, acc_valuation = super(
-    #         StockQuant, self)._get_accounting_data_for_valuation(move)
-
-    #     pick_type = move.picking_id.picking_type_id.code or False
-
-    #     ## ---> Set BreakPoint
-    #     import pdb;
-    #     pdb.set_trace()
-
-    #     acc_valuation = False
-    #     if pick_type:
-    #         if pick_type == 'incoming':
-    #             acc_valuation = move.location_dest_id.account_id.id or False
-    #         elif pick_type == 'outgoing':
-    #             acc_valuation = move.location_id.account_id.id or False
-    #         elif pick_type == 'internal':
-    #             acc_valuation = move.location_id.account_id.id or False
-    #         else:
-    #             acc_valuation = move.location_id.account_id.id or False
-    #     else:
-    #         acc_valuation = move.location_id.account_id.id or False
-
-    #     if not acc_valuation:
-    #         raise ValidationError(
-    #             _(u"It has not defined the inventory \
-    #               account in location %s.") %
-    #             (move.location_id.name))
-
-    #     return journal_id, acc_src, acc_dest, acc_valuation
-
     def _get_accounting_data_for_valuation(self, cr, uid, move, context=None):
         """
         Return the accounts and journal to use to post Journal Entries for
@@ -191,7 +159,7 @@ class stock_quant(osv.osv):
             reference = "W/O Reference "
             # + trace
 
-        analytic_id = move.warehouse_id.account_analytic_id.id or False
+        analytic_id = move.location_id.account_analytic_id.id or False
         # Cesar Barron 09 Ago 2016 ####
 
         debit_line_vals = {

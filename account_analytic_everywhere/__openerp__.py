@@ -21,10 +21,7 @@
     ],
     "data": [
         "views/account_invoice.xml",
-        "views/mrp_production.xml",
         "views/purchase_order.xml",
-        "views/stock_move.xml",
-        "views/stock_picking.xml",
     ],
     "demo": [
     ],

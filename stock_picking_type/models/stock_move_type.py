@@ -11,9 +11,9 @@ class StockMoveType(models.Model):
     _order = 'name asc'
     _rec_name = 'name'
 
-    consecutive = fields.Char(
-        string=_(u'Key'), size=5,
-        help=_(u'Key process'),
+    code = fields.Char(
+        string=_(u'Code'), size=5,
+        help=_(u'Code'),
     )
     name = fields.Char(
         string=_(u'Name'), size=120,
@@ -21,7 +21,8 @@ class StockMoveType(models.Model):
     )
     type = fields.Selection(
         [('input', _(u'Input')),
-         ('output', _(u'Output'))],
+         ('output', _(u'Output')),
+         ('internal', _(u'Internal'))],
         string=_(u"Type of move"),
     )
     company_id = fields.Many2one(

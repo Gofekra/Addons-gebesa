@@ -13,7 +13,6 @@
             <field name="perm_create" eval="False"/>
             <field name="perm_unlink" eval="False"/>
             <field eval="False" name="global"/>
-            <field name="domain_force">[('company_id','=',user.company_id.id)]</field>           
         </record>
     </data>
 </openerp>
