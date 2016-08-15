@@ -16,7 +16,7 @@
         "bin": [],
     },
     "depends": [
-        "base", "stock",
+        "base", "stock", "mrp", "purchase", "sale"
     ],
     "data": [
         "views/stock_move_type.xml",
@@ -25,6 +25,7 @@
         "views/type_adjustment.xml",
         "security/stock_move_type_security.xml",
         "security/ir.model.access.csv",
+        "data/stock_move_type_data.xml",
     ],
     "demo": [
     ],

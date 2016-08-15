@@ -15,7 +15,7 @@
         	<field name='model'>stock.move.type</field>
         	<field name='arch' type='xml'>
         		<tree string='Type of move'>
-        			<field name='consecutive'/>
+        			<field name='code'/>
         			<field name='name'/>
         			<field name='type'/>
         		</tree>
@@ -31,8 +31,8 @@
         			</header>
         			<sheet>
         				<h1>
-                            <label for='consecutive'/>
-        					<field name='consecutive' required='True'/>
+                            <label for='code'/>
+        					<field name='code' required='True'/>
         				</h1>
         				<group>
         					<group>
