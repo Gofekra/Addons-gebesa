@@ -24,10 +24,6 @@ class StockMove(models.Model):
 
         res = super(StockMove, self).action_done(cr, uid, ids, context=ctx)
 
-        ## ---> Set BreakPoint
-        import pdb;
-        pdb.set_trace()
-
         move_ids = []
         picking_id = False
         production_id = False
