@@ -19,9 +19,6 @@ class StockMove(models.Model):
     @api.depends('procurement_id', 'move_dest_id', 'production_id', 'purchase_line_id', 'raw_material_production_id')
     def _get_move_type(self):
         mpf_type = False
-        ## ---> Set BreakPoint
-        # import pdb;
-        # pdb.set_trace()
         for move in self:
             if move.procurement_id and move.procurement_id.id:
                 if move.procurement_id.sale_line_id:

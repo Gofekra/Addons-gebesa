@@ -12,9 +12,6 @@ class MrpProduction(models.Model):
     def _make_consume_line_from_data(
             self, cr, uid, production, product,
             uom_id, qty, context=None):
-        ## ---> Set BreakPoint
-        # import pdb
-        # pdb.set_trace()
         stock_move = self.pool.get('stock.move')
         loc_obj = self.pool.get('stock.location')
         # Internal shipment is created for Stockable and Consumer Products

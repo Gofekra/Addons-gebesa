@@ -29,10 +29,6 @@ class stock_quant(osv.osv):
             cr, uid, move.product_id.product_tmpl_id.id,
             context).get_product_accounts()
 
-        ## ---> Set BreakPoint
-        import pdb;
-        pdb.set_trace()
-
         if move.location_id.valuation_out_account_id:
             acc_src = move.location_id.valuation_out_account_id.id
         else:
@@ -102,9 +98,6 @@ class stock_quant(osv.osv):
         the stock valuation difference due to the
         processing of the given quant.
         """
-        ## ---> Set BreakPoint
-        # import pdb;
-        # pdb.set_trace()
         if context is None:
             context = {}
         currency_obj = self.pool.get('res.currency')
@@ -193,10 +186,6 @@ class stock_quant(osv.osv):
     def _create_account_move_line(self, cr, uid, quants, move,
                                   credit_account_id, debit_account_id,
                                   journal_id, context=None):
-        ## ---> Set BreakPoint
-        import pdb;
-        pdb.set_trace()
-
         # group quants by cost
         quant_cost_qty = {}
         for quant in quants:
@@ -221,10 +210,6 @@ class stock_quant(osv.osv):
                 reference = "W/O Reference"
             # Cesar Barron 09 Ago 2016 ####
 
-            ## ---> Set BreakPoint
-            import pdb;
-            pdb.set_trace()
-
             move_lines = self._prepare_account_move_line(
                 cr, uid, move, qty, cost, credit_account_id,
                 debit_account_id, context=context)
@@ -242,9 +227,6 @@ class stock_quant(osv.osv):
                           }, context=context)
             move_obj.post(cr, uid, [new_move], context=context)
             move.acc_move_id = new_move
-            ## ---> Set BreakPoint
-            # import pdb;
-            # pdb.set_trace()
             # if move.picking_id:
             #     picking_obj.write(
             #         cr, uid, [move.picking_id.id], {'am_ids': [4, new_move]},
