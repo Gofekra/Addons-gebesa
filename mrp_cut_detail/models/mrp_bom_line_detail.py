@@ -32,7 +32,6 @@ class MrpBomLineDetail(models.Model):
     product_id = fields.Many2one(
         'product.product',
         string=_('Composite Article'),
-        required=True,
     )
 
     row = fields.Char(
