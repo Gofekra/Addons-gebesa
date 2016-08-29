@@ -18,6 +18,9 @@
                 <xpath expr="//field[@name='order_line']/form//field[@name='state']" position="replace">
                     <field name="state" invisible="1"/>
                 </xpath>
+                <xpath expr="//field[@name='company_id']" position="after">
+                    <field name="closing_reason" />
+                </xpath>
         	</field>
         </record>
     </data>
