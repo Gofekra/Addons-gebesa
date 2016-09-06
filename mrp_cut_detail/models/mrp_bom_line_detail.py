@@ -34,6 +34,11 @@ class MrpBomLineDetail(models.Model):
         string=_('Composite Article'),
     )
 
+    operation_id = fields.Many2one(
+        'mrp.bom.line.detail.operation',
+        string='Operation',
+    )
+
     row = fields.Char(
         _('Row'),
         default=_default_row,

@@ -2,12 +2,12 @@
 # © <YEAR(S)> <AUTHOR(S)>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
-    "name": "MRP Cut Detail",
-    "summary": "Add cut detail for Bill of Materials",
+    "name": "Purchase Order Cost",
+    "summary": "Purchase order line cost",
     "version": "9.0.1.0.0",
-    "category": "MPR",
+    "category": "Purchase",
     "website": "https://odoo-community.org/",
-    "author": "<Deysy Mascorro>, Odoo Community Association (OCA)",
+    "author": "<Samuel Barron>, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "application": False,
     "installable": True,
@@ -16,15 +16,10 @@
         "bin": [],
     },
     "depends": [
-        "base",
-        "product",
-        "mrp",
+        "base", "purchase",
     ],
     "data": [
-        "views/mrp_view.xml",
-        "views/mrp_bom_line_view.xml",
-        "views/mrp_bom_line_detail_view.xml",
-        "views/mrp_bom_line_detail_operation.xml",
+        "views/purchase.xml"
     ],
     "demo": [
     ],
