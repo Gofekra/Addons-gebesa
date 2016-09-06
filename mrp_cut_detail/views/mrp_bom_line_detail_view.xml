@@ -39,6 +39,7 @@
                                     <span> cms.</span>
                                 </div>
                                 <field name="side"/>
+                                <field name='operation_id'/>
                             </group>
                         </group>
                         <group>

@@ -24,6 +24,7 @@
         "views/mrp_view.xml",
         "views/mrp_bom_line_view.xml",
         "views/mrp_bom_line_detail_view.xml",
+        "views/mrp_bom_line_detail_operation.xml",
     ],
     "demo": [
     ],
