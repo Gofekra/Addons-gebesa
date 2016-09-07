@@ -22,7 +22,6 @@ class SaleOrder(models.Model):
 
     date_netsuite = fields.Char(
         string=_('NetSuite capture date'),
-        required=True,
         select=True,
     )
 
