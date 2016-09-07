@@ -7,10 +7,9 @@
         	<field name='inherit_id' ref="sale.view_order_form"/>
         	<field name='arch' type='xml'>
         		<xpath expr="//group/group/field[@name='project_id']" position="after">
-        			<field name="notify_approval" required="True" widget="email" />
+        			<field name="notify_approval" widget="email" />
         		</xpath>
                 <xpath expr="//group/group/field[@name='project_id']" position="attributes">
-                    <attribute name="required">True</attribute>
                     <attribute name="domain">[('use_salesorder', '=', True)]</attribute>
                 </xpath>
                 <!--xpath expr="//notebook/page/field[@name='warehouse_id']" position="attributes">
@@ -48,8 +47,8 @@
         					<group>
         						<field name='profit_margin'/>
         						<field name='not_be_billed'/>
-        						<field name='manufacture' required="True"/>
-        						<field name='executive' required="True"/>
+        						<field name='manufacture'/>
+        						<field name='executive'/>
         						<field name='respo_reple'/>
         					</group>
         				</group>
@@ -57,7 +56,7 @@
                     <page string="Production data">
                         <group>
                             <group>
-                                <field name='priority' required="True"/>
+                                <field name='priority'/>
                             </group>
                             <group>
                                 <field name='complement_saleorder_id'/>
