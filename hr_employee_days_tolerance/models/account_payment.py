@@ -14,8 +14,12 @@ class AccountPayment(models.Model):
     def post(self):
         """ Create the movements to the given date,
         according to the days of tolerance granted to the user"""
-        employee_days = self.env['hr.employee'].search(
-            [('user_id', '=', self._uid)])[0].tolerance_days
+        employee = self.env['hr.employee'].search(
+            [('user_id', '=', self._uid)])
+        if not employee:
+            raise UserError(_('You do not have an assigned employee.\n Please \
+                            contact your system administrator'))
+        employee_days = employee[0].tolerance_days
 
         for rec in self:
             if rec.payment_date is not False:
