@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 9.0c\n"
+"Project-Id-Version: Odoo Server 9.0e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-02 18:03+0000\n"
-"PO-Revision-Date: 2016-03-02 18:03+0000\n"
+"POT-Creation-Date: 2016-09-12 16:07+0000\n"
+"PO-Revision-Date: 2016-09-12 16:07+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,17 +16,12 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: hr_employee_days_tolerance
-#: model:ir.model,name:hr_employee_days_tolerance.model_account_abstract_payment
-msgid "Contains the logic shared between models which allows to register payments"
-msgstr ""
-
-#. module: hr_employee_days_tolerance
 #: model:ir.model,name:hr_employee_days_tolerance.model_hr_employee
 msgid "Employee"
 msgstr ""
 
 #. module: hr_employee_days_tolerance
-#: code:addons/hr_employee_days_tolerance/models/account_payment.py:25
+#: code:addons/hr_employee_days_tolerance/models/account_payment.py:28
 #, python-format
 msgid "Error!                                     The date may not be earlier                                     than %s ."
 msgstr ""
@@ -42,11 +37,6 @@ msgid "Payments"
 msgstr ""
 
 #. module: hr_employee_days_tolerance
-#: model:ir.model,name:hr_employee_days_tolerance.model_account_register_payments
-msgid "Register payments on multiple invoices"
-msgstr ""
-
-#. module: hr_employee_days_tolerance
 #: code:addons/hr_employee_days_tolerance/models/hr_employee.py:12
 #: model:ir.model.fields,field_description:hr_employee_days_tolerance.field_hr_employee_tolerance_days
 #, python-format
@@ -54,9 +44,16 @@ msgid "Tolerance Days"
 msgstr ""
 
 #. module: hr_employee_days_tolerance
-#: code:addons/hr_employee_days_tolerance/models/account_invoice.py:24
-#: code:addons/hr_employee_days_tolerance/models/account_voucher.py:27
+#: code:addons/hr_employee_days_tolerance/models/account_invoice.py:28
 #, python-format
 msgid "You can not bill!                                     The date may not be earlier                                     than %s ."
+msgstr ""
+
+#. module: hr_employee_days_tolerance
+#: code:addons/hr_employee_days_tolerance/models/account_invoice.py:20
+#: code:addons/hr_employee_days_tolerance/models/account_payment.py:20
+#, python-format
+msgid "You do not have an assigned employee.\n"
+" Please                             contact your system administrator"
 msgstr ""
 
