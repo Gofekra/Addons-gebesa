@@ -8,13 +8,24 @@ from openerp import _, api, fields, models
 class AccountInvoice(models.Model):
     _inherit = 'account.invoice'
 
+    @api.model
+    def _get_domain_groups_id(self):
+        ids = self.env.ref('account_payment_auth.group_aut_pagos_super').ids
+        return [('groups_id.id', '=', ids)]
+
     aut_estatus_pago = fields.Selection(
         [('none', _('None')),
          ('proposed', _('Proposed')),
          ('authorized', _('Authorized')),
          ('rejected', _('Rejected'))],
         string=_("Payment authorization status"),
+        track_visibility='onchange',
         default='none',
+    )
+    authorizes_id = fields.Many2one(
+        'res.users',
+        string='Authorizes',
+        domain=_get_domain_groups_id
     )
 
     @api.multi

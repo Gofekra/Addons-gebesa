@@ -13,6 +13,7 @@
         		</xpath>
         		<xpath expr="//group/group/field[@name='currency_id']" position="after">
         			<field name='aut_estatus_pago' readonly="True"/>
+                    <field name='authorizes_id' attrs="{'required':[('aut_estatus_pago', '==', 'proposed')]}" widget="selection"/>
         		</xpath>
         	</field>
         </record>
