@@ -19,8 +19,8 @@
         "base", "account"
     ],
     "data": [
-        "views/account_invoice.xml",
         "security/account_invoice_security.xml",
+        "views/account_invoice.xml",
     ],
     "demo": [
     ],
