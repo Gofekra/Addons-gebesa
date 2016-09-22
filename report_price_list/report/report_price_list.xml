@@ -39,12 +39,13 @@
 		                    <tbody>
 		                        <t t-foreach="docs[line.name]" t-as="doc">
 		                            <tr>
-		                                <td colspan="6"><strong><span t-field="doc.name"/></strong></td>
+		                                <td colspan="7"><strong><span t-field="doc.name"/></strong></td>
 		                            </tr>
-		                            <tr style="border-bottom: 0.5px solid gray;">
-		                                <td width="35%"><img t-att-src="'data:image/png;base64,%s' % doc.isometric_medium"/><span t-field="doc.note_pricelist"/></td>
+		                            <tr style="border-bottom: 0.5px solid black;">
+		                                <td width="27%"><img t-att-src="'data:image/png;base64,%s' % doc.isometric" style="max-height: 125px;"/></td>
+                                        <td width="8%" align="center"><h6><span t-field="doc.note_pricelist"/></h6></td>
 		                                <td width="15%" align="center"><span t-field="doc.reference_mask"/></td>
-		                                <td width="10%" align="center"><span t-field="doc.list_price"/></td>
+		                                <td width="10%" align="center"><span t-field="doc.list_price" t-field-options='{"widget": "monetary", "display_currency": "doc.currency_id"}'/></td>
 		                                <td width="20%" align="center"><span t-field="doc.length"/> x <span t-field="doc.width"/> x <span t-field="doc.height"/></td>
 		                                <td width="10%" align="center"><span t-field="doc.weight"/> Kg</td>
 		                                <td width="10%" align="center"><span t-field="doc.volume"/> m3</td>
@@ -54,16 +55,14 @@
 		                </table>
                     </div>
                     <div class="footer">
-                        <div class="row">
-                            <div class="col-xs-9">
-                                <h6><strong>Condiciones Comerciales:</strong><br/>
-                                *Precios no incluyen I.V.A<br/>
-                                *Precios menos descuentos autorizados<br/>
-                                *Precios sujetos a cambios sin previo aviso</h6>
-                            </div>
-                            <div class="col-xs-3">
-                                <img t-att-src="'data:image/png;base64,%s' % logo" style="max-height: 30px;margin-top:10px;"/>
-                            </div>
+                        <div class="col-xs-8">
+                            <h6><strong>Condiciones Comerciales:</strong><br/>
+                            *Precios no incluyen I.V.A<br/>
+                            *Precios menos descuentos autorizados<br/>
+                            *Precios sujetos a cambios sin previo aviso</h6>
+                        </div>
+                        <div class="col-xs-4" align="right">
+                            <img t-att-src="'data:image/png;base64,%s' % logo" style="max-height: 30px;"/>
                         </div>
                     </div>
                 </t>

@@ -39,7 +39,7 @@ class ProductTemplate(models.Model):
         attachment=True,
     )
     isometric_small = fields.Binary(
-        string=_("Medium-sized isometric image"),
+        string=_("Small-sized isometric image"),
         compute='_compute_isometric',
         inverse='_inverse_small_isometric',
         store=True,
