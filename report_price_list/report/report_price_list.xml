@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <report
+            id="price_list_isometric"
+            model="product.template"
+            string="Lista de precios"
+            report_type="qweb-pdf"
+            name="report_price_list.report_price_list_isometric"
+            file="report_price_list.report_price_list_isometric"
+        />
+        <template id="report_price_list_isometric">
+            <t t-call="report.html_container">
+                <t t-foreach="lines_id" t-as="line">
+                    <div class="header">
+                        <div class="row" style="border-bottom: 3px solid black;">
+                            <div class="col-xs-8">
+                                <h1><strong><span t-field="line.name"/></strong></h1>
+                            </div>
+                            <div class="col-xs-4 text-right">
+                                <h4><strong>LISTA DE PRECIOS</strong><br/>gebesa.com</h4>
+                            </div>
+                        </div>
+                        <table width="100%" style="margin-top: 25px;">
+                            <tbody>
+                                <tr style="background: black;color: white;">
+                                    <td width="35%" align="center">DESCRIPCION</td>
+                                    <td width="15%" align="center">CLAVE</td>
+                                    <td width="10%" align="center">PRECIO LISTA</td>
+                                    <td width="20%" align="center">DIMENCIONES(cm)<br />Frente Fondo Altura</td>
+                                    <td width="10%" align="center">Kg</td>
+                                    <td width="10%" align="center">M3</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="page">
+                    	<table width="100%">
+		                    <tbody>
+		                        <t t-foreach="docs[line.name]" t-as="doc">
+		                            <tr>
+		                                <td colspan="6"><strong><span t-field="doc.name"/></strong></td>
+		                            </tr>
+		                            <tr style="border-bottom: 0.5px solid gray;">
+		                                <td width="35%"><img t-att-src="'data:image/png;base64,%s' % doc.isometric_medium"/><span t-field="doc.note_pricelist"/></td>
+		                                <td width="15%" align="center"><span t-field="doc.reference_mask"/></td>
+		                                <td width="10%" align="center"><span t-field="doc.list_price"/></td>
+		                                <td width="20%" align="center"><span t-field="doc.length"/> x <span t-field="doc.width"/> x <span t-field="doc.height"/></td>
+		                                <td width="10%" align="center"><span t-field="doc.weight"/> Kg</td>
+		                                <td width="10%" align="center"><span t-field="doc.volume"/> m3</td>
+		                            </tr>
+		                        </t>
+		                    </tbody>
+		                </table>
+                    </div>
+                    <div class="footer">
+                        <div class="row">
+                            <div class="col-xs-9">
+                                <h6><strong>Condiciones Comerciales:</strong><br/>
+                                *Precios no incluyen I.V.A<br/>
+                                *Precios menos descuentos autorizados<br/>
+                                *Precios sujetos a cambios sin previo aviso</h6>
+                            </div>
+                            <div class="col-xs-3">
+                                <img t-att-src="'data:image/png;base64,%s' % logo" style="max-height: 30px;margin-top:10px;"/>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</openerp>
