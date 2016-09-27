@@ -16,10 +16,12 @@ class ParticularReport(models.AbstractModel):
         obj_line = self.env['product.line']
         obj_product = self.env['product.template']
         docs = {}
-        lines_id = obj_line.search([('active', '=', True)], order='code')
+        lines_id = obj_line.search([('active', '=', True)],
+                                   order='code')
         lines = []
         for line in lines_id:
             product_tamplate = obj_product.search([('pricelist', '=', True),
+                                                   ('is_line', '=', True),
                                                    ('line_id', '=', line.id)],
                                                   order=None)
             if product_tamplate:
@@ -34,5 +36,6 @@ class ParticularReport(models.AbstractModel):
             'logo': logo,
             'lines_id': lines_id,
         }
-        return report_obj.render('report_price_list.report_price_list_isometric',
-                                 docargs)
+        return report_obj.render(
+            'report_price_list.report_price_list_isometric',
+            docargs)
