@@ -78,3 +78,7 @@ class AccountInvoice(models.Model):
         select=True,
         default='national',
     )
+
+    itinerary = fields.Integer(
+        'Itinerary',
+        help='Itinerary number')
