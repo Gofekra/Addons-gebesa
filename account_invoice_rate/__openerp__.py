@@ -19,6 +19,7 @@
         "base", "account",
     ],
     "data": [
+        "views/account_invoice.xml"
     ],
     "demo": [
     ],
