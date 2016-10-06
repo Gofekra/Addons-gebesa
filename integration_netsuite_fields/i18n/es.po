@@ -16,6 +16,20 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: integration_netsuite_fields
+#: code:addons/integration_netsuite_fields/models/res_partner.py:17
+#: model:ir.model.fields,field_description:integration_netsuite_fields.field_res_partner_id_dir_ns
+#, python-format
+msgid "ID Address Netsuite"
+msgstr "ID Dirección Netsuite"
+
+#. module: integration_netsuite_fields
+#: code:addons/integration_netsuite_fields/models/res_partner.py:13
+#: model:ir.model.fields,field_description:integration_netsuite_fields.field_res_partner_id_ns
+#, python-format
+msgid "ID Netsuite"
+msgstr "ID Netsuite"
+
+#. module: integration_netsuite_fields
 #: code:addons/integration_netsuite_fields/models/product.py:13
 #: code:addons/integration_netsuite_fields/models/sale_order.py:14
 #: model:ir.model.fields,field_description:integration_netsuite_fields.field_product_template_id_ns
