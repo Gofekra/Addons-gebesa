@@ -12,13 +12,14 @@ class AccountInvoice(models.Model):
     rate = fields.Float(
         string=_('Type of change'),
         help=_('Rate used in the date of invoice'),
+        compute='_compute_rate',
+        store=True,
     )
 
     @api.multi
-    def action_move_create(self):
+    @api.depends('currency_id', 'date_invoice')
+    def _compute_rate(self):
         currency_obj = self.env['res.currency']
-        res = super(AccountInvoice, self).action_move_create()
-
         for inv in self:
             currency_id = inv.currency_id.id
             currency = currency_obj.browse(currency_id)
@@ -26,5 +27,3 @@ class AccountInvoice(models.Model):
                 date=inv.date_invoice)._get_current_rate(
                 inv.date_invoice, None)
             inv.rate = rate[currency_id]
-
-        return res
