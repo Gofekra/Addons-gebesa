@@ -31,7 +31,7 @@
                             </group>
                             <group>
                                 <!-- <field name="color_id"/> -->
-                                <!-- <field name="caliber_id"/> -->
+                                <field name="caliber_id"/>
                                 <field name="quantity"/>
                                 <label for="long_cut"/>
                                 <div class="o_row">

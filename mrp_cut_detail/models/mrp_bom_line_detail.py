@@ -71,10 +71,10 @@ class MrpBomLineDetail(models.Model):
     #     string=_('Color'),
     # )
 
-    # caliber_id = fields.Many2one(
-    #     'product.attribute.value',
-    #     string=_('Caliber'),
-    # )
+    caliber_id = fields.Many2one(
+        'mrp.product.caliber',
+        string=_('Caliber'),
+    )
 
     long_cut = fields.Float(
         _('Cut Long'),
