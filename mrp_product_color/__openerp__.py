@@ -16,12 +16,10 @@
         "bin": [],
     },
     "depends": [
-        "base", "product", "stock",
-        "mrp_cut_detail"
+        "base", "product", "stock"
     ],
     "data": [
         "views/mrp_product_color.xml",
-        "views/mrp_bom_line_detail.xml",
         "security/ir.model.access.csv",
     ],
     "demo": [

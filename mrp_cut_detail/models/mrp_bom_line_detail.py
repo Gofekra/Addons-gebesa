@@ -66,10 +66,10 @@ class MrpBomLineDetail(models.Model):
         compute='_compute_m2',
     )
 
-    # color_id = fields.Many2one(
-    #     'product.attribute.value',
-    #     string=_('Color'),
-    # )
+    color_id = fields.Many2one(
+        'mrp.product.color',
+        string=_('Color'),
+    )
 
     caliber_id = fields.Many2one(
         'mrp.product.caliber',

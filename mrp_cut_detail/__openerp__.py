@@ -19,6 +19,8 @@
         "base",
         "product",
         "mrp",
+        "mrp_product_color",
+        "mrp_product_caliber",
     ],
     "data": [
         "views/mrp_view.xml",
