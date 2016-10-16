@@ -7,7 +7,7 @@
         	<field name='inherit_id' ref='hr.view_employee_form'/>
         	<field name='arch' type='xml'>
         		<field name='user_id' position='after'>
-        			<field name='tolerance_days'/> 
+        			<field name='tolerance_days' groups="hr_employee_days_tolerance.group_tolerance_days"/> 
         		</field>       		
         	</field>
         </record>
