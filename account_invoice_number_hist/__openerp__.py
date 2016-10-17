@@ -16,7 +16,7 @@
         "bin": [],
     },
     "depends": [
-        "base", "account", "cfdi32"
+        "base", "account", "cfdi32", "account_voucher"
     ],
     "data": [
     ],
