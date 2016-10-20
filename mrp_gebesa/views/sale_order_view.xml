@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model='ir.ui.view' id='production_mrp_gebesa_view_order_form'>
+        	<field name='name'>production.mrp.gebesa.view.order.form</field>
+        	<field name='model'>sale.order</field>
+        	<field name='inherit_id' ref="sale.view_order_form"/>
+        	<field name='arch' type='xml'>
+                <xpath expr="//group/group/field[@name='complement_saleorder_id']" position="after">
+                    <field name="production_status" readonly="1"/>
+                </xpath>
+        	</field>
+        </record>
+    </data>
+</openerp>
