@@ -16,11 +16,12 @@
         "bin": [],
     },
     "depends": [
-        "base", "mrp",
+        "base", "mrp", "sale",
         "stock_warehouse_analytic_id",
     ],
     "data": [
         "views/mrp_shipment.xml",
+        "views/sale_order.xml",
     ],
     "demo": [
     ],
