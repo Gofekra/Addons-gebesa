@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 9.0c\n"
+"Project-Id-Version: Odoo Server 9.0e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-07 21:26+0000\n"
-"PO-Revision-Date: 2016-03-07 21:26+0000\n"
+"POT-Creation-Date: 2016-10-20 16:49+0000\n"
+"PO-Revision-Date: 2016-10-20 16:49+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -17,21 +17,21 @@ msgstr ""
 
 #. module: account_invoice_sale_data
 #: selection:account.invoice,portfolio_type:0
-#: code:addons/account_invoice_sale_data/models/account_invoice.py:68
+#: code:addons/account_invoice_sale_data/models/account_invoice.py:73
 #, python-format
 msgid "Agreement"
 msgstr ""
 
 #. module: account_invoice_sale_data
 #: selection:account.invoice,portfolio_type:0
-#: code:addons/account_invoice_sale_data/models/account_invoice.py:61
+#: code:addons/account_invoice_sale_data/models/account_invoice.py:66
 #, python-format
 msgid "Attested copy"
 msgstr ""
 
 #. module: account_invoice_sale_data
 #: selection:account.invoice,portfolio_type:0
-#: code:addons/account_invoice_sale_data/models/account_invoice.py:66
+#: code:addons/account_invoice_sale_data/models/account_invoice.py:71
 #, python-format
 msgid "Bad debt"
 msgstr ""
@@ -44,7 +44,7 @@ msgid "Collection manager"
 msgstr ""
 
 #. module: account_invoice_sale_data
-#: code:addons/account_invoice_sale_data/models/account_invoice.py:56
+#: code:addons/account_invoice_sale_data/models/account_invoice.py:61
 #: model:ir.model.fields,field_description:account_invoice_sale_data.field_account_invoice_executive
 #, python-format
 msgid "Executive"
@@ -52,7 +52,7 @@ msgstr ""
 
 #. module: account_invoice_sale_data
 #: selection:account.invoice,portfolio_type:0
-#: code:addons/account_invoice_sale_data/models/account_invoice.py:63
+#: code:addons/account_invoice_sale_data/models/account_invoice.py:68
 #, python-format
 msgid "Foreign"
 msgstr ""
@@ -61,28 +61,28 @@ msgstr ""
 #: code:addons/account_invoice_sale_data/models/account_invoice_line.py:24
 #: model:ir.model.fields,field_description:account_invoice_sale_data.field_account_invoice_line_freight_amount
 #, python-format
-msgid "Freight amount"
+msgid "Freight Amount"
 msgstr ""
 
 #. module: account_invoice_sale_data
 #: code:addons/account_invoice_sale_data/models/account_invoice.py:18
 #: model:ir.model.fields,field_description:account_invoice_sale_data.field_account_invoice_perc_freight
 #, python-format
-msgid "Freight percentage"
+msgid "Freight Percentage"
 msgstr ""
 
 #. module: account_invoice_sale_data
 #: code:addons/account_invoice_sale_data/models/account_invoice_line.py:29
 #: model:ir.model.fields,field_description:account_invoice_sale_data.field_account_invoice_line_installation_amount
 #, python-format
-msgid "Installation amount"
+msgid "Installation Amount"
 msgstr ""
 
 #. module: account_invoice_sale_data
 #: code:addons/account_invoice_sale_data/models/account_invoice.py:28
 #: model:ir.model.fields,field_description:account_invoice_sale_data.field_account_invoice_perc_installation
 #, python-format
-msgid "Installation percentage"
+msgid "Installation Percentage"
 msgstr ""
 
 #. module: account_invoice_sale_data
@@ -96,8 +96,15 @@ msgid "Invoice Line"
 msgstr ""
 
 #. module: account_invoice_sale_data
+#: code:addons/account_invoice_sale_data/models/sale_order.py:15
+#: model:ir.model.fields,field_description:account_invoice_sale_data.field_sale_order_geb_invoice_status
+#, python-format
+msgid "Invoice status"
+msgstr ""
+
+#. module: account_invoice_sale_data
 #: selection:account.invoice,portfolio_type:0
-#: code:addons/account_invoice_sale_data/models/account_invoice.py:69
+#: code:addons/account_invoice_sale_data/models/account_invoice.py:74
 #, python-format
 msgid "Legal"
 msgstr ""
@@ -125,7 +132,7 @@ msgstr ""
 
 #. module: account_invoice_sale_data
 #: selection:account.invoice,portfolio_type:0
-#: code:addons/account_invoice_sale_data/models/account_invoice.py:62
+#: code:addons/account_invoice_sale_data/models/account_invoice.py:67
 #, python-format
 msgid "National"
 msgstr ""
@@ -134,25 +141,44 @@ msgstr ""
 #: code:addons/account_invoice_sale_data/models/account_invoice_line.py:19
 #: model:ir.model.fields,field_description:account_invoice_sale_data.field_account_invoice_line_net_sale
 #, python-format
-msgid "Net sales"
+msgid "Net Sales"
+msgstr ""
+
+#. module: account_invoice_sale_data
+#: code:addons/account_invoice_sale_data/models/sale_order.py:12
+#: selection:sale.order,geb_invoice_status:0
+#, python-format
+msgid "No invoice"
 msgstr ""
 
 #. module: account_invoice_sale_data
 #: code:addons/account_invoice_sale_data/models/account_invoice.py:43
 #: model:ir.model.fields,field_description:account_invoice_sale_data.field_account_invoice_not_be_billed
 #, python-format
-msgid "Not be billed"
+msgid "Not be Billed"
 msgstr ""
 
 #. module: account_invoice_sale_data
 #: code:addons/account_invoice_sale_data/models/account_invoice_line.py:13
 #: model:ir.model.fields,field_description:account_invoice_sale_data.field_account_invoice_line_margin_justification
 #, python-format
-msgid "P. M. justification"
+msgid "P. M. Justification"
 msgstr ""
 
 #. module: account_invoice_sale_data
-#: code:addons/account_invoice_sale_data/models/account_invoice.py:70
+#: code:addons/account_invoice_sale_data/models/sale_order.py:13
+#: selection:sale.order,geb_invoice_status:0
+#, python-format
+msgid "Partial invoice"
+msgstr ""
+
+#. module: account_invoice_sale_data
+#: model:ir.model,name:account_invoice_sale_data.model_res_partner
+msgid "Partner"
+msgstr ""
+
+#. module: account_invoice_sale_data
+#: code:addons/account_invoice_sale_data/models/account_invoice.py:75
 #: model:ir.model.fields,field_description:account_invoice_sale_data.field_account_invoice_portfolio_type
 #, python-format
 msgid "Portfolio type"
@@ -160,16 +186,16 @@ msgstr ""
 
 #. module: account_invoice_sale_data
 #: code:addons/account_invoice_sale_data/models/account_invoice.py:38
-#: code:addons/account_invoice_sale_data/models/account_invoice_line.py:39
+#: code:addons/account_invoice_sale_data/models/account_invoice_line.py:44
 #: model:ir.model.fields,field_description:account_invoice_sale_data.field_account_invoice_line_profit_margin
 #: model:ir.model.fields,field_description:account_invoice_sale_data.field_account_invoice_profit_margin
 #, python-format
-msgid "Profit margin"
+msgid "Profit Margin"
 msgstr ""
 
 #. module: account_invoice_sale_data
 #: selection:account.invoice,portfolio_type:0
-#: code:addons/account_invoice_sale_data/models/account_invoice.py:65
+#: code:addons/account_invoice_sale_data/models/account_invoice.py:70
 #, python-format
 msgid "Replacement"
 msgstr ""
@@ -183,12 +209,17 @@ msgstr ""
 
 #. module: account_invoice_sale_data
 #: model:ir.ui.view,arch_db:account_invoice_sale_data.account_invoice_view_form
-msgid "Sale data"
+msgid "Sale Data"
+msgstr ""
+
+#. module: account_invoice_sale_data
+#: model:ir.model,name:account_invoice_sale_data.model_sale_order
+msgid "Sales Order"
 msgstr ""
 
 #. module: account_invoice_sale_data
 #: selection:account.invoice,portfolio_type:0
-#: code:addons/account_invoice_sale_data/models/account_invoice.py:67
+#: code:addons/account_invoice_sale_data/models/account_invoice.py:72
 #, python-format
 msgid "Sample"
 msgstr ""
@@ -211,19 +242,19 @@ msgstr ""
 #: code:addons/account_invoice_sale_data/models/account_invoice_line.py:34
 #: model:ir.model.fields,field_description:account_invoice_sale_data.field_account_invoice_line_standard_cost
 #, python-format
-msgid "Standard cost"
+msgid "Standard Cost"
 msgstr ""
 
 #. module: account_invoice_sale_data
 #: selection:account.invoice,portfolio_type:0
-#: code:addons/account_invoice_sale_data/models/account_invoice.py:64
+#: code:addons/account_invoice_sale_data/models/account_invoice.py:69
 #, python-format
 msgid "Street market"
 msgstr ""
 
 #. module: account_invoice_sale_data
-#: code:addons/account_invoice_sale_data/models/account_invoice_line.py:39
 #: code:addons/account_invoice_sale_data/models/account_invoice.py:56
+#: code:addons/account_invoice_sale_data/models/account_invoice_line.py:39
 #: model:ir.model.fields,field_description:account_invoice_sale_data.field_account_invoice_line_total_cost
 #: model:ir.model.fields,field_description:account_invoice_sale_data.field_account_invoice_total_cost
 #, python-format
@@ -241,13 +272,20 @@ msgstr ""
 #: code:addons/account_invoice_sale_data/models/account_invoice.py:33
 #: model:ir.model.fields,field_description:account_invoice_sale_data.field_account_invoice_total_installation
 #, python-format
-msgid "Total installation"
+msgid "Total Installation"
 msgstr ""
 
 #. module: account_invoice_sale_data
 #: code:addons/account_invoice_sale_data/models/account_invoice.py:13
 #: model:ir.model.fields,field_description:account_invoice_sale_data.field_account_invoice_total_net_sale
 #, python-format
-msgid "Total net sale"
+msgid "Total Net Sale"
+msgstr ""
+
+#. module: account_invoice_sale_data
+#: code:addons/account_invoice_sale_data/models/sale_order.py:14
+#: selection:sale.order,geb_invoice_status:0
+#, python-format
+msgid "Total invoice"
 msgstr ""
 
