@@ -185,7 +185,7 @@ class IntegrationCostGebesa(models.Model):
                             ctx)._get_current_rate(name, None)
                         rate = exchange_rate_dict[inv.currency_id.id]
 
-                        amount = line_inv.price_subtotal * factor * rate
+                        amount = line_inv.price_subtotal * factor / rate
 
                         ctx.update({'check_move_validity': False})
                         vals = {
