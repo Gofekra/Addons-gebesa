@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model='ir.ui.view' id='mrp_segment_view_order_form'>
+        	<field name='name'>mrp.segment.view.order.form</field>
+        	<field name='model'>sale.order</field>
+        	<field name='inherit_id' ref="sale.view_order_form"/>
+        	<field name='arch' type='xml'>
+                <xpath expr="//group/group/field[@name='priority']" position="after">
+                    <field name="segment_status"/>
+                </xpath>
+        	</field>
+        </record>
+    </data>
+</openerp>

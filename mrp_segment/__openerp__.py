@@ -24,6 +24,7 @@
     ],
     "data": [
         "views/mrp_segment_view.xml",
+        "views/sale_order_view.xml",
     ],
     "demo": [
     ],
