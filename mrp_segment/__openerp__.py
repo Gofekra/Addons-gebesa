@@ -21,6 +21,7 @@
         "mrp",
         "account",
         "stock_account",
+        "sale_order_gebesa",
     ],
     "data": [
         "views/mrp_segment_view.xml",
