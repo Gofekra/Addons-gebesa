@@ -30,7 +30,7 @@
                                     <td width="30%" align="center"><strong>DESCRIPCIÓN</strong></td>
                                     <td width="19%" align="center"><strong>CLAVE</strong></td>
                                     <td width="15%" align="center"><strong>PRECIO LISTA</strong></td>
-                                    <td width="20%" align="center"><strong>DIMENCIONES(cm)</strong></td>
+                                    <td width="20%" align="center"><strong>DIMENSIONES(cm)</strong></td>
                                     <td width="8%" align="center"><strong>KG</strong></td>
                                     <td width="8%" align="center"><strong>M3</strong></td>
                                 </tr>
@@ -42,9 +42,9 @@
                             <tbody>
                                 <t t-foreach="docs[line.name]" t-as="doc">
                                     <tr>
-                                        <td colspan="7" height="20px" style="font-size: 10.5pt;"><strong><span t-field="doc.name"/></strong></td>
+                                        <td colspan="7" height="22px" style="font-size: 10.5pt;"><strong><span t-field="doc.name"/></strong></td>
                                     </tr>
-                                    <tr height="135px" style="border-bottom: 0.5px solid black;font-size: 9.5pt;">
+                                    <tr height="137px" style="border-bottom: 0.5px solid black;font-size: 9.5pt;">
                                         <td width="30%"><img t-att-src="'data:image/png;base64,%s' % doc.isometric" style="max-height: 125px;"/></td>
                                         <td width="19%" align="center"><span t-field="doc.note_pricelist"/>   <span t-field="doc.reference_mask"/></td>
                                         <td width="15%" align="center"><span t-field="doc.list_price" t-field-options='{"widget": "monetary", "display_currency": "doc.currency_id"}'/></td>
