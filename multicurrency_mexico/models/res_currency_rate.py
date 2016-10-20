@@ -5,7 +5,7 @@
 from openerp import _, api, fields, models
 
 
-class ClassName(models.Model):
+class ResCurrencyRate(models.Model):
     _inherit = 'res.currency.rate'
 
     rate_mex = fields.Float(
