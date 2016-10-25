@@ -36,9 +36,6 @@ class ResCurrency(models.Model):
             context = {}
         ctx = context.copy()
         ctx['date'] = ctx['date'] + ' 23:00:00'
-        ## ---> Set BreakPoint
-        import pdb;
-        pdb.set_trace()
         from_currency = self.browse(cr, uid, from_currency.id, context=ctx)
         to_currency = self.browse(cr, uid, to_currency.id, context=ctx)
         return to_currency.rate / from_currency.rate
