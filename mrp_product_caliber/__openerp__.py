@@ -19,7 +19,8 @@
         "base",
     ],
     "data": [
-        "views/mrp_product_caliber_view.xml"
+        "views/mrp_product_caliber_view.xml",
+        "security/ir.model.access.csv",
     ],
     "demo": [
     ],
