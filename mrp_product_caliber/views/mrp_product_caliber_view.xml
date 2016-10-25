@@ -23,7 +23,10 @@
             <field name='arch' type='xml'>
                 <tree string='Caliber(s)'>
                     <field name='key_caliber'/>
-                    <field name='name_caliber'/>
+                    <field name='espesor_mm'/>
+                    <field name='espesor_pgs'/>
+                    <field name='peso_kg'/>
+                    <field name='peso_lb'/>
                 </tree>
             </field>
         </record>
