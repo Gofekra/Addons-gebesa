@@ -102,3 +102,31 @@ msgstr ""
 msgid "mrp.product.caliber"
 msgstr ""
 
+#. module: mrp_product_caliber
+#: code:addons/mrp_product_caliber/models/mrp_product_caliber.py:24
+#: model:ir.model.fields,field_description:mrp_product_caliber.field_mrp_product_caliber_espesor_mm
+#, python-format
+msgid "Density MM"
+msgstr ""
+
+#. module: mrp_product_caliber
+#: code:addons/mrp_product_caliber/models/mrp_product_caliber.py:29
+#: model:ir.model.fields,field_description:mrp_product_caliber.field_mrp_product_caliber_espesor_pgs
+#, python-format
+msgid "Density PGS"
+msgstr ""
+
+#. module: mrp_product_caliber
+#: code:addons/mrp_product_caliber/models/mrp_product_caliber.py:34
+#: model:ir.model.fields,field_description:mrp_product_caliber.field_mrp_product_caliber_peso_kg
+#, python-format
+msgid "Weight KG"
+msgstr ""
+
+#. module: mrp_product_caliber
+#: code:addons/mrp_product_caliber/models/mrp_product_caliber.py:39
+#: model:ir.model.fields,field_description:mrp_product_caliber.field_mrp_product_caliber_peso_lb
+#, python-format
+msgid "Weight LB"
+msgstr ""
+

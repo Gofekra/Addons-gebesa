@@ -23,7 +23,10 @@
             <field name='arch' type='xml'>
                 <tree string='Caliber(s)'>
                     <field name='key_caliber'/>
-                    <field name='name_caliber'/>
+                    <field name='espesor_mm'/>
+                    <field name='espesor_pgs'/>
+                    <field name='peso_kg'/>
+                    <field name='peso_lb'/>
                 </tree>
             </field>
         </record>
@@ -39,9 +42,13 @@
                         <group>
                             <group>
                                 <field name='key_caliber' required='True'/>
+                                <field name='espesor_mm' required='True'/>
+                                <field name='espesor_pgs' required='True'/>
                             </group>
                             <group>
                                 <field name='name_caliber' required='True'/>
+                                <field name='peso_kg' required='True'/>
+                                <field name='peso_lb' required='True'/>
                             </group>
                         </group>
                     </sheet>
