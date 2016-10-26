@@ -35,9 +35,6 @@ class ResCurrency(models.Model):
         if context is None:
             context = {}
         ctx = context.copy()
-        ## ---> Set BreakPoint
-        import pdb;
-        pdb.set_trace()
         if 'date' in ctx.keys():
             if len(ctx['date']) > 10:
                 ctx['date'] = ctx['date'] + ' 23:00:00'
