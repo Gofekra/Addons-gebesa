@@ -11,7 +11,8 @@ class AccountVoucher(models.Model):
     @api.multi
     def action_move_line_create(self):
         '''
-        Confirm the vouchers given in ids and create the journal entries for each of them
+        Confirm the vouchers given in ids and create the journal entries for
+        each of them
         '''
         for voucher in self:
             local_context = dict(
@@ -20,9 +21,9 @@ class AccountVoucher(models.Model):
                 continue
             company_currency = voucher.journal_id.company_id.currency_id.id
             current_currency = voucher.currency_id.id or company_currency
-            # we select the context to use accordingly if it's a multicurrency case or not
-            # But for the operations made by _convert_amount, we always need to
-            # give the date in the context
+            # we select the context to use accordingly if it's a multicurrency
+            # case or not But for the operations made by _convert_amount, we
+            # always need to give the date in the context
             ctx = local_context.copy()
             ctx['date'] = voucher.date
             ctx['check_move_validity'] = False
@@ -30,9 +31,6 @@ class AccountVoucher(models.Model):
             move = self.env['account.move'].create(voucher.account_move_get())
             # Get the name of the account_move just created
             # Create the first line of the voucher
-            # ---> Set BreakPoint
-            import pdb
-            pdb.set_trace()
             move_line = self.env['account.move.line'].with_context(
                 ctx).create(voucher.with_context(ctx).first_move_line_get(
                     move.id, company_currency, current_currency))
