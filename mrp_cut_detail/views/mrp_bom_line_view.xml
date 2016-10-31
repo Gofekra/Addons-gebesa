@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
+        <record id='action_mrp_bom_line' model='ir.actions.act_window'>
+            <field name='name'>BoM Lines</field>
+            <field name='res_model'>mrp.bom.line</field>
+            <field name='view_type'>form</field>
+            <field name='view_mode'>tree,form</field>
+        </record>
+
+        <menuitem id="mrp_bom_line_menu" name="BoM Lines" parent="mrp.menu_mrp_bom" action="action_mrp_bom_line"/>
+
+        <record model='ir.ui.view' id='mrp_bom_line_tree_geb'>
+            <field name='name'>mrp.bom.line.tree.geb</field>
+            <field name='model'>mrp.bom.line</field>
+            <field name='arch' type='xml'>
+                <tree string='Operation'>
+                    <field name="bom_id"/>
+                    <field name="location_id"/>
+                    <field name="product_id"/>
+                    <field name="product_qty"/>
+                    <field name="sequence"/>
+                    <field name="date_start"/>
+                    <field name="date_stop"/>
+                    <field name="product_uom"/>
+                </tree>
+            </field>
+        </record>
+
         <record model="ir.ui.view" id="mrp_bom_line_form_view">
             <field name="name">mrp.bom.line.form.view</field>
             <field name="model">mrp.bom.line</field>
