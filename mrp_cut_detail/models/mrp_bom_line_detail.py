@@ -32,6 +32,7 @@ class MrpBomLineDetail(models.Model):
 
     product_id = fields.Many2one(
         'product.product',
+        related='bom_line_id.product_id',
         string=_('Composite Article'),
     )
 
