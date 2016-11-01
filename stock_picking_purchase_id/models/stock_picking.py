@@ -8,7 +8,10 @@ from openerp import _, fields, models
 class StockPicking(models.Model):
     _inherit = 'stock.picking'
 
-    purchase_id = fields.Many2one('purchase.order',
-                                  ondelete='set null',
-                                  string=_('Purchase Order'),
-                                  select=True)
+    purchase_id = fields.Many2one(
+        'purchase.order',
+        string=_('Purchase Order'),
+        readonly=True,
+        store=True,
+        related='move_lines.purchase_line_id.order_id'
+    )
