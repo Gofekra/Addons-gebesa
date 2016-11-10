@@ -15,3 +15,17 @@ class SaleOrder(models.Model):
         string=_("Production Status"),
         default='no_production',
     )
+
+    city_id = fields.Many2one(
+        'res.country.state.city',
+        string=_('City'),
+        readonly=True,
+        related='partner_shipping_id.city_id'
+    )
+
+    state_id = fields.Many2one(
+        'res.country.state',
+        string=_('State'),
+        readonly=True,
+        related='partner_shipping_id.state_id'
+    )

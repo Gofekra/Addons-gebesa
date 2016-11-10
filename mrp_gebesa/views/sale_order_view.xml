@@ -9,6 +9,10 @@
                 <xpath expr="//group/group/field[@name='complement_saleorder_id']" position="after">
                     <field name="production_status" readonly="1"/>
                 </xpath>
+                <xpath expr="//notebook/page/group/group/field[@name='company_id']" position="after">
+                    <field name="state_id" readonly="1"/>
+                    <field name="city_id" readonly="1"/>
+                </xpath>
         	</field>
         </record>
     </data>

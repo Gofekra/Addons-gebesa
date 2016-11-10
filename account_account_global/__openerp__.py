@@ -2,10 +2,10 @@
 # © <YEAR(S)> <AUTHOR(S)>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
-    "name": "Gebesa reports",
-    "summary": "Gebesa reports",
+    "name": "Account Account Global",
+    "summary": "Account Account Global",
     "version": "9.0.1.0.0",
-    "category": "Personalizado",
+    "category": "Accounting",
     "website": "https://odoo-community.org/",
     "author": "<Samuel Barron>, Odoo Community Association (OCA)",
     "license": "AGPL-3",
@@ -16,12 +16,10 @@
         "bin": [],
     },
     "depends": [
-        "base", "account", "board",
+        "base", "account"
     ],
     "data": [
-        "views/account_account.xml",
-        "views/account_journal.xml",
-        "views/gebesa_report.xml",
+        "views/account_account_global.xml"
     ],
     "demo": [
     ],

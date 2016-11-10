@@ -2,10 +2,10 @@
 # © <YEAR(S)> <AUTHOR(S)>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
-    "name": "Gebesa reports",
-    "summary": "Gebesa reports",
+    "name": "Factoraje v2",
+    "summary": "Factoraje v2",
     "version": "9.0.1.0.0",
-    "category": "Personalizado",
+    "category": "Accounting",
     "website": "https://odoo-community.org/",
     "author": "<Samuel Barron>, Odoo Community Association (OCA)",
     "license": "AGPL-3",
@@ -16,12 +16,12 @@
         "bin": [],
     },
     "depends": [
-        "base", "account", "board",
+        "base", "account",
+        "gebesa_reconcile_advance",
+        'account_account_global',
     ],
     "data": [
-        "views/account_account.xml",
-        "views/account_journal.xml",
-        "views/gebesa_report.xml",
+        "views/account_invoice.xml",
     ],
     "demo": [
     ],

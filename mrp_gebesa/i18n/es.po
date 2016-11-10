@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-20 16:36+0000\n"
-"PO-Revision-Date: 2016-10-20 16:36+0000\n"
+"POT-Creation-Date: 2016-11-07 15:03+0000\n"
+"PO-Revision-Date: 2016-11-07 15:03+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,14 @@ msgstr ""
 #. module: mrp_gebesa
 #: model:ir.model,name:mrp_gebesa.model_mrp_bom
 msgid "Bill of Material"
-msgstr "Lista de Material"
+msgstr "Lista de material"
+
+#. module: mrp_gebesa
+#: code:addons/mrp_gebesa/models/sale_order.py:21
+#: model:ir.model.fields,field_description:mrp_gebesa.field_sale_order_city_id
+#, python-format
+msgid "City"
+msgstr "Ciudad"
 
 #. module: mrp_gebesa
 #: code:addons/mrp_gebesa/models/mrp_bom.py:23
@@ -30,7 +37,7 @@ msgstr "Ubicación"
 #. module: mrp_gebesa
 #: model:ir.model,name:mrp_gebesa.model_mrp_production
 msgid "Manufacturing Order"
-msgstr "Orden de Fabricación"
+msgstr "Orden fabricación"
 
 #. module: mrp_gebesa
 #: code:addons/mrp_gebesa/models/sale_order.py:12
@@ -56,7 +63,14 @@ msgstr "Estado de la Producción"
 #. module: mrp_gebesa
 #: model:ir.model,name:mrp_gebesa.model_sale_order
 msgid "Sales Order"
-msgstr "Orden de Venta"
+msgstr "Pedido de venta"
+
+#. module: mrp_gebesa
+#: code:addons/mrp_gebesa/models/sale_order.py:28
+#: model:ir.model.fields,field_description:mrp_gebesa.field_sale_order_state_id
+#, python-format
+msgid "State"
+msgstr "Estado"
 
 #. module: mrp_gebesa
 #: code:addons/mrp_gebesa/models/sale_order.py:14
@@ -75,15 +89,15 @@ msgstr "Almacén"
 #. module: mrp_gebesa
 #: model:ir.model.fields,field_description:mrp_gebesa.field_mrp_bom_website_message_ids
 msgid "Website Messages"
-msgstr "Mensajes Sitio Web"
+msgstr "Mensajes del Website"
 
 #. module: mrp_gebesa
 #: model:ir.model.fields,help:mrp_gebesa.field_mrp_bom_website_message_ids
 msgid "Website communication history"
-msgstr "Historial Comunicación del Sitio Web "
+msgstr "Sitio Web historial de comunicación"
 
 #. module: mrp_gebesa
 #: model:ir.model,name:mrp_gebesa.model_mrp_bom_line
 msgid "mrp.bom.line"
-msgstr ""
+msgstr "mrp.bom.line"
 
