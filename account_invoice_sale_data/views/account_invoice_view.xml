@@ -28,13 +28,13 @@
         			</page>
         		</xpath>
         		<xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='price_subtotal']" position="after">
-                    <field name="standard_cost" widget="monetary"/>
-                    <field name="total_cost" widget="monetary"/>
-                    <field name="net_sale" widget="monetary"/>
-                    <field name="freight_amount" widget="monetary"/>
-                    <field name="installation_amount" widget="monetary"/>                    
-                    <field name="profit_margin" widget="monetary"/>
-                    <field name="margin_justification"/>
+                    <field name="standard_cost" widget="monetary" readonly="True"/>
+                    <field name="total_cost" widget="monetary" readonly="True"/>
+                    <field name="net_sale" widget="monetary" readonly="True"/>
+                    <field name="freight_amount" widget="monetary" readonly="True"/>
+                    <field name="installation_amount" widget="monetary" readonly="True"/>                    
+                    <field name="profit_margin" widget="monetary" readonly="True"/>
+                    <field name="margin_justification" />
                 </xpath>          		   		
         	</field>
         </record>

@@ -21,6 +21,7 @@
     "data": [
         "views/account_invoice.xml",
         "views/sales_channel.xml",
+        "views/res_partner.xml",
         "security/security.xml",
         "security/ir.model.access.csv",
     ],
