@@ -10,15 +10,15 @@
         			<page string="Sale Data">
         				<group>
         					<group>
-        						<field name='total_net_sale' widget="monetary"/>
+        						<field name='total_net_sale' widget="monetary" readonly="True"/>
         						<field name='perc_freight'/>
-        						<field name='total_freight' widget="monetary"/>
+        						<field name='total_freight' widget="monetary" readonly="True"/>
         						<field name='perc_installation'/>
-        						<field name='total_installation' widget="monetary"/>
-                                <field name='total_cost' widget="monetary"/>
+        						<field name='total_installation' widget="monetary" readonly="True"/>
+                                <field name='total_cost' widget="monetary" readonly="True"/>
         					</group>
         					<group>
-        						<field name='profit_margin'/>
+        						<field name='profit_margin' readonly="True"/>
         						<field name='not_be_billed'/>
                                 <field name='portfolio_type'/>
         						<field name='manufacture'/>
