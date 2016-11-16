@@ -6,14 +6,17 @@
         	<field name='model'>account.invoice</field>
         	<field name='inherit_id' ref='account.invoice_form'/>
         	<field name='arch' type='xml'>
+                <xpath expr="//field[@name='journal_id']" position="attributes">
+                    <attribute name="readonly">True</attribute>
+                </xpath>
         		<xpath expr="//notebook/page[2]" position="after">
         			<page string="Sale Data">
         				<group>
         					<group>
         						<field name='total_net_sale' widget="monetary" readonly="True"/>
-        						<field name='perc_freight'/>
+        						<field name='perc_freight' attrs="{'readonly':[('state','!=','draft')]}"/>
         						<field name='total_freight' widget="monetary" readonly="True"/>
-        						<field name='perc_installation'/>
+        						<field name='perc_installation' attrs="{'readonly':[('state','!=','draft')]}"/>
         						<field name='total_installation' widget="monetary" readonly="True"/>
                                 <field name='total_cost' widget="monetary" readonly="True"/>
         					</group>

@@ -2,7 +2,7 @@
 # © <YEAR(S)> <AUTHOR(S)>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import fields, models, _
+from openerp import api, fields, models, _
 from openerp.addons import decimal_precision as dp
 
 
@@ -82,3 +82,12 @@ class AccountInvoice(models.Model):
     itinerary = fields.Integer(
         'Itinerary',
         help='Itinerary number')
+
+    @api.onchange('account_analytic_id', 'company_id')
+    def _onchange_account_analytic_id(self):
+        """Inherit to set account_journal assigned in the
+        analytic."""
+        res = ""
+        # res = super(AccountInvoice, self)._onchange_account_analytic_id()
+        self.journal_id = self.account_analytic_id.journal_sale_id
+        return res
