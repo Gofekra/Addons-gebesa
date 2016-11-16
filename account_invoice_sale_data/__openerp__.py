@@ -19,9 +19,11 @@
         "base",
         "account",
         "sale",
+        "account_analytic_everywhere"
     ],
     "data": [
         "views/account_invoice_view.xml",
+        "views/account_analytic_account_view.xml",
         "views/res_partner.xml",
         "views/sale_order.xml",
     ],
