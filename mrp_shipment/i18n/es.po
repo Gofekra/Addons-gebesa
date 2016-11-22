@@ -1,0 +1,314 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* mrp_shipment
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-10-20 15:54+0000\n"
+"PO-Revision-Date: 2016-10-20 11:01-0600\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 1.5.4\n"
+
+#. module: mrp_shipment
+#: selection:mrp.shipment,state:0
+msgid "Cancelled"
+msgstr "Cancelado"
+
+#. module: mrp_shipment
+#: code:addons/mrp_shipment/models/mrp_shipment.py:119
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_line_city
+#, python-format
+msgid "City"
+msgstr "Ciudad"
+
+#. module: mrp_shipment
+#: model:ir.actions.act_window,help:mrp_shipment.action_shipment_form
+msgid "Click to start a shipment."
+msgstr "Haga clic para iniciar embarque"
+
+#. module: mrp_shipment
+#: code:addons/mrp_shipment/models/mrp_shipment.py:165
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_line_product_code
+#, python-format
+msgid "Code product"
+msgstr "Clave de producto"
+
+#. module: mrp_shipment
+#: model:ir.model.fields,help:mrp_shipment.field_mrp_shipment_line_standard_cost
+msgid ""
+"Cost of the product template used for standard stock valuation in accounting "
+"and used as a base price on purchase orders. Expressed in the default unit "
+"of measure of the product."
+msgstr ""
+
+#. module: mrp_shipment
+#: code:addons/mrp_shipment/models/mrp_shipment.py:106
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_line_country_id
+#, python-format
+msgid "Country"
+msgstr "Pais"
+
+#. module: mrp_shipment
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_create_uid
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_line_create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: mrp_shipment
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_create_date
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_line_create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: mrp_shipment
+#: code:addons/mrp_shipment/models/mrp_shipment.py:101
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_line_partner_id
+#, python-format
+msgid "Customer"
+msgstr "Cliente"
+
+#. module: mrp_shipment
+#: code:addons/mrp_shipment/models/mrp_shipment.py:37
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_date
+#, python-format
+msgid "Date"
+msgstr "Fecha"
+
+#. module: mrp_shipment
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_display_name
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_line_display_name
+msgid "Display Name"
+msgstr "Mostrar nombre"
+
+#. module: mrp_shipment
+#: selection:mrp.shipment,state:0
+msgid "Draft"
+msgstr "Borrador"
+
+#. module: mrp_shipment
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_id
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_line_id
+msgid "ID"
+msgstr "Id"
+
+#. module: mrp_shipment
+#: selection:mrp.shipment,state:0
+msgid "In Progress"
+msgstr "En Progreso"
+
+#. module: mrp_shipment
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment___last_update
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_line___last_update
+msgid "Last Modified on"
+msgstr "Ultima modificacion en "
+
+#. module: mrp_shipment
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_line_write_uid
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_write_uid
+msgid "Last Updated by"
+msgstr "Ultima actualizacion por"
+
+#. module: mrp_shipment
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_line_write_date
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_write_date
+msgid "Last Updated on"
+msgstr "Ultima Actualizacion en"
+
+#. module: mrp_shipment
+#: code:addons/mrp_shipment/models/mrp_shipment.py:160
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_line_product_name
+#, python-format
+msgid "Name product"
+msgstr "Nombre del producto"
+
+#. module: mrp_shipment
+#: code:addons/mrp_shipment/models/sale_order.py:12
+#: selection:sale.order,shiptment_status:0
+#, python-format
+msgid "No shipment"
+msgstr "No embarcado"
+
+#. module: mrp_shipment
+#: code:addons/mrp_shipment/models/sale_order.py:13
+#: selection:sale.order,shiptment_status:0
+#, python-format
+msgid "Partial shipment"
+msgstr "Parcialmente embarcado"
+
+#. module: mrp_shipment
+#: model:ir.ui.view,arch_db:mrp_shipment.mrp_shipment_form
+msgid "Proceed"
+msgstr "Proceder"
+
+#. module: mrp_shipment
+#: code:addons/mrp_shipment/models/mrp_shipment.py:156
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_line_product_id
+#, python-format
+msgid "Product"
+msgstr "Producto"
+
+#. module: mrp_shipment
+#: code:addons/mrp_shipment/models/mrp_shipment.py:147
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_line_quantity
+#, python-format
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: mrp_shipment
+#: code:addons/mrp_shipment/models/mrp_shipment.py:151
+#: code:addons/mrp_shipment/models/sale_order_line.py:12
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_line_quantity_shipped
+#: model:ir.model.fields,field_description:mrp_shipment.field_sale_order_line_quantity_shipped
+#, python-format
+msgid "Quantity shipped"
+msgstr "Cantidad Embarcada"
+
+#. module: mrp_shipment
+#: code:addons/mrp_shipment/models/mrp_shipment.py:26
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_reference
+#, python-format
+msgid "Reference"
+msgstr "Referencia"
+
+#. module: mrp_shipment
+#: code:addons/mrp_shipment/models/mrp_shipment.py:138
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_line_sale_order_id
+#, python-format
+msgid "Sale order"
+msgstr "Orden de venta"
+
+#. module: mrp_shipment
+#: code:addons/mrp_shipment/models/mrp_shipment.py:143
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_line_order_line_id
+#, python-format
+msgid "Sale order line "
+msgstr "Linea de orden de venta"
+
+#. module: mrp_shipment
+#: model:ir.model,name:mrp_shipment.model_sale_order
+msgid "Sales Order"
+msgstr "Orden de venta"
+
+#. module: mrp_shipment
+#: model:ir.model,name:mrp_shipment.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Linea de orden de "
+
+#. module: mrp_shipment
+#: code:addons/mrp_shipment/models/mrp_shipment.py:95
+#: code:addons/mrp_shipment/models/sale_order_line.py:26
+#: model:ir.actions.act_window,name:mrp_shipment.action_shipment_form
+#: model:ir.model,name:mrp_shipment.model_mrp_shipment
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_line_shipment_id
+#: model:ir.model.fields,field_description:mrp_shipment.field_sale_order_line_shipment_line_ids
+#: model:ir.ui.menu,name:mrp_shipment.menu_action_shipment_form
+#: model:ir.ui.view,arch_db:mrp_shipment.mrp_shipment_form
+#: model:ir.ui.view,arch_db:mrp_shipment.mrp_shipment_tree
+#, python-format
+msgid "Shipment"
+msgstr "Embarque"
+
+#. module: mrp_shipment
+#: model:ir.ui.view,arch_db:mrp_shipment.mrp_shipment_form
+msgid "Shipment Details"
+msgstr "Detalle de embarque"
+
+#. module: mrp_shipment
+#: model:ir.model.fields,help:mrp_shipment.field_mrp_shipment_line_ids
+msgid "Shipment Lines."
+msgstr "Lineas de ambarque"
+
+#. module: mrp_shipment
+#: code:addons/mrp_shipment/models/mrp_shipment.py:44
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_line_ids
+#, python-format
+msgid "Shipment Products"
+msgstr "Productos embarcados"
+
+#. module: mrp_shipment
+#: model:ir.model,name:mrp_shipment.model_mrp_shipment_line
+msgid "Shipment line"
+msgstr "Lineas embarcadas"
+
+#. module: mrp_shipment
+#: code:addons/mrp_shipment/models/sale_order.py:15
+#: model:ir.model.fields,field_description:mrp_shipment.field_sale_order_shiptment_status
+#, python-format
+msgid "Shiptment statu"
+msgstr "Estado del embarque"
+
+#. module: mrp_shipment
+#: code:addons/mrp_shipment/models/mrp_shipment.py:170
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_line_standard_cost
+#, python-format
+msgid "Standard cost"
+msgstr "Costo estandar"
+
+#. module: mrp_shipment
+#: code:addons/mrp_shipment/models/mrp_shipment.py:113
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_line_state_id
+#, python-format
+msgid "State"
+msgstr "Estado"
+
+#. module: mrp_shipment
+#: code:addons/mrp_shipment/models/mrp_shipment.py:19
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_state
+#, python-format
+msgid "Status"
+msgstr "Status"
+
+#. module: mrp_shipment
+#: code:addons/mrp_shipment/models/mrp_shipment.py:125
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_line_street
+#, python-format
+msgid "Street"
+msgstr "Calle"
+
+#. module: mrp_shipment
+#: code:addons/mrp_shipment/models/mrp_shipment.py:131
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_line_street2
+#, python-format
+msgid "Street2"
+msgstr "Calle"
+
+#. module: mrp_shipment
+#: code:addons/mrp_shipment/models/mrp_shipment.py:178
+#, python-format
+msgid ""
+"The quantity available is less than                                       "
+"the quantity shipped"
+msgstr "La cantidad disponible es menor que la cantidad embarcada"
+
+#. module: mrp_shipment
+#: code:addons/mrp_shipment/models/sale_order.py:14
+#: selection:sale.order,shiptment_status:0
+#, python-format
+msgid "Total shipment"
+msgstr "Totalmente embarcado"
+
+#. module: mrp_shipment
+#: selection:mrp.shipment,state:0
+msgid "Validated"
+msgstr "Validado"
+
+#. module: mrp_shipment
+#: code:addons/mrp_shipment/models/mrp_shipment.py:32
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_warehouse_id
+#, python-format
+msgid "Warehouse"
+msgstr "Almacen"
+
+#. module: mrp_shipment
+#: code:addons/mrp_shipment/models/sale_order_line.py:18
+#: model:ir.model.fields,field_description:mrp_shipment.field_sale_order_line_missing_quantity
+#, python-format
+msgid "missing quantity"
+msgstr "Cantidad Faltante"

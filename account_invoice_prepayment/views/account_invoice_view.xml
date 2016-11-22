@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+    	<record model='ir.ui.view' id='account_invoice_prepayment_form_view'>
+    		<field name='name'>account_invoice_prepayment_form_view</field>
+    		<field name='model'>account.invoice</field>
+    		<field name='inherit_id' ref='account.invoice_form'/>
+    		<field name='arch' type='xml'>
+    			<xpath expr="//field[@name='date_due']" position="after">
+    				<field name="prepayment_ok" readonly='1'/>
+                    <field name="advance_applied" readonly='1'/>
+    			</xpath>
+    		</field>
+        </record>
+    </data>
+</openerp>

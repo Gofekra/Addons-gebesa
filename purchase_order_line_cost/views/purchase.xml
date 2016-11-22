@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model='ir.ui.view' id='purchase_order_form'>
+        	<field name='name'>purchase.order.price.standard.form</field>
+        	<field name='model'>purchase.order</field>
+        	<field name='inherit_id' ref='purchase.purchase_order_form'/>
+        	<field name='arch' type='xml'>
+        		<xpath expr="//notebook/page/field[@name='order_line']/tree" position="replace">
+        			<tree string="Purchase Order Lines" editable="bottom" decoration-danger="price_unit&gt;standard_price">
+        				<field name="product_id" context="{'partner_id': parent.partner_id}"/>
+                        <field name="name"/>
+                        <field name="date_planned"/>
+                        <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+                        <field name="account_analytic_id" context="{'default_partner_id':parent.partner_id}" groups="purchase.group_analytic_accounting"/>
+                        <field name="product_qty"/>
+                        <field name="qty_received" invisible="not context.get('show_purchase', False)"/>
+                        <field name="qty_invoiced" invisible="not context.get('show_purchase', False)"/>
+                        <field name="product_uom" groups="product.group_uom"/>
+                        <field name="standard_price" readonly="True" widget="monetary"/>
+                        <field name="price_unit"/>
+                        <field name="taxes_id" widget="many2many_tags" domain="[('type_tax_use','=','purchase')]" context="{'default_type_tax_use': 'purchase'}"/>
+                        <field name="price_subtotal" widget="monetary"/>
+					</tree>
+        		</xpath>
+        	</field>
+        </record>
+    </data>
+</openerp>

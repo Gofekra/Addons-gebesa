@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model='ir.ui.view' id='view_order_form'>
+        	<field name='name'>gebesa.sale.order.form</field>
+        	<field name='model'>sale.order</field>
+        	<field name='inherit_id' ref="sale.view_order_form"/>
+        	<field name='arch' type='xml'>
+        		<xpath expr="//group/group/field[@name='project_id']" position="after">
+        			<field name="notify_approval" widget="email" />
+        		</xpath>
+                <xpath expr="//group/group/field[@name='project_id']" position="attributes">
+                    <attribute name="domain">[('use_salesorder', '=', True)]</attribute>
+                </xpath>
+                <!--xpath expr="//notebook/page/field[@name='warehouse_id']" position="attributes">
+                    <attribute name="readonly">True</attribute>
+                </xpath-->
+        		<xpath expr="//group/group/field[@name='validity_date']" position="after">
+        			<field name="date_delivery" required="True" />
+        			<field name="date_reception" required="True" />
+        		</xpath>
+                <xpath expr="//field[@name='order_line']/form/group/group/field[@name='price_unit']" position="after">
+                    <field name="margin_justification"/>
+                </xpath>
+                <xpath expr="//field[@name='order_line']/tree/field[@name='product_id']" position="after">
+                    <field name="fulfilled"/>
+                    <field name="invoiced"/>
+                </xpath>
+                <xpath expr="//field[@name='order_line']/tree/field[@name='tax_id']" position="after">
+                    <field name="net_sale" widget="monetary"/>
+                    <field name="freight_amount" widget="monetary"/>
+                    <field name="installation_amount" widget="monetary"/>
+                    <field name="standard_cost" widget="monetary"/>
+                    <field name="profit_margin" widget="monetary"/>
+                    <field name="margin_justification"/>
+                </xpath>
+        		<xpath expr="//notebook/page[2]" position="after">
+        			<page string="Sales data">
+        				<group>
+        					<group>
+        						<field name='total_net_sale' widget="monetary"/>
+        						<field name='perc_freight'/>
+        						<field name='total_freight' widget="monetary"/>
+        						<field name='perc_installation'/>
+        						<field name='total_installation' widget="monetary"/>
+        					</group>
+        					<group>
+        						<field name='profit_margin'/>
+        						<field name='not_be_billed'/>
+        						<field name='manufacture'/>
+        						<field name='executive'/>
+        						<field name='respo_reple'/>
+        					</group>
+        				</group>
+        			</page>
+                    <page string="Production data">
+                        <group>
+                            <group>
+                                <field name='priority'/>
+                            </group>
+                            <group>
+                                <field name='complement_saleorder_id'/>
+                            </group>
+                        </group>
+                        <label for='manufacturing_observations'/>
+                        <field name='manufacturing_observations'/>
+                        <label for='replenishing_motif'/>
+                        <field name='replenishing_motif'/>
+                    </page>
+                    <page string="Credit and collection">
+                        <group>
+                            <group>
+                                <field name='credit_status'/>
+                            </group>
+                        </group>
+                        <label for='credit_note'/>
+                        <field name='credit_note'/>
+                    </page>
+        		</xpath>
+        	</field>
+        </record>
+    </data>
+</openerp>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="view_purchase_config_settings" model="ir.ui.view">
+            <field name="name">view.purchase.config.settings</field>
+            <field name="model">purchase.config.settings</field>
+            <field name="inherit_id" ref="purchase.view_purchase_configuration"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group/field[@name='group_manage_vendor_price']" position="after">
+                    <field name="purchase_price_account_id" class="oe_inline"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

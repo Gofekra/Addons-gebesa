@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model='ir.ui.view' id='invoice_apply_advance_form_view'>
+            <field name='name'>invoice.apply.advance.form.view</field>
+            <field name='model'>account.invoice</field>
+            <field name='inherit_id' ref='account.invoice_form'/>
+            <field name='arch' type='xml'>
+                <xpath expr="//field[@name='comment']" position="before">
+                    <group>
+                        <group>
+                            <field name="advance_id" domain="[('prepayment_ok', '=', True), ('advance_applied', '=', False), ('state', '!=', 'draft')]"/>
+                            <field name="amount_advance" widget="monetary" readonly="1"/>
+                        </group>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>
