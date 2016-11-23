@@ -16,11 +16,12 @@
         "bin": [],
     },
     "depends": [
-        "base", "account",
+        "base", "account", "board",
     ],
     "data": [
         "views/account_account.xml",
         "views/account_journal.xml",
+        "views/gebesa_report.xml",
     ],
     "demo": [
     ],

@@ -1,49 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
-        <record model='ir.ui.view' id='integration_cost_gebesa_form'>
-            <field name='name'>integration.cost.gebesa.form</field>
-            <field name='model'>integration.cost.gebesa</field>
-            <field name='arch' type='xml'>
-                <form string='description'>
+        <record id="integration_cost_gebesa_form" model="ir.ui.view">
+            <field name="name">integration.cost.gebesa.form</field>
+            <field name="model">integration.cost.gebesa</field>
+            <field name="arch" type="xml">
+                <form string="description">
                     <header>
-                        <button name="integrates_costs" states="draf" string="Integrar" type="object" class="oe_highlight"/>
-                        <field name='state' widget='statusbar' statusbar_color='{"draf":"blue", "cancel":"red"}'/>
+                        <button class="oe_highlight" name="integrates_costs" states="draf" string="Integrar" type="object"/>
+                        <field name="state" statusbar_color="{&quot;draf&quot;:&quot;blue&quot;, &quot;cancel&quot;:&quot;red&quot;}" widget="statusbar"/>
                     </header>
                     <sheet>
-                        <div  class="oe_title">
+                        <div class="oe_title">
                             <div class="oe_edit_only">
-                                <label for="name" />
+                                <label for="name"/>
                             </div>
                             <h1>
-                                <field name='name' placeholder="Name" required="True" attrs="{'readonly':[('state','!=','draf')]}"/>
+                                <field attrs="{'readonly':[('state','!=','draf')]}" name="name" placeholder="Name" required="True"/>
                             </h1>
                         </div>
-                        <group col='4'>
-                            <group col='2'>
-                                <field name='partner_id' required="True" attrs="{'readonly':[('state','!=','draf')]}"/>
-                                <field name='date' required="True" readonly="True"/>
-                                <field name='account_analytic_id' required="True" attrs="{'readonly':[('state','!=','draf')]}"/>
+                        <group col="4">
+                            <group col="2">
+                                <field attrs="{'readonly':[('state','!=','draf')]}" name="partner_id" required="True"/>
+                                <field name="date" readonly="True" required="True"/>
+                                <field attrs="{'readonly':[('state','!=','draf')]}" name="account_analytic_id" required="True"/>
                             </group>
-                            <group col='2'>
-                                <field name='date_post' required="True" readonly="True"/>
-                                <field name='journal_id' required="True" readonly="True" domain="[('type', '=', 'purchase')]"/>
-                                <field name='disc_additional' required="True" attrs="{'readonly':[('state','!=','draf')]}"/>
-                                <field name='move_id' readonly="True"/>
+                            <group col="2">
+                                <field name="date_post" readonly="True" required="True"/>
+                                <field domain="[('type', '=', 'purchase')]" name="journal_id" readonly="True" required="True"/>
+                                <field attrs="{'readonly':[('state','!=','draf')]}" name="disc_additional" required="True"/>
+                                <field name="move_id" readonly="True"/>
                             </group>
                         </group>
                         <notebook>
                             <page string="invoices raw material">
                                 <separator string="Invoices raw material"/>
-                                <field name='invoice_mp_ids' nolabel="True" domain="[('integration_id', '=', False), ('origin', '!=', ''), ('state', '!=', 'draf'), ('partner_id', '=', partner_id)]" attrs="{'readonly':[('state','!=','draf')]}"/>
+                                <field attrs="{'readonly':[('state','!=','draf')]}" domain="[('integration_id', '=', False), ('origin', '!=', ''), ('state', '!=', 'draf'), ('partner_id', '=', partner_id)]" name="invoice_mp_ids" nolabel="True"/>
                             </page>
                             <page string="Invoices additional cost">
                                 <separator string="Additional cost"/>
-                                <field name='invoice_adi_ids' nolabel="True" domain="[('integration_id', '=', False), ('is_additional', '=', 'True'), ('state', '!=', 'draf'), ('account_analytic_id', '=', account_analytic_id)]"  attrs="{'readonly':[('state','!=','draf')]}" options="{'no_create': True}"/>
+                                <field attrs="{'readonly':[('state','!=','draf')]}" domain="[('integration_id', '=', False), ('is_additional', '=', 'True'), ('state', '!=', 'draf'), ('account_analytic_id', '=', account_analytic_id)]" name="invoice_adi_ids" nolabel="True" options="{'no_create': True}"/>
                             </page>
-                            <page  string="Other info">
+                            <page string="Other info">
                                 <group col="4">
-                                    <field name='company_id' required="True" attrs="{'readonly':[('state','!=','draf')]}"/>
+                                    <field attrs="{'readonly':[('state','!=','draf')]}" name="company_id" required="True"/>
                                 </group>
                             </page>
                         </notebook>
@@ -51,35 +51,31 @@
                 </form>
             </field>
         </record>
-
-        <record model='ir.ui.view' id='integration_cost_gebesa_tree'>
-            <field name='name'>integration.cost.gebesa.tree</field>
-            <field name='model'>integration.cost.gebesa</field>
-            <field name='arch' type='xml'>
-                <tree string='description' decoration-info="state=='draf'" decoration-danger="state=='cancel'">
-                    <field name='name'/>
-                    <field name='date'/>
-                    <field name='date_post'/>
-                    <field name='move_id'/>
-                    <field name='partner_id'/>
-                    <field name='account_analytic_id'/>
-                    <field name='disc_additional'/>
-                    <field name='state'/>
+        <record id="integration_cost_gebesa_tree" model="ir.ui.view">
+            <field name="name">integration.cost.gebesa.tree</field>
+            <field name="model">integration.cost.gebesa</field>
+            <field name="arch" type="xml">
+                <tree decoration-danger="state=='cancel'" decoration-info="state=='draf'" string="description">
+                    <field name="name"/>
+                    <field name="date"/>
+                    <field name="date_post"/>
+                    <field name="move_id"/>
+                    <field name="partner_id"/>
+                    <field name="account_analytic_id"/>
+                    <field name="disc_additional"/>
+                    <field name="state"/>
                 </tree>
             </field>
         </record>
-
-        <record id='action_integration_cost_gebesa' model='ir.actions.act_window'>
-            <field name='name'>integration of additional costs</field>
-            <field name='res_model'>integration.cost.gebesa</field>
-            <field name='view_type'>form</field>
-            <field name='view_mode'>tree,form</field>
-            <field name='help' type="html">
+        <record id="action_integration_cost_gebesa" model="ir.actions.act_window">
+            <field name="name">integration of additional costs</field>
+            <field name="res_model">integration.cost.gebesa</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
                 <p class="oe_view_nocontent_create">Integrate its raw material costs with additional costs</p>
             </field>
         </record>
-
-        <menuitem id="integration_cost_gebesa_menu" name="Integration of additional costs" parent="account.menu_finance_payables" action="action_integration_cost_gebesa"/>
-
+        <menuitem action="action_integration_cost_gebesa" id="integration_cost_gebesa_menu" name="Integration of additional costs" parent="account.menu_finance_payables"/>
     </data>
 </openerp>

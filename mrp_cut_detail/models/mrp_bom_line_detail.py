@@ -10,16 +10,17 @@ class MrpBomLineDetail(models.Model):
     _order = "row"
     _rec_name = 'bom_line_id'
 
-    @api.model
-    def _default_row(self):
-        last_id = 0
-        get_count = self.search_count([(1, '=', 1)])
-        if get_count:
-            last_id = get_count + 1
-        else:
-            last_id = 1
-        row = str(last_id).rjust(5, '0')
-        return row
+    # @api.model
+    # def _default_row(self):
+    #    last_id = 1
+    #    # get_count = self.search_count([(1, '=', 1)])
+    #    get_count = self.search_count([('bom_line_id', '=', self.bom_line_id)])
+    #    if get_count:
+    #        last_id = get_count + 1
+    #    # else:
+    #    #    last_id = 1
+    #    # row = str(last_id).rjust(5, '0')
+    #    return last_id
 
     bom_line_id = fields.Many2one(
         'mrp.bom.line',
@@ -31,12 +32,18 @@ class MrpBomLineDetail(models.Model):
 
     product_id = fields.Many2one(
         'product.product',
+        related='bom_line_id.product_id',
         string=_('Composite Article'),
     )
 
-    row = fields.Char(
+    operation_id = fields.Many2one(
+        'mrp.bom.line.detail.operation',
+        string='Operation',
+    )
+
+    row = fields.Integer(
         _('Row'),
-        default=_default_row,
+        # default=_default_row,
         help=_('Gives the row order when displaying.'),
     )
 
@@ -61,15 +68,15 @@ class MrpBomLineDetail(models.Model):
         compute='_compute_m2',
     )
 
-    # color_id = fields.Many2one(
-    #     'product.attribute.value',
-    #     string=_('Color'),
-    # )
+    color_id = fields.Many2one(
+        'mrp.product.color',
+        string=_('Color'),
+    )
 
-    # caliber_id = fields.Many2one(
-    #     'product.attribute.value',
-    #     string=_('Caliber'),
-    # )
+    caliber_id = fields.Many2one(
+        'mrp.product.caliber',
+        string=_('Caliber'),
+    )
 
     long_cut = fields.Float(
         _('Cut Long'),
@@ -90,7 +97,7 @@ class MrpBomLineDetail(models.Model):
     )
 
     _sql_constraints = [
-        ('row_uniq', 'unique (row)',
+        ('row_uniq', 'unique (bom_line_id, row)',
          _('The row must be unique !')),
     ]
 

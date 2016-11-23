@@ -331,3 +331,31 @@ msgstr ""
 msgid "Weight Product"
 msgstr ""
 
+#. module: mrp_segment
+#: code:addons/mrp_segment/models/sale_order.py:12
+#: selection:sale.order,segment_status:0
+#, python-format
+msgid "No Segment"
+msgstr ""
+
+#. module: mrp_segment
+#: code:addons/mrp_segment/models/sale_order.py:13
+#: selection:sale.order,segment_status:0
+#, python-format
+msgid "Partial Segment"
+msgstr ""
+
+#. module: mrp_segment
+#: code:addons/mrp_segment/models/sale_order.py:15
+#: model:ir.model.fields,field_description:mrp_segment.field_sale_order_segment_status
+#, python-format
+msgid "Segment Status"
+msgstr ""
+
+#. module: mrp_segment
+#: code:addons/mrp_segment/models/sale_order.py:14
+#: selection:sale.order,segment_status:0
+#, python-format
+msgid "Total Segment"
+msgstr ""
+

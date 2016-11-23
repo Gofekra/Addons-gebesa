@@ -33,3 +33,8 @@ class ProductLine(models.Model):
         string=_('Active'),
         default=True
     )
+
+    report_id = fields.Many2one(
+        'ir.actions.report.xml',
+        string='Report',
+    )

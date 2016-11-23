@@ -150,6 +150,7 @@ class stock_quant(osv.osv):
             name = move.name + ' [' + move.product_id.default_code + '] ' + move.product_id.name
         else:
             reference = "W/O Reference "
+            name = move.product_id.name
             # + trace
 
         analytic_id = move.location_id.account_analytic_id.id or False

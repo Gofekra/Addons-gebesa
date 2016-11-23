@@ -16,7 +16,7 @@
         "bin": [],
     },
     "depends": [
-        "base", "product"
+        "base", "product", "stock",
     ],
     "data": [
         "views/product_family.xml",

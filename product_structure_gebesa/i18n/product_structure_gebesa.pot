@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 9.0c\n"
+"Project-Id-Version: Odoo Server 9.0e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-07 17:44+0000\n"
-"PO-Revision-Date: 2016-07-07 17:44+0000\n"
+"POT-Creation-Date: 2016-09-23 20:40+0000\n"
+"PO-Revision-Date: 2016-09-23 20:40+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -60,7 +60,7 @@ msgid "Display Name"
 msgstr ""
 
 #. module: product_structure_gebesa
-#: code:addons/product_structure_gebesa/models/product_template.py:13
+#: code:addons/product_structure_gebesa/models/product_template.py:18
 #: model:ir.model.fields,field_description:product_structure_gebesa.field_product_template_family_id
 #, python-format
 msgid "Family"
@@ -74,7 +74,7 @@ msgid "Family name product"
 msgstr ""
 
 #. module: product_structure_gebesa
-#: code:addons/product_structure_gebesa/models/product_template.py:18
+#: code:addons/product_structure_gebesa/models/product_template.py:23
 #: model:ir.model.fields,field_description:product_structure_gebesa.field_product_template_group_id
 #, python-format
 msgid "Group"
@@ -120,10 +120,17 @@ msgid "Last Updated on"
 msgstr ""
 
 #. module: product_structure_gebesa
-#: code:addons/product_structure_gebesa/models/product_template.py:23
+#: code:addons/product_structure_gebesa/models/product_template.py:28
 #: model:ir.model.fields,field_description:product_structure_gebesa.field_product_template_line_id
 #, python-format
 msgid "Line"
+msgstr ""
+
+#. module: product_structure_gebesa
+#: code:addons/product_structure_gebesa/models/product_template.py:12
+#: model:ir.model.fields,field_description:product_structure_gebesa.field_product_template_is_line
+#, python-format
+msgid "Line Product"
 msgstr ""
 
 #. module: product_structure_gebesa
@@ -212,7 +219,12 @@ msgid "Product structure gebesa"
 msgstr ""
 
 #. module: product_structure_gebesa
-#: code:addons/product_structure_gebesa/models/product_template.py:28
+#: model:ir.model.fields,field_description:product_structure_gebesa.field_product_line_report_id
+msgid "Report"
+msgstr ""
+
+#. module: product_structure_gebesa
+#: code:addons/product_structure_gebesa/models/product_template.py:33
 #: model:ir.model.fields,field_description:product_structure_gebesa.field_product_template_type_id
 #, python-format
 msgid "Type"

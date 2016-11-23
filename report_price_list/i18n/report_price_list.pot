@@ -1,0 +1,189 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* report_price_list
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-09-22 22:33+0000\n"
+"PO-Revision-Date: 2016-09-22 22:33+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: report_price_list
+#: model:ir.ui.view,arch_db:report_price_list.report_price_list_isometric
+msgid "<strong>Condiciones Comerciales:</strong><br/>\n"
+"                            *Precios no incluyen I.V.A<br/>\n"
+"                            *Precios menos descuentos autorizados<br/>\n"
+"                            *Precios sujetos a cambios sin previo aviso"
+msgstr ""
+
+#. module: report_price_list
+#: model:ir.ui.view,arch_db:report_price_list.report_price_list_isometric
+msgid "<strong>LISTA DE PRECIOS</strong><br/>gebesa.com"
+msgstr ""
+
+#. module: report_price_list
+#: model:ir.ui.view,arch_db:report_price_list.report_price_list_isometric
+msgid "CLAVE"
+msgstr ""
+
+#. module: report_price_list
+#: model:ir.ui.view,arch_db:report_price_list.report_price_list_isometric
+msgid "DESCRIPCION"
+msgstr ""
+
+#. module: report_price_list
+#: model:ir.ui.view,arch_db:report_price_list.report_price_list_isometric
+msgid "DIMENCIONES(cm)<br/>Frente Fondo Altura"
+msgstr ""
+
+#. module: report_price_list
+#: model:ir.model.fields,field_description:report_price_list.field_report_report_price_list_report_price_list_isometric_display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: report_price_list
+#: code:addons/report_price_list/models/product_template.py:27
+#: model:ir.model.fields,field_description:report_price_list.field_product_template_height
+#, python-format
+msgid "Height"
+msgstr ""
+
+#. module: report_price_list
+#: model:ir.model.fields,field_description:report_price_list.field_report_report_price_list_report_price_list_isometric_id
+msgid "ID"
+msgstr ""
+
+#. module: report_price_list
+#: model:ir.ui.view,arch_db:report_price_list.product_template_form_view
+msgid "Isometric"
+msgstr ""
+
+#. module: report_price_list
+#: code:addons/report_price_list/models/product_template.py:31
+#: model:ir.model.fields,field_description:report_price_list.field_product_template_isometric
+#, python-format
+msgid "Isometric image"
+msgstr ""
+
+#. module: report_price_list
+#: model:ir.ui.view,arch_db:report_price_list.report_price_list_isometric
+msgid "Kg"
+msgstr ""
+
+#. module: report_price_list
+#: model:ir.model.fields,field_description:report_price_list.field_report_report_price_list_report_price_list_isometric___last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: report_price_list
+#: code:addons/report_price_list/models/product_template.py:19
+#: model:ir.model.fields,field_description:report_price_list.field_product_template_length
+#, python-format
+msgid "Length"
+msgstr ""
+
+#. module: report_price_list
+#: model:ir.actions.report.xml,name:report_price_list.price_list_isometric
+msgid "Lista de precios"
+msgstr ""
+
+#. module: report_price_list
+#: model:ir.ui.view,arch_db:report_price_list.report_price_list_isometric
+msgid "M3"
+msgstr ""
+
+#. module: report_price_list
+#: code:addons/report_price_list/models/product_template.py:35
+#: model:ir.model.fields,field_description:report_price_list.field_product_template_isometric_medium
+#, python-format
+msgid "Medium-sized isometric image"
+msgstr ""
+
+#. module: report_price_list
+#: code:addons/report_price_list/models/product_template.py:16
+#: model:ir.model.fields,field_description:report_price_list.field_product_template_note_pricelist
+#, python-format
+msgid "Note price list"
+msgstr ""
+
+#. module: report_price_list
+#: model:ir.ui.view,arch_db:report_price_list.report_price_list_isometric
+msgid "PRECIO LISTA"
+msgstr ""
+
+#. module: report_price_list
+#: code:addons/report_price_list/models/product_template.py:12
+#: model:ir.model.fields,field_description:report_price_list.field_product_template_pricelist
+#, python-format
+msgid "Price list"
+msgstr ""
+
+#. module: report_price_list
+#: model:ir.model,name:report_price_list.model_product_template
+msgid "Product Template"
+msgstr ""
+
+#. module: report_price_list
+#: code:addons/report_price_list/models/product_template.py:42
+#: model:ir.model.fields,field_description:report_price_list.field_product_template_isometric_small
+#, python-format
+msgid "Small-sized isometric image"
+msgstr ""
+
+#. module: report_price_list
+#: code:addons/report_price_list/models/product_template.py:23
+#: model:ir.model.fields,field_description:report_price_list.field_product_template_width
+#, python-format
+msgid "Width"
+msgstr ""
+
+#. module: report_price_list
+#: code:addons/report_price_list/models/product_template.py:28
+#: model:ir.model.fields,help:report_price_list.field_product_template_height
+#, python-format
+msgid "height in cm"
+msgstr ""
+
+#. module: report_price_list
+#: code:addons/report_price_list/models/product_template.py:20
+#: model:ir.model.fields,help:report_price_list.field_product_template_length
+#, python-format
+msgid "length in cm"
+msgstr ""
+
+#. module: report_price_list
+#: model:ir.ui.view,arch_db:report_price_list.report_price_list_isometric
+msgid "m3"
+msgstr ""
+
+#. module: report_price_list
+#: model:ir.model,name:report_price_list.model_report_report_price_list_price_list_isometric
+msgid "report.report_price_list.price_list_isometric"
+msgstr ""
+
+#. module: report_price_list
+#: model:ir.model,name:report_price_list.model_report_report_price_list_report_price_list_isometric
+msgid "report.report_price_list.report_price_list_isometric"
+msgstr ""
+
+#. module: report_price_list
+#: code:addons/report_price_list/models/product_template.py:13
+#: model:ir.model.fields,help:report_price_list.field_product_template_pricelist
+#, python-format
+msgid "the product is displayed in the price list"
+msgstr ""
+
+#. module: report_price_list
+#: code:addons/report_price_list/models/product_template.py:24
+#: model:ir.model.fields,help:report_price_list.field_product_template_width
+#, python-format
+msgid "width in cm"
+msgstr ""
+

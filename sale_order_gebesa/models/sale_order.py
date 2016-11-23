@@ -4,6 +4,7 @@
 
 from openerp import api, fields, models, _
 from openerp.addons import decimal_precision as dp
+from openerp.exceptions import UserError
 
 
 class SaleOrder(models.Model):
@@ -116,3 +117,25 @@ class SaleOrder(models.Model):
         if self.project_id and self.project_id.warehouse_id:
             self.warehouse_id = self.project_id.warehouse_id
         return {}
+
+    @api.multi
+    def action_confirm(self):
+        for order in self:
+            if not order.notify_approval:
+                raise UserError(
+                    _('The following field is not invalid:\nNotify approval'))
+            if not order.manufacture:
+                raise UserError(
+                    _('The following field is not invalid:\nManufacture'))
+            if not order.executive:
+                raise UserError(
+                    _('The following field is not invalid:\nExecutive'))
+            if not order.priority:
+                raise UserError(
+                    _('The following field is not invalid:\nManufacturing \
+                      priority'))
+            if not order.project_id:
+                raise UserError(
+                    _('The following field is not invalid:\nAnalytic Account'))
+
+        return super(SaleOrder, self).action_confirm()

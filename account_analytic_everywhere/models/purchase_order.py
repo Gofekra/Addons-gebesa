@@ -12,4 +12,5 @@ class PurchaseOrder(models.Model):
         'account.analytic.account',
         related='picking_type_id.warehouse_id.account_analytic_id',
         string=_(u'Analytic Account'),
+        store=True,
     )

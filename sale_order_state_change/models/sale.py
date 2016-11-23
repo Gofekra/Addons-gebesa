@@ -3,6 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from openerp import _, api, fields, models
+from openerp.exceptions import UserError
 
 
 class SaleOrder(models.Model):
@@ -22,9 +23,16 @@ class SaleOrder(models.Model):
         track_visibility='onchange',
         default='draft')
 
+    closing_reason = fields.Char(
+        string=_('Closing Reason'),
+    )
+
     @api.multi
     def action_closed(self):
         for order in self:
+            if order.closing_reason is False:
+                raise UserError(_("You can't close this Order if you don't"
+                                  " captured the Closing Reason field!"))
             for pick in order.picking_ids:
                 if pick.state in ['draft', 'assigned', 'confirmed']:
                     for rec in pick:

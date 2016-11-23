@@ -19,11 +19,14 @@
         "base",
         "product",
         "mrp",
+        "mrp_product_color",
+        "mrp_product_caliber",
     ],
     "data": [
         "views/mrp_view.xml",
         "views/mrp_bom_line_view.xml",
         "views/mrp_bom_line_detail_view.xml",
+        "views/mrp_bom_line_detail_operation.xml",
     ],
     "demo": [
     ],

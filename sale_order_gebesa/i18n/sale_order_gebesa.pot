@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 9.0c\n"
+"Project-Id-Version: Odoo Server 9.0e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-30 22:48+0000\n"
-"PO-Revision-Date: 2016-03-30 22:48+0000\n"
+"POT-Creation-Date: 2016-09-07 21:40+0000\n"
+"PO-Revision-Date: 2016-09-07 21:40+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,14 +16,26 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:83
+#: model:ir.model,name:sale_order_gebesa.model_account_analytic_account
+msgid "Analytic Account"
+msgstr ""
+
+#. module: sale_order_gebesa
+#: code:addons/sale_order_gebesa/models/account_analytic_account.py:12
+#: model:ir.model.fields,field_description:sale_order_gebesa.field_account_analytic_account_use_salesorder
+#, python-format
+msgid "Analytic available for sales order"
+msgstr ""
+
+#. module: sale_order_gebesa
+#: code:addons/sale_order_gebesa/models/sale_order.py:84
 #: selection:sale.order,priority:0
 #, python-format
 msgid "Complement"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:103
+#: code:addons/sale_order_gebesa/models/sale_order.py:104
 #: selection:sale.order,credit_status:0
 #, python-format
 msgid "Conditioned"
@@ -35,42 +47,49 @@ msgid "Credit and collection"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:104
+#: code:addons/sale_order_gebesa/models/sale_order.py:105
 #: model:ir.model.fields,field_description:sale_order_gebesa.field_sale_order_credit_status
 #, python-format
 msgid "Credit status"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:18
+#: code:addons/sale_order_gebesa/models/sale_order.py:19
 #: model:ir.model.fields,field_description:sale_order_gebesa.field_sale_order_date_delivery
 #, python-format
 msgid "Date delivery"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:23
+#: code:addons/sale_order_gebesa/models/sale_order.py:24
 #: model:ir.model.fields,field_description:sale_order_gebesa.field_sale_order_date_reception
 #, python-format
 msgid "Date reception"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:89
+#: code:addons/sale_order_gebesa/models/account_analytic_account.py:18
+#: model:ir.model.fields,field_description:sale_order_gebesa.field_account_analytic_account_warehouse_id
+#, python-format
+msgid "Default warehouse"
+msgstr ""
+
+#. module: sale_order_gebesa
+#: code:addons/sale_order_gebesa/models/sale_order.py:90
 #: model:ir.model.fields,help:sale_order_gebesa.field_sale_order_complement_saleorder_id
 #, python-format
 msgid "Displays a list of sales orders"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:70
+#: code:addons/sale_order_gebesa/models/sale_order.py:71
 #: model:ir.model.fields,field_description:sale_order_gebesa.field_sale_order_executive
 #, python-format
 msgid "Executive"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:82
+#: code:addons/sale_order_gebesa/models/sale_order.py:83
 #: selection:sale.order,priority:0
 #, python-format
 msgid "Express"
@@ -84,7 +103,7 @@ msgid "Freight amount"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:33
+#: code:addons/sale_order_gebesa/models/sale_order.py:34
 #: model:ir.model.fields,field_description:sale_order_gebesa.field_sale_order_perc_freight
 #, python-format
 msgid "Freight percentage"
@@ -100,14 +119,14 @@ msgid "Fulfilled"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:81
+#: code:addons/sale_order_gebesa/models/sale_order.py:82
 #: selection:sale.order,priority:0
 #, python-format
 msgid "High"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:88
+#: code:addons/sale_order_gebesa/models/sale_order.py:89
 #: model:ir.model.fields,field_description:sale_order_gebesa.field_sale_order_complement_saleorder_id
 #, python-format
 msgid "In complement:"
@@ -123,35 +142,35 @@ msgid "Invoiced"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:63
+#: code:addons/sale_order_gebesa/models/sale_order.py:64
 #: selection:sale.order,manufacture:0
 #, python-format
 msgid "Line"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:80
+#: code:addons/sale_order_gebesa/models/sale_order.py:81
 #: selection:sale.order,priority:0
 #, python-format
 msgid "Low"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:66
+#: code:addons/sale_order_gebesa/models/sale_order.py:67
 #: model:ir.model.fields,field_description:sale_order_gebesa.field_sale_order_manufacture
 #, python-format
 msgid "Manufacture"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:84
+#: code:addons/sale_order_gebesa/models/sale_order.py:85
 #: model:ir.model.fields,field_description:sale_order_gebesa.field_sale_order_priority
 #, python-format
 msgid "Manufacturing priority"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:80
+#: code:addons/sale_order_gebesa/models/sale_order.py:81
 #: selection:sale.order,priority:0
 #, python-format
 msgid "Medium"
@@ -165,28 +184,28 @@ msgid "Net sales"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:101
+#: code:addons/sale_order_gebesa/models/sale_order.py:102
 #: selection:sale.order,credit_status:0
 #, python-format
 msgid "Normal"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:107
+#: code:addons/sale_order_gebesa/models/sale_order.py:108
 #: model:ir.model.fields,field_description:sale_order_gebesa.field_sale_order_credit_note
 #, python-format
 msgid "Note Credit and Collections"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:13
+#: code:addons/sale_order_gebesa/models/sale_order.py:14
 #: model:ir.model.fields,field_description:sale_order_gebesa.field_sale_order_notify_approval
 #, python-format
 msgid "Notify approval"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:93
+#: code:addons/sale_order_gebesa/models/sale_order.py:94
 #: model:ir.model.fields,field_description:sale_order_gebesa.field_sale_order_manufacturing_observations
 #, python-format
 msgid "Observations Manufacturing"
@@ -205,7 +224,7 @@ msgid "Production data"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:53
+#: code:addons/sale_order_gebesa/models/sale_order.py:54
 #: code:addons/sale_order_gebesa/models/sale_order_line.py:39
 #: model:ir.model.fields,field_description:sale_order_gebesa.field_sale_order_line_profit_margin
 #: model:ir.model.fields,field_description:sale_order_gebesa.field_sale_order_profit_margin
@@ -214,15 +233,15 @@ msgid "Profit margin"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:97
+#: code:addons/sale_order_gebesa/models/sale_order.py:98
 #: model:ir.model.fields,field_description:sale_order_gebesa.field_sale_order_replenishing_motif
 #, python-format
 msgid "Reason for the replenishment"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:64
-#: code:addons/sale_order_gebesa/models/sale_order.py:81
+#: code:addons/sale_order_gebesa/models/sale_order.py:65
+#: code:addons/sale_order_gebesa/models/sale_order.py:82
 #: selection:sale.order,manufacture:0
 #: selection:sale.order,priority:0
 #, python-format
@@ -230,7 +249,7 @@ msgid "Replenishment"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:75
+#: code:addons/sale_order_gebesa/models/sale_order.py:76
 #: model:ir.model.fields,field_description:sale_order_gebesa.field_sale_order_respo_reple
 #, python-format
 msgid "Responsible of replenishment"
@@ -252,21 +271,21 @@ msgid "Sales data"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:82
+#: code:addons/sale_order_gebesa/models/sale_order.py:83
 #: selection:sale.order,priority:0
 #, python-format
 msgid "Sample"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:65
+#: code:addons/sale_order_gebesa/models/sale_order.py:66
 #: selection:sale.order,manufacture:0
 #, python-format
 msgid "Semi special"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:62
+#: code:addons/sale_order_gebesa/models/sale_order.py:63
 #: selection:sale.order,manufacture:0
 #, python-format
 msgid "Special"
@@ -280,31 +299,73 @@ msgid "Standard cost"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:102
+#: code:addons/sale_order_gebesa/models/sale_order.py:103
 #: selection:sale.order,credit_status:0
 #, python-format
 msgid "Suspended for Collection"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:38
+#: code:addons/sale_order_gebesa/models/sale_order.py:139
+#, python-format
+msgid "The following field is not invalid:\n"
+"Analytic Account"
+msgstr ""
+
+#. module: sale_order_gebesa
+#: code:addons/sale_order_gebesa/models/sale_order.py:132
+#, python-format
+msgid "The following field is not invalid:\n"
+"Executive"
+msgstr ""
+
+#. module: sale_order_gebesa
+#: code:addons/sale_order_gebesa/models/sale_order.py:129
+#, python-format
+msgid "The following field is not invalid:\n"
+"Manufacture"
+msgstr ""
+
+#. module: sale_order_gebesa
+#: code:addons/sale_order_gebesa/models/sale_order.py:135
+#, python-format
+msgid "The following field is not invalid:\n"
+"Manufacturing                       priority"
+msgstr ""
+
+#. module: sale_order_gebesa
+#: code:addons/sale_order_gebesa/models/sale_order.py:126
+#, python-format
+msgid "The following field is not invalid:\n"
+"Notify approval"
+msgstr ""
+
+#. module: sale_order_gebesa
+#: code:addons/sale_order_gebesa/models/sale_order.py:39
 #: model:ir.model.fields,field_description:sale_order_gebesa.field_sale_order_total_freight
 #, python-format
 msgid "Total Freight"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:48
+#: code:addons/sale_order_gebesa/models/sale_order.py:49
 #: model:ir.model.fields,field_description:sale_order_gebesa.field_sale_order_total_installation
 #, python-format
 msgid "Total installation"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:28
+#: code:addons/sale_order_gebesa/models/sale_order.py:29
 #: model:ir.model.fields,field_description:sale_order_gebesa.field_sale_order_total_net_sale
 #, python-format
 msgid "Total net sale"
+msgstr ""
+
+#. module: sale_order_gebesa
+#: code:addons/sale_order_gebesa/models/account_analytic_account.py:19
+#: model:ir.model.fields,help:sale_order_gebesa.field_account_analytic_account_warehouse_id
+#, python-format
+msgid "Warehouse for the sales order"
 msgstr ""
 
 #. module: sale_order_gebesa
@@ -315,7 +376,7 @@ msgid "installation amount"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:43
+#: code:addons/sale_order_gebesa/models/sale_order.py:44
 #: model:ir.model.fields,field_description:sale_order_gebesa.field_sale_order_perc_installation
 #, python-format
 msgid "installation percentage"
@@ -329,7 +390,7 @@ msgid "low-margin justification for the sales order"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:58
+#: code:addons/sale_order_gebesa/models/sale_order.py:59
 #: model:ir.model.fields,field_description:sale_order_gebesa.field_sale_order_not_be_billed
 #, python-format
 msgid "not be billed"

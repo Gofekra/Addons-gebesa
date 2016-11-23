@@ -22,6 +22,7 @@
     ],
     "data": [
         "views/hr_employee_view.xml",
+        "security/hr_employee_security.xml"
     ],
     "demo": [
 

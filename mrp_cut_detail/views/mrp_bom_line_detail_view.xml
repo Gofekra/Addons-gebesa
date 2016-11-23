@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
+        <record model='ir.ui.view' id='mrp_bom_line_detail_tree'>
+            <field name='name'>mrp.bom.line.detail.tree</field>
+            <field name='model'>mrp.bom.line.detail</field>
+            <field name='arch' type='xml'>
+                <tree string='BoM Line Detail'>
+                    <field name='product_id'/>
+                    <field name='row'/>
+                    <field name="side"/>
+                    <field name='width_cut'/>
+                    <field name='long_cut'/>
+                    <field name="thickness"/>
+                </tree>
+            </field>
+        </record>
+
         <record model="ir.ui.view" id="mrp_bom_line_detail_form_view">
             <field name="name">mrp.bom.line.detail.form.view</field>
             <field name="model">mrp.bom.line.detail</field>
@@ -30,8 +45,8 @@
                                 <field name="material"/>
                             </group>
                             <group>
-                                <!-- <field name="color_id"/> -->
-                                <!-- <field name="caliber_id"/> -->
+                                <field name="color_id"/>
+                                <field name="caliber_id"/>
                                 <field name="quantity"/>
                                 <label for="long_cut"/>
                                 <div class="o_row">
@@ -39,6 +54,7 @@
                                     <span> cms.</span>
                                 </div>
                                 <field name="side"/>
+                                <field name='operation_id'/>
                             </group>
                         </group>
                         <group>
@@ -58,5 +74,14 @@
                 </form>
             </field>
         </record>   
+
+        <record id='action_mrp_bom_line_detail' model='ir.actions.act_window'>
+            <field name='name'>BoM Line Detail</field>
+            <field name='res_model'>mrp.bom.line.detail</field>
+            <field name='view_type'>form</field>
+            <field name='view_mode'>tree,form</field>
+        </record>
+
+        <menuitem id="mrp_bom_line_detail_menu" name="BoM Line Detail" parent="mrp.menu_mrp_bom" action="action_mrp_bom_line_detail"/>
     </data>
 </openerp>

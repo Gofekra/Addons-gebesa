@@ -18,10 +18,12 @@
     "depends": [
         "base", "mrp",
         "mrp_cut_detail",
-        "stock_warehouse_analytic_id"
+        "stock_warehouse_analytic_id",
+        "sale_order_gebesa",
     ],
     "data": [
         "views/mrp_bom_view.xml",
+        "views/sale_order_view.xml",
     ],
     "demo": [
         # "demo/res_partner_demo.xml",
