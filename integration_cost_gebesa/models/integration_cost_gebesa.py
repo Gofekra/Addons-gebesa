@@ -11,6 +11,76 @@ class IntegrationCostGebesa(models.Model):
     _name = 'integration.cost.gebesa'
     _description = 'Integration cost gebesa'
 
+    name = fields.Char(
+        string='Name',
+        size=256,
+        help='Description of this integration costs',
+        )
+    date = fields.Date(
+        string='Date',
+        default=fields.Date.today,
+        )
+    date_post = fields.Date(
+        string='Accounting date',
+        help='Date used for the accounting entry',
+        default=fields.Date.today,
+        )
+    state = fields.Selection(
+        [('draf', 'Draf'),
+         ('cancel', 'Cancel'),
+         ('done', 'Done')],
+        string="State",
+        default='draf',
+    )
+    company_id = fields.Many2one(
+        'res.company',
+        string='Company',
+        default=lambda self: self.env['res.users'].browse(
+            self._uid).company_id.id
+    )
+    partner_id = fields.Many2one(
+        'res.partner',
+        string='Partner',
+        help='Supplier of raw material',
+    )
+    journal_id = fields.Many2one(
+        'account.journal',
+        string='Journal',
+        help='Accounting journal where entries will be posted',
+        default=_get_journal,
+    )
+    move_id = fields.Many2one(
+        'account.move',
+        string='Accounting entry',
+    )
+    invoice_mp_ids = fields.Many2many(
+        'account.invoice',
+        'gic_invoice_mat',
+        'gic_id',
+        'inv_id',
+        string='Invoices raw material',
+    )
+    invoice_adi_ids = fields.Many2many(
+        'account.invoice',
+        'gic_invoice_adi',
+        'gic_id',
+        'inv_id',
+        string='Additional invoices',
+    )
+    account_analytic_id = fields.Many2one(
+        'account.analytic.account',
+        string='Analytic account',
+        states={'draft': [('readonly', False)]},
+    )
+    disc_additional = fields.Selection(
+        [('value', 'Value'),
+         ('quantity', 'Quantity')],
+        string="Type apportionment",
+        help='It defines how the additional costs are apportioned'
+               'between the lines of the invoice',
+        default='value',
+    )
+    
     def _get_journal(self):
         journal_obj = self.env['account.journal']
         user = self.env['res.users'].browse(self._uid)
@@ -19,76 +89,6 @@ class IntegrationCostGebesa(models.Model):
         domain.append(('integration_cost', '=', True))
         res = journal_obj.search(domain)
         return res and res[0] or False
-
-    name = fields.Char(
-        string=_(u'Name'),
-        size=256,
-        help=_(u'Description of this integration costs'),
-    )
-    date = fields.Date(
-        string=_(u'Date'),
-        default=fields.Date.today,
-    )
-    date_post = fields.Date(
-        string=_(u'Accounting date'),
-        help=_(u'Date used for the accounting entry'),
-        default=fields.Date.today,
-    )
-    state = fields.Selection(
-        [('draf', _(u'Draf')),
-         ('cancel', _(u'Cancel')),
-         ('done', _(u'Done'))],
-        string=_(u"State"),
-        default='draf'
-    )
-    company_id = fields.Many2one(
-        'res.company',
-        string=_(u'Company'),
-        default=lambda self: self.env['res.users'].browse(
-            self._uid).company_id.id
-    )
-    partner_id = fields.Many2one(
-        'res.partner',
-        string=_(u'Partner'),
-        help=_(u'Supplier of raw material')
-    )
-    journal_id = fields.Many2one(
-        'account.journal',
-        string=_(u'Journal'),
-        help=_(u'Accounting journal where entries will be posted'),
-        default=_get_journal
-    )
-    move_id = fields.Many2one(
-        'account.move',
-        string=_(u'Accounting entry'),
-    )
-    invoice_mp_ids = fields.Many2many(
-        'account.invoice',
-        'gic_invoice_mat',
-        'gic_id',
-        'inv_id',
-        string=_(u'Invoices raw material'),
-    )
-    invoice_adi_ids = fields.Many2many(
-        'account.invoice',
-        'gic_invoice_adi',
-        'gic_id',
-        'inv_id',
-        string=_(u'Additional invoices'),
-    )
-    account_analytic_id = fields.Many2one(
-        'account.analytic.account',
-        string=_(u'Analytic account'),
-        states={'draft': [('readonly', False)]}
-    )
-    disc_additional = fields.Selection(
-        [('value', _(u'Value')),
-         ('quantity', _(u'Quantity'))],
-        string=_(u"Type apportionment"),
-        help=_(u'It defines how the additional costs are apportioned \
-               between the lines of the invoice'),
-        default='value',
-    )
 
     def validate_data(self):
         ids = [res.id for res in self]
@@ -100,7 +100,7 @@ class IntegrationCostGebesa(models.Model):
         if all(res):
             return True
         else:
-            raise ValidationError(_(u"Integration should have as much raw \
+            raise ValidationError(_("Integration should have as much raw \
                                   material invoices as additional invoices"))
 
     @api.multi
@@ -160,12 +160,12 @@ class IntegrationCostGebesa(models.Model):
 
                         if not account_expense:
                             raise ValidationError(
-                                _(u"It is not set up an Expense Account in \
+                                _("It is not set up an Expense Account in \
                                   the category of the %s product" %
                                   line_inv.product_id.name_template))
                         if not account_price_difference:
                             raise ValidationError(
-                                _(u"It is not set up an price difference Account in \
+                                _("It is not set up an price difference Account in \
                                     the product %s" %
                                     line_inv2.product_id.name_template))
 

@@ -9,5 +9,4 @@ class AccountJournal(models.Model):
     _inherit = 'account.journal'
 
     integration_cost = fields.Boolean(
-        string=_('Is integration cost'),
-    )
+        string=(_('Is integration cost')))
