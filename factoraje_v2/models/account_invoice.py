@@ -25,7 +25,7 @@ class AccountInvoice(models.Model):
         for inv in self:
             if not inv.factoraje_journal_id:
                 raise ValidationError(
-                    _("El campo 'Diario del factoraje' no es valido"))
+                    _(u"El campo 'Diario del factoraje' no es valido"))
 
         model, action_id = model_obj.get_object_reference(
             'account', 'action_account_invoice_payment')
@@ -36,5 +36,6 @@ class AccountInvoice(models.Model):
             'default_journal_id': self.factoraje_journal_id.id,
             'default_payment_date': self.date_due,
             'default_prepayment_type': 'factoraje',
+            'default_journal_id': self.factoraje_journal_id.id,
             'default_account_analytic_id': self.account_analytic_id.id}
         return action
