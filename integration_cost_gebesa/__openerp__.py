@@ -19,7 +19,7 @@
         "account",
         "account_invoice_stock_picking_id",
         "account_analytic_everywhere",
-        "stock_landed_cost",
+        "stock_landed_costs",
     ],
     "data": [
         "security/security.xml",
