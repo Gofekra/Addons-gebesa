@@ -9,67 +9,86 @@
             name="report_price_list.report_price_list_isometric"
             file="report_price_list.report_price_list_isometric"
         />
+
+        <record id="report_price_list.price_list_isometric" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="report_price_list.paperformat_price_list" />
+        </record>
+
         <template id="report_price_list_isometric">
             <t t-call="report.html_container">
+                <t t-set="pag_n" t-value="1"/>
                 <t t-foreach="lines_id" t-as="line" style="font-family: Century Gothic;">
-                    <div class="header">
-                        <div class="row" style="border-bottom: 3px solid black;">
-                            <div class="col-xs-3" style="font-size: 30pt;">
-                                <span t-field="line.name"/>
-                            </div>
-                            <div class="col-xs-6" style="font-size: 30pt;">
-                                LISTA DE PRECIOS
-                            </div>
-                            <div class="col-xs-3 text-right" style="margin-top: 18pt; font-size: 12pt;">
-                                <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d/%m/%Y')"/>
-                            </div>
-                        </div>
-                        <table width="100%" style="margin-top: 25px;">
-                            <tbody>
-                                <tr style="font-size: 11.5pt;">
-                                    <td width="30%" align="center"><strong>DESCRIPCIÓN</strong></td>
-                                    <td width="19%" align="center"><strong>CLAVE</strong></td>
-                                    <td width="15%" align="center"><strong>PRECIO LISTA</strong></td>
-                                    <td width="20%" align="center"><strong>DIMENSIONES(cm)</strong></td>
-                                    <td width="8%" align="center"><strong>KG</strong></td>
-                                    <td width="8%" align="center"><strong>M3</strong></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="page">
-                        <table width="100%">
-                            <tbody>
-                                <t t-foreach="docs[line.name]" t-as="doc">
+                    <t t-foreach="docs[line.name]" t-as="doc">
+                        <div class="page">
+                            <table width="100%" style="border-bottom: 3px solid black;">
+                                <tbody>
                                     <tr>
-                                        <td colspan="7" height="22px" style="font-size: 10.5pt;"><strong><span t-field="doc.name"/></strong></td>
+                                        <td width="25%" style="font-size: 30pt;">
+                                            <span t-field="line.name"/>
+                                        </td>
+                                        <td width="50%" style="font-size: 30pt;">
+                                            LISTA DE PRECIOS
+                                        </td>
+                                        <td width="25%" align="right" valign="bottom" style="font-size: 12p;">
+                                            <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d/%m/%Y')"/>
+                                        </td>
                                     </tr>
-                                    <tr height="137px" style="border-bottom: 0.5px solid black;font-size: 9.5pt;">
-                                        <td width="30%"><img t-att-src="'data:image/png;base64,%s' % doc.isometric" style="max-height: 125px;"/></td>
-                                        <td width="19%" align="center"><span t-field="doc.note_pricelist"/>   <span t-field="doc.reference_mask"/></td>
-                                        <td width="15%" align="center"><span t-field="doc.list_price" t-field-options='{"widget": "monetary", "display_currency": "doc.currency_id"}'/></td>
-                                        <td width="20%" align="center"><span t-field="doc.length"/> x <span t-field="doc.width"/> x <span t-field="doc.height"/></td>
-                                        <td width="8%" align="center"><span t-field="doc.weight"/></td>
-                                        <td width="8%" align="center"><span t-field="doc.volume"/></td>
+                                </tbody>
+                            </table>
+                            <table width="100%" style="margin-top: 25px;">
+                                <tbody>
+                                    <tr style="font-size: 11.5pt;">
+                                        <td width="30%" align="center"><strong>DESCRIPCIÓN</strong></td>
+                                        <td width="19%" align="center"><strong>CLAVE</strong></td>
+                                        <td width="15%" align="center"><strong>PRECIO LISTA</strong></td>
+                                        <td width="20%" align="center"><strong>DIMENSIONES(cm)</strong></td>
+                                        <td width="8%" align="center"><strong>KG</strong></td>
+                                        <td width="8%" align="center"><strong>M3</strong></td>
                                     </tr>
-                                </t>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="footer">
-                        <div class="col-xs-5" style="font-size: 9pt;">
-                            Condiciones Comerciales:<br/>
-                            *Precios no incluyen I.V.A<br/>
-                            *Precios menos descuentos autorizados<br/>
-                            *Precios sujetos a cambios sin previo aviso
+                                </tbody>
+                            </table>
+                            <table width="100%" style="margin-top: 5px; border-collapse:collapse;">
+                                <tbody>
+                                    <t t-foreach="len(doc)" t-as="n">
+                                        <tr>
+                                        <td colspan="7" height="22px" style="font-size: 10.5pt;"><strong><span t-field="doc[n].name"/></strong></td>
+                                        </tr>
+                                        <tr height="135px" style="font-size: 9.5pt; border-bottom: 1px solid black;">
+                                            <td width="30%"><img t-att-src="'data:image/png;base64,%s' % doc[n].isometric" style="max-height: 125px;"/></td>
+                                            <td width="19%" align="center"><span t-field="doc[n].note_pricelist"/>   <span t-field="doc[n].reference_mask"/></td>
+                                            <td width="15%" align="center"><span t-field="doc[n].list_price" t-field-options='{"widget": "monetary", "display_currency": "doc[n].currency_id"}'/></td>
+                                            <td width="20%" align="center"><span t-field="doc[n].length"/> x <span t-field="doc[n].width"/> x <span t-field="doc[n].height"/></td>
+                                            <td width="8%" align="center"><span t-field="doc[n].weight"/></td>
+                                            <td width="8%" align="center"><span t-field="doc[n].volume"/></td>
+                                        </tr>
+                                    </t>
+                                    <t t-foreach="5 - len(doc)" t-as="m">
+                                        <tr height="22px"></tr>
+                                        <tr height="135px"></tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                            <table width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td width="45%" style="font-size: 9pt;">
+                                            Condiciones Comerciales:<br/>
+                                            *Precios no incluyen I.V.A<br/>
+                                            *Precios menos descuentos autorizados<br/>
+                                            *Precios sujetos a cambios sin previo aviso
+                                        </td>
+                                        <td width="10%" align="center" valign="bottom" style="font-size: 8pt;">
+                                            <span t-esc="pag_n"/>
+                                        </td>
+                                        <td width="45%" align="right" style="border:">
+                                            <img t-att-src="'data:image/png;base64,%s' % logo" style="max-height: 30px;"/><br/>.com
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <t t-set="pag_n" t-value="pag_n+1"/>
                         </div>
-                        <div class="col-xs-2" align="center" style="font-size: 8pt;">
-                            <span class="page" />
-                        </div>
-                        <div class="col-xs-5" align="right">
-                            <img t-att-src="'data:image/png;base64,%s' % logo" style="max-height: 30px;"/><br/>.com
-                        </div>
-                    </div>
+                    </t>
                 </t>
             </t>
         </template>
