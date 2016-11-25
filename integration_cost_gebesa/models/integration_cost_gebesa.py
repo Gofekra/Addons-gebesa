@@ -221,7 +221,7 @@ class IntegrationCostGebesa(models.Model):
                         aml_obj.with_context(ctx).create(vals)
 
                         concat_vals = (
-                            inv2.picking_id,
+                            inv2,
                             line_inv.product_id.name,
                             line_inv2.product_id.name,
                             amount,
