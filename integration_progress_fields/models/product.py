@@ -12,10 +12,10 @@ class ProductTemplate(models.Model):
         _('Num. Ctrl. Progress'),
     )
 
-    _sql_constraints = [
-        ('default_uniq', 'unique (default_code)',
-         _('The field Num. Ctrl. Progress must be unique!'))
-    ]
+    # _sql_constraints = [
+    #    ('default_uniq', 'unique (default_code)',
+    #     _('The field Num. Ctrl. Progress must be unique!'))
+    # ]
 
 
 class ProductProduct(models.Model):
