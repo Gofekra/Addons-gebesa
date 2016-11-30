@@ -61,3 +61,22 @@ class ProductTemplate(models.Model):
     def _inverse_small_isometric(self):
         for rec in self:
             rec.isometric = tools.image_resize_image_big(rec.isometric_small)
+
+
+class ProductAttributeLine(models.Model):
+    _inherit = 'product.attribute.line'
+
+    target_id = fields.Many2one('product.attribute.target',
+                                ondelete='restrict',
+                                string=_(u"Apply to"),
+                                store=True)
+
+
+class ProductAttributeTarget(models.Model):
+    _name = 'product.attribute.target'
+
+    target_code = fields.Char(
+        string=_('Code'),)
+
+    target_name = fields.Char(
+        string=_('Name'),)
