@@ -62,7 +62,7 @@ class AccountInvoiceRefund(models.Model):
         if taxes:
             for tax in taxes:
                 if tax.included_id:
-                    tax_id.append(tax.incluido_id.id)
+                    tax_id.append(tax.included_id.id)
 
         clean_lines = []
         clean_line = {}

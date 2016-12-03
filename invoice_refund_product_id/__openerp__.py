@@ -20,6 +20,8 @@
         "account_analytic_everywhere"
     ],
     "data": [
+        "security/security.xml",
+        "security/ir.model.access.csv",
         "views/account_invoice_refund.xml",
         "views/account_tax.xml"
     ],

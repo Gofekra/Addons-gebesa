@@ -45,6 +45,11 @@ msgid "Invoice Refund"
 msgstr ""
 
 #. module: invoice_refund_product_id
+#: model:res.groups,name:invoice_refund_product_id.group_invoice_refund
+msgid "Invoice Refund / Manager"
+msgstr ""
+
+#. module: invoice_refund_product_id
 #: code:addons/invoice_refund_product_id/models/account_invoice_refund.py:15
 #: model:ir.model.fields,field_description:invoice_refund_product_id.field_account_invoice_refund_product_id
 #, python-format
