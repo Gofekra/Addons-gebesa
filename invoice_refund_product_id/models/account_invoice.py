@@ -33,7 +33,7 @@ class AccountInvoiceRefund(models.Model):
         partner_id = values.get('partner_id', False)
         fiscal_position_id = values.get('fiscal_position_id', False)
 
-        #fis_pos = fiscal_position_id and fiscal_position_obj.browse(
+        # fis_pos = fiscal_position_id and fiscal_position_obj.browse(
         #    fiscal_position_id) or False
 
         res = product_obj.browse(product_id)
@@ -83,7 +83,7 @@ class AccountInvoiceRefund(models.Model):
         clean_line['quantity'] = 1
         clean_line['trancking_id'] = False
         clean_line['move_id'] = False
-        clean_line['uos_id'] = uos_id
+        clean_line['uom_id'] = uos_id
         clean_line['invoice_line_tax_id'] = [(6, 0, tax_id)]
 
         clean_lines.append(clean_line)
