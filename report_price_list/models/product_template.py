@@ -66,10 +66,19 @@ class ProductTemplate(models.Model):
 class ProductAttributeLine(models.Model):
     _inherit = 'product.attribute.line'
 
+    line_id = fields.Many2one('product.line',
+                              string='Product line',)
     target_id = fields.Many2one('product.attribute.target',
                                 ondelete='restrict',
-                                string=_(u"Apply to"),
+                                string="Apply to",
                                 store=True)
+    attribute_id = fields.Many2one('product.attribute',
+                                   string='Attribute',)
+    value_ids = fields.Many2many('product.attribute.value',
+                                 id1='line_id',
+                                 id2='val_id',
+                                 string='Attribute Values',
+                                 )
 
 
 class ProductAttributeTarget(models.Model):
@@ -80,3 +89,13 @@ class ProductAttributeTarget(models.Model):
 
     target_name = fields.Char(
         string=_('Name'),)
+
+
+class ProductLine(models.Model):
+    _inherit = 'product.line'
+
+    attribute_line_ids = fields.One2many(
+        'product.attribute.line',
+        'line_id',
+        string='Product attribute',
+    )
