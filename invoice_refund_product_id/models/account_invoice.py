@@ -84,7 +84,7 @@ class AccountInvoiceRefund(models.Model):
         clean_line['trancking_id'] = False
         clean_line['move_id'] = False
         clean_line['uom_id'] = uos_id
-        clean_line['invoice_line_tax_id'] = [(6, 0, tax_id)]
+        clean_line['invoice_line_tax_ids'] = [(6, 0, tax_id)]
 
         clean_lines.append(clean_line)
         return map(lambda x: (0, 0, x), clean_lines)
