@@ -99,3 +99,18 @@ class ProductLine(models.Model):
         'line_id',
         string='Product attribute',
     )
+
+
+class ProductAttributeValue(models.Model):
+    _inherit = 'product.attribute.value'
+
+    number = fields.Char(
+        string='Number',
+        compute='_compute_number'
+    )
+
+    @api.depends('attribute_code')
+    def _compute_number(self):
+        for record in self:
+            record.number = "".join(
+                [x for x in record.attribute_code if x.isdigit()])
