@@ -26,7 +26,19 @@ class ParticularReport(models.AbstractModel):
                                                   order=None)
             if product_tamplate:
                 lines.append(line.id)
-                docs[line.name] = product_tamplate
+                docs[line.name] = []
+                page = []
+                count = 0
+                for product in product_tamplate:
+                    if count == 5:
+                        docs[line.name].append(page)
+                        page = []
+                        count = 0
+                    page.append(product)
+                    count += 1
+                if page:
+                    docs[line.name].append(page)
+
         logo = self.env.user.company_id.logo
         lines_id = obj_line.search([('id', 'in', lines)], order='code')
         docargs = {

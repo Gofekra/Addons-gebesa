@@ -89,5 +89,6 @@ class AccountInvoice(models.Model):
         analytic."""
         res = ""
         # res = super(AccountInvoice, self)._onchange_account_analytic_id()
-        self.journal_id = self.account_analytic_id.journal_sale_id
+        if self.type in ('out_invoice'):
+            self.journal_id = self.account_analytic_id.journal_sale_id
         return res

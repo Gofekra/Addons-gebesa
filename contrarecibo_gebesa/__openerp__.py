@@ -2,12 +2,12 @@
 # © <YEAR(S)> <AUTHOR(S)>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
-    "name": "GEBESA integration cost",
-    "summary": "Gebesa integration cost",
+    "name": "Contrarecibo Gebesa",
+    "summary": "Add some invoices for the Contrarecibos.",
     "version": "9.0.1.0.0",
-    "category": "Sale",
+    "category": "Uncategorized",
     "website": "https://odoo-community.org/",
-    "author": "<Samuel Barron>, Odoo Community Association (OCA)",
+    "author": "<Deysy Mascorro, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "application": False,
     "installable": True,
@@ -16,19 +16,19 @@
         "bin": [],
     },
     "depends": [
+        "base",
         "account",
-        "account_analytic_everywhere",
-        "stock_landed_costs",
     ],
     "data": [
         "security/security.xml",
         "security/ir.model.access.csv",
-        "views/account_invoice.xml",
-        "views/account_journal.xml",
-        "views/integration_cost_gebesa.xml",
+        "views/contrarecibo_view.xml",
+        "views/contrarecibo_secuence.xml",
     ],
     "demo": [
+
     ],
     "qweb": [
+
     ]
 }
