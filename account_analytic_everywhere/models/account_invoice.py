@@ -2,7 +2,7 @@
 # © <YEAR(S)> <AUTHOR(S)>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import fields, models, _
+from openerp import api, fields, models, _
 
 
 class AccountInvoice(models.Model):
@@ -12,3 +12,18 @@ class AccountInvoice(models.Model):
         'account.analytic.account',
         string=_(u'Analytic Account'),
     )
+
+    @api.multi
+    def action_move_create(self):
+        res = super(AccountInvoice, self).action_move_create()
+        for inv in self:
+            if inv.type in ('in_invoice'):
+                inv.asigna_analytic()
+        return res
+
+    def asigna_analytic(self):
+        move = self.move_id
+
+        for line in move.line_ids:
+            if not line.analytic_account_id:
+                line.analytic_account_id = self.account_analytic_id

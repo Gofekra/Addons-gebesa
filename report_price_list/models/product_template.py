@@ -61,3 +61,56 @@ class ProductTemplate(models.Model):
     def _inverse_small_isometric(self):
         for rec in self:
             rec.isometric = tools.image_resize_image_big(rec.isometric_small)
+
+
+class ProductAttributeLine(models.Model):
+    _inherit = 'product.attribute.line'
+
+    line_id = fields.Many2one('product.line',
+                              string='Product line',)
+    target_id = fields.Many2one('product.attribute.target',
+                                ondelete='restrict',
+                                string="Apply to",
+                                store=True)
+    attribute_id = fields.Many2one('product.attribute',
+                                   string='Attribute',)
+    value_ids = fields.Many2many('product.attribute.value',
+                                 id1='line_id',
+                                 id2='val_id',
+                                 string='Attribute Values',
+                                 )
+
+
+class ProductAttributeTarget(models.Model):
+    _name = 'product.attribute.target'
+
+    target_code = fields.Char(
+        string=_('Code'),)
+
+    target_name = fields.Char(
+        string=_('Name'),)
+
+
+class ProductLine(models.Model):
+    _inherit = 'product.line'
+
+    attribute_line_ids = fields.One2many(
+        'product.attribute.line',
+        'line_id',
+        string='Product attribute',
+    )
+
+
+class ProductAttributeValue(models.Model):
+    _inherit = 'product.attribute.value'
+
+    number = fields.Char(
+        string='Number',
+        compute='_compute_number'
+    )
+
+    @api.depends('attribute_code')
+    def _compute_number(self):
+        for record in self:
+            record.number = "".join(
+                [x for x in record.attribute_code if x.isdigit()])

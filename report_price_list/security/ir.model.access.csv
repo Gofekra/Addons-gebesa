@@ -1,0 +1,5 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+prod_target_manager,product_target_manager,model_product_attribute_target,stock.group_stock_manager,1,1,1,1
+prod_target_user,product_target_user,model_product_attribute_target,stock.group_stock_user,1,0,0,0
+prod_line_atribute_line_manager,product_line_attribute_line_manager,model_product_attribute_line,stock.group_stock_manager,1,1,1,1
+prod_line_atribute_line_user,product_line_attribute_line_user,model_product_attribute_line,stock.group_stock_user,1,0,0,0

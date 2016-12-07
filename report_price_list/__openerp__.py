@@ -18,8 +18,10 @@
         "base", "product", "product_structure_gebesa",
     ],
     "data": [
+        "data/report_paperformat.xml",
         "views/product_template.xml",
         "report/report_price_list.xml",
+        "security/ir.model.access.csv",
     ],
     "demo": [
     ],
