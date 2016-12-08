@@ -64,7 +64,8 @@ class MrpShipment(models.Model):
 
     def _get_shipment_lines(self):
         domain = [('missing_quantity', '>', 0),
-                  ('order_id.warehouse_id', '=', self.warehouse_id.id)]
+                  ('order_id.warehouse_id', '=', self.warehouse_id.id),
+                  ('state', '=', 'done')]
         order_lines = self.env['sale.order.line'].search(domain)
 
         vals = []
