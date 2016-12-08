@@ -83,7 +83,7 @@ class MrpSegment(models.Model):
         return self.write({'state': 'confirm'})
 
     def _get_segment_lines(self):
-        domain = [('missing_quantity', '>', 0),
+        domain = [('missing_qty', '>', 0),
                   ('production_id.location_dest_id', '=', self.location_id.id),
                   ('production_id.state', 'in', ["confirmed", "ready"])]
 
