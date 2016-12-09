@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mrp_shipment_user,mrp.shipment.user,model_mrp_shipment,mrp.group_mrp_user,1,0,0,0
+access_mrp_shipment_manager,mrp.shipment.manager,model_mrp_shipment,mrp.group_mrp_manager,1,1,1,1
+access_mrp_shipment_line_user,mrp.shipment.line.user,model_mrp_shipment_line,mrp.group_mrp_user,1,0,0,0
+access_mrp_shipment_line_manager,mrp.shipment.line.manager,model_mrp_shipment_line,mrp.group_mrp_manager,1,1,1,1
