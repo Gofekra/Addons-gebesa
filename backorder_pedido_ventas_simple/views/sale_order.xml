@@ -11,6 +11,15 @@
                     <field name='name'/>
         			<field name='date_order'/>
                     <field name='partner_id'/>
+                    <field name='city_id'/>
+                    <field name='state_id'/>
+                    <field name='date_reception'/>
+                    <field name='warehouse_id'/>
+                    <field name='project_id'/>
+                    <field name='amount_total'/>
+                    <field name='total_freight'/>
+                    <field name='total_installation'/>
+                    <field name='total_net_sale'/>                    
         		</tree>
         	</field>
         </record>
@@ -23,6 +32,6 @@
             <field name="view_id" ref="backorder_pedido_tree"/>
         </record>
 
-        <menuitem id="week_number_menu" parent="base.menu_sale_report" name="informacion1" action="action_week_count"/>
+        <menuitem id="week_number_menu" parent="base.menu_sale_report" name="Barckorder Pedidos Ventas" action="action_week_count"/>
     </data>
 </openerp>

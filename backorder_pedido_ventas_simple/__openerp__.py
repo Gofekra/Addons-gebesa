@@ -16,7 +16,7 @@
         "bin": [],
     },
     "depends": [
-        "base","sale",
+        "base","sale","sale_order_gebesa","mrp_gebesa"
     ],
     "data": [
         "views/sale_order.xml",
