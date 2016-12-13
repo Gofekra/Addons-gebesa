@@ -150,7 +150,7 @@
                             <span t-field="line.notas_html"/>
                         </div>
                         <div style="height: 52%;width:100%;">
-                            <span t-field="line.composiciones_Html"/>
+                            <span t-field="line.composiciones_html"/>
                         </div>
                         <div style="height: 15%;width:100%;">
                             <img src='http://127.0.0.1:8069/report_price_list/static/src/img/formato.jpg' style="max-width:100%;"/>
