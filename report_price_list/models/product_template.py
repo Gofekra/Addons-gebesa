@@ -84,10 +84,10 @@ class ProductAttributeLine(models.Model):
 class ProductAttributeTarget(models.Model):
     _name = 'product.attribute.target'
 
-    target_code = fields.Char(
+    code = fields.Char(
         string=_('Code'),)
 
-    target_name = fields.Char(
+    name = fields.Char(
         string=_('Name'),)
 
 

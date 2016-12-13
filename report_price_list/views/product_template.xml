@@ -58,8 +58,8 @@
           <field name='model'>product.attribute.target</field>
           <field name='arch' type='xml'>
             <tree string='Target' editable='top'>
-              <field name='target_code'/>
-              <field name='target_name'/>
+              <field name='code'/>
+              <field name='name'/>
             </tree>
           </field>
         </record>
