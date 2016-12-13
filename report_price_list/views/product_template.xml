@@ -55,7 +55,7 @@
                   <label string="Notas"/>
                   <field name='notas_html' widget="html"/>
                   <label string="Composicion"/>
-                  <field name='composiciones_Html' widget="html"/>
+                  <field name='composiciones_html' widget="html"/>
                 </page>
               </notebook>
             </xpath>
