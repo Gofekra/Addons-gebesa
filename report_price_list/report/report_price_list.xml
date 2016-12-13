@@ -80,7 +80,7 @@
                                         <td width="10%" align="center" valign="bottom" style="font-size: 8pt;">
                                             <span t-esc="pag_n"/>
                                         </td>
-                                        <td width="45%" align="right" style="border:">
+                                        <td width="45%" align="right">
                                             <img t-att-src="'data:image/png;base64,%s' % logo" style="max-height: 30px;"/><br/>.com
                                         </td>
                                     </tr>
@@ -89,6 +89,93 @@
                             <t t-set="pag_n" t-value="pag_n+1"/>
                         </div>
                     </t>
+                    <div class="page">
+                        <div style="height: 92%;width:100%;">
+                             <table width="100%" style="border-bottom: 3px solid black;">
+                                <tbody>
+                                    <tr>
+                                        <td width="25%" style="font-size: 30pt;">
+                                            <span t-field="line.name"/>
+                                        </td>
+                                        <td width="50%" style="font-size: 30pt;">
+                                            LISTA DE PRECIOS
+                                        </td>
+                                        <td width="25%" align="right" valign="bottom" style="font-size: 12p;">
+                                            <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d/%m/%Y')"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <span t-field="line.acabados_html"/>
+                        </div>
+                        <div style="height: 8%;width:100%;">
+                            <table width="100%" style="margin-top: 2px;">
+                                <tbody>
+                                    <tr>
+                                        <td width="45%" style="font-size: 9pt;">
+                                            Condiciones Comerciales:<br/>
+                                            *Precios no incluyen I.V.A<br/>
+                                            *Precios menos descuentos autorizados<br/>
+                                            *Precios sujetos a cambios sin previo aviso
+                                        </td>
+                                        <td width="10%" align="center" valign="bottom" style="font-size: 8pt;">
+                                            <span t-esc="pag_n"/>
+                                        </td>
+                                        <td width="45%" align="right">
+                                            <img t-att-src="'data:image/png;base64,%s' % logo" style="max-height: 30px;"/><br/>.com
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <t t-set="pag_n" t-value="pag_n+1"/>
+                    <div class="page">
+                         <div style="height: 25%;width:100%;">
+                             <table width="100%" style="border-bottom: 3px solid black;">
+                                <tbody>
+                                    <tr>
+                                        <td width="25%" style="font-size: 30pt;">
+                                            <span t-field="line.name"/>
+                                        </td>
+                                        <td width="50%" style="font-size: 30pt;">
+                                            LISTA DE PRECIOS
+                                        </td>
+                                        <td width="25%" align="right" valign="bottom" style="font-size: 12p;">
+                                            <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d/%m/%Y')"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <span t-field="line.notas_html"/>
+                        </div>
+                        <div style="height: 52%;width:100%;">
+                            <span t-field="line.composiciones_Html"/>
+                        </div>
+                        <div style="height: 15%;width:100%;">
+                            <img src='http://127.0.0.1:8069/report_price_list/static/src/img/formato.jpg' style="max-width:100%;"/>
+                        </div>
+                        <div style="height: 8%;width:100%;">
+                            <table width="100%" style="margin-top: 2px;">
+                                <tbody>
+                                    <tr>
+                                        <td width="45%" style="font-size: 9pt;">
+                                            Condiciones Comerciales:<br/>
+                                            *Precios no incluyen I.V.A<br/>
+                                            *Precios menos descuentos autorizados<br/>
+                                            *Precios sujetos a cambios sin previo aviso
+                                        </td>
+                                        <td width="10%" align="center" valign="bottom" style="font-size: 8pt;">
+                                            <span t-esc="pag_n"/>
+                                        </td>
+                                        <td width="45%" align="right">
+                                            <img t-att-src="'data:image/png;base64,%s' % logo" style="max-height: 30px;"/><br/>.com
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </t>
             </t>
         </template>
