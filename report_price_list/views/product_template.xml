@@ -39,7 +39,7 @@
           <field name='arch' type='xml'>
             <xpath expr="//group" position="after">
               <notebook>
-                <page>
+                <page string="Atributos">
                   <field name='attribute_line_ids' widget="one2many_list">
                     <tree editable="bottom">
                       <field name='target_id'/>
@@ -47,6 +47,15 @@
                       <field name='value_ids' widget='many2many_tags' domain="[('attribute_id', '=', attribute_id)]"/>
                   </tree>
                   </field>
+                </page>
+                  <page string="Texturas y Acabados">
+                  <field name='acabados_html' widget="html"/>
+                </page>
+                  <page string="Informacion Extra">
+                  <label string="Notas"/>
+                  <field name='notas_html' widget="html"/>
+                  <label string="Composicion"/>
+                  <field name='composiciones_Html' widget="html"/>
                 </page>
               </notebook>
             </xpath>
@@ -60,6 +69,7 @@
             <tree string='Target' editable='top'>
               <field name='code'/>
               <field name='name'/>
+
             </tree>
           </field>
         </record>

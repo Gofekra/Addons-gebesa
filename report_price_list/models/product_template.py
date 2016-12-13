@@ -98,6 +98,20 @@ class ProductLine(models.Model):
         'product.attribute.line',
         'line_id',
         string='Product attribute',
+
+
+    )
+
+    acabados_html= fields.Html(
+        string='Acabados Html',
+    )
+
+    notas_html= fields.Html(
+        string='Notas Html',
+    )
+
+    composiciones_Html= fields.Html(
+        string='Composiciones Html',
     )
 
 
