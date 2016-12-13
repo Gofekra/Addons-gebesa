@@ -106,6 +106,14 @@ class ProductLine(models.Model):
         string='Acabados Html',
     )
 
+    notas_html= fields.Html(
+        string='Notas Html',
+    )
+
+    composiciones_Html= fields.Html(
+        string='Composiciones Html',
+    )
+
 
 class ProductAttributeValue(models.Model):
     _inherit = 'product.attribute.value'

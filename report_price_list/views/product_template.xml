@@ -48,9 +48,14 @@
                   </tree>
                   </field>
                 </page>
-                <page string="Html">
-
+                  <page string="Texturas y Acabados">
                   <field name='acabados_html' widget="html"/>
+                </page>
+                  <page string="Informacion Extra">
+                  <label string="Notas"/>
+                  <field name='notas_html' widget="html"/>
+                  <label string="Composicion"/>
+                  <field name='composiciones_Html' widget="html"/>
                 </page>
               </notebook>
             </xpath>
