@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model='ir.ui.view' id='backorder_pedido_tree'>
+        	<field name='name'>backorder_pedido.tree</field>
+        	<field name='model'>sale.order</field>
+        	<field name='arch' type='xml'>
+        		<tree string='Sale'>
+                    <field name='state'/>
+        			<field name='week_number'/>
+                    <field name='name'/>
+        			<field name='date_order'/>
+                    <field name='partner_id'/>
+                    <field name='city_id'/>
+                    <field name='state_id'/>
+                    <field name='date_reception'/>
+                    <field name='warehouse_id'/>
+                    <field name='project_id'/>
+                    <field name='amount_total'/>
+                    <field name='total_freight'/>
+                    <field name='total_installation'/>
+                    <field name='total_net_sale'/>                    
+        		</tree>
+        	</field>
+        </record>
+
+        <record id='action_week_count' model='ir.actions.act_window'>
+            <field name='name'>week_number</field>
+            <field name='res_model'>sale.order</field>
+            <field name='view_type'>form</field>
+            <field name='view_mode'>tree</field>
+            <field name="view_id" ref="backorder_pedido_tree"/>
+        </record>
+
+        <menuitem id="week_number_menu" parent="base.menu_sale_report" name="Barckorder Pedidos Ventas" action="action_week_count"/>
+    </data>
+</openerp>
