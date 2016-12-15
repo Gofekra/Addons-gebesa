@@ -19,6 +19,7 @@
         "base", "account"
     ],
     "data": [
+        "security/ir.model.access.csv",
         "views/account_account_global.xml"
     ],
     "demo": [
