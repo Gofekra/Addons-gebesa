@@ -10,6 +10,5 @@ class StockPicking(models.Model):
     _inherit = 'stock.picking'
 
     sale_id = fields.Many2one('sale.order',
-                              ondelete='set null',
                               string=_(u'Sale Order'),
-                              select=True)
+                              store=True,)

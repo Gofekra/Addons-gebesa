@@ -40,14 +40,14 @@ class SaleOrderLine(models.Model):
         digits_compute=dp.get_precision('Account'),
     )
 
-    fulfilled = fields.Float(
-        string=_(u'Fulfilled'),
-        digits_compute=dp.get_precision('Account'),
-        help=_(u'Fulfilled'),
-    )
+    # fulfilled = fields.Float(
+    #     string=_(u'Fulfilled'),
+    #     digits_compute=dp.get_precision('Account'),
+    #     help=_(u'Fulfilled'),
+    # )
 
-    invoiced = fields.Float(
-        string=_(u'Invoiced'),
-        digits_compute=dp.get_precision('Account'),
-        help=_(u'Invoiced')
-    )
+    # invoiced = fields.Float(
+    #     string=_(u'Invoiced'),
+    #     digits_compute=dp.get_precision('Account'),
+    #     help=_(u'Invoiced')
+    # )
