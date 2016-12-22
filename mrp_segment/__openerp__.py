@@ -24,6 +24,7 @@
         "sale_order_gebesa",
     ],
     "data": [
+        "data/ir_sequence.xml",
         "views/mrp_segment_view.xml",
         "views/sale_order_view.xml",
         'security/ir.model.access.csv',

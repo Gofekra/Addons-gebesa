@@ -26,6 +26,14 @@ class MrpSegment(models.Model):
         states={'draft': [('readonly', False)]},
         help=_('Segment Name.'))
 
+    folio = fields.Char(
+        string='Folio',
+        required=True,
+        readonly=True,
+        copy=False,
+        default='new',
+    )
+
     date = fields.Datetime(
         string=_('Segment Date'),
         required=True,
@@ -69,6 +77,18 @@ class MrpSegment(models.Model):
         states={'done': [('readonly', True)]},
         help=_("Segment Lines."),
         copy=True)
+
+    _sql_constraints = [
+        ('folio_uniq', 'unique (folio)',
+         'This field must be unique!')
+    ]
+
+    @api.model
+    def create(self, vals):
+        if vals.get('folio', 'New') == 'New':
+            vals['folio'] = self.env['ir.sequence'].next_by_code(
+                'mrp.segment') or '/'
+        return super(MrpSegment, self).create(vals)
 
     @api.multi
     def prepare_segment(self):

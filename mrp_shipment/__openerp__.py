@@ -20,6 +20,7 @@
         "stock_warehouse_analytic_id",
     ],
     "data": [
+        "data/ir_sequence.xml",
         "views/mrp_shipment.xml",
         "views/sale_order.xml",
         'security/ir.model.access.csv',

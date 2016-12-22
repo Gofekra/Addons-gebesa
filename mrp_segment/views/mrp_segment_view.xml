@@ -28,6 +28,7 @@
     		<field name="model">mrp.segment</field>
     		<field name="arch" type="xml">
     			<tree string="Segments" decoration-muted="state == 'cancel'">
+                    <field name="folio"/>
     				<field name="name"/>
     				<field name="date"/>
     				<field name="state"/>
@@ -46,11 +47,12 @@
     				</header>
     				<sheet>
     					<div class="oe_title">
-    						<label for="name" class="oe_edit_only"/>
-    						<h1><field name="name" placeholder="Name for Segment"/></h1>
+    						<label for="folio" class="oe_edit_only"/>
+    						<h1><field name='folio'/></h1>
     					</div>
     					<group>
     						<group>
+                                <field name="name" placeholder="Name for Segment"/>
     							<field name="location_id" domain="[('usage','not in', ['supplier','production'])]"/>
     						</group>
     						<group>
