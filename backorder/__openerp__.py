@@ -19,7 +19,8 @@
         "base", "sale",
         "sale_order_gebesa",
         "mrp_shipment",
-        "mrp_gebesa"
+        "mrp_gebesa",
+        "sale_order_line_pending_qty"
     ],
     "data": [
         "views/sale_order.xml"
