@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--Nodo requerido-->
 <openerp>
     <data>
+    <!--id es el identificador de la accion-->
         <record model='ir.ui.view' id='backorder_pedido_tree'>
+            <!--es un nombre cualquiera para identificarlo-->
         	<field name='name'>backorder_pedido.tree</field>
+            <!--model es el nombre de la clase que se definio en el archivo-->
+            <!--sale_order.py en la variable "_name"-->
         	<field name='model'>sale.order</field>
+            <!--Define que esto es un archivo xml-->
         	<field name='arch' type='xml'>
+            <!--Esto es una vista de arbol es decir solo mostrara registros
+            La variable string es la Etiqueta que aparecera en la parte 
+            superior del Reporte.-->
         		<tree string='Sale'>
+              <!--Field es un campo en la base de datos 
+              name es nombre del atributo o columna de la base de 
+              datos que se desea mostrar-->      
                     <field name='state'/>
         			<field name='week_number'/>
                     <field name='name'/>
@@ -22,6 +34,7 @@
                     <field name='total_net_sale'/>                    
         		</tree>
         	</field>
+            <!--Cierre de Registro-->
         </record>
 
         <record id='action_week_count' model='ir.actions.act_window'>
@@ -32,6 +45,10 @@
             <field name="view_id" ref="backorder_pedido_tree"/>
         </record>
 
+<!--ID: es el identificador del nuevo Submenu.
+    Parent: es el ID del menu donde sera almacenado el nuevo submenu donde se mostrara: este reporte en xml
+    action: es ID de la vista del Reporte en XML
+    name: Es el nombre con el que se mestrara en nuevo Submenu-->
         <menuitem id="week_number_menu" parent="base.menu_sale_report" name="Barckorder Pedidos Ventas" action="action_week_count"/>
     </data>
 </openerp>
