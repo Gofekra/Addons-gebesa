@@ -21,7 +21,6 @@
         "data/report_paperformat.xml",
         "views/product_template.xml",
         "report/report_price_list.xml",
-        "security/ir.model.access.csv",
     ],
     "demo": [
     ],

@@ -4,7 +4,7 @@
         <report
             id="price_list_isometric"
             model="product.template"
-            string="Lista de precios"
+            string="Pricelist"
             report_type="qweb-pdf"
             name="report_price_list.report_price_list_isometric"
             file="report_price_list.report_price_list_isometric"
@@ -18,14 +18,19 @@
             <table width="100%"  height="5%" style="border-bottom: 3px solid black;">
                 <tbody>
                     <tr>
-                        <td width="25%" style="font-size: 30pt;">
+                        <td width="30%" style="font-size: 28pt;">
                             <span t-field="line.name"/>
                         </td>
-                        <td width="50%" style="font-size: 30pt;">
-                            LISTA DE PRECIOS
+                        <td width="55%" style="font-size: 28pt;">
+                            PRICELIST
                         </td>
-                        <td width="25%" align="right" valign="bottom" style="font-size: 12p;">
-                            <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d/%m/%Y')"/>
+                        <td width="15%" align="right" valign="bottom" style="font-size: 12p;">
+                            <t t-if="langu == 'es_MX'">
+                                <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d/%m/%Y')"/>
+                            </t>
+                            <t t-if="langu != 'es_MX'">
+                                <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%m/%d/%Y')"/>
+                            </t>
                         </td>
                     </tr>
                 </tbody>
@@ -37,10 +42,10 @@
                 <tbody>
                     <tr>
                         <td width="45%" style="font-size: 9pt;">
-                            Condiciones Comerciales:<br/>
-                            *Precios no incluyen I.V.A<br/>
-                            *Precios menos descuentos autorizados<br/>
-                            *Precios sujetos a cambios sin previo aviso
+                            Terms and conditions:<br/>
+                            *Prices are subject to authorized discounts<br/>
+                            *Prices subject to change<br/>
+                            *Nominal dimensions shown
                         </td>
                         <td width="10%" align="center" valign="bottom" style="font-size: 8pt;">
                             <span t-esc="pag_n"/>
@@ -63,12 +68,12 @@
                             <table width="100%" height="86%" style="margin-top: 3%;border-collapse:collapse;">
                                 <tbody>
                                     <tr style="font-size: 11.5pt;" height="6%" >
-                                        <th width="30%" align="center"><strong>DESCRIPCIÓN</strong></th>
-                                        <th width="19%" align="center"><strong>CLAVE</strong></th>
-                                        <th width="15%" align="center"><strong>PRECIO LISTA</strong></th>
-                                        <th width="20%" align="center"><strong>DIMENSIONES(cm)</strong></th>
-                                        <th width="8%" align="center"><strong>KG</strong></th>
-                                        <th width="8%" align="center"><strong>M3</strong></th>
+                                        <th width="30%" align="center"><strong>DESCRIPTION</strong></th>
+                                        <th width="19%" align="center"><strong>CODE</strong></th>
+                                        <th width="15%" align="center"><strong>PRICE</strong></th>
+                                        <th width="20%" align="center"><strong>DIMENSIONS <br/> W x D x H</strong></th>
+                                        <th width="8%" align="center"><strong>LB.</strong></th>
+                                        <th width="8%" align="center"><strong>Cu. Ft.</strong></th>
                                     </tr>
                                     <t t-foreach="len(doc)" t-as="n">
                                         <tr>
