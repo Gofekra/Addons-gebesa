@@ -36,8 +36,9 @@ class ResCurrency(models.Model):
             context = {}
         ctx = context.copy()
         if 'date' in ctx.keys():
-            if len(ctx['date']) < 11:
-                ctx['date'] = ctx['date'] + ' 23:00:00'
+            if ctx['date']:
+                if len(ctx['date']) < 11:
+                    ctx['date'] = ctx['date'] + ' 23:00:00'
         from_currency = self.browse(cr, uid, from_currency.id, context=ctx)
         to_currency = self.browse(cr, uid, to_currency.id, context=ctx)
         return to_currency.rate / from_currency.rate
