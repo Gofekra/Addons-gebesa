@@ -36,9 +36,9 @@ class MrpBomLineDetail(models.Model):
         string=_('Composite Article'),
     )
 
-    operation_id = fields.Many2one(
-        'mrp.bom.line.detail.operation',
-        string='Operation',
+    routing_id = fields.Many2one(
+        'mrp.routing',
+        string='Manufacturing Routing',
     )
 
     row = fields.Integer(
@@ -59,13 +59,18 @@ class MrpBomLineDetail(models.Model):
         _('Thickness'),
     )
 
-    material = fields.Char(
-        string=_('Material'),
-    )
+    # material = fields.Char(
+    #     string=_('Material'),
+    # )
 
     meters2 = fields.Float(
         _('Meters2'),
         compute='_compute_m2',
+    )
+
+    product_id = fields.Many2one(
+        'product.product',
+        string=_('Material'),
     )
 
     color_id = fields.Many2one(
@@ -92,7 +97,7 @@ class MrpBomLineDetail(models.Model):
 
     variants = fields.Char(
         string=_('Variants'),
-        compute='_compute_variants',
+        # compute='_compute_variants',
         store=True,
     )
 
@@ -111,20 +116,20 @@ class MrpBomLineDetail(models.Model):
             else:
                 reg.meters2 = width * longs
 
-    @api.depends('bom_line_id.product_id')
-    def _compute_variants(self):
-        for record in self:
-            product = self.env['product.product'].search(
-                [('id', '=', record.bom_line_id.product_id.id)])
-            prod = product.attribute_value_ids
-            resul = []
-            for reg in prod:
-                name = reg.name
-                med = self.env['product.attribute'].search(
-                    [('id', '=', reg.attribute_id.id)])
-                med_name = med.name
-                resul.append(str(med_name or '') + " - " + str(name or ''))
-                lista = tuple(resul)
-                self.variants = lista
+    # @api.depends('bom_line_id.product_id')
+    # def _compute_variants(self):
+    #     for record in self:
+    #         product = self.env['product.product'].search(
+    #             [('id', '=', record.bom_line_id.product_id.id)])
+    #         prod = product.attribute_value_ids
+    #         resul = []
+    #         for reg in prod:
+    #             name = reg.name
+    #             med = self.env['product.attribute'].search(
+    #                 [('id', '=', reg.attribute_id.id)])
+    #             med_name = med.name
+    #             resul.append(str(med_name or '') + " - " + str(name or ''))
+    #             lista = tuple(resul)
+    #             self.variants = lista
 
-            return self.variants
+    #         return self.variants
