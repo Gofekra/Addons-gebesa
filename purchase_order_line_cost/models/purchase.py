@@ -35,5 +35,27 @@ class PurchaseOrderLine(models.Model):
 
     standard_price = fields.Float(
         string=_('Standard price'),
-        related='product_id.standard_price'
+        # related='product_id.standard_price',
+        compute='_compute_standard_price',
+        store=True,
     )
+
+    @api.depends('product_id')
+    def _compute_standard_price(self):
+        for line in self:
+            line.standard_price = line.product_id.standard_price
+
+
+class StockMove(models.Model):
+    _inherit = 'stock.move'
+
+    standard_price = fields.Float(
+        string=_('Standard price'),
+        compute='_compute_standard_price',
+        store=True,
+    )
+
+    @api.depends('product_id')
+    def _compute_standard_price(self):
+        for move in self:
+            move.standard_price = move.product_id.standard_price

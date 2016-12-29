@@ -25,5 +25,15 @@
         		</xpath>
         	</field>
         </record>
+        <record model='ir.ui.view' id='view_move_tree'>
+            <field name='name'>stock.moveprice.standard.tree</field>
+            <field name='model'>stock.move</field>
+            <field name='inherit_id' ref='stock.view_move_tree'/>
+            <field name='arch' type='xml'>
+                <xpath expr="//field[@name='product_uom_qty']" position="after">
+                    <field name="standard_price" readonly="True" widget="monetary"/>
+                </xpath>
+            </field>
+        </record>
     </data>
 </openerp>
