@@ -15,7 +15,7 @@
         </record>
 
         <template id="report_price_list_isometric_header">
-            <table width="100%"  height="5%" style="border-bottom: 3px solid black;">
+            <table width="100%" style="border-bottom: 3px solid black;">
                 <tbody>
                     <tr>
                         <td width="30%" style="font-size: 28pt;">
@@ -38,7 +38,7 @@
         </template>
 
         <template id="report_price_list_isometric_footer">
-            <table width="100%" height="6%">
+            <table width="100%">
                 <tbody>
                     <tr>
                         <td width="45%" style="font-size: 9pt;">
@@ -58,66 +58,106 @@
             </table>
         </template>
 
+        <template id="report_price_list_isometric_document">
+            <t t-set="pag_n" t-value="pag_n+1"/>
+            <t t-foreach="docs[line.name]" t-as="doc">
+                <div class="header">
+                    <t t-call="report_price_list.report_price_list_isometric_header"/>
+                </div>
+                <div class="page">
+                    <table width="100%" style="border-collapse:collapse;">
+                        <thead>
+                            <tr style="font-size: 11.5pt;" height="60px" >
+                                <th width="30%" align="center"><strong>DESCRIPTION</strong></th>
+                                <th width="19%" align="center"><strong>CODE</strong></th>
+                                <th width="15%" align="center"><strong>PRICE</strong></th>
+                                <th width="20%" align="center"><strong>DIMENSIONS <br/> W x D x H</strong></th>
+                                <th width="8%" align="center"><strong>LB.</strong></th>
+                                <th width="8%" align="center"><strong>Cu. Ft.</strong></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="len(doc)" t-as="n">
+                                <tr height="30px">
+                                    <td colspan="7" style="font-size: 10.5pt;">
+                                        <strong>
+                                            <span t-field="doc[n].name"/>
+                                        </strong>
+                                    </td>
+                                </tr>
+                                <tr height="130px" style="font-size: 9.5pt; border-bottom: 1px solid black;">
+                                    <td width="30%">
+                                        <img t-att-src="'data:image/png;base64,%s' % doc[n].isometric" style="max-height: 125px;"/>
+                                    </td>
+                                    <td width="19%" align="center">
+                                        <span t-field="doc[n].reference_mask"/>
+                                    </td>
+                                    <td width="15%" align="center">
+                                        <span t-field="doc[n].list_price" t-field-options='{"widget": "monetary", "display_currency": "doc[n].currency_id"}'/>
+                                    </td>
+                                    <td width="20%" align="center">
+                                        <span t-field="doc[n].length"/> x <span t-field="doc[n].width"/> x <span t-field="doc[n].height"/>
+                                    </td>
+                                    <td width="8%" align="center">
+                                        <span t-field="doc[n].weight"/>
+                                    </td>
+                                    <td width="8%" align="center">
+                                        <span t-field="doc[n].volume"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="footer">
+                    <t t-call="report_price_list.report_price_list_isometric_footer"/>
+                    <t t-set="pag_n" t-value="pag_n+1"/>
+                </div>
+            </t>
+            <t t-call="report_price_list.report_price_list_isometric_finished"/>
+        </template>
+
+        <template id="report_price_list_isometric_finished">
+            <div class="header">
+                <t t-call="report_price_list.report_price_list_isometric_header"/>
+            </div>
+            <div class="page">
+                <table width="100%">
+                    <tbody>
+                        <tr height="460px">
+                            <td valign="top">
+                                <span t-field="line.acabados_html"/>
+                            </td>
+                        </tr>
+                        <tr height="130px">
+                            <td valign="top">
+                                <span t-field="line.notas_html"/>
+                            </td>
+                        </tr>
+                        <tr height="150px">
+                            <td valign="top">
+                                <span t-field="line.composiciones_html"/>
+                            </td>
+                        </tr>
+                        <tr height="120px">
+                            <td>
+                                <img src='http://127.0.0.1:8069/report_price_list/static/src/img/formato.jpg' style="max-width:100%;"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="footer">
+                <t t-call="report_price_list.report_price_list_isometric_footer"/>
+                <t t-set="pag_n" t-value="pag_n+1"/>
+            </div>
+        </template>
+
         <template id="report_price_list_isometric">
             <t t-call="report.html_container">
-                <t t-set="pag_n" t-value="1"/>
-                <t t-foreach="lines_id" t-as="line" style="font-family: Century Gothic;">
-                    <t t-foreach="docs[line.name]" t-as="doc">
-                        <div class="page">
-                            <t t-call="report_price_list.report_price_list_isometric_header"/>
-                            <table width="100%" height="86%" style="margin-top: 3%;border-collapse:collapse;">
-                                <tbody>
-                                    <tr style="font-size: 11.5pt;" height="6%" >
-                                        <th width="30%" align="center"><strong>DESCRIPTION</strong></th>
-                                        <th width="19%" align="center"><strong>CODE</strong></th>
-                                        <th width="15%" align="center"><strong>PRICE</strong></th>
-                                        <th width="20%" align="center"><strong>DIMENSIONS <br/> W x D x H</strong></th>
-                                        <th width="8%" align="center"><strong>LB.</strong></th>
-                                        <th width="8%" align="center"><strong>Cu. Ft.</strong></th>
-                                    </tr>
-                                    <t t-foreach="len(doc)" t-as="n">
-                                        <tr>
-                                        <td colspan="7" height="3%" style="font-size: 10.5pt;"><strong><span t-field="doc[n].name"/></strong></td>
-                                        </tr>
-                                        <tr height="13%" style="font-size: 9.5pt; border-bottom: 1px solid black;">
-                                            <td width="30%"><img t-att-src="'data:image/png;base64,%s' % doc[n].isometric" style="max-height: 125px;"/></td>
-                                            <td width="19%" align="center"><span t-field="doc[n].note_pricelist"/>   <span t-field="doc[n].reference_mask"/></td>
-                                            <td width="15%" align="center"><span t-field="doc[n].list_price" t-field-options='{"widget": "monetary", "display_currency": "doc[n].currency_id"}'/></td>
-                                            <td width="20%" align="center"><span t-field="doc[n].length"/> x <span t-field="doc[n].width"/> x <span t-field="doc[n].height"/></td>
-                                            <td width="8%" align="center"><span t-field="doc[n].weight"/></td>
-                                            <td width="8%" align="center"><span t-field="doc[n].volume"/></td>
-                                        </tr>
-                                    </t>
-                                    <t t-foreach="5 - len(doc)" t-as="m">
-                                        <tr height="3%"></tr>
-                                        <tr height="13%"></tr>
-                                    </t>
-                                </tbody>
-                            </table>
-                            <t t-call="report_price_list.report_price_list_isometric_footer"/>
-                            <t t-set="pag_n" t-value="pag_n+1"/>
-                        </div>
-                    </t>
-                    <div class="page">
-                        <t t-call="report_price_list.report_price_list_isometric_header"/>
-                        <table width="100%" height="86%" style="margin-top: 3%;">
-                            <tbody>
-                                <tr height="46%">
-                                    <td valign="top"><span t-field="line.acabados_html"/></td>
-                                </tr>
-                                <tr height="13%">
-                                    <td valign="top"><span t-field="line.notas_html"/></td>
-                                </tr>
-                                <tr height="15%">
-                                    <td valign="top"><span t-field="line.composiciones_html"/></td>
-                                </tr>
-                                <tr height="12%">
-                                    <td><img src='http://127.0.0.1:8069/report_price_list/static/src/img/formato.jpg' style="max-width:100%;"/></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <t t-call="report_price_list.report_price_list_isometric_footer"/>
-                    </div>
+                <t t-foreach="lines_id" t-as="line">
+                    <t t-set="pag_n" t-value="0"/>
+                    <t t-call="report_price_list.report_price_list_isometric_document"/>
                 </t>
             </t>
         </template>
