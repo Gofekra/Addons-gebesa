@@ -34,27 +34,32 @@ class AccountInvoice(models.Model):
         picking_obj = self.env['stock.picking']
         procurement_obj = self.env['procurement.order']
         proc_ids = []
-
+        generate = False
         for line in self.invoice_line_ids:
-            date_planned = self._get_date_planned(line)
+            if line.product_id.type == 'product':
+                generate = True
 
-            if line.product_id:
-                if line.product_id.type in ('product', 'consu'):
-                    if not picking_id:
-                        picking_id = picking_obj.create(
-                            self._prepare_order_picking(line))
-                    move_id = move_obj.create(
-                        self._prepare_order_line_move(line, picking_id,
-                                                      date_planned))
-                else:
-                    move_id = False
+        if generate:
+            for line in self.invoice_line_ids:
+                date_planned = self._get_date_planned(line)
 
-                proc_id = procurement_obj.create(
-                    self._prepare_order_line_procurement(
-                        line, move_id, date_planned))
-                proc_ids.append(proc_id)
-                line.procurement_id = proc_id
-                self.ship_recreate(line, move_id, proc_id)
+                if line.product_id:
+                    if line.product_id.type in ('product', 'consu'):
+                        if not picking_id:
+                            picking_id = picking_obj.create(
+                                self._prepare_order_picking(line))
+                        move_id = move_obj.create(
+                            self._prepare_order_line_move(line, picking_id,
+                                                          date_planned))
+                    else:
+                        move_id = False
+
+                    proc_id = procurement_obj.create(
+                        self._prepare_order_line_procurement(
+                            line, move_id, date_planned))
+                    proc_ids.append(proc_id)
+                    line.procurement_id = proc_id
+                    self.ship_recreate(line, move_id, proc_id)
 
         if picking_id:
             for picking in picking_id:
