@@ -2,7 +2,7 @@
 # © <YEAR(S)> <AUTHOR(S)>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import fields, models
+from openerp import api, fields, models
 from openerp.addons import decimal_precision as dp
 
 
@@ -52,6 +52,16 @@ class SaleGoal(models.Model):
         ('year_sales_channel', "unique(year,sales_channel_id)",
          'Sales channel already registered in this year'),
     ]
+
+    @api.onchange('sales_channel_id')
+    def _onchange_sales_channel_id(self):
+        if self.sales_channel_id:
+            self.partner_ids = None
+
+    @api.onchange('partner_ids')
+    def _onchange_partner_ids(self):
+        if self.partner_ids:
+            self.sales_channel_id = None
 
 
 

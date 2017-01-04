@@ -31,3 +31,6 @@ class SalesChannel(models.Model):
     other_income = fields.Boolean(
         string=_('Other income'),
     )
+    is_export = fields.Boolean(
+        string='It is export',
+    )
