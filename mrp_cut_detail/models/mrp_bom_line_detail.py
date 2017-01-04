@@ -68,7 +68,7 @@ class MrpBomLineDetail(models.Model):
         compute='_compute_m2',
     )
 
-    product_id = fields.Many2one(
+    material = fields.Many2one(
         'product.product',
         string=_('Material'),
     )
