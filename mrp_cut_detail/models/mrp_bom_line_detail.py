@@ -8,7 +8,7 @@ from openerp import api, _, fields, models
 class MrpBomLineDetail(models.Model):
     _name = 'mrp.bom.line.detail'
     _order = "row"
-    _rec_name = 'bom_line_id'
+    # _rec_name = 'bom_line_id'
 
     # @api.model
     # def _default_row(self):
@@ -59,9 +59,9 @@ class MrpBomLineDetail(models.Model):
         _('Thickness'),
     )
 
-    # material = fields.Char(
-    #     string=_('Material'),
-    # )
+    name = fields.Char(
+        string=_('Name'),
+    )
 
     meters2 = fields.Float(
         _('Meters2'),
