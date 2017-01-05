@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model='ir.ui.view' id='product_variant_easy_edit_view'>
+        	<field name='name'>product_customer_code_form</field>
+        	<field name='model'>product.product</field>
+        	<field name='inherit_id' ref='product.product_variant_easy_edit_view'/>
+        	<field name='arch' type='xml'>
+        		<xpath expr="//group[4]" position="after">
+        			<notebook>
+        				<page string="Customer code">
+        					<field name='product_customer_ids'>
+                                <tree string="Customer code" editable="bottom">
+                                    <field name='partner_id' required="True" domain="[('customer', '=', True)]"/>
+                                    <field name='customer_code' required="True"/>
+                                    <field name='customer_description'/>
+                                </tree>
+                            </field>
+        				</page>
+        			</notebook>
+        		</xpath>
+        	</field>
+        </record>
+    </data>
+</openerp>
