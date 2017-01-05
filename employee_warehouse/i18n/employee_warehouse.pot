@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 9.0c\n"
+"Project-Id-Version: Odoo Server 9.0e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-26 22:33+0000\n"
-"PO-Revision-Date: 2016-02-26 22:33+0000\n"
+"POT-Creation-Date: 2017-01-05 22:51+0000\n"
+"PO-Revision-Date: 2017-01-05 22:51+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -29,7 +29,6 @@ msgstr ""
 
 #. module: employee_warehouse
 #: code:addons/employee_warehouse/models/hr_employee.py:30
-#: code:addons/employee_warehouse/models/hr_employee.py:43
 #, python-format
 msgid "Invalid defaul warehouse"
 msgstr ""
@@ -41,9 +40,19 @@ msgstr ""
 
 #. module: employee_warehouse
 #: code:addons/employee_warehouse/models/hr_employee.py:31
-#: code:addons/employee_warehouse/models/hr_employee.py:44
 #, python-format
-msgid "The default warehouse must be selected in the warehouse of employee"
+msgid "The default warehouse must be selected in                                  the warehouse of employee"
+msgstr ""
+
+#. module: employee_warehouse
+#: code:addons/employee_warehouse/models/hr_employee.py:43
+#, python-format
+msgid "The default warehouse must be selected in the                       warehouse of employee"
+msgstr ""
+
+#. module: employee_warehouse
+#: model:ir.model,name:employee_warehouse.model_stock_picking
+msgid "Transfer"
 msgstr ""
 
 #. module: employee_warehouse
@@ -51,5 +60,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:employee_warehouse.field_hr_employee_warehouse_ids
 #, python-format
 msgid "Warehouses"
+msgstr ""
+
+#. module: employee_warehouse
+#: code:addons/employee_warehouse/models/stock_picking.py:20
+#, python-format
+msgid "You do not have privileges to validate                                       in this warehouse."
 msgstr ""
 
