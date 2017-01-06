@@ -6,14 +6,16 @@ from openerp import _, api, fields, models
 from openerp.exceptions import ValidationError
 
 
-
 class StockPicking(models.Model):
     _inherit = 'stock.picking'
 
     @api.multi
     def do_new_transfer(self):
         for picking in self:
-            warehouse = picking.location_dest_id.stock_warehouse_id
+            if picking.location_dest_id.usage in ('customer', 'transit'):
+                warehouse = picking.location_id.stock_warehouse_id
+            else:
+                warehouse = picking.location_dest_id.stock_warehouse_id
             employee = self.env['hr.employee'].search(
                 [('user_id', '=', self._uid)])
             if warehouse not in employee.warehouse_ids:
