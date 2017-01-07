@@ -19,5 +19,5 @@ class MrpProduction(models.Model):
             if warehouse not in employee.warehouse_ids:
                 raise ValidationError(_("You do not have privileges to validate \
                                       in this warehouse."))
-        super(MrpProduction, self).action_produce(
+        return super(MrpProduction, self).action_produce(
             production_qty, production_mode, wiz)

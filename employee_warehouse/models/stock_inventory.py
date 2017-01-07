@@ -18,7 +18,7 @@ class StockInventory(models.Model):
             if warehouse not in employee.warehouse_ids:
                 raise ValidationError(_("You do not have privileges to validate \
                                       in this warehouse."))
-        super(StockInventory, self).prepare_inventory()
+        return super(StockInventory, self).prepare_inventory()
 
     @api.multi
     def action_done(self):
@@ -29,4 +29,4 @@ class StockInventory(models.Model):
             if warehouse not in employee.warehouse_ids:
                 raise ValidationError(_("You do not have privileges to validate \
                                       in this warehouse."))
-        super(StockInventory, self).action_done()
+        return super(StockInventory, self).action_done()

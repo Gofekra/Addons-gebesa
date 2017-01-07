@@ -21,4 +21,4 @@ class StockPicking(models.Model):
             if warehouse not in employee.warehouse_ids:
                 raise ValidationError(_("You do not have privileges to validate \
                                       in this warehouse."))
-        super(StockPicking, self).do_new_transfer()
+        return super(StockPicking, self).do_new_transfer()
