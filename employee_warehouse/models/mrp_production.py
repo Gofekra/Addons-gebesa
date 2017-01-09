@@ -20,4 +20,4 @@ class MrpProduction(models.Model):
                 raise ValidationError(_("You do not have privileges to validate \
                                       in this warehouse."))
         return super(MrpProduction, self).action_produce(
-            production_qty, production_mode, wiz)
+            self.id, production_qty, production_mode, wiz)
