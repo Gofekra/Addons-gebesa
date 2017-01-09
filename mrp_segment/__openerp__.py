@@ -25,8 +25,10 @@
     ],
     "data": [
         "data/ir_sequence.xml",
+        'wizards/mrp_production_segment.xml',
         "views/mrp_segment_view.xml",
         "views/sale_order_view.xml",
+        "views/mrp_production.xml",
         'security/ir.model.access.csv',
     ],
     "demo": [
