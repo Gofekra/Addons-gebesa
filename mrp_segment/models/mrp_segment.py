@@ -3,13 +3,14 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from openerp import api, _, fields, models
+import openerp.addons.decimal_precision as dp
 from openerp.exceptions import UserError
 
 
 class MrpSegment(models.Model):
     _name = "mrp.segment"
     _description = "MRP Segment"
-    _rec_name = 'name'
+    _rec_name = 'folio'
 
     def _default_stock_location(self):
         try:
@@ -76,7 +77,8 @@ class MrpSegment(models.Model):
         readonly=False,
         states={'done': [('readonly', True)]},
         help=_("Segment Lines."),
-        copy=True)
+        copy=True,
+        ondelete='cascade')
 
     _sql_constraints = [
         ('folio_uniq', 'unique (folio)',
@@ -104,13 +106,13 @@ class MrpSegment(models.Model):
 
     def _get_segment_lines(self):
         domain = [('missing_qty', '>', 0),
-                  ('production_id.location_dest_id', '=', self.location_id.id),
-                  ('production_id.state', 'in', ["confirmed", "ready"])]
+                  ('location_dest_id', '=', self.location_id.id),
+                  ('state', 'in', ["confirmed", "ready"])]
 
-        segment_lines = self.env['mrp.production.product.line'].search(domain)
+        segment_lines = self.env['mrp.production'].search(domain)
 
         vals = []
-        for line in segment_lines:
+        for produ in segment_lines:
             product_line = dict(
                 (fn, 0.0) for fn in [
                     'segment_id', 'mrp_production_id',
@@ -118,11 +120,10 @@ class MrpSegment(models.Model):
                     'mrp_production_line_id'])
 
             product_line['segment_id'] = self.id
-            product_line['mrp_production_id'] = line.production_id.id
-            product_line['product_id'] = line.product_id.id
-            product_line['quantity'] = line.missing_qty
-            product_line['sale_name'] = line.production_id.sale_name
-            product_line['mrp_production_line_id'] = line.id
+            product_line['mrp_production_id'] = produ.id
+            product_line['product_id'] = produ.product_id.id
+            product_line['quantity'] = produ.missing_qty
+            product_line['sale_name'] = produ.sale_name
             vals.append(product_line)
         return vals
 
@@ -141,11 +142,6 @@ class MrpSegmentLine(models.Model):
     mrp_production_id = fields.Many2one(
         'mrp.production',
         string=_('Manufacturing Order'),
-    )
-
-    mrp_production_line_id = fields.Many2one(
-        'mrp.production.product.line',
-        string=_('Manufacturing Order Line'),
     )
 
     product_id = fields.Many2one(
@@ -175,18 +171,28 @@ class MrpSegmentLine(models.Model):
 
     standard_cost = fields.Float(
         string=_('Standard Cost'),
-        related='product_id.standard_price',
+        compute='_compute_standard_price',
+        store=True,
+    )
+
+    product_uom = fields.Many2one(
+        'product.uom',
+        string='Unit of Measure',
+        related='product_id.uom_id'
     )
 
     quantity = fields.Float(
         string=_('Quantity'),
+        digits=dp.get_precision('Product Unit of Measure')
     )
 
     sale_name = fields.Char(
         string=_('Sale Order'))
 
     qty_segmented = fields.Float(
-        string=_('Quantity Segmented'))
+        string=_('Quantity Segmented'),
+        digits=dp.get_precision('Product Unit of Measure')
+    )
 
     @api.constrains('qty_segmented')
     def _check_qty_segmented(self):
@@ -194,3 +200,8 @@ class MrpSegmentLine(models.Model):
             if line.qty_segmented > line.quantity:
                 raise UserError(_("The quantity available is less than \n"
                                   "the quantity segmented"))
+
+    @api.depends('product_id')
+    def _compute_standard_price(self):
+        for line in self:
+            line.standard_cost = line.product_id.standard_price
