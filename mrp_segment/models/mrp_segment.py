@@ -80,6 +80,21 @@ class MrpSegment(models.Model):
         copy=True,
         ondelete='cascade')
 
+    product_lines_ids = fields.One2many(
+        'mrp.production.product.line',
+        'production_id',
+        compute='_compute_product_lines_ids',
+        string='Scheduled goods',
+    )
+
+    @api.depends('line_ids.mrp_production_id')
+    def _compute_product_lines_ids(self):
+        product_lines = []
+        for line in self.line_ids:
+            for pro_lin in line.mrp_production_id.product_lines:
+                product_lines.append(pro_lin.id)
+        self.product_lines_ids = product_lines
+
     _sql_constraints = [
         ('folio_uniq', 'unique (folio)',
          'This field must be unique!')
@@ -123,7 +138,8 @@ class MrpSegment(models.Model):
             product_line['mrp_production_id'] = produ.id
             product_line['product_id'] = produ.product_id.id
             product_line['quantity'] = produ.missing_qty
-            product_line['sale_name'] = produ.sale_name
+            product_line['qty_segmented'] = produ.missing_qty
+            product_line['sale_name'] = produ.origin
             vals.append(product_line)
         return vals
 
@@ -141,6 +157,7 @@ class MrpSegmentLine(models.Model):
 
     mrp_production_id = fields.Many2one(
         'mrp.production',
+        required=True,
         string=_('Manufacturing Order'),
     )
 

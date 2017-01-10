@@ -42,7 +42,8 @@ class MrpProductionSegment(models.TransientModel):
                         'mrp_production_id': prod.id,
                         'product_id': prod.product_id.id,
                         'quantity': prod.missing_qty,
-                        'sale_name': prod.sale_name,
+                        'qty_segmented': prod.missing_qty,
+                        'sale_name': prod.origin,
                     })
         if segment.line_ids:
             segment.state = 'confirm'
