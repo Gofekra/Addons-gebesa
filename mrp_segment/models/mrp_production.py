@@ -39,7 +39,7 @@ class MrpProduction(models.Model):
 
             production.qty_segmented = qty_segmented
 
-    @api.depends('qty_segmented')
+    @api.depends('qty_segmented', 'product_qty')
     def _missing_qty(self):
         for production in self:
             production.missing_qty = production.product_qty - \
