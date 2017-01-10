@@ -5,3 +5,4 @@ from . import hr_employee
 from . import stock_picking
 from . import stock_inventory
 from . import mrp_production
+from . import account_invoice
