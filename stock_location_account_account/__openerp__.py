@@ -20,6 +20,7 @@
     ],
     "data": [
         "views/stock_location.xml",
+        "views/stock_inventory.xml",
     ],
     "demo": [
     ],
