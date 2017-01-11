@@ -12,10 +12,11 @@ class AccountInvoice(models.Model):
     @api.multi
     def invoice_validate(self):
         for invoice in self:
-            warehouse = invoice.account_analytic_id.warehouse_id
-            employee = self.env['hr.employee'].search(
-                [('user_id', '=', self._uid)])
-            if warehouse not in employee.warehouse_ids:
-                raise ValidationError(_("You do not have privileges to validate \
-                                      in this warehouse."))
+            if invoice.account_analytic_id.warehouse_id:
+                warehouse = invoice.account_analytic_id.warehouse_id
+                employee = self.env['hr.employee'].search(
+                    [('user_id', '=', self._uid)])
+                if warehouse not in employee.warehouse_ids:
+                    raise ValidationError(_("You do not have privileges to validate \
+                                          in this warehouse."))
         return super(AccountInvoice, self).invoice_validate()
