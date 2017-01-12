@@ -9,10 +9,11 @@ from openerp.exceptions import ValidationError
 class MrpProduction(models.Model):
     _inherit = "mrp.production"
 
-    @api.multi
-    def action_produce(self, production_qty,
+    @api.model
+    def action_produce(self, production_id, production_qty,
                        production_mode, wiz=False):
-        for production in self:
+        produce_obj = self.env['mrp.production'].browse(production_id)
+        for production in produce_obj:
             warehouse = production.location_dest_id.stock_warehouse_id
             employee = self.env['hr.employee'].search(
                 [('user_id', '=', self._uid)])
@@ -20,4 +21,4 @@ class MrpProduction(models.Model):
                 raise ValidationError(_("You do not have privileges to validate \
                                       in this warehouse."))
         return super(MrpProduction, self).action_produce(
-            self.id, production_qty, production_mode, wiz)
+            production_id, production_qty, production_mode, wiz)

@@ -120,7 +120,7 @@ class MrpSegment(models.Model):
         return self.write({'state': 'confirm'})
 
     def _get_segment_lines(self):
-        domain = [('missing_qty', '>', 0),
+        domain = [('segment_line_ids', '=', False),
                   ('location_dest_id', '=', self.location_id.id),
                   ('state', 'in', ["confirmed", "ready"])]
 
@@ -131,17 +131,35 @@ class MrpSegment(models.Model):
             product_line = dict(
                 (fn, 0.0) for fn in [
                     'segment_id', 'mrp_production_id',
-                    'product_id', 'quantity', 'sale_name',
-                    'mrp_production_line_id'])
+                    'product_id', 'sale_name', 'product_qty',
+                    'quantity'])
 
             product_line['segment_id'] = self.id
             product_line['mrp_production_id'] = produ.id
             product_line['product_id'] = produ.product_id.id
-            product_line['quantity'] = produ.missing_qty
-            product_line['qty_segmented'] = produ.missing_qty
             product_line['sale_name'] = produ.origin
+            product_line['product_qty'] = produ.product_qty
+            product_line['quantity'] = 0
             vals.append(product_line)
         return vals
+
+    @api.multi
+    def process_segment(self):
+        produce_obj = self.env['mrp.production']
+        for produ in self.line_ids:
+            if produ.quantity > 0:
+                produce_obj.action_produce(produ.mrp_production_id.id,
+                                           produ.quantity,
+                                           'consume_produce',
+                                           )
+        done = True
+        for produ in self.line_ids:
+            if produ.manufacture_qty > 0:
+                done = False
+            produ.quantity = 0
+        if done:
+            self.state = 'done'
+        return True
 
 
 class MrpSegmentLine(models.Model):
@@ -153,68 +171,99 @@ class MrpSegmentLine(models.Model):
         'mrp.segment',
         string=_('Segmentation'),
         ondelete='cascade',
-        select=True)
+        select=True,
+        readonly=True,)
 
     mrp_production_id = fields.Many2one(
         'mrp.production',
         required=True,
         string=_('Manufacturing Order'),
+        readonly=True,
+    )
+
+    state = fields.Selection(
+        [('draft', _('New')),
+         ('cancel', _('Cancelled')),
+         ('confirmed', _('Awaiting Raw Materials')),
+         ('ready', _('Ready to Produce')),
+         ('in_production', _('Production Started')),
+         ('done', _('Done'))],
+        string=_("Status"),
+        readonly=True,
+        related='mrp_production_id.state',
     )
 
     product_id = fields.Many2one(
         'product.product',
         string=_('Product'),
+        readonly=True,
     )
 
     product_code = fields.Char(
         string=_('Code Product'),
         related='product_id.default_code',
-        store=True)
+        store=True,
+        readonly=True,)
 
     product_name = fields.Char(
         string=_('Name Product'),
         related='product_id.name',
-        store=True)
+        store=True,
+        readonly=True,)
 
     product_weight = fields.Float(
         string=_('Weight Product'),
         related='product_id.weight',
-        store=True)
+        store=True,
+        readonly=True,)
 
     product_volume = fields.Float(
-        string=_('Name Product'),
+        string=_('Volume Product'),
         related='product_id.volume',
-        store=True)
+        store=True,
+        readonly=True,)
 
     standard_cost = fields.Float(
         string=_('Standard Cost'),
         compute='_compute_standard_price',
         store=True,
+        readonly=True,
     )
 
     product_uom = fields.Many2one(
         'product.uom',
         string='Unit of Measure',
-        related='product_id.uom_id'
-    )
-
-    quantity = fields.Float(
-        string=_('Quantity'),
-        digits=dp.get_precision('Product Unit of Measure')
+        related='product_id.uom_id',
+        readonly=True,
     )
 
     sale_name = fields.Char(
-        string=_('Sale Order'))
+        string=_('Sale Order'),
+        readonly=True,
+    )
 
-    qty_segmented = fields.Float(
-        string=_('Quantity Segmented'),
+    product_qty = fields.Float(
+        string=_('Product quantity'),
+        digits=dp.get_precision('Product Unit of Measure'),
+        readonly=True,
+    )
+
+    manufacture_qty = fields.Float(
+        string=_('Quantity to manufacture'),
+        compute='_compute_manufacture_qty',
+        digits=dp.get_precision('Product Unit of Measure'),
+        readonly=True,
+    )
+
+    quantity = fields.Float(
+        string=_('Done'),
         digits=dp.get_precision('Product Unit of Measure')
     )
 
-    @api.constrains('qty_segmented')
+    @api.constrains('quantity')
     def _check_qty_segmented(self):
         for line in self:
-            if line.qty_segmented > line.quantity:
+            if line.quantity > line.manufacture_qty:
                 raise UserError(_("The quantity available is less than \n"
                                   "the quantity segmented"))
 
@@ -222,3 +271,9 @@ class MrpSegmentLine(models.Model):
     def _compute_standard_price(self):
         for line in self:
             line.standard_cost = line.product_id.standard_price
+
+    @api.depends('mrp_production_id.move_created_ids.product_uom_qty')
+    def _compute_manufacture_qty(self):
+        for line in self:
+            line.manufacture_qty = line.mrp_production_id.move_created_ids.\
+                product_uom_qty
