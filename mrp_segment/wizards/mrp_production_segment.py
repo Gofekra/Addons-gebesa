@@ -36,13 +36,13 @@ class MrpProductionSegment(models.TransientModel):
                                       belong to the selected location") % (
                     prod.name))
             if prod.state in ['confirmed', 'ready']:
-                if prod.missing_qty > 0:
+                if prod.segment_line_ids.id is False:
                     line_obj.create({
                         'segment_id': segment.id,
                         'mrp_production_id': prod.id,
                         'product_id': prod.product_id.id,
-                        'quantity': prod.missing_qty,
-                        'qty_segmented': prod.missing_qty,
+                        'quantity': 0,
+                        'product_qty': prod.product_qty,
                         'sale_name': prod.origin,
                     })
         if segment.line_ids:
