@@ -20,8 +20,8 @@
     "data": [
         "data/report_paperformat.xml",
         "views/product_template.xml",
+        "views/product_product_view.xml",
         "report/report_price_list.xml",
-        "security/ir.model.access.csv",
     ],
     "demo": [
     ],

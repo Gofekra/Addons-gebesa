@@ -19,6 +19,7 @@
         "base",
         "stock",
         "sale",
+        "sale_stock",
     ],
     "data": [
         "views/stock_picking_view.xml",

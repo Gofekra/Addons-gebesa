@@ -6,7 +6,9 @@
             <field name='model'>mrp.bom.line.detail</field>
             <field name='arch' type='xml'>
                 <tree string='BoM Line Detail'>
-                    <field name='product_id'/>
+                    <field name='name'/>
+                    <field name='material'/>
+                    <field name='routing_id'/>
                     <field name='row'/>
                     <field name="side"/>
                     <field name='width_cut'/>
@@ -42,7 +44,9 @@
                                     <span> cms.</span>
                                 </div>
                                 <field name="thickness"/>
+                                <field name="name"/>
                                 <field name="material"/>
+                                <field name='routing_id'/>
                             </group>
                             <group>
                                 <field name="color_id"/>
@@ -54,7 +58,6 @@
                                     <span> cms.</span>
                                 </div>
                                 <field name="side"/>
-                                <field name='operation_id'/>
                             </group>
                         </group>
                         <group>

@@ -22,6 +22,7 @@
         "views/account_account.xml",
         "views/account_journal.xml",
         "views/gebesa_report.xml",
+        "views/account_account_type.xml"
     ],
     "demo": [
     ],

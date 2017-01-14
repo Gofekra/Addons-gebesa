@@ -4,3 +4,4 @@
 from . import sales_channel
 from . import res_partner
 from . import account_invoice
+from . import sale_order

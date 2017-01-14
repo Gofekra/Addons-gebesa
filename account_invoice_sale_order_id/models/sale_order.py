@@ -14,3 +14,14 @@ class SaleOrder(models.Model):
         invoice_vals['sale_id'] = self.id
 
         return invoice_vals
+
+class SaleAdvancePaymentInv(models.TransientModel):
+    _inherit = "sale.advance.payment.inv"
+
+    @api.multi
+    def _create_invoice(self, order, so_line, amount):
+        res = super(SaleAdvancePaymentInv, self)._create_invoice(
+            order, so_line, amount)
+        for inv in res:
+            inv.sale_id = order.id
+        return res
