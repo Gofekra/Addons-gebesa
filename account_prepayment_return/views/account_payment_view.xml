@@ -8,7 +8,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//group" position="after">
                     <group col="2">
-                        <field name="advance_refund_id" attrs='{"invisible":[("prepayment_type","!=", "advance_refund")]}' domain="[('prepayment_type','=','advance'), ('partner_id','=', partner_id), ('pending_amount','&lt;&gt;', 0)]"/>
+                        <field name="advance_refund_id" attrs='{"invisible":[("prepayment_type","!=", "advance_refund")], "required":[("prepayment_type", "==", "advance_refund")]}' domain="[('prepayment_type','=','advance'), ('partner_id','=', partner_id), ('pending_amount','&lt;&gt;', 0)]"/>
                     </group>       
                 </xpath>
             </field>

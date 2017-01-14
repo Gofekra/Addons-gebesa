@@ -22,6 +22,14 @@ class MrpShipment(models.Model):
         default='draft',
         copy=False)
 
+    folio = fields.Char(
+        string='Folio',
+        required=True,
+        readonly=True,
+        copy=False,
+        default='new',
+    )
+
     reference = fields.Text(
         string=_(u'Reference'),
         required=True,
@@ -46,6 +54,13 @@ class MrpShipment(models.Model):
         states={'done': [('readonly', True)]},
         help="Shipment Lines.",
         copy=True)
+
+    @api.model
+    def create(self, vals):
+        if vals.get('folio', 'New') == 'New':
+            vals['folio'] = self.env['ir.sequence'].next_by_code(
+                'mrp.shipment') or '/'
+        return super(MrpShipment, self).create(vals)
 
     @api.multi
     def prepare_shipment(self):

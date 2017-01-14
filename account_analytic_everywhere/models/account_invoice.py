@@ -27,3 +27,12 @@ class AccountInvoice(models.Model):
         for line in move.line_ids:
             if not line.analytic_account_id:
                 line.analytic_account_id = self.account_analytic_id
+
+
+class AccountInvoiceLine(models.Model):
+    _inherit = 'account.invoice.line'
+
+    def _set_additional_fields(self, invoice):
+        analytic = self.account_analytic_id
+        super(AccountInvoiceLine, self)._set_additional_fields(invoice)
+        self.account_analytic_id = analytic

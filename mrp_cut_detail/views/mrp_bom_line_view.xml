@@ -56,14 +56,17 @@
                             <page string="BoM Line Details">
                                 <field name="bom_line_detail_ids" widget="one2many_list">
                                     <tree string="List Details">
+                                        <field name="name"/>
+                                        <field name="material"/>
+                                        <field name="routing_id"/>
                                         <field name="row"/>
                                         <field name="quantity"/>
                                         <field name="side"/>
                                         <field name="width_cut"/>
                                         <field name="long_cut"/>
-                                        <!-- <field name="color_id"/> -->
+                                        <field name="color_id"/>
                                         <field name="thickness"/>
-                                        <!-- <field name="caliber_id"/> -->
+                                        <field name="caliber_id"/>
                                     </tree>
                                 </field>
                             </page>

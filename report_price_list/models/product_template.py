@@ -9,7 +9,7 @@ class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
     pricelist = fields.Boolean(
-        string=_('Price list'),
+        string=_('Is price list'),
         help=_('the product is displayed in the price list'),
     )
     note_pricelist = fields.Text(
@@ -63,41 +63,19 @@ class ProductTemplate(models.Model):
             rec.isometric = tools.image_resize_image_big(rec.isometric_small)
 
 
-class ProductAttributeLine(models.Model):
-    _inherit = 'product.attribute.line'
-
-    line_id = fields.Many2one('product.line',
-                              string='Product line',)
-    target_id = fields.Many2one('product.attribute.target',
-                                ondelete='restrict',
-                                string="Apply to",
-                                store=True)
-    attribute_id = fields.Many2one('product.attribute',
-                                   string='Attribute',)
-    value_ids = fields.Many2many('product.attribute.value',
-                                 id1='line_id',
-                                 id2='val_id',
-                                 string='Attribute Values',
-                                 )
-
-
-class ProductAttributeTarget(models.Model):
-    _name = 'product.attribute.target'
-
-    target_code = fields.Char(
-        string=_('Code'),)
-
-    target_name = fields.Char(
-        string=_('Name'),)
-
-
 class ProductLine(models.Model):
     _inherit = 'product.line'
 
-    attribute_line_ids = fields.One2many(
-        'product.attribute.line',
-        'line_id',
-        string='Product attribute',
+    acabados_html = fields.Html(
+        string='Finished Html',
+    )
+
+    notas_html = fields.Html(
+        string='Notes Html',
+    )
+
+    composiciones_html = fields.Html(
+        string='Compositions Html',
     )
 
 

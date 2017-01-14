@@ -19,8 +19,23 @@ class AccountPayment(models.Model):
         string=_('Advance to Return'),
     )
 
+    @api.one
+    @api.depends('invoice_ids', 'payment_type', 'partner_type', 'partner_id',
+                 'prepayment_type')
+    def _compute_destination_account_id(self):
+        super(AccountPayment, self)._compute_destination_account_id()
+        if self.prepayment_type == 'advance_refund':
+            if self.partner_id:
+                if self.partner_type == 'customer':
+                    self.destination_account_id = self.partner_id.\
+                        property_account_customer_advance_id.id
+                else:
+                    self.destination_account_id = self.partner_id.\
+                        property_account_supplier_advance_id.id
+
     @api.multi
     def post(self):
+        move_line_obj = self.env['account.move.line']
         res = super(AccountPayment, self).post()
         for rec in self:
             if rec.advance_refund_id and \
@@ -37,8 +52,18 @@ class AccountPayment(models.Model):
                                       'or equal to the amount of the advance'))
                 total = adv_amount - ret_amount
                 rec.advance_refund_id.pending_amount = total
+
+                lines_refund = move_line_obj.search(
+                    [('payment_id', '=', rec.id),
+                     ('account_id', '=', rec.destination_account_id.id)])
+                lines_advance = move_line_obj.search(
+                    [('payment_id', '=', rec.advance_refund_id.id),
+                     ('account_id', '=', rec.destination_account_id.id)])
+                (lines_refund + lines_advance).reconcile(
+                    False, rec.journal_id.id)
+
+                rec.state = 'reconciled'
                 if total == 0.0:
-                    rec.state = 'reconciled'
                     rec.advance_refund_id.state = 'reconciled'
                     rec.advance_refund_id.pending_amount = 0.0
 

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-22 22:33+0000\n"
-"PO-Revision-Date: 2016-09-22 17:39-0600\n"
+"POT-Creation-Date: 2016-12-27 15:37+0000\n"
+"PO-Revision-Date: 2016-12-27 09:51-0600\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -17,42 +17,64 @@ msgstr ""
 "X-Generator: Poedit 1.5.4\n"
 
 #. module: report_price_list
-#: model:ir.ui.view,arch_db:report_price_list.report_price_list_isometric
-msgid ""
-"<strong>Condiciones Comerciales:</strong><br/>\n"
-"                            *Precios no incluyen I.V.A<br/>\n"
-"                            *Precios menos descuentos autorizados<br/>\n"
-"                            *Precios sujetos a cambios sin previo aviso"
-msgstr ""
-"<strong>Condiciones Comerciales:</strong><br/>\n"
-"                            *Precios no incluyen I.V.A<br/>\n"
-"                            *Precios menos descuentos autorizados<br/>\n"
-"                            *Precios sujetos a cambios sin previo aviso"
+#: model:ir.ui.view,arch_db:report_price_list.report_price_list_isometric_footer
+msgid "<br/>.com"
+msgstr "<br/>.com"
 
 #. module: report_price_list
 #: model:ir.ui.view,arch_db:report_price_list.report_price_list_isometric
-msgid "<strong>LISTA DE PRECIOS</strong><br/>gebesa.com"
-msgstr "<strong>LISTA DE PRECIOS</strong><br/>gebesa.com"
+msgid "<strong>CODE</strong>"
+msgstr "<strong>CLAVE</strong>"
 
 #. module: report_price_list
 #: model:ir.ui.view,arch_db:report_price_list.report_price_list_isometric
-msgid "CLAVE"
-msgstr "CLAVE"
+msgid "<strong>Cu. Ft.</strong>"
+msgstr "<strong>M3</strong>"
 
 #. module: report_price_list
 #: model:ir.ui.view,arch_db:report_price_list.report_price_list_isometric
-msgid "DESCRIPCION"
-msgstr "DESCRIPCION"
+msgid "<strong>DESCRIPTION</strong>"
+msgstr "<strong>DESCRIPCIÓN</strong>"
 
 #. module: report_price_list
 #: model:ir.ui.view,arch_db:report_price_list.report_price_list_isometric
-msgid "DIMENCIONES(cm)<br/>Frente Fondo Altura"
-msgstr "DIMENCIONES(cm)<br/>Frente Fondo Altura"
+msgid "<strong>DIMENSIONS <br/> W x D x H</strong>"
+msgstr "<strong>DIMENSIONES</strong>"
+
+#. module: report_price_list
+#: model:ir.ui.view,arch_db:report_price_list.report_price_list_isometric
+msgid "<strong>LB.</strong>"
+msgstr "<strong>KG</strong>"
+
+#. module: report_price_list
+#: model:ir.ui.view,arch_db:report_price_list.report_price_list_isometric
+msgid "<strong>PRICE</strong>"
+msgstr "<strong>PRECIO DE LISTA</strong>"
+
+#. module: report_price_list
+#: model:ir.ui.view,arch_db:report_price_list.product_line_finished_form
+msgid "Composition"
+msgstr "Composición"
+
+#. module: report_price_list
+#: model:ir.model.fields,field_description:report_price_list.field_product_line_composiciones_html
+msgid "Compositions Html"
+msgstr "Composiciones Html"
 
 #. module: report_price_list
 #: model:ir.model.fields,field_description:report_price_list.field_report_report_price_list_report_price_list_isometric_display_name
 msgid "Display Name"
 msgstr "Mostrar nombre"
+
+#. module: report_price_list
+#: model:ir.ui.view,arch_db:report_price_list.product_line_finished_form
+msgid "Extra information"
+msgstr "Información extra"
+
+#. module: report_price_list
+#: model:ir.model.fields,field_description:report_price_list.field_product_line_acabados_html
+msgid "Finished Html"
+msgstr "Acabados Html"
 
 #. module: report_price_list
 #: code:addons/report_price_list/models/product_template.py:27
@@ -67,50 +89,55 @@ msgid "ID"
 msgstr "ID"
 
 #. module: report_price_list
+#: code:addons/report_price_list/models/product_product.py:13
+#, python-format
+msgid "Indicates whether the Product is line"
+msgstr "Indica si el Producto es de linea"
+
+#. module: report_price_list
+#: code:addons/report_price_list/models/product_product.py:12
+#: model:ir.ui.view,arch_db:report_price_list.product_product_isline_form_view
+#, python-format
+msgid "Is Line"
+msgstr "Es de Lìnea"
+
+#. module: report_price_list
+#: code:addons/report_price_list/models/product_template.py:12
+#: model:ir.model.fields,field_description:report_price_list.field_product_template_pricelist
+#, python-format
+msgid "Is price list"
+msgstr "Es de lista de precios"
+
+#. module: report_price_list
 #: model:ir.ui.view,arch_db:report_price_list.product_template_form_view
 msgid "Isometric"
-msgstr "Isometrico"
+msgstr "Isométrico"
 
 #. module: report_price_list
 #: code:addons/report_price_list/models/product_template.py:31
 #: model:ir.model.fields,field_description:report_price_list.field_product_template_isometric
 #, python-format
 msgid "Isometric image"
-msgstr "Imagen Isometrico"
-
-#. module: report_price_list
-#: model:ir.ui.view,arch_db:report_price_list.report_price_list_isometric
-msgid "Kg"
-msgstr "Kg"
+msgstr "Imagen isométrica"
 
 #. module: report_price_list
 #: model:ir.model.fields,field_description:report_price_list.field_report_report_price_list_report_price_list_isometric___last_update
 msgid "Last Modified on"
-msgstr "Ultima modificacion en"
+msgstr "Última modificación en"
 
 #. module: report_price_list
 #: code:addons/report_price_list/models/product_template.py:19
 #: model:ir.model.fields,field_description:report_price_list.field_product_template_length
 #, python-format
 msgid "Length"
-msgstr "Frente"
-
-#. module: report_price_list
-#: model:ir.actions.report.xml,name:report_price_list.price_list_isometric
-msgid "Lista de precios"
-msgstr "Lista de precios"
-
-#. module: report_price_list
-#: model:ir.ui.view,arch_db:report_price_list.report_price_list_isometric
-msgid "M3"
-msgstr "M3"
+msgstr "Longitud"
 
 #. module: report_price_list
 #: code:addons/report_price_list/models/product_template.py:35
 #: model:ir.model.fields,field_description:report_price_list.field_product_template_isometric_medium
 #, python-format
 msgid "Medium-sized isometric image"
-msgstr "Imagen Isometrico tamaño medio"
+msgstr "Imagen isométrica de tamaño mediano"
 
 #. module: report_price_list
 #: code:addons/report_price_list/models/product_template.py:16
@@ -120,16 +147,29 @@ msgid "Note price list"
 msgstr "Nota lista de precios"
 
 #. module: report_price_list
-#: model:ir.ui.view,arch_db:report_price_list.report_price_list_isometric
-msgid "PRECIO LISTA"
-msgstr "PRECIO LISTA"
+#: model:ir.ui.view,arch_db:report_price_list.product_line_finished_form
+msgid "Notes"
+msgstr "Notas"
 
 #. module: report_price_list
-#: code:addons/report_price_list/models/product_template.py:12
-#: model:ir.model.fields,field_description:report_price_list.field_product_template_pricelist
-#, python-format
-msgid "Price list"
-msgstr "Price list"
+#: model:ir.model.fields,field_description:report_price_list.field_product_line_notas_html
+msgid "Notes Html"
+msgstr "Notas Html"
+
+#. module: report_price_list
+#: model:ir.model.fields,field_description:report_price_list.field_product_attribute_value_number
+msgid "Number"
+msgstr "Número"
+
+#. module: report_price_list
+#: model:ir.ui.view,arch_db:report_price_list.report_price_list_isometric_header
+msgid "PRICELIST"
+msgstr "LISTA DE PRECIOS"
+
+#. module: report_price_list
+#: model:ir.actions.report.xml,name:report_price_list.price_list_isometric
+msgid "Pricelist"
+msgstr "Lista de precios"
 
 #. module: report_price_list
 #: model:ir.model,name:report_price_list.model_product_template
@@ -141,14 +181,31 @@ msgstr "Product Template"
 #: model:ir.model.fields,field_description:report_price_list.field_product_template_isometric_small
 #, python-format
 msgid "Small-sized isometric image"
-msgstr "Imagen Isometrico tamaño pequeño"
+msgstr "Imagen isométrica de tamaño pequeño"
+
+#. module: report_price_list
+#: model:ir.ui.view,arch_db:report_price_list.report_price_list_isometric_footer
+msgid ""
+"Terms and conditions:<br/>\n"
+"                            *Prices are subject to authorized discounts<br/"
+">\n"
+"                            *Prices subject to change<br/>\n"
+"                            *Nominal dimensions shown"
+msgstr ""
+"Condiciones Comerciales:<br/>*Precios no incluyen I.V.A.<br/>*Precios menos "
+"descuentos autorizados.<br/>*Precios sujetos a cambio sin previo aviso."
+
+#. module: report_price_list
+#: model:ir.ui.view,arch_db:report_price_list.product_line_finished_form
+msgid "Textures and Finishes"
+msgstr "Texturas y acabados"
 
 #. module: report_price_list
 #: code:addons/report_price_list/models/product_template.py:23
 #: model:ir.model.fields,field_description:report_price_list.field_product_template_width
 #, python-format
 msgid "Width"
-msgstr "Fondo"
+msgstr "Ancho"
 
 #. module: report_price_list
 #: code:addons/report_price_list/models/product_template.py:28
@@ -162,17 +219,17 @@ msgstr "Altura en cm"
 #: model:ir.model.fields,help:report_price_list.field_product_template_length
 #, python-format
 msgid "length in cm"
-msgstr "Frente en cm"
+msgstr "Longitud en cm"
 
 #. module: report_price_list
-#: model:ir.ui.view,arch_db:report_price_list.report_price_list_isometric
-msgid "m3"
-msgstr "m3"
+#: model:ir.model,name:report_price_list.model_product_attribute_value
+msgid "product.attribute.value"
+msgstr "product.attribute.value"
 
 #. module: report_price_list
-#: model:ir.model,name:report_price_list.model_report_report_price_list_price_list_isometric
-msgid "report.report_price_list.price_list_isometric"
-msgstr "report.report_price_list.price_list_isometric"
+#: model:ir.model,name:report_price_list.model_product_line
+msgid "product.line"
+msgstr "product.line"
 
 #. module: report_price_list
 #: model:ir.model,name:report_price_list.model_report_report_price_list_report_price_list_isometric
@@ -184,11 +241,11 @@ msgstr "report.report_price_list.report_price_list_isometric"
 #: model:ir.model.fields,help:report_price_list.field_product_template_pricelist
 #, python-format
 msgid "the product is displayed in the price list"
-msgstr "El producto se mustra en la lista de precios"
+msgstr "El producto se muestra en la lista de precios"
 
 #. module: report_price_list
 #: code:addons/report_price_list/models/product_template.py:24
 #: model:ir.model.fields,help:report_price_list.field_product_template_width
 #, python-format
 msgid "width in cm"
-msgstr "Fondo en cm"
+msgstr "Ancho en cm"

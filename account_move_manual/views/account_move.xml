@@ -12,7 +12,7 @@
                 <xpath expr="//notebook/page[1]" position="after">
                     <page string="Other information">
                         <group>
-                            <field name='manual' readonly='True'/>
+                            <field name='manual' widget="boolean_button"/>
                         </group>
                     </page>
                 </xpath>

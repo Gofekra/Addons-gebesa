@@ -17,6 +17,8 @@
     },
     "depends": [
         "base", "hr", "stock",
+        "stock_inventory_negative_line",
+        "mrp"
     ],
     "data": [
         "views/hr_employee.xml"

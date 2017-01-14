@@ -47,6 +47,7 @@ class ParticularReport(models.AbstractModel):
             'docs': docs,
             'logo': logo,
             'lines_id': lines_id,
+            'langu': self._context['lang']
         }
         return report_obj.render(
             'report_price_list.report_price_list_isometric',
