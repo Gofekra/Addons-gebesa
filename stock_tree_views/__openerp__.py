@@ -22,9 +22,9 @@
         "purchase"
     ],
     "data": [
-        "views/sale_quotation_stock_tree_view.xml",
-        "views/sale_order_stock_tree_view.xml",
-        "views/purchase_order_stock_tree_view.xml",
+        "views/sale_quotation_view.xml",
+        "views/sale_order_view.xml",
+        "views/purchase_order_view.xml",
     ],
     "demo": [
     ],
