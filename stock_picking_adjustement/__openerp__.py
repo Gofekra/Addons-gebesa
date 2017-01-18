@@ -19,11 +19,12 @@
         "base",
         "stock",
         "sale",
+        "stock_picking_invoice",
     ],
     "data": [
-        "views/",
-        "views/",
-        "views/",
+        "views/stock_picking_view.xml",
+        "views/adjustment_input_view.xml",
+        "views/adjustment_output_view.xml",
     ],
     "demo": [
     ],
