@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		<record id="action_adjustment_input" model="ir.actions.act_window">
+			<field name="name">Adjustment Input</field>
+			<field name="res_model">stock.picking</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					Click to register a Adjustment Input
+				</p>
+				<p>
+					Make your first Adjustment Input.
+				</p>
+			</field>
+		</record>
+
+		<menuitem action="action_adjustment_input" id="menu_action_adjustment_input" parent="stock.menu_stock_inventory_control"  sequence="40"/>
+    </data>
+</openerp>
