@@ -2,7 +2,7 @@
 # © <YEAR(S)> <AUTHOR(S)>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import fields, models, _
+from openerp import api, fields, models, _
 
 
 class SaleOrder(models.Model):
@@ -15,3 +15,9 @@ class SaleOrder(models.Model):
         string=_("Segment Status"),
         default='no_segment',
     )
+
+    @api.model
+    def _prepare_procurement_group(self):
+        res = super(SaleOrder, self)._prepare_procurement_group()
+        res['sale_id'] = self.id
+        return res
