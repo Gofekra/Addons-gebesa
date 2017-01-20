@@ -1,0 +1,26 @@
+.manufacturing_order_table{
+    border: 0.5px solid black;
+    border-collapse: collapse;
+    font-size: 9pt;
+}
+.manufacturing_order_table td{
+    border-left: 0.5px solid black;
+    padding-left: 1px;
+    padding-right: 1px
+}
+.manufacturing_order_table th{
+    border-left: 0.5px solid black;
+    border-bottom: 0.5px solid black;
+    padding-left: 1px;
+    padding-right: 1px;
+    font-weight: bold;
+    text-align: center;
+}
+.manufacturing_order_table tr:nth-child(even){
+    background: #F2F2F2
+}
+.manufacturing_order_div{
+    text-align: center;
+    font-weight: bold;
+    margin-top: 8px;
+}

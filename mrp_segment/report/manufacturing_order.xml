@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <template id="assets_specific" inherit_id="report.assets_common">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="mrp_segment/static/src/css/manufacturing_order.css"/>
+            </xpath>
+        </template>
+
+        <report
+            id="manufacturing_order"
+            model="mrp.segment"
+            string="Manufacturing order"
+            report_type="qweb-pdf"
+            name="mrp_segment.report_manufacturing_order"
+            file="mrp_segment.report_manufacturing_order"
+        />
+
+        <template id="report_manufacturing_order_header">
+            <table width="100%" style="margin-top: 15px;">
+                <tbody>
+                    <tr style="font-size: 9pt;">
+                        <td width="20%" >
+                            <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d/%m/%Y %H:%M')"/>
+                        </td>
+                        <td width="60%" align="center" style="font-size: 10pt;">
+                            Manufactura Post-Form S.A. de C.V.<br/>
+                            MANUFACTUAS POST-FORM S.A. DE C.V.<br/>
+                            Solicitud para Orden de Fabricacion
+                        </td>
+                        <td width="20%">
+                        </td>
+                    </tr>
+                    <tr style="font-size: 8pt;">
+                        <td>
+                        </td>
+                        <td align="right" >
+                            Pagina: <span class="page"/> de <span class="topage"/>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                    <tr style="font-size: 8pt;">
+                        <td colspan="3" align="right">
+                            Fecha: <span t-field="doc.date"/>
+                        </td>
+                    </tr>
+                    <tr style="font-size: 8pt;">
+                        <td align="right" colspan="3">
+                            Estatus: <span t-field="doc.state"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </template>
+
+        <template id="report_manufacturing_order_footer">
+            <table width="100%">
+                <tr>
+                    <td width="10%">
+                    </td>
+                    <td width="25%" align="center" style="border-top: 1px solid black;">
+                        SOLICITA
+                    </td>
+                    <td width="30%">
+                    </td>
+                    <td width="25%" align="center" style="border-top: 1px solid black;">
+                        AUTORIZA
+                    </td>
+                    <td width="10%">
+                    </td>
+                </tr>
+            </table>
+        </template>
+
+        <template id="report_manufacturing_order_document">
+            <div class="header">
+                <t t-call="mrp_segment.report_manufacturing_order_header"/>
+            </div>
+            <div class="page">
+                <t t-foreach="lines" t-as="line">
+                    <div class="manufacturing_order_div">
+                        LINEA: <span t-esc="line"/>
+                    </div>
+                    <t t-foreach="groups[line]" t-as="group">
+                        <div class="manufacturing_order_div">
+                            GRUPO: <span t-esc="group"/>
+                        </div>
+                        <table width="100%" class="manufacturing_order_table">
+                            <tr>
+                                <th width="15%">Clave</th>
+                                <th width="40%">Descripcion</th>
+                                <th width="15%">Cost. Uni.</th>
+                                <th width="15%">Cant.</th>
+                                <th width="15%">Cost. Tot.</th>
+                            </tr>
+                            <t t-set="line_group" t-value="line+'-'+group"/>
+                            <t t-set="cost" t-value="0.0"/>
+                            <t t-set="total" t-value="0.0"/>
+                            <t t-set="total_cost" t-value="0.0"/>
+                            <t t-foreach="products[line_group]" t-as="product">
+                                <t t-set="cost" t-value="cost+product.standard_cost"/>
+                                <t t-set="total" t-value="product.standard_cost*product.product_qty"/>
+                                <t t-set="total_cost" t-value="total_cost+total"/>
+                                <td width="15%"><span t-esc="product.product_code"/></td>
+                                <td width="40%"><span t-esc="product.product_name"/></td>
+                                <td width="15%" align="right"><span t-esc="product.standard_cost"/></td>
+                                <td width="15%" align="right"><span t-esc="product.product_qty"/></td>
+                                <td width="15%" align="right"><span t-esc="total"/></td>
+                            </t>
+                        </table>
+                        <table width="100%" style="font-size: 9pt;">
+                            <tr>
+                                <td width="55%">Total</td>
+                                <td width="15%" align="right"><span t-esc="cost"/></td>
+                                <td width="15%"></td>
+                                <td width="15%" align="right"><span t-esc="total_cost"/></td>
+                            </tr>
+                        </table>  
+                    </t>
+                </t>
+                <div class="manufacturing_order_div">
+                    PEDIDOS
+                </div>
+            </div>
+            <div class="footer">
+                <t t-call="mrp_segment.report_manufacturing_order_footer"/>
+            </div>
+        </template>
+
+        <template id="report_manufacturing_order">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="mrp_segment.report_manufacturing_order_document"/>
+                </t>
+            </t>
+        </template>
+    </data>
+</openerp>

@@ -22,6 +22,7 @@
         "account",
         "stock_account",
         "sale_order_gebesa",
+        "procurement",
     ],
     "data": [
         "data/ir_sequence.xml",
@@ -30,6 +31,7 @@
         "views/sale_order_view.xml",
         "views/mrp_production.xml",
         'security/ir.model.access.csv',
+        "report/manufacturing_order.xml",
     ],
     "demo": [
     ],

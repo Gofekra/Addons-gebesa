@@ -3,4 +3,5 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from . import mrp_segment
 from . import mrp_production
+from . import procurement_group
 from . import sale_order
