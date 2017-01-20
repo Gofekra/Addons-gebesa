@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
-# © <YEAR(S)> <AUTHOR(S)>
+# © 2017 Cesar Barron
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
-    "name": "Purchase Order Review Status",
-    "summary": "Shows the review status of the purchase order",
+    "name": "Purchase Order by Procurement's Origin",
+    "summary": "This module avoids odoo groups diferent proc's origins in PO",
     "version": "9.0.1.0.0",
-    "category": "Purchase",
+    "category": "Custom",
     "website": "https://odoo-community.org/",
-    "author": "<Deysy Mascorro, Odoo Community Association (OCA)",
+    "author": "Cesar Barron, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "application": False,
     "installable": True,
@@ -18,16 +18,16 @@
     "depends": [
         "base",
         "purchase",
+        "stock",
+        "mrp"
     ],
     "data": [
-        "security/security.xml",
-        "security/ir.model.access.csv",
-        "views/purchase_order_view.xml",
+        # "view/some_model_view.xml",
     ],
     "demo": [
-
+        # "demo/res_partner_demo.xml",
     ],
     "qweb": [
-
+        # "static/src/xml/module_name.xml",
     ]
 }
