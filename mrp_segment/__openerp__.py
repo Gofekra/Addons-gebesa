@@ -23,6 +23,7 @@
         "stock_account",
         "sale_order_gebesa",
         "procurement",
+        "sale_order_everywhere",
     ],
     "data": [
         "data/ir_sequence.xml",
