@@ -7,10 +7,10 @@
 			<field name='inherit_id' ref="purchase.purchase_order_form"/>
 			<field name='arch' type='xml'>
 				<xpath expr="//field[@name='state']" position="before">
-					<button name="action_review" states="draft" type="object" string="Review"/>
+					<button name="action_review" states="draft" type="object" string="Review Purchase"/>
 				</xpath>
 				<xpath expr="//field[@name='currency_id']" position="after">
-					<field name="status_review"/>
+					<field name="review" readonly="1"/>
 				</xpath>
 			</field>
 		</record>

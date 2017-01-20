@@ -9,19 +9,19 @@ from openerp.exceptions import UserError
 class PurchaseOrder(models.Model):
     _inherit = 'purchase.order'
 
-    status_review = fields.Selection([
+    review = fields.Selection([
         ('no_review', _('No Review')),
-        ('review', _('Review'))],
+        ('yes_review', _('Review'))],
         string=_('Warehouse Review'),
-        default='no_review',
-        store=True)
+        track_visibility='onchange',
+        default='no_review')
 
     @api.multi
-    def status_review(self):
+    def action_review(self):
         for order in self:
-            if order.status_review == 'review':
-                raise UserError(_("This purchase order has already"
-                                  "been reviewed"))
+            if order.review == 'no_review':
+                self.write({'review': 'yes_review'})
             else:
-                self.write({'status_review': 'review'})
+                raise UserError(_("This purchase order has already "
+                                  "been reviewed by the Warehouse Manager"))
         return True
