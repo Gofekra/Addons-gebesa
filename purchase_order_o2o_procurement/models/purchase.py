@@ -16,9 +16,6 @@ class ProcurementOrder(models.Model):
 
     @api.multi
     def make_po(self):
-        ## ---> Set BreakPoint
-        import pdb;
-        pdb.set_trace()
         cache = {}
         res = []
         for procurement in self:
