@@ -4,3 +4,5 @@
 from . import mrp_bom_line
 from . import mrp_bom_line_detail
 from . import mrp_operation
+from . import mrp_production_line
+from . import product_template
