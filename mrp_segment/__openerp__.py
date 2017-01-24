@@ -33,6 +33,7 @@
         "views/mrp_production.xml",
         'security/ir.model.access.csv',
         "report/manufacturing_order.xml",
+        "report/manufacturing_order_production.xml"
     ],
     "demo": [
     ],
