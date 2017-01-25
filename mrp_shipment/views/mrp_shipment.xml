@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
+        
+        <menuitem id="menu_mrp_shipment"
+            name="Shipments"
+            parent="base.menu_mrp_root"
+            sequence="3"/>
+
+        <record id="view_shipment_filter" model="ir.ui.view">
+            <field name="name">mrp.shipment.filter</field>
+            <field name="model">mrp.shipment</field>
+            <field name="arch" type="xml">
+                <search string="Search Shipment">
+                    <field name="reference" string="Shipment Reference"/>
+                    <field name="date"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Status" domain="[]" context="{'group_by':'state'}"/>
+                        <filter string="Shipment Month" domain="[]" context="{'group_by':'date'}" help="Shipment by Month"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
         <record model='ir.ui.view' id='mrp_shipment_tree'>
             <field name='name'>mrp.shipment.tree</field>
             <field name='model'>mrp.shipment</field>
@@ -76,6 +97,6 @@
             </field>
         </record>
 
-        <menuitem action="action_shipment_form" id="menu_action_shipment_form" parent="mrp.menu_mrp_manufacturing" sequence="30"/>
+        <menuitem action="action_shipment_form" id="menu_action_shipment_form" parent="menu_mrp_shipment" sequence="30"/>
     </data>
 </openerp>
