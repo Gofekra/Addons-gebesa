@@ -2,11 +2,6 @@
 <openerp>
     <data>
 
-        <menuitem id="menu_mrp_segmentation"
-            name="Shipments"
-            parent="base.menu_mrp_root"
-            sequence="3"/>
-
         <record id="view_segment_filter" model="ir.ui.view">
             <field name="name">mrp.segment.filter</field>
             <field name="model">mrp.segment</field>
@@ -110,7 +105,7 @@
                     Click to start a segment.
                 </p>
                 <p>
-                    Segments will help create clusters of Sale Orders.
+                    Segments are useful for grouping Manufacturing Orders that will be dealt with within a certain time span, could be a week.
                 </p>
             </field>
         </record>
@@ -118,7 +113,8 @@
         <menuitem action="action_segment_form" 
             id="menu_mrp_segment_action"
             name="Segmentation"
-            parent="menu_mrp_segmentation"
-            sequence="1"/>
+            parent="mrp.menu_mrp_manufacturing"
+            sequence="30"/>
+
     </data>
 </openerp>
