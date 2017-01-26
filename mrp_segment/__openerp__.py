@@ -24,6 +24,7 @@
         "sale_order_gebesa",
         "procurement",
         "sale_order_everywhere",
+        "mrp_cut_detail",
     ],
     "data": [
         "data/ir_sequence.xml",
@@ -33,7 +34,9 @@
         "views/mrp_production.xml",
         'security/ir.model.access.csv',
         "report/manufacturing_order.xml",
-        "report/manufacturing_order_production.xml"
+        "report/manufacturing_order_production.xml",
+        "report/cut_order.xml",
+        "report/cut_order_production.xml"
     ],
     "demo": [
     ],
