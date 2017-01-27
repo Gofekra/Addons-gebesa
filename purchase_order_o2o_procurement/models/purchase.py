@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from datetime import datetime
-from dateutil.relativedelta import relativedelta
-from openerp import api, fields, models, _, SUPERUSER_ID
-from openerp.tools import DEFAULT_SERVER_DATETIME_FORMAT
-from openerp.tools.translate import _
-from openerp.tools.float_utils import float_is_zero, float_compare
-import openerp.addons.decimal_precision as dp
-from openerp.exceptions import UserError, AccessError
+# from datetime import datetime
+# from dateutil.relativedelta import relativedelta
+from openerp import api, models, _
+# from openerp.tools import DEFAULT_SERVER_DATETIME_FORMAT
+# from openerp.tools.translate import _
+# from openerp.tools.float_utils import float_is_zero, float_compare
+# import openerp.addons.decimal_precision as dp
+# from openerp.exceptions import UserError, AccessError
+from openerp.osv import osv
 
 class ProcurementOrder(models.Model):
     _inherit = 'procurement.order'
@@ -92,3 +93,41 @@ class ProcurementOrder(models.Model):
                 vals = procurement._prepare_purchase_order_line(po, supplier)
                 self.env['purchase.order.line'].create(vals)
         return res
+
+
+class stock_move(osv.osv):
+    _inherit = "stock.move"
+    _name = "stock.move"
+
+    @api.cr_uid_ids_context
+    def _picking_assign(self, cr, uid, move_ids, context=None):
+        """Try to assign the moves to an existing picking
+        that has not been reserved yet and has the same
+        procurement group, locations and picking type  (moves should already
+                                                        have them identical)
+         Otherwise, create a new picking to assign them to.
+        """
+        move = self.browse(cr, uid, move_ids, context=context)[0]
+        pick_obj = self.pool.get("stock.picking")
+        picks = pick_obj.search(
+            cr, uid, [
+                ('group_id', '=', move.group_id.id),
+                ('location_id', '=', move.location_id.id),
+                ('location_dest_id', '=', move.location_dest_id.id),
+                ('picking_type_id', '=', move.picking_type_id.id),
+                ('origin', '=', move.origin),
+                ('printed', '=', False),
+                ('state', 'in', [
+                    'draft',
+                    'confirmed',
+                    'waiting',
+                    'partially_available',
+                    'assigned'])], limit=1, context=context)
+        if picks:
+            pick = picks[0]
+        else:
+            values = self._prepare_picking_assign(
+                cr, uid, move, context=context)
+            pick = pick_obj.create(cr, uid, values, context=context)
+        return self.write(
+            cr, uid, move_ids, {'picking_id': pick}, context=context)
