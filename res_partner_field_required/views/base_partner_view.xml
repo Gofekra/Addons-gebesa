@@ -25,6 +25,9 @@
                 <xpath expr="//group/field[@name='property_product_pricelist']" position="attributes">
                     <attribute name="required">True</attribute>
                 </xpath>
+                <xpath expr="//group/field[@name='property_product_pricelist']" position="after">
+                    <field name='tag_footer'/>
+                </xpath>
             </field>
         </record>
     </data>

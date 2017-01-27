@@ -14,6 +14,7 @@
                                     <field name='partner_id' required="True" domain="[('customer', '=', True)]"/>
                                     <field name='customer_code' required="True"/>
                                     <field name='customer_description'/>
+                                    <field name='qty'/>
                                 </tree>
                             </field>
         				</page>
@@ -35,6 +36,7 @@
                                 <field name='partner_id' required="True" domain="[('customer', '=', True)]"/>
                                 <field name='customer_code' required="True"/>
                                 <field name='customer_description'/>
+                                <field name='qty'/>
                             </tree>
                         </field>
                     </page>
