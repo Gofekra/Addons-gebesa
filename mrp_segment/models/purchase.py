@@ -19,5 +19,5 @@ class PurchaseOrderLine(models.Model):
 
     related_segment = fields.Char(
         string='Relatad Segment',
-        ralated='order_id.related_segment'
+        related='order_id.related_segment'
     )
