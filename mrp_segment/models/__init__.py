@@ -4,3 +4,6 @@
 from . import mrp_segment
 from . import mrp_production
 from . import sale_order
+from . import procurement_order
+from . import purchase
+from . import stock

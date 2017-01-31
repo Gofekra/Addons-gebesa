@@ -22,6 +22,7 @@
         "stock",
         "mrp",
         "stock_picking_invoice",
+        "stock_picking_sale_id",
     ],
     "data": [
         "views/sale_order.xml",
