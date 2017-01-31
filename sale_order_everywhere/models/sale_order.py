@@ -11,6 +11,7 @@ class SaleOrder(models.Model):
     @api.multi
     def action_confirm(self):
         group_obj = self.env['procurement.group']
+        move_obj = self.env['stock.move']
         res = super(SaleOrder, self).action_confirm()
         for order in self:
             group = group_obj.search([('sale_id', '=', order.id)])
@@ -18,6 +19,7 @@ class SaleOrder(models.Model):
                 procurement.sale_id = group.sale_id
                 if procurement.production_id:
                     procurement.production_id.sale_id = group.sale_id
-                for move in procurement.move_dest_id:
-                    move.sale_id = group.sale_id
+            moves = move_obj.search([('group_id', '=', group.id)])
+            for move in moves:
+                move.sale_id = group.sale_id
         return res
