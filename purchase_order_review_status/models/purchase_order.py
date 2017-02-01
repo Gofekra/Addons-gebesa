@@ -21,6 +21,9 @@ class PurchaseOrder(models.Model):
         for order in self:
             if order.review == 'no_review':
                 self.write({'review': 'yes_review'})
+                for line in order.order_line:
+                    reviewed = True
+                    line.reviewed = reviewed
             else:
                 raise UserError(_("This purchase order has already "
                                   "been reviewed by the Warehouse Manager"))
