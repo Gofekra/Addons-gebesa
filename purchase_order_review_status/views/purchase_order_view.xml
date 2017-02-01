@@ -20,6 +20,7 @@
             <field name='res_model'>purchase.order.line</field>
             <field name='view_type'>form</field>
             <field name='view_mode'>tree,form</field>
+            <field name="domain">[('order_id.state', '=', 'draft')]</field>
         </record>
 
         <menuitem id="po_line_validation_menu" name="PO Lines Validation" parent="purchase.menu_procurement_management" action="action_po_line_validation"/>
