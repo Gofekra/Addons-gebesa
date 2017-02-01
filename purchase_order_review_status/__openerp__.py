@@ -18,11 +18,13 @@
     "depends": [
         "base",
         "purchase",
+        "stock_tree_views",
     ],
     "data": [
         "security/security.xml",
         "security/ir.model.access.csv",
         "views/purchase_order_view.xml",
+        "wizard/purchase_order_lines_validate.xml",
     ],
     "demo": [
 
