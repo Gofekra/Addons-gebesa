@@ -19,6 +19,7 @@
         "base",
         "purchase",
         "stock_tree_views",
+        "mrp_segment",
     ],
     "data": [
         "security/security.xml",
