@@ -22,6 +22,7 @@
         "views/product_template.xml",
         "views/product_product_view.xml",
         "report/report_price_list.xml",
+        "report/report_modulares.xml",
     ],
     "demo": [
     ],
