@@ -49,14 +49,16 @@ class PurchaseOrderLine(models.Model):
         store=True,
         readonly=True)
 
-    @api.onchange('reviewed')
+    @api.multi
+    @api.constrains('reviewed')
     def _update_valid_po(self):
-        lines = len(self.order_id.order_line)
-        valid_lines = len(
-            self.env['purchase.order.line'].search(
-                [('id', '=', self.order_id.id),
-                 ('reviewed', '=', True)]))
-        if valid_lines == lines:
-            self.order_id.review = 'yes_review'
-        else:
-            self.order_id.review = 'no_review'
+        for line in self:
+            lines = len(line.order_id.order_line)
+            valid_lines = len(
+                self.env['purchase.order.line'].search(
+                    [('order_id', '=', line.order_id.id),
+                     ('reviewed', '=', True)]))
+            if valid_lines == lines:
+                line.order_id.review = 'yes_review'
+            else:
+                line.order_id.review = 'no_review'
