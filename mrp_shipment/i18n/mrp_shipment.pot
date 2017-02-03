@@ -234,6 +234,11 @@ msgid "Shipment line"
 msgstr ""
 
 #. module: mrp_shipment
+#: model:ir.ui.menu,name:mrp_shipment.menu_mrp_shipment
+msgid "Shipments"
+msgstr ""
+
+#. module: mrp_shipment
 #: code:addons/mrp_shipment/models/sale_order.py:15
 #: model:ir.model.fields,field_description:mrp_shipment.field_sale_order_shiptment_status
 #, python-format

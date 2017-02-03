@@ -20,13 +20,15 @@
         "account",
         "stock",
         "product",
-        "integration_cost_gebesa"
+        "integration_cost_gebesa",
+        "account_invoice_sale_data"
     ],
     "data": [
         "views/product_view.xml",
         "views/stock_picking_view.xml",
         "views/stock_move_view.xml",
         "views/res_partner.xml",
+        "views/account_invoice_view.xml",
     ],
     "demo": [
 

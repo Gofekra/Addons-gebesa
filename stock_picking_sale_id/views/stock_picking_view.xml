@@ -8,6 +8,8 @@
         	<field name='arch' type='xml'>
         		<field name='priority' position='after'>
         			<field name='sale_id' readonly="True"/>
+                    <field name='cust_ven_id' readonly="True"/>
+                    <field name='client_order_ref' readonly="True"/>
         		</field>
         	</field>
         </record>

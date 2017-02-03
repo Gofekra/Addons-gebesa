@@ -14,12 +14,34 @@
                                     <field name='partner_id' required="True" domain="[('customer', '=', True)]"/>
                                     <field name='customer_code' required="True"/>
                                     <field name='customer_description'/>
+                                    <field name='qty'/>
                                 </tree>
                             </field>
         				</page>
         			</notebook>
         		</xpath>
         	</field>
+        </record>
+
+        <!-- Menu view product variants from sales -->
+        <record model='ir.ui.view' id='product_variant_sale_form_view'>
+            <field name='name'>product.variant.sale.form.view</field>
+            <field name='model'>product.product</field>
+            <field name='inherit_id' ref='product.product_normal_form_view'/>
+            <field name='arch' type='xml'>
+                <xpath expr="//notebook/page[3]" position="after">
+                    <page string="Customer Code">
+                        <field name='product_customer_ids'>
+                            <tree string="Customer code" editable="bottom">
+                                <field name='partner_id' required="True" domain="[('customer', '=', True)]"/>
+                                <field name='customer_code' required="True"/>
+                                <field name='customer_description'/>
+                                <field name='qty'/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
         </record>
     </data>
 </openerp>

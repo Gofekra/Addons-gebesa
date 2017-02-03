@@ -45,6 +45,10 @@ class ProductTemplate(models.Model):
         store=True,
         attachment=True,
     )
+    product_mix_id = fields.Many2one(
+        'product.template',
+        string='Product mixta',
+    )
 
     @api.depends('isometric')
     def _compute_isometric(self):

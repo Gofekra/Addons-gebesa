@@ -100,6 +100,10 @@ class MrpBomLineDetail(models.Model):
         # compute='_compute_variants',
         store=True,
     )
+    production_line_id = fields.Many2one(
+        'mrp.production.line',
+        string='Production line',
+    )
 
     _sql_constraints = [
         ('row_uniq', 'unique (bom_line_id, row)',

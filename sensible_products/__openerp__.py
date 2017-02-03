@@ -7,7 +7,7 @@
     "version": "9.0.1.0.0",
     "category": "Product",
     "website": "https://odoo-community.org/",
-    "author": "<AUTHOR(S)>, Odoo Community Association (OCA)",
+    "author": "Jesus Alcalá, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "application": False,
     "installable": True,
@@ -22,9 +22,9 @@
     ],
     "data": [
         "views/sensible_products.xml",
-        "security/security.xml",        
+        "security/security.xml",
         "security/ir.model.access.csv",
-    
+
     ],
     "demo": [
     ],
