@@ -47,6 +47,7 @@
                                 <field name="name"/>
                                 <field name="material"/>
                                 <field name='routing_id'/>
+                                <field name='production_line_id'/>
                             </group>
                             <group>
                                 <field name="color_id"/>

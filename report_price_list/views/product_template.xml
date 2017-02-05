@@ -13,6 +13,7 @@
                            <field name='length'/>
                            <field name='width'/>
                            <field name='height'/>
+                           <field name='product_mix_id'/>
                            <field name='note_pricelist'/>
                            <field name='isometric_medium' widget='image'/>
                         </group>

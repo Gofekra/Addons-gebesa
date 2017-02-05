@@ -267,6 +267,11 @@ msgid "Segments"
 msgstr ""
 
 #. module: mrp_segment
+#: model:ir.actions.act_window,help:mrp_segment.action_segment_form
+msgid "Segments are useful for grouping Manufacturing Orders that will be dealt with within a certain time span, could be a week."
+msgstr ""
+
+#. module: mrp_segment
 #: model:ir.ui.view,arch_db:mrp_segment.view_segment_filter
 msgid "Segments by Month"
 msgstr ""

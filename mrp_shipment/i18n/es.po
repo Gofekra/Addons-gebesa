@@ -223,7 +223,7 @@ msgstr "Detalle de embarque"
 #. module: mrp_shipment
 #: model:ir.model.fields,help:mrp_shipment.field_mrp_shipment_line_ids
 msgid "Shipment Lines."
-msgstr "Lineas de ambarque"
+msgstr "Lineas de Embarque"
 
 #. module: mrp_shipment
 #: code:addons/mrp_shipment/models/mrp_shipment.py:44
@@ -235,7 +235,12 @@ msgstr "Productos embarcados"
 #. module: mrp_shipment
 #: model:ir.model,name:mrp_shipment.model_mrp_shipment_line
 msgid "Shipment line"
-msgstr "Lineas embarcadas"
+msgstr "Lineas Embarcadas"
+
+#. module: mrp_shipment
+#: model:ir.ui.menu,name:mrp_shipment.menu_mrp_shipment
+msgid "Shipments"
+msgstr "Embarques"
 
 #. module: mrp_shipment
 #: code:addons/mrp_shipment/models/sale_order.py:15

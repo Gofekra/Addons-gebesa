@@ -16,7 +16,8 @@
         "bin": [],
     },
     "depends": [
-        "base", "stock", "mrp", "purchase", "sale"
+        "base", "stock", "mrp", "purchase", "sale",
+        "employee_warehouse",
     ],
     "data": [
         "views/stock_move_type.xml",

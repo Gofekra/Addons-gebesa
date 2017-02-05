@@ -15,6 +15,7 @@ class ProductProductCustomer(models.Model):
     )
     customer_description = fields.Char(
         string='Customer Product Description',
+        translate=True,
     )
     partner_id = fields.Many2one(
         'res.partner',
@@ -23,6 +24,9 @@ class ProductProductCustomer(models.Model):
     product_id = fields.Many2one(
         'product.product',
         string='Product',
+    )
+    qty = fields.Integer(
+        'Quantity',
     )
 
 

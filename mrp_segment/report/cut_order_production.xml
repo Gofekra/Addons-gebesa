@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+    	<report
+            id="cut_order_production"
+            model="mrp.production"
+            string="Cut order"
+            report_type="qweb-pdf"
+            name="mrp_segment.report_cut_order_production"
+            file="mrp_segment.report_cut_order_production"
+        />
+        <template id="report_cut_order_production">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="mrp_segment.report_cut_order_document"/>
+                </t>
+            </t>
+        </template>
+    </data>
+</openerp>

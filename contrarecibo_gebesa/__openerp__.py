@@ -24,6 +24,7 @@
         "security/ir.model.access.csv",
         "views/contrarecibo_view.xml",
         "views/contrarecibo_secuence.xml",
+        "report/contrarecibo_report.xml",
     ],
     "demo": [
 

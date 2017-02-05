@@ -277,3 +277,31 @@ class MrpSegmentLine(models.Model):
         for line in self:
             line.manufacture_qty = line.mrp_production_id.move_created_ids.\
                 product_uom_qty
+
+    @api.model
+    def create(self, vals):
+        production_obj = self.env['mrp.production']
+        segment_obj = self.env['mrp.segment']
+        procurement_obj = self.env['procurement.order']
+        picking_obj = self.env['stock.picking']
+        move_obj = self.env['stock.move']
+        purchase_obj = self.env['purchase.order']
+        production = production_obj.browse(vals['mrp_production_id'])
+        segment = segment_obj.browse(vals['segment_id'])
+        procurement = procurement_obj.search([
+            ('origin', 'like', production.name)])
+        for proc in procurement:
+            proc.related_segment += segment.folio + ', '
+        picking = picking_obj.search([
+            ('origin', 'like', production.name)])
+        for pick in picking:
+            pick.related_segment += segment.folio + ', '
+        move = move_obj.search([
+            ('origin', 'like', production.name)])
+        for mov in move:
+            mov.related_segment += segment.folio + ', '
+        purchase = purchase_obj.search([
+            ('origin', 'like', production.name)])
+        for pur in purchase:
+            pur.related_segment += segment.folio + ', '
+        return super(MrpSegmentLine, self).create(vals)

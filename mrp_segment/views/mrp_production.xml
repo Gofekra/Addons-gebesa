@@ -17,6 +17,16 @@
                         </field>
                     </page>
                 </xpath>
+                <xpath expr="//notebook/page/field[@name='product_lines']" position="replace">
+                    <field name="product_lines">
+                        <tree tring="Products to Consume">
+                            <field name="product_id"/>
+                            <field name="standard_cost"/>
+                            <field name="product_qty"  string="Quantity"/>
+                            <field name="product_uom" options="{'no_open':True,'no_create':True}" string="Unit of Measure" groups="product.group_uom"/>
+                        </tree>
+                    </field>
+                </xpath>
             </field>
         </record>
     </data>

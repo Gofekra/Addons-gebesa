@@ -7,14 +7,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-03-30 18:35+0000\n"
-"PO-Revision-Date: 2016-03-30 12:50-0600\n"
+"PO-Revision-Date: 2017-01-20 16:46-0600\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"Language: es\n"
 
 #. module: stock_picking_type
 #: code:addons/stock_picking_type/models/type_adjustment.py:47
@@ -87,8 +88,7 @@ msgstr "ID"
 #. module: stock_picking_type
 #: code:addons/stock_picking_type/models/stock_move_type.py:23
 #: code:addons/stock_picking_type/models/type_adjustment.py:35
-#: selection:stock.move.type,type:0
-#: selection:type.adjustment,type_adjustment:0
+#: selection:stock.move.type,type:0 selection:type.adjustment,type_adjustment:0
 #, python-format
 msgid "Input"
 msgstr "Entrada"
@@ -158,11 +158,10 @@ msgstr "Ninguno"
 #. module: stock_picking_type
 #: code:addons/stock_picking_type/models/stock_move_type.py:24
 #: code:addons/stock_picking_type/models/type_adjustment.py:36
-#: selection:stock.move.type,type:0
-#: selection:type.adjustment,type_adjustment:0
+#: selection:stock.move.type,type:0 selection:type.adjustment,type_adjustment:0
 #, python-format
 msgid "Output"
-msgstr "Entrada"
+msgstr "Salida"
 
 #. module: stock_picking_type
 #: code:addons/stock_picking_type/models/stock_move_type.py:20

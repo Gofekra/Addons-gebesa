@@ -12,3 +12,13 @@ class StockPicking(models.Model):
     sale_id = fields.Many2one('sale.order',
                               string=_(u'Sale Order'),
                               store=True,)
+    cust_ven_id = fields.Many2one(
+        related='sale_id.partner_id',
+        string='Customer',
+        store=True,
+    )
+    client_order_ref = fields.Char(
+        related='sale_id.client_order_ref',
+        string='Customer ref',
+        store=True,
+    )

@@ -7,7 +7,7 @@
     "version": "9.0.1.0.0",
     "category": "Sales",
     "website": "https://odoo-community.org/",
-    "author": "<jesus01x>",
+    "author": "Jesus Alcala",
     "license": "AGPL-3",
     "application": False,
     "installable": True,
@@ -16,7 +16,10 @@
         "bin": [],
     },
     "depends": [
-        "base","sale","sale_order_gebesa","mrp_gebesa"
+        "base",
+        "sale",
+        "sale_order_gebesa",
+        "mrp_gebesa"
     ],
     "data": [
         "views/sale_order.xml",

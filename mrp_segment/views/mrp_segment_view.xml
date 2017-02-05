@@ -2,11 +2,6 @@
 <openerp>
     <data>
 
-        <menuitem id="menu_mrp_segmentation"
-            name="Shipments"
-            parent="base.menu_mrp_root"
-            sequence="3"/>
-
         <record id="view_segment_filter" model="ir.ui.view">
             <field name="name">mrp.segment.filter</field>
             <field name="model">mrp.segment</field>
@@ -83,8 +78,10 @@
                             <page  string="Scheduled goods" >
                                 <field name="product_lines_ids">
                                     <tree tring="Products to Consume">
+                                        <field name="location_id"/>
                                         <field name='production_id'/>
                                         <field name="product_id"/>
+                                        <field name="standard_cost"/>
                                         <field name="product_qty"  string="Quantity"/>
                                         <field name="product_uom" options="{'no_open':True,'no_create':True}" string="Unit of Measure" groups="product.group_uom"/>
                                     </tree>
@@ -108,7 +105,7 @@
                     Click to start a segment.
                 </p>
                 <p>
-                    Segments will help create clusters of Sale Orders.
+                    Segments are useful for grouping Manufacturing Orders that will be dealt with within a certain time span, could be a week.
                 </p>
             </field>
         </record>
@@ -116,7 +113,8 @@
         <menuitem action="action_segment_form" 
             id="menu_mrp_segment_action"
             name="Segmentation"
-            parent="menu_mrp_segmentation"
-            sequence="1"/>
+            parent="mrp.menu_mrp_manufacturing"
+            sequence="30"/>
+
     </data>
 </openerp>
