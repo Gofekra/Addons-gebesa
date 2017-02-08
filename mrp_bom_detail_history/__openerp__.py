@@ -21,7 +21,8 @@
         "mrp_cut_detail"
     ],
     "data": [
-        "views/mrp_bom_detail_history.xml"
+        "views/mrp_bom_detail_history.xml",
+        "security/ir.model.access.csv",
     ],
     "demo": [
     ],
