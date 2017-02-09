@@ -405,11 +405,13 @@
                                             </tr>
                                         </t>
                                     </t>
-                                    <t t-if="key!=order_key[3]">
-                                        <tr style="border-bottom: 2px solid black">
-                                            <td colspan="10">&#160;</td>
-                                        </tr>
-                                        <tr><td colspan="10">&#160;</td></tr>
+                                    <t t-if="len(order_key[3])&#62;3">
+                                        <t t-if="key!=order_key[3]">
+                                            <tr style="border-bottom: 2px solid black">
+                                                <td colspan="10">&#160;</td>
+                                            </tr>
+                                            <tr><td colspan="10">&#160;</td></tr>
+                                        </t>
                                     </t>
                                 </t>
                             </t>
@@ -510,11 +512,13 @@
                                             </tr>
                                         </t>
                                     </t>
-                                    <t t-if="key!=order_key[3]">
-                                        <tr style="border-bottom: 2px solid black">
-                                            <td colspan="10">&#160;</td>
-                                        </tr>
-                                        <tr><td colspan="10">&#160;</td></tr>
+                                    <t t-if="len(order_key[3])&#62;3">
+                                        <t t-if="key!=order_key[3]">
+                                            <tr style="border-bottom: 2px solid black">
+                                                <td colspan="10">&#160;</td>
+                                            </tr>
+                                            <tr><td colspan="10">&#160;</td></tr>
+                                        </t>
                                     </t>
                                 </t>
                             </t>
@@ -524,7 +528,22 @@
                         <img src='http://127.0.0.1:8069/report_price_list/static/src/img/modulares6.jpg' style="max-height: 400px;"/>
                     </div>
                 </div>
+                <div style="page-break-after: always;">&#160;</div>
                 <!-- PAGINA 5 FIN-->
+                <!-- PAGINA 6-->
+                <div class="col-xs-12" style="margin-top: 10px;">
+                    <table width="100%">
+                        <tr>
+                            <td width="70%" style="font-size: 12pt;">
+                                <b>POSTES METÁlicos CUADRADOS 6 x 6 cm.</b>
+                            </td>
+                            <td width="30%" align="right">
+                                <img src='http://127.0.0.1:8069/report_price_list/static/src/img/optimus.jpg'/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- PAGINA 6 FIN-->
             </div>
             <!-- PAGINAS FIN-->
             <div class="footer">
