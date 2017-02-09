@@ -35,12 +35,6 @@ class MrpShipment(models.Model):
         required=True,
     )
 
-    warehouse_id = fields.Many2one(
-        'stock.warehouse',
-        string=_(u'Warehouse'),
-        required=True,
-    )
-
     date = fields.Date(
         string=_(u'Date'),
         default=fields.Date.today
@@ -79,7 +73,6 @@ class MrpShipment(models.Model):
 
     def _get_shipment_lines(self):
         domain = [('missing_quantity', '>', 0),
-                  ('order_id.warehouse_id', '=', self.warehouse_id.id),
                   ('state', '=', 'done')]
         order_lines = self.env['sale.order.line'].search(domain)
 
