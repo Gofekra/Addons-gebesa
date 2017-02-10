@@ -137,5 +137,56 @@ class SaleOrder(models.Model):
             if not order.project_id:
                 raise UserError(
                     _('The following field is not invalid:\nAnalytic Account'))
+            global_cost = 0.0
+            global_net_sale = 0.0
+            global_freight = 0.0
+            global_installa = 0.0
+            global_profit_margin = 0.0
+            for line in order.order_line:
+                product = line.product_id
+                standard_cost = product.standard_price or 0.0
+                if standard_cost > 0:
+                    standard_cost = standard_cost
+                    # * inv.rate
+                total_cost = standard_cost * line.product_uom_qty
+                perc_freight = order.perc_freight or False
+                freight = 0.0
+                profit_margin = 0.0
+                perc_installation = order.perc_installation or False
+                installation = 0.0
+                if perc_freight:
+                    freight = (line.price_unit * line.product_uom_qty) * (
+                        perc_freight / 100.0)
+                net_sale = (line.price_unit * line.product_uom_qty) - freight
+                if perc_installation:
+                    installation = net_sale * (
+                        perc_installation / 100.0)
+                net_sale = net_sale - installation
+
+                if net_sale > 0.000000:
+                    profit_margin = (1 - (total_cost) / net_sale)
+                    profit_margin = profit_margin * 100
+
+                line.freight_amount = freight
+                line.installation_amount = installation
+                line.net_sale = net_sale
+                line.profit_margin = profit_margin
+                line.purchase_price = standard_cost
+                line.standard_cost = total_cost
+
+                global_cost += total_cost
+                global_net_sale += net_sale
+                global_freight += freight
+                global_installa += installation
+
+            if global_net_sale > 0.000000:
+                global_profit_margin = (1 - (global_cost) / global_net_sale)
+                global_profit_margin = global_profit_margin * 100
+
+            order.total_cost = global_cost
+            order.total_net_sale = global_net_sale
+            order.total_freight = global_freight
+            order.total_installation = global_installa
+            order.profit_margin = global_profit_margin
 
         return super(SaleOrder, self).action_confirm()

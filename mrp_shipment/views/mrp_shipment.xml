@@ -29,7 +29,6 @@
                 <tree string='Shipment'>
                     <field name='folio'/>
                     <field name='reference'/>
-                    <field name='warehouse_id'/>
                     <field name='date'/>
                 </tree>
             </field>
@@ -41,7 +40,7 @@
             <field name='arch' type='xml'>
                 <form string='Shipment'>
                     <header>
-                    	<button name="prepare_shipment" states="draft" string="Proceed" type="object" class="oe_highlight"/>
+                        <button name="prepare_shipment" states="draft" string="Proceed" type="object" class="oe_highlight"/>
                         <field name="state" widget="statusbar"/>
                     </header>
                     <sheet>
@@ -54,15 +53,14 @@
                         <group>
                             <group>
                                 <field name='reference'/>
-                            	<field name='warehouse_id'/>
                             </group>
                             <group>
-                            	<field name='date'/>
+                                <field name='date'/>
                             </group>
                         </group>
                         <notebook attrs="{'invisible':[('state','=','draft')]}">
-                        	<page string="Shipment Details" >
-                        		<field name="line_ids" string="Shipment Details" >
+                            <page string="Shipment Details" >
+                                <field name="line_ids" string="Shipment Details" >
                                     <tree string="Shipment Details" editable="bottom">
                                         <field name="partner_id" readonly="1"/>
                                         <field name='country_id'/>
@@ -78,7 +76,7 @@
                                         <field name="standard_cost" readonly="1"/>
                                     </tree>
                                 </field>
-                        	</page>
+                            </page>
                         </notebook>
                     </sheet>
                 </form>
@@ -86,11 +84,11 @@
         </record>
 
         <record id='action_shipment_form' model='ir.actions.act_window'>
-        	<field name='name'>Shipment</field>
-        	<field name='res_model'>mrp.shipment</field>
-        	<field name='view_type'>form</field>
-        	<field name='view_mode'>tree,form</field>
-        	<field name="help" type="html">
+            <field name='name'>Shipment</field>
+            <field name='res_model'>mrp.shipment</field>
+            <field name='view_type'>form</field>
+            <field name='view_mode'>tree,form</field>
+            <field name="help" type="html">
               <p class="oe_view_nocontent_create">
                 Click to start a shipment.
               </p>
