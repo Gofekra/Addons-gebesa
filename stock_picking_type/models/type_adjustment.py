@@ -9,7 +9,7 @@ class TypeAdjustment(models.Model):
     _name = 'type.adjustment'
     _description = 'Type of adjustment'
     _order = 'consecutive asc'
-    _rec_name = 'consecutive'
+    _rec_name = 'description'
 
     @api.model
     def _default_consecutive(self):

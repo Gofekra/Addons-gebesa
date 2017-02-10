@@ -18,7 +18,8 @@ class StockPicking(models.Model):
                 warehouse = picking.location_dest_id.stock_warehouse_id
             employee = self.env['hr.employee'].search(
                 [('user_id', '=', self._uid)])
-            if warehouse not in employee.warehouse_ids:
-                raise ValidationError(_("You do not have privileges to validate \
-                                      in this warehouse."))
+            if warehouse:
+                if warehouse not in employee.warehouse_ids:
+                    raise ValidationError(_("You do not have privileges to validate \
+                                            in this warehouse."))
         return super(StockPicking, self).do_new_transfer()

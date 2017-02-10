@@ -5,7 +5,7 @@
 from openerp import api, fields, models
 
 
-class AccountingReport(models.TransientModel):
+class MrpBomLineMassiveReplacement(models.TransientModel):
     _name = "mrp.bom.line.massive.replacement"
 
     product_id = fields.Many2one(
@@ -20,9 +20,6 @@ class AccountingReport(models.TransientModel):
     @api.multi
     def process(self):
         bom_line_obj = self.env['mrp.bom.line']
-        ## ---> Set BreakPoint
-        import pdb;
-        pdb.set_trace()
         for replacement in self:
             bom_line = bom_line_obj.search(
                 [('product_id', '=', replacement.product_id.id)])
