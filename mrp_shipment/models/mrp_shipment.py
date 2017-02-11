@@ -15,7 +15,8 @@ class MrpShipment(models.Model):
         [('draft', 'Draft'),
          ('cancel', 'Cancelled'),
          ('confirm', 'In Progress'),
-         ('done', 'Validated')],
+         ('done', 'Validated'),
+         ('finished', 'Finished')],
         string=_(u'Status'),
         readonly=True,
         select=True,
@@ -51,7 +52,7 @@ class MrpShipment(models.Model):
 
     @api.model
     def create(self, vals):
-        if vals.get('folio', 'New') == 'New':
+        if vals.get('folio', 'new') == 'new':
             vals['folio'] = self.env['ir.sequence'].next_by_code(
                 'mrp.shipment') or '/'
         return super(MrpShipment, self).create(vals)
@@ -70,6 +71,38 @@ class MrpShipment(models.Model):
                     self.env['mrp.shipment.line'].create(order_line)
 
         return self.write({'state': 'confirm'})
+
+    @api.multi
+    def done(self):
+        for ship in self:
+            ship.state = 'done'
+        return True
+
+    @api.multi
+    def cancel(self):
+        for ship in self:
+            for line in ship.line_ids:
+                line.quantity_shipped = 0
+            ship.state = 'cancel'
+        return True
+
+    @api.multi
+    def finished(self):
+        shipment_line_obj = self.env['mrp.shipment.line']
+        for ship in self:
+            for line in ship.line_ids:
+                sale_line = line.order_line_id
+                shipment_line = shipment_line_obj.search(
+                    [('order_line_id', '=', sale_line.id),
+                     ('id', '!=', line.id)])
+                qty_shipment = 0
+                for ship_line in shipment_line:
+                    qty_shipment += ship_line.quantity_shipped
+                qty_invoiced = sale_line.qty_invoiced - qty_shipment
+                if line.quantity_shipped > qty_invoiced:
+                    line.quantity_shipped = qty_invoiced
+            ship.state = 'finished'
+        return True
 
     def _get_shipment_lines(self):
         domain = [('missing_quantity', '>', 0),
