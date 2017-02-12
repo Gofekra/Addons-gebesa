@@ -405,7 +405,7 @@
                                             </tr>
                                         </t>
                                     </t>
-                                    <t t-if="len(order_key[3])&#62;3">
+                                    <t t-if="len(order_key)&#62;3">
                                         <t t-if="key!=order_key[3]">
                                             <tr style="border-bottom: 2px solid black">
                                                 <td colspan="10">&#160;</td>
@@ -512,7 +512,7 @@
                                             </tr>
                                         </t>
                                     </t>
-                                    <t t-if="len(order_key[3])&#62;3">
+                                    <t t-if="len(order_key)&#62;3">
                                         <t t-if="key!=order_key[3]">
                                             <tr style="border-bottom: 2px solid black">
                                                 <td colspan="10">&#160;</td>
