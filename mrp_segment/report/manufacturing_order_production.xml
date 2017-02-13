@@ -13,7 +13,6 @@
             <t t-call="report.html_container">
                 <t t-foreach="docs" t-as="doc">
                     <t t-call="mrp_segment.report_manufacturing_order_document"/>
-                    <t t-call="mrp_segment.report_manufacturing_order_detail"/>
                 </t>
             </t>
         </template>
