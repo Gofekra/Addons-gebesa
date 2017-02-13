@@ -18,6 +18,7 @@
     "depends": [
         "base",
         "sale",
+        "procurement",
     ],
     "data": [
         "views/sale_view.xml",

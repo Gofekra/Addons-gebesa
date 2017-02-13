@@ -28,20 +28,74 @@ class SaleOrder(models.Model):
     )
 
     @api.multi
+    def all_cancel(self):
+        move_obj = self.env['stock.move']
+        prod_obj = self.env['mrp.production']
+        proc_obj = self.env['procurement.order']
+        purchase_obj = self.env['purchase.order']
+        for order in self:
+            for pick in order.picking_ids:
+                if pick.state in ['draft', 'waiting', 'confirmed',
+                                  'partially_available', 'assigned']:
+                    moves = [move.id for move in pick.move_lines]
+                    move.browse(moves).action_cancel()
+            production = prod_obj.search([('sale_id', '=', order.id)])
+            for prod in production:
+                if prod.state in ['draft', 'confirmed', 'ready']:
+                    prod.action_cancel()
+            procurement = proc_obj.search([('sale_id', '=', order.id)])
+            ## ---> Set BreakPoint
+            import pdb;
+            pdb.set_trace()
+            for proc in procurement:
+                if proc.state in ['confirmed', 'exception', 'running']:
+                    proc.cancel()
+            purchase = purchase_obj.search([('origin', 'like', order.name)])
+            for purc in purchase:
+                if purc.state in ['draft']:
+                    purc.button_cancel()
+
+    @api.multi
     def action_closed(self):
         for order in self:
             if order.closing_reason is False:
                 raise UserError(_("You can't close this Order if you don't"
                                   " captured the Closing Reason field!"))
-            for pick in order.picking_ids:
-                if pick.state in ['draft', 'assigned', 'confirmed']:
-                    for rec in pick:
-                        moves = [move.id for move in rec.move_lines]
-                        self.pool.get('stock.move').action_cancel(
-                            self._cr, self._uid, moves, self._context)
 
+        self.all_cancel()
         self.write({'state': 'closed'})
         return True
+
+    @api.multi
+    def action_cancel(self):
+        prod_obj = self.env['mrp.production']
+        proc_obj = self.env['procurement.order']
+        purchase_obj = self.env['purchase.order']
+        for order in self:
+            # ---> Set BreakPoint
+            import pdb
+            pdb.set_trace()
+            for pick in order.picking_ids:
+                if pick.state in ['done']:
+                    raise UserError(_("The sales order cannot be canceled. \
+                        Please close it"))
+            production = prod_obj.search([('sale_id', '=', order.id)])
+            for prod in production:
+                if prod.state in ['in_production', 'done']:
+                    raise UserError(_("The sales order cannot be canceled. \
+                        Please close it"))
+            procurement = proc_obj.search([('sale_id', '=', order.id)])
+            for proc in procurement:
+                if proc.state in ['done']:
+                    raise UserError(_("The sales order cannot be canceled. \
+                        Please close it"))
+            purchase = purchase_obj.search([('origin', 'like', order.name)])
+            for purc in purchase:
+                if purc.state not in ['draft']:
+                    raise UserError(_("The sales order cannot be canceled. \
+                        Please close it"))
+        self.all_cancel()
+        super(SaleOrder, self).action_cancel()
 
 
 class SaleOrderLine(models.Model):
