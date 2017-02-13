@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
-        <template id="assets_specific" inherit_id="report.assets_common">
-            <xpath expr="." position="inside">
-                <link rel="stylesheet" href="/mrp_segment/static/src/css/manufacturing_order.css"/>
-            </xpath>
-        </template>
-
         <report
             id="manufacturing_order"
             model="mrp.segment"
@@ -156,17 +150,8 @@
                         </t>
                     </table>  
                 </div>
-            </div>
-            <div class="footer">
-                <t t-call="mrp_segment.report_manufacturing_order_footer"/>
-            </div>
-        </template>
-
-        <template id="report_manufacturing_order_detail">
-            <div class="header">
-                <t t-call="mrp_segment.report_manufacturing_order_header"/>
-            </div>
-            <div class="page">
+                <div style="page-break-after: always;">&#160;</div>
+                <!-- -->
                 <t t-foreach="doc['mp_lines']" t-as="mp_line">
                     <div class="manufacturing_order_div">
                         LINEA: <span t-esc="mp_line.code"/>-<span t-esc="mp_line.name"/>
@@ -216,7 +201,6 @@
             <t t-call="report.html_container">
                 <t t-foreach="docs" t-as="doc">
                     <t t-call="mrp_segment.report_manufacturing_order_document"/>
-                    <t t-call="mrp_segment.report_manufacturing_order_detail"/>
                 </t>
             </t>
         </template>
