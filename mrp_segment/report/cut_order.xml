@@ -3,7 +3,7 @@
     <data>
         <template id="assets_specific" inherit_id="report.assets_common">
             <xpath expr="." position="inside">
-                <link rel="stylesheet" href="http://127.0.0.1:8069/mrp_segment/static/src/css/cut_order.css"/>
+                <link rel="stylesheet" href="/mrp_segment/static/src/css/cut_order.css"/>
             </xpath>
         </template>
 

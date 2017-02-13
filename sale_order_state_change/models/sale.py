@@ -38,15 +38,12 @@ class SaleOrder(models.Model):
                 if pick.state in ['draft', 'waiting', 'confirmed',
                                   'partially_available', 'assigned']:
                     moves = [move.id for move in pick.move_lines]
-                    move.browse(moves).action_cancel()
+                    move_obj.browse(moves).action_cancel()
             production = prod_obj.search([('sale_id', '=', order.id)])
             for prod in production:
                 if prod.state in ['draft', 'confirmed', 'ready']:
                     prod.action_cancel()
             procurement = proc_obj.search([('sale_id', '=', order.id)])
-            ## ---> Set BreakPoint
-            import pdb;
-            pdb.set_trace()
             for proc in procurement:
                 if proc.state in ['confirmed', 'exception', 'running']:
                     proc.cancel()
@@ -72,9 +69,6 @@ class SaleOrder(models.Model):
         proc_obj = self.env['procurement.order']
         purchase_obj = self.env['purchase.order']
         for order in self:
-            # ---> Set BreakPoint
-            import pdb
-            pdb.set_trace()
             for pick in order.picking_ids:
                 if pick.state in ['done']:
                     raise UserError(_("The sales order cannot be canceled. \
