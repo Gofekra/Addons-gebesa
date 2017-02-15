@@ -69,7 +69,10 @@
 						<notebook>
 							<page string='Invoices'>
 								<separator string='Invoices'/>
-								<field name='invoice_ids' domain="[('state','=','open'),('partner_id','=',partner_id),('factoring_supplier_id', '=', False)]" nolabel='1' attrs="{'readonly':[('state','!=','draft')]}"/>
+								<field name='invoice_ids' domain="[('state','=','open'),
+									('type','=','in_invoice'),
+									('partner_id','=',partner_id),
+									('factoring_supplier_id', '=', False)]" nolabel='1' attrs="{'readonly':[('state','!=','draft')]}"/>
 							</page>                             
 						</notebook>						
 					</sheet>
