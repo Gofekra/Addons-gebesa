@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model='ir.ui.view' id='account_payment_register_factoraje'>
+        	<field name='name'>account.payment.register.factoraje</field>
+        	<field name='model'>account.register.payments</field>
+        	<field name='inherit_id' ref="account_register_payments_line.view_invoices_topay_tree"/>
+        	<field name='arch' type='xml'>
+        		<xpath expr="//field[@name='line_ids']/tree//field[@name='origin']" position="after">
+        			<field name="factoring_number" readonly="1"/>
+        		</xpath>
+        	</field>
+        </record>
+    </data>
+</openerp>

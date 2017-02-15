@@ -4,3 +4,4 @@
 from . import account_invoice
 from . import factoring_customer
 from . import factoring_supplier
+from . import account_payment_registers_line

@@ -18,6 +18,7 @@
     "depends": [
         "base",
         "account",
+        "account_register_payments_line",
     ],
     "data": [
         "security/security.xml",
@@ -25,6 +26,8 @@
         "views/factoring_customer_view.xml",
         "views/factoring_supplier_view.xml",
         "views/factoring_secuence.xml",
+        "views/account_invoice_view.xml",
+        "views/account_payment_register_line_view.xml",
     ],
     "demo": [
 
