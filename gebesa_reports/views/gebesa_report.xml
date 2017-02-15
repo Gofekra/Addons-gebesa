@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
-        <menuitem id="gebesa_report_menu" name="Reportes Gebesa" web_icon="gebesa_reports,static/description/web_icon.png" icon="fa-usd" action="board.open_board_my_dash_action"/>
+        <menuitem id="gebesa_report_menu" name="Reportes Gebesa" web_icon="gebesa_reports,static/description/web_icon.png" icon="fa-usd" action="board.open_board_my_dash_action" groups="gebesa_reports.group_report_gebesa"/>
         <menuitem id="gebesa_report_conta_menu" name="Contabilidad" parent="gebesa_report_menu"/>
         <menuitem id="gebesa_report_pagos_menu" name="Pagos" parent="gebesa_report_menu"/>
         <menuitem id="gebesa_report_credi_menu" name="Credito y Cobranza" parent="gebesa_report_menu"/>

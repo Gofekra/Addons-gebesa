@@ -19,6 +19,7 @@
         "base", "account", "board",
     ],
     "data": [
+        "security/security.xml",
         "views/account_account.xml",
         "views/account_journal.xml",
         "views/gebesa_report.xml",
