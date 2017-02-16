@@ -9,8 +9,12 @@ from openerp.addons import decimal_precision as dp
 class SaleGoal(models.Model):
     _name = 'sale.goal'
     _description = 'Sale Goal'
-    _rec_name = 'year'
+    # _rec_name = 'year'
 
+    name = fields.Char(
+        string='Name',
+        compute='_compute_name'
+    )
     year = fields.Selection(
         [(2016, '2016'), (2017, '2017'), (2018, '2018'), (2019, '2019'),
          (2020, '2020'), (2021, '2021'), (2022, '2022'), (2023, '2023'),
@@ -63,6 +67,17 @@ class SaleGoal(models.Model):
         if self.partner_ids:
             self.sales_channel_id = None
 
+    @api.depends('year', 'sales_channel_id', 'partner_ids')
+    def _compute_name(self):
+        for goal in self:
+            name = ''
+            name += str(goal.year) + '/'
+            if goal.sales_channel_id:
+                name += goal.sales_channel_id.name
+            else:
+                for parntner in goal.partner_ids:
+                    name += parntner.name + ','
+            goal.name = name
 
 
 class SaleGoalWeekly(models.Model):
@@ -124,7 +139,6 @@ class SaleGoalMonthly(models.Model):
          'Month already registered in this goal'),
         ('amount_cero', "check(amount != 0)", 'No amount allowed 0'),
     ]
-
 
 
 class SaleGoalQuarterly(models.Model):
