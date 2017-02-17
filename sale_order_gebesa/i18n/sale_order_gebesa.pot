@@ -61,6 +61,13 @@ msgid "Date delivery"
 msgstr ""
 
 #. module: sale_order_gebesa
+#: code:addons/sale_order_gebesa/models/sale_order.py:112
+#: model:ir.model.fields,field_description:sale_order_gebesa.field_sale_order_date_production
+#, python-format
+msgid "Date of Production Termination"
+msgstr ""
+
+#. module: sale_order_gebesa
 #: code:addons/sale_order_gebesa/models/sale_order.py:24
 #: model:ir.model.fields,field_description:sale_order_gebesa.field_sale_order_date_reception
 #, python-format

@@ -18,6 +18,7 @@
         		<xpath expr="//group/group/field[@name='validity_date']" position="after">
         			<field name="date_delivery" required="True" />
         			<field name="date_reception" required="True" />
+                    <field name="date_production"/>
         		</xpath>
                 <xpath expr="//field[@name='order_line']/form/group/group/field[@name='price_unit']" position="after">
                     <field name="margin_justification"/>
