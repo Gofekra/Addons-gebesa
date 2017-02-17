@@ -108,6 +108,10 @@ class SaleOrder(models.Model):
         string=_(u'Note Credit and Collections'),
     )
 
+    date_production = fields.Date(
+        string=_('Date of Production Termination'),
+    )
+
     @api.multi
     @api.onchange('project_id')
     def onchange_project_id(self):
