@@ -58,6 +58,15 @@ msgid "Num. Ctrl. Progress"
 msgstr ""
 
 #. module: integration_progress_fields
+#: code:addons/integration_progress_fields/models/product.py:16
+#: model:ir.model.fields,field_description:integration_progress_fields.field_product_product_num_package
+#: model:ir.model.fields,field_description:integration_progress_fields.field_product_template_num_package
+#: model:ir.ui.view,arch_db:integration_progress_fields.product_template_form_inherit_view
+#, python-format
+msgid "Number Packages"
+msgstr ""
+
+#. module: integration_progress_fields
 #: model:ir.model,name:integration_progress_fields.model_res_partner
 msgid "Partner"
 msgstr ""

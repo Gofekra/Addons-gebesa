@@ -10,6 +10,7 @@
             <field name='arch' type='xml'>
                 <group name="group_lots_and_weight" position="inside">
                     <field name="numctrl_progress" string="Num. Ctrl. Progress" readonly="1" />
+                    <field name='num_package' string='Number Packages'/>
                 </group>
         	</field>
         </record>

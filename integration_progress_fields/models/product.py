@@ -12,6 +12,10 @@ class ProductTemplate(models.Model):
         _('Num. Ctrl. Progress'),
     )
 
+    num_package = fields.Integer(
+        _('Number Packages'),
+    )
+
     # _sql_constraints = [
     #    ('default_uniq', 'unique (default_code)',
     #     _('The field Num. Ctrl. Progress must be unique!'))
