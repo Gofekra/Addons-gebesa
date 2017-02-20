@@ -21,6 +21,6 @@ class AccountInvoice(models.Model):
     @api.multi
     def do_cfdi_workflow(self):
         for line in self.invoice_line_ids:
-            if line.product_id.default_code == 'BALINI2017CXC':
+            if line.product_id.id in (476030, 476029, 18352):
                 return []
         return super(AccountInvoice, self).do_cfdi_workflow()
