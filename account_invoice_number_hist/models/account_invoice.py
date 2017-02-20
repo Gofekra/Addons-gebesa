@@ -21,6 +21,6 @@ class AccountInvoice(models.Model):
     @api.multi
     def do_cfdi_workflow(self):
         for line in self.invoice_line_ids:
-            if line.product_id.id in (476030, 476029, 18352):
+            if line.product_id.id in (975887, 975888, 507890):
                 return []
         return super(AccountInvoice, self).do_cfdi_workflow()
