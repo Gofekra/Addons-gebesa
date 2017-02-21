@@ -125,10 +125,22 @@ class MrpShipment(models.Model):
 
     @api.multi
     def done(self):
+        ship_line_obj = self.env['mrp.shipment.line']
+        ship_sale_obj = self.env['mrp.shipment.sale']
         for ship in self:
             for line in ship.line_ids:
+                sale_order_id = line.sale_order_id
                 if line.quantity_shipped == 0:
                     line.unlink()
+                    ship_line = ship_line_obj.search([
+                        ('sale_order_id', '=', sale_order_id.id),
+                        ('shipment_id', '=', ship.id)])
+                    if not ship_line:
+                        ship_sale = ship_sale_obj.search([
+                            ('sale_id', '=', sale_order_id.id),
+                            ('shipment_id', '=', ship.id)])
+                        if ship_sale:
+                            ship_sale.unlink()
             ship.state = 'done'
         return True
 
@@ -209,6 +221,28 @@ class MrpShipmentSale(models.Model):
         string=_(u'Shipment'),
         ondelete='cascade',
         select=True)
+    partner_id = fields.Many2one(
+        'res.partner',
+        string=_(u'Customer'),
+        related='sale_id.partner_id'
+    )
+    country_id = fields.Many2one(
+        'res.country',
+        string=_(u'Country'),
+        related='partner_id.country_id',
+        store=True,
+    )
+    state_id = fields.Many2one(
+        'res.country.state',
+        string=_(u'State'),
+        related='partner_id.state_id',
+        store=True,
+    )
+    city = fields.Char(
+        string=_(u'City'),
+        related='partner_id.city',
+        store=True,
+    )
 
     @api.multi
     def shipment_all(self):
