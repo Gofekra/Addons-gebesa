@@ -196,7 +196,7 @@ class MrpShipment(models.Model):
             vals.append(product_line)
         return vals, sale
 
-    @api.model
+    @api.multi
     def add(self):
         return {
             'name': 'Add Sale Order',
