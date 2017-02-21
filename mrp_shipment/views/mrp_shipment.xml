@@ -77,6 +77,10 @@
                                     <tree string="Shipment" editable="bottom" create="false">
                                         <field name="shipment_id" readonly="1" invisible="1"/>
                                         <field name="sale_id" readonly="1"/>
+                                        <field name='partner_id' readonly="1"/>
+                                        <field name='country_id' readonly="1"/>
+                                        <field name='state_id' readonly="1"/>
+                                        <field name='city' readonly="1"/>
                                         <button icon="fa-dot-circle-o" name="shipment_all" string="Prueba" type="object"/>
                                     </tree>
                                  </field>
