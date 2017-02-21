@@ -25,6 +25,7 @@
         "views/sale_order.xml",
         "security/ir.model.access.csv",
         "report/mrp_shipment.xml",
+        "wizards/mrp_shipment_sale_order.xml",
     ],
     "demo": [
     ],

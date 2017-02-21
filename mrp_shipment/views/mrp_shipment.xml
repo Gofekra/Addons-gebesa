@@ -2,9 +2,10 @@
 <openerp>
     <data>
         
+        <menuitem id="logistics_menu" name="Logistics" web_icon="mrp_shipment,static/description/web_icon.png" icon="fa-usd" groups="mrp.group_mrp_user"/>
         <menuitem id="menu_mrp_shipment"
             name="Shipments"
-            parent="base.menu_mrp_root"
+            parent="logistics_menu"
             sequence="3"/>
 
         <record id="view_shipment_filter" model="ir.ui.view">
@@ -29,7 +30,11 @@
                 <tree string='Shipment'>
                     <field name='folio'/>
                     <field name='reference'/>
+                    <field name='meters'/>
+                    <field name='freight'/>
+                    <field name='amount'/>
                     <field name='date'/>
+                    <field name='departure_date'/>
                 </tree>
             </field>
         </record>
@@ -43,7 +48,8 @@
                         <button name="prepare_shipment" states="draft" string="Proceed" type="object" class="oe_highlight"/>
                         <button name="done" states="confirm" string="Done" type="object" class="oe_highlight"/>
                         <button name="finished" states="done" string="Finished" type="object" class="oe_highlight"/>
-                        <button name="cancel" string="Cancel" type="object"/>
+                        <button name="cancel" string="Cancel" type="object" attrs="{'invisible':[('state','in', ['cancel', 'draft'])]}"/>
+                        <button name="add" states="confirm" string="Add Sale Order" type="object"/>
                         <field name="state" widget="statusbar"/>
                     </header>
                     <sheet>
@@ -56,15 +62,28 @@
                         <group>
                             <group>
                                 <field name='reference' attrs="{'readonly':[('state','not in', ['draft', 'confirm'])]}"/>
+                                <field name='meters' readonly="1"/>
+                                <field name='freight' readonly="1"/>
+                                <field name='amount' readonly="1"/>
                             </group>
                             <group>
-                                <field name='date' attrs="{'readonly':[('state','not in', ['draft', 'confirm'])]}"/>
+                                <field name='date' readonly="1"/>
+                                <field name='departure_date' attrs="{'readonly':[('state','not in', ['draft', 'confirm'])]}"/>
                             </group>
                         </group>
                         <notebook attrs="{'invisible':[('state','=','draft')]}">
+                            <page string="Shipment" >
+                                 <field name="sale_ids" string="Shipment" attrs="{'readonly':[('state','!=','confirm')]}" >
+                                    <tree string="Shipment" editable="bottom" create="false">
+                                        <field name="shipment_id" readonly="1" invisible="1"/>
+                                        <field name="sale_id" readonly="1"/>
+                                        <button icon="fa-dot-circle-o" name="shipment_all" string="Prueba" type="object"/>
+                                    </tree>
+                                 </field>
+                            </page>
                             <page string="Shipment Details" >
                                 <field name="line_ids" string="Shipment Details" attrs="{'readonly':[('state','!=','confirm')]}" >
-                                    <tree string="Shipment Details" editable="bottom">
+                                    <tree string="Shipment Details" editable="bottom" create="false">
                                         <field name="shipment_id" readonly="1" invisible="1"/>
                                         <field name="partner_id" readonly="1"/>
                                         <field name='country_id' readonly="1"/>

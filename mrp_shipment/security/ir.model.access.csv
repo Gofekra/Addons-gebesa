@@ -3,3 +3,5 @@ access_mrp_shipment_user,mrp.shipment.user,model_mrp_shipment,mrp.group_mrp_user
 access_mrp_shipment_manager,mrp.shipment.manager,model_mrp_shipment,mrp.group_mrp_manager,1,1,1,1
 access_mrp_shipment_line_user,mrp.shipment.line.user,model_mrp_shipment_line,mrp.group_mrp_user,1,0,0,0
 access_mrp_shipment_line_manager,mrp.shipment.line.manager,model_mrp_shipment_line,mrp.group_mrp_manager,1,1,1,1
+access_mrp_shipment_sale_user,mrp.shipment.sale.user,model_mrp_shipment_sale,mrp.group_mrp_user,1,0,0,0
+access_mrp_shipment_sale_manager,mrp.shipment.sale.manager,model_mrp_shipment_sale,mrp.group_mrp_manager,1,1,1,1

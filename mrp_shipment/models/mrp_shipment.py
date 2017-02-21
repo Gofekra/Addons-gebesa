@@ -4,6 +4,7 @@
 
 from openerp import _, api, fields, models
 from openerp.exceptions import ValidationError
+from openerp.addons import decimal_precision as dp
 
 
 class MrpShipment(models.Model):
@@ -37,10 +38,28 @@ class MrpShipment(models.Model):
     )
 
     date = fields.Date(
-        string=_(u'Date'),
+        string=_(u'Date of shipment'),
+        default=fields.Date.today
+    )
+    departure_date = fields.Date(
+        string=_(u'Departure date'),
         default=fields.Date.today
     )
 
+    meters = fields.Float(
+        string=_(u'Meters'),
+        compute='_compute_meters'
+    )
+    freight = fields.Float(
+        string=_(u'Freight'),
+        compute='_compute_meters',
+        digits_compute=dp.get_precision('Account'),
+    )
+    amount = fields.Float(
+        string=_(u'Amount'),
+        compute='_compute_meters',
+        digits_compute=dp.get_precision('Account'),
+    )
     line_ids = fields.One2many(
         'mrp.shipment.line',
         'shipment_id',
@@ -49,6 +68,32 @@ class MrpShipment(models.Model):
         states={'done': [('readonly', True)]},
         help="Shipment Lines.",
         copy=True)
+
+    sale_ids = fields.One2many(
+        'mrp.shipment.sale',
+        'shipment_id',
+        string=_(u'Shipment Order'),
+        readonly=False,
+        states={'done': [('readonly', True)]},
+        copy=True)
+
+    @api.depends('line_ids', 'line_ids.quantity_shipped')
+    def _compute_meters(self):
+        for shipment in self:
+            meters = 0
+            freight = 0
+            amount = 0
+            for line in shipment.line_ids:
+                meters += (line.product_id.volume * line.quantity_shipped)
+                freight += (line.order_line_id.freight_amount /
+                            line.order_line_id.product_uom_qty) * \
+                    line.quantity_shipped
+                amount += (line.order_line_id.net_sale /
+                           line.order_line_id.product_uom_qty) * \
+                    line.quantity_shipped
+            shipment.meters = meters
+            shipment.freight = freight
+            shipment.amount = amount
 
     @api.model
     def create(self, vals):
@@ -65,7 +110,13 @@ class MrpShipment(models.Model):
             line_ids = [line.id for line in ship.line_ids]
             if not line_ids:
                 # compute the revaluation lines and create them
-                vals = self._get_shipment_lines()
+                vals, sales = ship._get_shipment_lines()
+
+                for sale in sales:
+                    self.env['mrp.shipment.sale'].create({
+                        'sale_id': sale,
+                        'shipment_id': ship.id
+                    })
 
                 for order_line in vals:
                     self.env['mrp.shipment.line'].create(order_line)
@@ -75,6 +126,9 @@ class MrpShipment(models.Model):
     @api.multi
     def done(self):
         for ship in self:
+            for line in ship.line_ids:
+                if line.quantity_shipped == 0:
+                    line.unlink()
             ship.state = 'done'
         return True
 
@@ -110,7 +164,10 @@ class MrpShipment(models.Model):
         order_lines = self.env['sale.order.line'].search(domain)
 
         vals = []
+        sale = []
         for line in order_lines:
+            if line.order_id.id not in sale:
+                sale.append(line.order_id.id)
             product_line = dict(
                 (fn, 0.0) for fn in [
                     'shipment_id', 'partner_id',
@@ -125,7 +182,45 @@ class MrpShipment(models.Model):
             product_line['order_line_id'] = line.id
             product_line['quantity'] = line.missing_quantity
             vals.append(product_line)
-        return vals
+        return vals, sale
+
+    @api.model
+    def add(self):
+        return {
+            'name': 'Add Sale Order',
+            'type': 'ir.actions.act_window',
+            'res_model': 'mrp.shipment.sale.order',
+            'view_mode': 'form',
+            'view_type': 'form',
+            'target': 'new',
+            'context': self._context,
+        }
+
+
+class MrpShipmentSale(models.Model):
+    _name = 'mrp.shipment.sale'
+
+    sale_id = fields.Many2one(
+        'sale.order',
+        string='Sale Order',
+    )
+    shipment_id = fields.Many2one(
+        'mrp.shipment',
+        string=_(u'Shipment'),
+        ondelete='cascade',
+        select=True)
+
+    @api.multi
+    def shipment_all(self):
+        ship_line = self.env['mrp.shipment.line']
+        for sale in self:
+            lines = ship_line.search([('sale_order_id', '=', sale.sale_id.id),
+                                      ('shipment_id', '=', sale.shipment_id.id)
+                                      ])
+            for line in lines:
+                line.quantity_shipped = line.quantity
+        return {'type': 'ir.actions.client',
+                'tag': 'reload', }
 
 
 class MrpShipmentLine(models.Model):
