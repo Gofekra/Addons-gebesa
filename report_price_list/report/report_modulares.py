@@ -118,6 +118,28 @@ class ParticularReport(models.AbstractModel):
                             pagina[5]['Sup'][prod.height][prod.length] = {}
                         pagina[5]['Sup'][prod.height][prod.length][key] = prod
 
+        pagina[6] = {}
+        group = group_obj.search([('name', '=', 'Postes')])
+        product = product_obj.search([('group_id', '=', group.id),
+                                      ('line_id', '=', line.id),
+                                      ('is_line', '=', True)],
+                                     order="height")
+        pagina[6]['postes'] = []
+        for prod in product:
+            pagina[6]['postes'].append(prod)
+        group = group_obj.search([('name', '=', 'Remates')])
+        product = product_obj.search([('group_id', '=', group.id),
+                                      ('line_id', '=', line.id),
+                                      ('is_line', '=', True)],
+                                     order="height")
+        pagina[6]['Tapa1'] = []
+        pagina[6]['Tapa2'] = []
+        for prod in product:
+            if 'Remate' in str(prod.name):
+                pagina[6]['Tapa1'].append(prod)
+            else:
+                pagina[6]['Tapa2'].append(prod)
+
         docargs = {
             'doc_ids': self._ids,
             'doc_model': report.model,
