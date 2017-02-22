@@ -15,7 +15,7 @@
         </record>
 
         <template id="report_price_list_isometric_header">
-            <table width="100%" style="border-bottom: 3px solid black;">
+            <table width="100%" style="border-bottom: 3px solid black;font-family: Century Gothic;">
                 <tbody>
                     <tr>
                         <td width="35%" style="font-size: 28pt;">
@@ -38,7 +38,7 @@
         </template>
 
         <template id="report_price_list_isometric_footer">
-            <div style="font-size: 9pt;border-top: 1px solid black;">
+            <div style="font-size: 9pt;border-top: 1px solid black;font-family: Century Gothic;">
                 <div class="col-xs-5">
                     Terms and conditions:<br/>
                     *Prices are subject to authorized discounts<br/>
@@ -55,37 +55,36 @@
         </template>
 
         <template id="report_price_list_isometric_document">
-            <t t-set="pag_n" t-value="pag_n+1"/>
             <div class="header">
                 <t t-set="title" t-value="line.name"/>
                 <t t-call="report_price_list.report_price_list_isometric_header"/>
             </div>
-            <div class="page">
-                <t t-foreach="docs[line.name]" t-as="doc" style="font-family: Century Gothic;">
+            <div class="page" style="font-family: Century Gothic;">
+                <t t-foreach="docs[line.name]" t-as="doc">
                     <div class="col-xs-12">
                         <table width="100%" style="border-collapse:collapse;">
                             <thead>
-                                <tr style="font-size: 11.5pt;" height="55px" >
-                                    <th width="30%" align="center"><strong>DESCRIPTION</strong></th>
+                                <tr style="font-size: 11.5pt;" height="60px" >
+                                    <th width="26%" align="center"><strong>DESCRIPTION</strong></th>
                                     <th width="19%" align="center"><strong>CODE</strong></th>
                                     <th width="15%" align="center"><strong>PRICE</strong></th>
                                     <th width="20%" align="center"><strong>DIMENSIONS <br/> W x D x H</strong></th>
-                                    <th width="8%" align="center"><strong>LB.</strong></th>
-                                    <th width="8%" align="center"><strong>Cu. Ft.</strong></th>
+                                    <th width="10%" align="center"><strong>LB.</strong></th>
+                                    <th width="10%" align="center"><strong>Cu. Ft.</strong></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <t t-foreach="len(doc)" t-as="n">
-                                    <tr height="29px">
+                                    <tr height="36px">
                                         <td colspan="7" style="font-size: 10.5pt;">
                                             <strong>
                                                 <span t-field="doc[n].name"/>
                                             </strong>
                                         </td>
                                     </tr>
-                                    <tr height="128px" style="font-size: 9.5pt;">
-                                        <td width="30%">
-                                            <img t-att-src="'data:image/png;base64,%s' % doc[n].isometric" style="max-height: 125px;"/>
+                                    <tr height="155px" style="font-size: 9.5pt;">
+                                        <td width="26%">
+                                            <img t-att-src="'data:image/png;base64,%s' % doc[n].isometric" style="max-height: 152px;"/>
                                         </td>
                                         <td width="19%" align="center">
                                             <span t-field="doc[n].reference_mask"/>
@@ -96,10 +95,10 @@
                                         <td width="20%" align="center">
                                             <span t-field="doc[n].length"/> x <span t-field="doc[n].width"/> x <span t-field="doc[n].height"/>
                                         </td>
-                                        <td width="8%" align="center">
+                                        <td width="10%" align="center">
                                             <span t-field="doc[n].weight"/>
                                         </td>
-                                        <td width="8%" align="center">
+                                        <td width="10%" align="center">
                                             <span t-field="doc[n].volume"/>
                                         </td>
                                     </tr>
@@ -115,25 +114,25 @@
                     </div>
                     <div style="page-break-after: always;">&#160;</div>
                 </t>
-                <div style="page-break-after: always;">&#160;</div>
+                <!--div style="page-break-after: always;">&#160;</div-->
                 <table width="100%">
                     <tbody>
-                        <tr height="460px">
+                        <tr height="525">
                             <td valign="top">
                                 <span t-field="line.acabados_html"/>
                             </td>
                         </tr>
-                        <tr height="130px">
+                        <tr height="155px">
                             <td valign="top">
                                 <span t-field="line.notas_html"/>
                             </td>
                         </tr>
-                        <tr height="150px">
+                        <tr height="175px">
                             <td valign="top">
                                 <span t-field="line.composiciones_html"/>
                             </td>
                         </tr>
-                        <tr height="120px">
+                        <tr height="150px">
                             <td>
                                 <img src='http://127.0.0.1:8069/report_price_list/static/src/img/formato.jpg' style="max-width:100%;"/>
                             </td>
@@ -143,14 +142,12 @@
             </div>
             <div class="footer">
                 <t t-call="report_price_list.report_price_list_isometric_footer"/>
-                <t t-set="pag_n" t-value="pag_n+1"/>
             </div>
         </template>
 
         <template id="report_price_list_isometric">
             <t t-call="report.html_container">
                 <t t-foreach="lines_id" t-as="line">
-                    <t t-set="pag_n" t-value="0"/>
                     <t t-call="report_price_list.report_price_list_isometric_document"/>
                 </t>
             </t>
