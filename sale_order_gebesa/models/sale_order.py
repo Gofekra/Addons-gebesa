@@ -112,6 +112,12 @@ class SaleOrder(models.Model):
         string=_('Date of Production Termination'),
     )
 
+    _sql_constraints = [
+        ('name_unique',
+         'UNIQUE(name)',
+         "The order name must be unique"),
+    ]
+
     @api.multi
     @api.onchange('project_id')
     def onchange_project_id(self):

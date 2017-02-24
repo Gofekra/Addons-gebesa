@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-07 21:40+0000\n"
-"PO-Revision-Date: 2016-09-07 21:40+0000\n"
+"POT-Creation-Date: 2017-02-24 22:19+0000\n"
+"PO-Revision-Date: 2017-02-24 22:19+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -25,6 +25,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:sale_order_gebesa.field_account_analytic_account_use_salesorder
 #, python-format
 msgid "Analytic available for sales order"
+msgstr ""
+
+#. module: sale_order_gebesa
+#: model:ir.model.fields,field_description:sale_order_gebesa.field_sale_order_closing_reason
+msgid "Closing Reason"
 msgstr ""
 
 #. module: sale_order_gebesa
@@ -62,7 +67,6 @@ msgstr ""
 
 #. module: sale_order_gebesa
 #: code:addons/sale_order_gebesa/models/sale_order.py:112
-#: model:ir.model.fields,field_description:sale_order_gebesa.field_sale_order_date_production
 #, python-format
 msgid "Date of Production Termination"
 msgstr ""
@@ -117,15 +121,6 @@ msgid "Freight percentage"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order_line.py:44
-#: code:addons/sale_order_gebesa/models/sale_order_line.py:46
-#: model:ir.model.fields,field_description:sale_order_gebesa.field_sale_order_line_fulfilled
-#: model:ir.model.fields,help:sale_order_gebesa.field_sale_order_line_fulfilled
-#, python-format
-msgid "Fulfilled"
-msgstr ""
-
-#. module: sale_order_gebesa
 #: code:addons/sale_order_gebesa/models/sale_order.py:82
 #: selection:sale.order,priority:0
 #, python-format
@@ -137,15 +132,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:sale_order_gebesa.field_sale_order_complement_saleorder_id
 #, python-format
 msgid "In complement:"
-msgstr ""
-
-#. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order_line.py:50
-#: code:addons/sale_order_gebesa/models/sale_order_line.py:52
-#: model:ir.model.fields,field_description:sale_order_gebesa.field_sale_order_line_invoiced
-#: model:ir.model.fields,help:sale_order_gebesa.field_sale_order_line_invoiced
-#, python-format
-msgid "Invoiced"
 msgstr ""
 
 #. module: sale_order_gebesa
@@ -313,38 +299,43 @@ msgid "Suspended for Collection"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:139
+#: code:addons/sale_order_gebesa/models/sale_order.py:149
 #, python-format
 msgid "The following field is not invalid:\n"
 "Analytic Account"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:132
+#: code:addons/sale_order_gebesa/models/sale_order.py:142
 #, python-format
 msgid "The following field is not invalid:\n"
 "Executive"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:129
+#: code:addons/sale_order_gebesa/models/sale_order.py:139
 #, python-format
 msgid "The following field is not invalid:\n"
 "Manufacture"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:135
+#: code:addons/sale_order_gebesa/models/sale_order.py:145
 #, python-format
 msgid "The following field is not invalid:\n"
 "Manufacturing                       priority"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:126
+#: code:addons/sale_order_gebesa/models/sale_order.py:136
 #, python-format
 msgid "The following field is not invalid:\n"
 "Notify approval"
+msgstr ""
+
+#. module: sale_order_gebesa
+#: sql_constraint:sale.order:0
+msgid "The order name must be unique"
 msgstr ""
 
 #. module: sale_order_gebesa
