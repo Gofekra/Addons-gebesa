@@ -15,7 +15,7 @@ class AccountInvoice(models.Model):
         for inv in self:
             for line in inv.invoice_line_ids:
                 if line.product_id.id in (975887, 975888, 507890):
-                    return []
+                    continue
                 elif line.price_unit <= 0:
                     raise UserError(_('At least one of the lines of the \
                     invoice has price unit zero!' '\n Please make sure \
