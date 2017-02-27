@@ -57,6 +57,14 @@
                             Estatus: <span t-esc="doc['state']"/>
                         </td>
                     </tr>
+                    <tr>
+                        <td height="15px"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="font-size: 8pt;">
+                            <span t-esc="doc['fabricacion']"/>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </template>

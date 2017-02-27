@@ -24,6 +24,7 @@ class ParticularReport(models.AbstractModel):
             products = {}
             mp_products = {}
             pedidos = []
+            fabricacion = doc.name
             line_id = doc.product_id.line_id
             group_id = doc.product_id.group_id
             if line_id not in lines:
@@ -85,6 +86,7 @@ class ParticularReport(models.AbstractModel):
                 'mp_lines': mp_lines,
                 'mp_groups': mp_groups,
                 'mp_products': mp_products,
+                'fabricacion': fabricacion,
             })
 
         docargs = {

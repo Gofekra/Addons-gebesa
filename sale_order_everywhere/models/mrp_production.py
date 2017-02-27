@@ -22,3 +22,7 @@ class MrpProduction(models.Model):
         string='Customer ref',
         store=True,
     )
+    city_shipping = fields.Char(
+        related='sale_id.partner_shipping_id.city',
+        string='City',
+    )
