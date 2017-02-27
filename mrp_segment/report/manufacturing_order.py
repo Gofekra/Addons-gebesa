@@ -24,9 +24,11 @@ class ParticularReport(models.AbstractModel):
             products = {}
             mp_products = {}
             pedidos = []
+            fabricacion = ''
             lines_ids = sorted(doc.line_ids,
                                key=lambda line: line.mrp_production_id.id)
             for line in lines_ids:
+                fabricacion += line.mrp_production_id.name + ', '
                 line_id = line.product_id.line_id
                 group_id = line.product_id.group_id
                 if line_id not in lines:
@@ -96,6 +98,7 @@ class ParticularReport(models.AbstractModel):
                 'mp_lines': mp_lines,
                 'mp_groups': mp_groups,
                 'mp_products': mp_products,
+                'fabricacion': fabricacion,
             })
 
         docargs = {
