@@ -143,7 +143,7 @@ msgstr "Borrador"
 #. module: mrp_shipment
 #: model:ir.ui.view,arch_db:mrp_shipment.report_shipment_document
 msgid "Embarca"
-msgstr "Borrador"
+msgstr ""
 
 #. module: mrp_shipment
 #: model:ir.ui.view,arch_db:mrp_shipment.report_shipment_document
