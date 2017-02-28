@@ -10,12 +10,14 @@ class ParticularReport(models.AbstractModel):
 
     @api.multi
     def render_html(self, data=None):
+        bom_obj = self.env['mrp.bom']
         report_obj = self.env['report']
         shipment_obj = self.env['mrp.shipment']
         report = report_obj._get_report_from_name(
             'mrp_shipment.report_shipment')
         docs = shipment_obj.browse(self._ids)
         shipment = {}
+        kit = {}
 
         for ship in docs:
             shipment[ship.id] = {}
@@ -30,11 +32,17 @@ class ParticularReport(models.AbstractModel):
                 if city not in shipment[ship.id][family][partner].keys():
                     shipment[ship.id][family][partner][city] = []
                 shipment[ship.id][family][partner][city].append(line)
+                bom = bom_obj.search([('product_id', '=', line.product_id.id),
+                                      ('type', '=', 'phantom')])
+                if bom:
+                    if line.product_id.id not in kit.keys():
+                        kit[line.product_id.id] = bom
 
         docargs = {
             'doc_ids': self._ids,
             'doc_model': report.model,
             'docs': docs,
             'shipment': shipment,
+            'kit': kit,
         }
         return report_obj.render('mrp_shipment.report_shipment', docargs)
