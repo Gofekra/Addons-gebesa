@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
     "name": "Product Level Price",
-    "summary": "Module level price",
+    "summary": "Module for Product Price Level",
     "version": "9.0.1.0.0",
     "category": "product",
     "website": "https://odoo-community.org/",
@@ -23,7 +23,7 @@
     "data": [
         "security/product_level_price_security.xml",
         "security/ir.model.access.csv",
-        "views/product_level_price.xml"
+        "views/product_level_price.xml",
 
     ],
     "demo": [

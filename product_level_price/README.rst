@@ -2,9 +2,9 @@
     :alt: License
 
 Product Level Price
-===========================
+===================
 
-Module of product level price
+Module for Product Price Level.
 
 
 Installation
