@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model='ir.ui.view' id='mrp_production_force_availability_form'>
+        	<field name='name'>mrp.production.force.availability.form</field>
+        	<field name='model'>mrp.production</field>
+        	<field name='inherit_id' ref='mrp.mrp_production_form_view'/>
+        	<field name='arch' type='xml'>
+                <xpath expr="//button[@name='force_production']" position="replace">
+                    <button name="force_production" states="confirmed" string="Force Reservation" type="object" groups="disable_force_availability_button.group_force_availability"/>
+                </xpath>        		     		
+        	</field>
+        </record>
+    </data>
+</openerp>
