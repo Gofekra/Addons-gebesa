@@ -107,26 +107,30 @@ class ProductLevelPrice(models.Model):
     )
 
     standard_cost = fields.Float(
-        string=_(u'Costo Std:'),
+        string=_(u'Cost Std:'),
         related='product_id.standard_price',
+        readonly=True, 
     )
 
     product_id = fields.Many2one(
         'product.product',
-        string=_('Art Key:'),
-        help=_('Product')
+        string=_('Product:'),
+        help=_('Product'),
+        required=True,
     )
 
     mu_dist_may_id = fields.Many2one(
         'product.product.mu',
         string=_('M.U.Dist - May:'),
-        help=_('Product')
+        help=_('Product'),
+        required=True,
     )
 
     description = fields.Selection(
         [('metal', _('Metal-Madera')),
          ('silleria', _('Silleria-Cyber'))],
-        string=_('Description'),
+        string=_('Description:'),
         select=True,
-        default='metal'
+        default='metal',
+        required=True,
     )
