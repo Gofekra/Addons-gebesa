@@ -11,7 +11,8 @@ class StockPicking(models.Model):
     stock_move_type_id = fields.Many2one(
         'stock.move.type',
         string=_(u'Type of move'),
-        compute='_compute_stock_move_type_id'
+        compute='_compute_stock_move_type_id',
+        store=True,
     )
 
     @api.onchange('stock_move_type_id',)
