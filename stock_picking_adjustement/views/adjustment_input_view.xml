@@ -10,7 +10,6 @@
 			<field name="context">{
                     'default_stock_move_type_id': 7,
                     'default_location_id': 5,
-                    'readonly_by_pass': ['location_id',]
             }</field>
 			<field name="help" type="html">
 				<p class="oe_view_nocontent_create">
