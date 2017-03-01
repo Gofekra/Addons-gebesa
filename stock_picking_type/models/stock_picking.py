@@ -43,6 +43,12 @@ class StockPicking(models.Model):
             move_type = 'E4'
         elif self.location_dest_id.usage == 'inventory':
             move_type = 'S4'
+        elif self.location_id.usage == 'internal' and \
+                self.location_dest_id.usage == 'production':
+            move_type = 'E5'
+        elif self.location_id.usage == 'production' and \
+                self.location_dest_id.usage == 'internal':
+            move_type = 'S5'
 
         stock_type = self.env['stock.move.type'].search([(
             'code', '=', move_type)])
