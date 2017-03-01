@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="group_product_level_price" model="res.groups">
+            <field name="name">Product Level Price / Manager</field>
+        </record> 
+    </data>
+</openerp>
