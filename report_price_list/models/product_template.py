@@ -49,6 +49,12 @@ class ProductTemplate(models.Model):
         'product.template',
         string='Product mixta',
     )
+    vias = fields.Selection(
+        [(2, 2),
+         (3, 3),
+         (4, 4)],
+        string="Vias",
+    )
 
     @api.depends('isometric')
     def _compute_isometric(self):

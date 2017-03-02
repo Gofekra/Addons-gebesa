@@ -19,7 +19,7 @@
                 <t t-set="title" t-value="'MODULARES'"/>
                 <t t-call="report_price_list.report_price_list_isometric_header"/>
             </div>
-            <div class="page" style="font-family: Century Gothic;font-size: 9pt;">
+            <div class="page" style="font-family: Century Gothic;font-size: 9.5pt;">
                 <!-- PAGINA 1 -->
                 <div class="col-xs-12" style="margin-top: 10px;">
                     <table width="100%">
@@ -33,8 +33,8 @@
                         </tr>
                     </table>
                 </div>
-                <div class="col-xs-12" style="margin-top: 20px;">
-                    <div class="col-xs-8" style="margin-top: 20px;">
+                <div class="col-xs-12" style="margin-top: 10px;">
+                    <div class="col-xs-8" style="margin-top: 5px;">
                         <table width="100%">
                             <tr>
                                 <td align="center" colspan="1">
@@ -50,12 +50,16 @@
                                     <b>MIXTA</b>
                                 </td>
                             </tr>
+                            <tr height="8px">
+                            </tr>
                             <t t-foreach="order_key" t-as="key" >
                                 <t t-set="pulgadas" t-value="key/2.54"/>
                                 <tr style="background-color:Black">
                                     <td align="center" colspan="6" style="color:white;font-size: 10.5pt;">
                                             <b>ALTURA DE <span t-esc="'%.0f'%pulgadas"/>"(<span t-esc="key"/> cm)</b>
                                     </td>
+                                </tr>
+                                <tr height="4px">
                                 </tr>
                                 <t t-foreach="pagina[1][key]" t-as="prod" >
                                     <tr>
@@ -90,6 +94,8 @@
                                         </td>
                                     </tr>
                                 </t>
+                                <tr height="8px">
+                                </tr>
                             </t>
                         </table>
                     </div>
@@ -127,6 +133,8 @@
                                 <td align="center" colspan="3" style="color:white;font-size: 10.5pt;">
                                     <b>POSTE DE ALUMINIO</b>
                                 </td>
+                            </tr>
+                            <tr height="4px">
                             </tr>
                             <t t-foreach="pagina[2]['postes']" t-as="prod" >
                                 <t t-set="pulgadas" t-value="prod.height/2.54"/>
@@ -178,6 +186,8 @@
                                         <b>TAPAS REMATE METÁLICAS</b>
                                     </td>
                                 </tr>
+                                <tr height="4px">
+                                </tr>
                                 <t t-foreach="pagina[2]['Tapa1']" t-as="prod" >
                                     <t t-set="pulgadas" t-value="prod.height/2.54"/>
                                     <tr>
@@ -205,6 +215,8 @@
                                     <td align="center" colspan="3" style="color:white;font-size: 10.5pt;">
                                         <b>TAPAS ESCALÓN METÁLICA</b>
                                     </td>
+                                </tr>
+                                <tr height="4px">
                                 </tr>
                                 <t t-foreach="pagina[2]['Tapa2']" t-as="prod" >
                                     <t t-set="pulgadas" t-value="prod.height/2.54"/>
@@ -239,9 +251,11 @@
                         <div class="col-xs-12" style="margin-top: 10px;">
                             <table width="100%">
                                 <tr>
-                                    <td colspan="3" style="font-size: 12pt;border-bottom: 1px solid black">
+                                    <td colspan="3" style="border-bottom: 1px solid black">
                                         <b>ALTURA</b>
                                     </td>
+                                </tr>
+                                <tr height="4px">
                                 </tr>
                             </table>
                         </div>
@@ -278,6 +292,8 @@
                                 <td align="center" colspan="2">
                                 </td>
                             </tr>
+                            <tr height="8px">
+                            </tr>
                             <t t-foreach="order_key" t-as="key" >
                                 <t t-if="key in pagina[3].keys()">
                                     <t t-set="pulgadas" t-value="key/2.54"/>
@@ -285,6 +301,8 @@
                                         <td align="center" colspan="6" style="color:white;font-size: 10.5pt;">
                                                 <b>ALTURA DE <span t-esc="'%.0f'%pulgadas"/>"(<span t-esc="key"/> cm)</b>
                                         </td>
+                                    </tr>
+                                    <tr height="4px">
                                     </tr>
                                     <t t-foreach="pagina[3][key]" t-as="prod" >
                                         <tr>
@@ -303,6 +321,8 @@
                                             </td>
                                         </tr>
                                     </t>
+                                    <tr height="8px">
+                                    </tr>
                                 </t>
                             </t>
                         </table>
@@ -347,8 +367,7 @@
                                     <b>PINTARRÓN</b>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>&#160;</td>
+                            <tr height="8px">
                             </tr>
                             <t t-foreach="order_key" t-as="key" >
                                 <t t-if="key in pagina[4]['Sup'].keys()">
@@ -357,6 +376,8 @@
                                         <td align="center" colspan="10" style="color:white;font-size: 10.5pt;">
                                                 <b>SUPERIORES ALTURA DE <span t-esc="'%.0f'%pulgadas"/>"(<span t-esc="key"/> cm)</b>
                                         </td>
+                                    </tr>
+                                    <tr height="4px">
                                     </tr>
                                     <t t-foreach="order_key_len" t-as="line" >
                                         <t t-if="line in pagina[4]['Sup'][key].keys()">
@@ -379,10 +400,14 @@
                                             </tr>
                                         </t>
                                     </t>
+                                    <tr height="6px">
+                                    </tr>
                                     <tr style="background-color:Black">
                                         <td align="center" colspan="10" style="color:white;font-size: 10.5pt;">
                                                 <b>INFERIORES ALTURA DE <span t-esc="'%.0f'%pulgadas"/>"(<span t-esc="key"/> cm)</b>
                                         </td>
+                                    </tr>
+                                    <tr height="4px">
                                     </tr>
                                     <t t-foreach="order_key_len" t-as="line" >
                                         <t t-if="line in pagina[4]['Inf'].keys()">
@@ -454,8 +479,7 @@
                                     <b>PINTARRÓN</b>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>&#160;</td>
+                            <tr height="8px">
                             </tr>
                             <t t-foreach="order_key" t-as="key" >
                                 <t t-if="key in pagina[5]['Sup'].keys()">
@@ -464,6 +488,8 @@
                                         <td align="center" colspan="10" style="color:white;font-size: 10.5pt;">
                                                 <b>SUPERIORES ALTURA DE <span t-esc="'%.0f'%pulgadas"/>"(<span t-esc="key"/> cm)</b>
                                         </td>
+                                    </tr>
+                                    <tr height="4px">
                                     </tr>
                                     <t t-foreach="order_key_len" t-as="line" >
                                         <t t-if="line in pagina[5]['Sup'][key].keys()">
@@ -486,10 +512,14 @@
                                             </tr>
                                         </t>
                                     </t>
+                                    <tr height="6px">
+                                    </tr>
                                     <tr style="background-color:Black">
                                         <td align="center" colspan="10" style="color:white;font-size: 10.5pt;">
                                                 <b>INFERIORES ALTURA DE <span t-esc="'%.0f'%pulgadas"/>"(<span t-esc="key"/> cm)</b>
                                         </td>
+                                    </tr>
+                                    <tr height="4px">
                                     </tr>
                                     <t t-foreach="order_key_len" t-as="line" >
                                         <t t-if="line in pagina[4]['Inf'].keys()">
