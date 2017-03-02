@@ -123,10 +123,12 @@ class ParticularReport(models.AbstractModel):
         product = product_obj.search([('group_id', '=', group.id),
                                       ('line_id', '=', line.id),
                                       ('is_line', '=', True)],
-                                     order="height")
-        pagina[6]['postes'] = []
+                                     order="height, vias")
+        pagina[6]['postes'] = {}
         for prod in product:
-            pagina[6]['postes'].append(prod)
+            if prod.height not in pagina[6]['postes'].keys():
+                pagina[6]['postes'][prod.height] = {}
+            pagina[6]['postes'][prod.height][prod.vias] = prod
         group = group_obj.search([('name', '=', 'Remates')])
         product = product_obj.search([('group_id', '=', group.id),
                                       ('line_id', '=', line.id),
