@@ -142,6 +142,70 @@ class ParticularReport(models.AbstractModel):
             else:
                 pagina[6]['Tapa2'].append(prod)
 
+        pagina[7] = {}
+        pagina[8] = {}
+        line = line_obj.search([('name', '=', 'Ellite'),
+                                ('code', '=', 'GEL')])
+        group = group_obj.search([('name', '=', 'Mamparas')])
+        product = product_obj.search([('group_id', '=', group.id),
+                                      ('line_id', '=', line.id),
+                                      ('is_line', '=', True)],
+                                     order="height, length")
+
+        for prod in product:
+            if prod.height not in order_key:
+                order_key.append(prod.height)
+            if 'Estructura' in str(prod.name):
+                if prod.height in pagina[7].keys():
+                    pagina[7][prod.height].append(prod)
+                else:
+                    pagina[7][prod.height] = []
+                    pagina[7][prod.height].append(prod)
+            elif 'Ta/Pi'in str(prod.name):
+                if prod.height not in pagina[8].keys():
+                    pagina[8][prod.height] = {}
+                if prod.length not in pagina[8][prod.height].keys():
+                    pagina[8][prod.height][prod.length] = {}
+                pagina[8][prod.height][prod.length][3] = prod
+            elif 'Tapiz'in str(prod.name):
+                if prod.height not in pagina[8].keys():
+                    pagina[8][prod.height] = {}
+                if prod.length not in pagina[8][prod.height].keys():
+                    pagina[8][prod.height][prod.length] = {}
+                pagina[8][prod.height][prod.length][2] = prod
+            elif 'Acrilico'in str(prod.name):
+                if prod.height not in pagina[8].keys():
+                    pagina[8][prod.height] = {}
+                if prod.length not in pagina[8][prod.height].keys():
+                    pagina[8][prod.height][prod.length] = {}
+                pagina[8][prod.height][prod.length][4] = prod
+            elif 'Metalico/Mag'in str(prod.name):
+                if prod.height not in pagina[8].keys():
+                    pagina[8][prod.height] = {}
+                if prod.length not in pagina[8][prod.height].keys():
+                    pagina[8][prod.height][prod.length] = {}
+                pagina[8][prod.height][prod.length][1] = prod
+            elif 'CN'in str(prod.name):
+                if prod.height not in pagina[8].keys():
+                    pagina[8][prod.height] = {}
+                if prod.length not in pagina[8][prod.height].keys():
+                    pagina[8][prod.height][prod.length] = {}
+                pagina[8][prod.height][prod.length][7] = prod
+            elif 'BP'in str(prod.name):
+                if prod.height not in pagina[8].keys():
+                    pagina[8][prod.height] = {}
+                if prod.length not in pagina[8][prod.height].keys():
+                    pagina[8][prod.height][prod.length] = {}
+                pagina[8][prod.height][prod.length][5] = prod
+            elif 'AP'in str(prod.name):
+                if prod.height not in pagina[8].keys():
+                    pagina[8][prod.height] = {}
+                if prod.length not in pagina[8][prod.height].keys():
+                    pagina[8][prod.height][prod.length] = {}
+                pagina[8][prod.height][prod.length][6] = prod
+
+        order_key = sorted(order_key)
+        order_key_len = sorted(order_key_len)
         docargs = {
             'doc_ids': self._ids,
             'doc_model': report.model,
