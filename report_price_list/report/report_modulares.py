@@ -204,6 +204,18 @@ class ParticularReport(models.AbstractModel):
                     pagina[8][prod.height][prod.length] = {}
                 pagina[8][prod.height][prod.length][6] = prod
 
+        pagina[10] = {}
+        group = group_obj.search([('name', '=', 'Postes')])
+        product = product_obj.search([('group_id', '=', group.id),
+                                      ('line_id', '=', line.id),
+                                      ('is_line', '=', True)],
+                                     order="height, vias")
+        pagina[10]['postes'] = {}
+        for prod in product:
+            if prod.height not in pagina[10]['postes'].keys():
+                pagina[10]['postes'][prod.height] = {}
+            pagina[10]['postes'][prod.height][prod.vias] = prod
+
         order_key = sorted(order_key)
         order_key_len = sorted(order_key_len)
         docargs = {
