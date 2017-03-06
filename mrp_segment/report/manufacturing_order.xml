@@ -39,7 +39,7 @@
                     </tr>
                     <tr style="font-size: 6pt;">
                         <td>
-                            Foio: <span t-esc="doc['folio']"/>
+                            Folio: <span t-esc="doc['folio']"/>
                         </td>
                         <td>
                         </td>
