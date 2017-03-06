@@ -117,7 +117,7 @@
                 <!--div style="page-break-after: always;">&#160;</div-->
                 <table width="100%">
                     <tbody>
-                        <tr height="525">
+                        <tr height="525px">
                             <td valign="top">
                                 <span t-field="line.acabados_html"/>
                             </td>
