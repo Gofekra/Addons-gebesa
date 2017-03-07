@@ -21,6 +21,7 @@
         "procurement",
     ],
     "data": [
+        "security/security.xml",
         "views/sale_view.xml",
     ],
     "demo": [

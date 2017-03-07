@@ -10,10 +10,10 @@
                     <field name="state" widget="statusbar" statusbar_visible="draft,sent,sale,closed,done"/>
                 </xpath>
                 <xpath expr="//button[@name='action_cancel']" position="replace">
-                    <button name="action_cancel" states="draft,sent,sale,done" type="object" string="Cancel"/>
+                    <button name="action_cancel" groups="sale_order_state_change.group_cancel_sale_order" states="draft,sent,sale,done" type="object" string="Cancel"/>
                 </xpath>
                 <xpath expr="//field[@name='state']" position="before">
-                    <button name="action_closed" states="draft,sent,sale,done" type="object" string="Closed"/>
+                    <button name="action_closed" groups="sale_order_state_change.group_close_sale_order" states="draft,sent,sale,done" type="object" string="Closed"/>
                 </xpath>                
                 <xpath expr="//sheet/notebook//field[@name='order_line']" position="attributes">
                     <attribute name="attrs">{'readonly': [('state', 'in', ('done','cancel','closed'))]}</attribute>                    

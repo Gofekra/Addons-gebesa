@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-29 15:02+0000\n"
-"PO-Revision-Date: 2016-08-29 15:02+0000\n"
+"POT-Creation-Date: 2017-03-07 21:17+0000\n"
+"PO-Revision-Date: 2017-03-07 21:17+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -17,18 +17,22 @@ msgstr ""
 
 #. module: sale_order_state_change
 #: model:ir.ui.view,arch_db:sale_order_state_change.sale_order_view_form
+msgid "Cancel"
+msgstr ""
+
+#. module: sale_order_state_change
+#: model:ir.ui.view,arch_db:sale_order_state_change.sale_order_view_form
 msgid "Closed"
 msgstr ""
 
 #. module: sale_order_state_change
 #: code:addons/sale_order_state_change/models/sale.py:27
-#: model:ir.model.fields,field_description:sale_order_state_change.field_sale_order_closing_reason
 #, python-format
 msgid "Closing Reason"
 msgstr ""
 
 #. module: sale_order_state_change
-#: code:addons/sale_order_state_change/models/sale.py:62
+#: code:addons/sale_order_state_change/models/sale.py:107
 #, python-format
 msgid "Order Status"
 msgstr ""
@@ -50,7 +54,17 @@ msgid "Status"
 msgstr ""
 
 #. module: sale_order_state_change
-#: code:addons/sale_order_state_change/models/sale.py:37
+#: code:addons/sale_order_state_change/models/sale.py:74
+#: code:addons/sale_order_state_change/models/sale.py:79
+#: code:addons/sale_order_state_change/models/sale.py:84
+#: code:addons/sale_order_state_change/models/sale.py:89
+#, python-format
+msgid "The sales order cannot be canceled.                         Please close it"
+msgstr ""
+
+#. module: sale_order_state_change
+#: code:addons/sale_order_state_change/models/sale.py:59
 #, python-format
 msgid "You can't close this Order if you don't captured the Closing Reason field!"
 msgstr ""
+
