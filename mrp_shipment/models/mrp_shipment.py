@@ -22,8 +22,8 @@ class MrpShipment(models.Model):
         readonly=True,
         select=True,
         default='draft',
-        copy=False)
-
+        copy=False
+    )
     folio = fields.Char(
         string='Folio',
         required=True,
@@ -31,12 +31,10 @@ class MrpShipment(models.Model):
         copy=False,
         default='new',
     )
-
     reference = fields.Text(
         string=_(u'Reference'),
         required=True,
     )
-
     date = fields.Date(
         string=_(u'Date of shipment'),
         default=fields.Date.today
@@ -45,7 +43,6 @@ class MrpShipment(models.Model):
         string=_(u'Departure date'),
         default=fields.Date.today
     )
-
     meters = fields.Float(
         string=_(u'Meters'),
         compute='_compute_meters'
@@ -67,15 +64,16 @@ class MrpShipment(models.Model):
         readonly=False,
         states={'done': [('readonly', True)]},
         help="Shipment Lines.",
-        copy=True)
-
+        copy=True
+    )
     sale_ids = fields.One2many(
         'mrp.shipment.sale',
         'shipment_id',
         string=_(u'Shipment Order'),
         readonly=False,
         states={'done': [('readonly', True)]},
-        copy=True)
+        copy=True
+    )
 
     @api.depends('line_ids', 'line_ids.quantity_shipped')
     def _compute_meters(self):
@@ -103,24 +101,15 @@ class MrpShipment(models.Model):
         return super(MrpShipment, self).create(vals)
 
     @api.multi
+    def unlink(self):
+        for shipment in self:
+            if shipment.state != 'cancel':
+                raise ValidationError(_("You can only delete canceled \
+                    shipments"))
+        return super(MrpShipment, self).unlink()
+
+    @api.multi
     def prepare_shipment(self):
-        for ship in self:
-            # If there are revaluation lines already (e.g. from import),
-            # respect those and set their actual cost
-            line_ids = [line.id for line in ship.line_ids]
-            if not line_ids:
-                # compute the revaluation lines and create them
-                vals, sales = ship._get_shipment_lines()
-
-                for sale in sales:
-                    self.env['mrp.shipment.sale'].create({
-                        'sale_id': sale,
-                        'shipment_id': ship.id
-                    })
-
-                for order_line in vals:
-                    self.env['mrp.shipment.line'].create(order_line)
-
         return self.write({'state': 'confirm'})
 
     @api.multi
@@ -170,32 +159,6 @@ class MrpShipment(models.Model):
             ship.state = 'finished'
         return True
 
-    def _get_shipment_lines(self):
-        domain = [('missing_quantity', '>', 0),
-                  ('state', '=', 'done')]
-        order_lines = self.env['sale.order.line'].search(domain)
-
-        vals = []
-        sale = []
-        for line in order_lines:
-            if line.order_id.id not in sale:
-                sale.append(line.order_id.id)
-            product_line = dict(
-                (fn, 0.0) for fn in [
-                    'shipment_id', 'partner_id',
-                    'sale_order_id', 'product_id',
-                    'quantity', 'order_line_id'])
-            # replace the None the dictionary by False, because falsy
-            # values are tested later on
-            product_line['shipment_id'] = self.id
-            product_line['partner_id'] = line.order_partner_id.id
-            product_line['sale_order_id'] = line.order_id.id
-            product_line['product_id'] = line.product_id.id
-            product_line['order_line_id'] = line.id
-            product_line['quantity'] = line.missing_quantity
-            vals.append(product_line)
-        return vals, sale
-
     @api.multi
     def add(self):
         return {
@@ -226,35 +189,44 @@ class MrpShipmentSale(models.Model):
         string=_(u'Customer'),
         related='sale_id.partner_id'
     )
+    partner_shipping_id = fields.Many2one(
+        'res.partner',
+        string=_(u'Customer'),
+        related='sale_id.partner_shipping_id'
+    )
     country_id = fields.Many2one(
         'res.country',
         string=_(u'Country'),
-        related='partner_id.country_id',
+        related='partner_shipping_id.country_id',
         store=True,
     )
     state_id = fields.Many2one(
         'res.country.state',
         string=_(u'State'),
-        related='partner_id.state_id',
+        related='partner_shipping_id.state_id',
         store=True,
     )
     city = fields.Char(
         string=_(u'City'),
-        related='partner_id.city',
+        related='partner_shipping_id.city',
         store=True,
+    )
+    line_ids = fields.One2many(
+        'mrp.shipment.line',
+        'shipment_sale_id',
+        string=_(u'Shipment Line'),
+        readonly=False,
+        copy=True
     )
 
     @api.multi
-    def shipment_all(self):
-        ship_line = self.env['mrp.shipment.line']
+    def unlink(self):
         for sale in self:
-            lines = ship_line.search([('sale_order_id', '=', sale.sale_id.id),
-                                      ('shipment_id', '=', sale.shipment_id.id)
-                                      ])
-            for line in lines:
-                line.quantity_shipped = line.quantity
-        return {'type': 'ir.actions.client',
-                'tag': 'reload', }
+            for line in sale.line_ids:
+                if line.quantity_shipped != 0:
+                    raise ValidationError(_("The quantity shipped in a \
+                        line is different from 0"))
+        return super(MrpShipmentSale, self).unlink()
 
 
 class MrpShipmentLine(models.Model):
@@ -265,78 +237,79 @@ class MrpShipmentLine(models.Model):
         'mrp.shipment',
         string=_(u'Shipment'),
         ondelete='cascade',
-        select=True)
-
+        select=True
+    )
+    shipment_sale_id = fields.Many2one(
+        'mrp.shipment.sale',
+        string=_(u'Shipment Sale'),
+        ondelete='cascade',
+        select=True
+    )
     partner_id = fields.Many2one(
         'res.partner',
         string=_(u'Customer'),
+        related='shipment_sale_id.partner_id'
     )
-
+    partner_shipping_id = fields.Many2one(
+        'res.partner',
+        string=_(u'Customer'),
+        related='shipment_sale_id.partner_shipping_id'
+    )
     country_id = fields.Many2one(
         'res.country',
         string=_(u'Country'),
-        related='partner_id.country_id',
+        related='partner_shipping_id.country_id',
         store=True,
     )
-
     state_id = fields.Many2one(
         'res.country.state',
         string=_(u'State'),
-        related='partner_id.state_id',
+        related='partner_shipping_id.state_id',
         store=True,
     )
-
     city = fields.Char(
         string=_(u'City'),
-        related='partner_id.city',
+        related='partner_shipping_id.city',
         store=True,
     )
-
     street = fields.Char(
         string=_(u'Street'),
-        related='partner_id.street',
+        related='partner_shipping_id.street',
         store=True,
     )
-
     street2 = fields.Char(
         string=_(u'Street2'),
-        related='partner_id.street2',
+        related='partner_shipping_id.street2',
         store=True,
     )
-
     sale_order_id = fields.Many2one(
         'sale.order',
         string=_(u'Sale order'),
     )
-
     order_line_id = fields.Many2one(
         'sale.order.line',
         string=_(u'Sale order line '),
     )
-
     quantity = fields.Float(
         string=_(u'Quantity'),
     )
-
     quantity_shipped = fields.Float(
         string=_(u'Quantity shipped'),
     )
-
     product_id = fields.Many2one(
         'product.product',
         string=_(u'Product'),
     )
-
     product_name = fields.Char(
         string=_(u'Name product'),
         related='product_id.name',
-        store=True)
-
+        store=True
+    )
     product_code = fields.Char(
         string=_(u'Code product'),
         related='product_id.default_code',
-        store=True)
-
+        store=True
+    )
     standard_cost = fields.Float(
         string=_(u'Standard cost'),
         related='product_id.standard_price',
@@ -348,3 +321,11 @@ class MrpShipmentLine(models.Model):
             if line.quantity_shipped > line.quantity:
                 raise ValidationError(_("The quantity available is less than \
                                       the quantity shipped"))
+
+    @api.multi
+    def unlink(self):
+        for line in self:
+            if line.quantity_shipped != 0:
+                raise ValidationError(_("The quantity shipped in a \
+                    line is different from 0"))
+        return super(MrpShipmentLine, self).unlink()

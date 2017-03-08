@@ -16,6 +16,7 @@ class SaleOrder(models.Model):
         store=True,
         select=True,
         default='no_shipment',
+        compute='_compuete_shiptment_status'
     )
 
     folio_shipped = fields.Char(
@@ -42,3 +43,18 @@ class SaleOrder(models.Model):
                         fol = fol + ' ' + shipment.folio + ','
             sale.folio_shipped = fol[1:-1]
             sale.date_shipped = date[1:-1]
+
+    @api.depends('order_line.missing_quantity')
+    def _compuete_shiptment_status(self):
+        for sale in self:
+            mis_qty = 0
+            pro_qty = 0
+            for line in sale.order_line:
+                mis_qty = line.missing_quantity
+                pro_qty = line.product_uom_qty
+            if mis_qty == pro_qty:
+                sale.shiptment_status = 'no_shipment'
+            elif mis_qty == 0:
+                sale.shiptment_status = 'total_shipment'
+            else:
+                sale.shiptment_status = 'partial_shipment'

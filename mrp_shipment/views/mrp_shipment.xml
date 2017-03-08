@@ -81,7 +81,6 @@
                                         <field name='country_id' readonly="1"/>
                                         <field name='state_id' readonly="1"/>
                                         <field name='city' readonly="1"/>
-                                        <button icon="fa-dot-circle-o" name="shipment_all" string="Prueba" type="object"/>
                                     </tree>
                                  </field>
                             </page>
