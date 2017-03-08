@@ -32,16 +32,18 @@ class MrpShipmentSaleOrder(models.TransientModel):
                     for line in sale.order_line:
                         if line.id not in order_line_id:
                             if line.missing_quantity > 0:
+                                if sale.id not in sale_id:
+                                    ship_sale = ship_sale_obj.create({
+                                        'sale_id': sale.id,
+                                        'shipment_id': shipment.id
+                                    })
                                 shipment_line_obj.create({
                                     'shipment_id': shipment.id,
+                                    'shipment_sale_id': ship_sale.id,
                                     'partner_id': line.order_partner_id.id,
                                     'sale_order_id': sale.id,
                                     'order_line_id': line.id,
                                     'product_id': line.product_id.id,
                                     'quantity': line.missing_quantity,
-                                })
-                            if sale.id not in sale_id:
-                                ship_sale_obj.create({
-                                    'sale_id': sale.id,
-                                    'shipment_id': shipment.id
+                                    'quantity_shipped': line.missing_quantity,
                                 })
