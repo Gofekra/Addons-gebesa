@@ -4,4 +4,5 @@
 from . import manufacturing_order
 from . import manufacturing_order_production
 from . import cut_order
+from . import cut_order2
 from . import cut_order_production
