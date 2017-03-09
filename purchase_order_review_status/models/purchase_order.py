@@ -29,6 +29,14 @@ class PurchaseOrder(models.Model):
                                   "been reviewed by the Warehouse Manager"))
         return True
 
+    @api.multi
+    def button_confirm(self):
+        for order in self:
+            if order.review == 'no_review':
+                raise UserError(_("Can not confirm the order until it \
+                    is reviewed"))
+        return super(PurchaseOrder, self).button_confirm()
+
 
 class PurchaseOrderLine(models.Model):
     _inherit = 'purchase.order.line'
