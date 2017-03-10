@@ -60,11 +60,6 @@
                     <tr>
                         <td height="15px"></td>
                     </tr>
-                    <tr>
-                        <td colspan="3" style="font-size: 8pt;">
-                            <span t-esc="doc['fabricacion']"/>
-                        </td>
-                    </tr>
                 </tbody>
             </table>
         </template>
@@ -72,7 +67,7 @@
         <template id="report_manufacturing_order_footer">
             <table width="100%" style="font-size: 7pt;">
                 <tr>
-                    <td height="15px"></td>
+                    <td height="25px"></td>
                 </tr>
                 <tr>
                     <td width="10%">
@@ -157,6 +152,16 @@
                             </tr>
                         </t>
                     </table>  
+                </div>
+                <div class="manufacturing_order_div mt16">
+                    ORDENES DE FABRICACIÓN
+                    <table width="100%" class="mt8" style="font-size: 9pt;">
+                        <tr>
+                            <td>
+                                <span t-esc="doc['fabricacion']"/>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
                 <div style="page-break-after: always;">&#160;</div>
                 <!-- -->
