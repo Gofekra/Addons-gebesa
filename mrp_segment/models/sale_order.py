@@ -21,3 +21,11 @@ class SaleOrder(models.Model):
         res = super(SaleOrder, self)._prepare_procurement_group()
         res['sale_id'] = self.id
         return res
+
+
+class SaleOrderLine(models.Model):
+    _inherit = 'sale.order.line'
+
+    segment_qty = fields.Float(
+        string='Segmented quantity',
+    )
