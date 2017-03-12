@@ -22,5 +22,16 @@
                 </xpath>
             </field>
         </record>
+
+        <record id="view_create_batch_picking" model="ir.ui.view">
+            <field name="name">batch_picking_create_readonly_form</field>
+            <field name="model">stock.batch.picking.creator</field>
+            <field name="inherit_id" ref="stock_batch_picking.view_create_batch_picking"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                </xpath>
+            </field>
+        </record>
     </data>
 </openerp>       
