@@ -6,7 +6,7 @@
         	<field name='model'>sale.order</field>
         	<field name='inherit_id' ref="sale.view_order_form"/>
         	<field name='arch' type='xml'>
-                <xpath expr="//group/group/field[@name='priority']" position="after">
+                <xpath expr="//group/group/field[@name='pricelist_id']" position="before">
                     <field name="segment_status" readonly="1"/>
                 </xpath>
                 <xpath expr="//notebook/page/field[@name='order_line']/tree/field[@name='qty_to_invoice']" position="before">
