@@ -18,7 +18,8 @@
     "depends": [
         "base", "account", "stock",
         "purchase", "mrp", "sale_order_gebesa",
-        "sale"
+        "sale",
+        "account_invoice_purchase_order_data"
     ],
     "data": [
         "views/account_invoice.xml",

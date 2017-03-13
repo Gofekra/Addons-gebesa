@@ -28,6 +28,12 @@ class AccountInvoice(models.Model):
             if not line.analytic_account_id:
                 line.analytic_account_id = self.account_analytic_id
 
+    @api.onchange('purchase_id')
+    def _onchange_purchase_id(self):
+        if not self.purchase_id:
+            return {}
+        self.account_analytic_id = self.purchase_id.account_analytic_id.id
+
 
 class AccountInvoiceLine(models.Model):
     _inherit = 'account.invoice.line'
