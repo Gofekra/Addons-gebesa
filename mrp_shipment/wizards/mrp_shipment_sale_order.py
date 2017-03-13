@@ -37,6 +37,12 @@ class MrpShipmentSaleOrder(models.TransientModel):
                                         'sale_id': sale.id,
                                         'shipment_id': shipment.id
                                     })
+                                    sale_id.append(sale.id)
+                                else:
+                                    ship_sale = ship_sale_obj.search([
+                                        ('sale_id', '=', sale.id),
+                                        ('shipment_id', '=', shipment.id)
+                                    ])
                                 shipment_line_obj.create({
                                     'shipment_id': shipment.id,
                                     'shipment_sale_id': ship_sale.id,

@@ -274,9 +274,21 @@ class MrpSegmentLine(models.Model):
 
     @api.depends('mrp_production_id.move_created_ids.product_uom_qty')
     def _compute_manufacture_qty(self):
+        procurement_obj = self.env['procurement.order']
         for line in self:
             line.manufacture_qty = line.mrp_production_id.move_created_ids.\
                 product_uom_qty
+            production = line.mrp_production_id
+            procurement = procurement_obj.search([
+                ('production_id', '=', production.id)])
+            group = procurement.group_id
+            procurement2 = procurement_obj.search([
+                ('group_id', '=', group.id),
+                ('product_id', '=', production.product_id.id),
+                ('sale_line_id', '!=', False)])
+            if procurement2:
+                procurement2.sale_line_id.write(
+                    {'segment_qty': line.product_qty - line.manufacture_qty})
 
     @api.model
     def create(self, vals):
