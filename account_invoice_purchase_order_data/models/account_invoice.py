@@ -17,4 +17,8 @@ class AccountInvoice(models.Model):
     def _onchange_purchase_order(self):
         if not self.purchase_id:
             return {}
-        self.purchase_ids = [self.purchase_id.id]
+        purchase_ids = []
+        for purchase in self.purchase_ids:
+            purchase_ids.append(purchase.id)
+        purchase_ids.append(self.purchase_id.id)
+        self.purchase_ids = purchase_ids
