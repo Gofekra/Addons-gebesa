@@ -24,6 +24,7 @@
             <field name="arch" type="xml">
                 <tree string="Segments" decoration-muted="state == 'cancel'">
                     <field name="folio"/>
+                    <field name='location_id'/>
                     <field name="name"/>
                     <field name="date"/>
                     <field name="state"/>
