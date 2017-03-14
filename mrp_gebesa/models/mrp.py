@@ -2,12 +2,36 @@
 # © <2016> <César Barrón Butista>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import models
+from openerp import api, fields, models
 
 
 class MrpProduction(models.Model):
     _name = 'mrp.production'
     _inherit = 'mrp.production'
+
+    trace = fields.Char(
+        string='Trace',
+        compute='_compute_trace',
+    )
+
+    def _compute_trace(self):
+        procu_obj = self.env['procurement.order']
+        for production in self:
+            production.trace = ''
+            produrement = procu_obj.search([(
+                'production_id', '=', production.id)])
+            if produrement.move_dest_id:
+                sm1 = produrement.move_dest_id
+                production.trace += sm1.origin + ', ' + sm1.picking_id.name
+                if sm1.move_dest_id.picking_id:
+                    sm2 = sm1.move_dest_id
+                    production.trace += ', ' + sm2.picking_id.name
+                    if sm2.move_dest_id.picking_id:
+                        sm3 = sm2.move_dest_id
+                        production.trace += ', ' + sm3.picking_id.name
+                        if sm3.move_dest_id.picking_id:
+                            sm4 = sm3.move_dest_id
+                            production.trace += ', ' + sm4.picking_id.name
 
     def _make_consume_line_from_data(
             self, cr, uid, production, product,
