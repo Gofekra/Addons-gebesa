@@ -248,7 +248,8 @@ class MrpShipmentLine(models.Model):
     partner_id = fields.Many2one(
         'res.partner',
         string=_(u'Customer'),
-        related='shipment_sale_id.partner_id'
+        related='shipment_sale_id.partner_id',
+        store=True,
     )
     partner_shipping_id = fields.Many2one(
         'res.partner',
