@@ -9,6 +9,7 @@ from openerp.exceptions import UserError
 
 class MrpSegment(models.Model):
     _name = "mrp.segment"
+    _inherit = ['mail.thread']
     _description = "MRP Segment"
     _rec_name = 'folio'
 
@@ -25,6 +26,7 @@ class MrpSegment(models.Model):
         required=True,
         readonly=True,
         states={'draft': [('readonly', False)]},
+        track_visibility='always',
         help=_('Segment Name.'))
 
     folio = fields.Char(
@@ -32,6 +34,7 @@ class MrpSegment(models.Model):
         required=True,
         readonly=True,
         copy=False,
+        track_visibility='always',
         default='new',
     )
 
@@ -51,6 +54,7 @@ class MrpSegment(models.Model):
         readonly=True,
         select=True,
         default='draft',
+        track_visibility='onchange',
         copy=False)
 
     location_id = fields.Many2one(
@@ -59,6 +63,7 @@ class MrpSegment(models.Model):
         required=True,
         readonly=True,
         states={'draft': [('readonly', False)]},
+        track_visibility='onchange',
         default=_default_stock_location)
 
     company_id = fields.Many2one(
