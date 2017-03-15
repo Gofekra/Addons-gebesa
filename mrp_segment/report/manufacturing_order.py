@@ -33,19 +33,19 @@ class ParticularReport(models.AbstractModel):
                 group_id = line.product_id.group_id
                 if line_id not in lines:
                     lines.append(line_id)
-                    groups[line_id.name] = []
-                if group_id not in groups[line_id.name]:
-                    groups[line_id.name].append(group_id)
-                    products[line_id.name + '-' + group_id.name] = []
+                    groups[line_id.id] = []
+                if group_id not in groups[line_id.id]:
+                    groups[line_id.id].append(group_id)
+                    products[str(line_id.id) + '-' + str(group_id.id)] = []
                 add = True
-                for prod in products[line_id.name + '-' + group_id.name]:
+                for prod in products[str(line_id.id) + '-' + str(group_id.id)]:
                     if line.product_id.id == prod['id']:
                         prod['product_qty'] = prod[
                             'product_qty'] + line.product_qty
                         prod['standard_cost'] = line.standard_cost
                         add = False
                 if add:
-                    products[line_id.name + '-' + group_id.name].append({
+                    products[str(line_id.id) + '-' + str(group_id.id)].append({
                         'id': line.product_id.id,
                         'product_code': line.product_id.default_code,
                         'product_name': line.product_id.name,
@@ -63,28 +63,30 @@ class ParticularReport(models.AbstractModel):
                 group_id = prod_line.product_id.group_id
                 if line_id not in mp_lines:
                     mp_lines.append(line_id)
-                    mp_groups[line_id.name] = []
-                if group_id not in mp_groups[line_id.name]:
-                    mp_groups[line_id.name].append(group_id)
-                    mp_products[line_id.name + '-' + group_id.name] = []
+                    mp_groups[line_id.id] = []
+                if group_id not in mp_groups[line_id.id]:
+                    mp_groups[line_id.id].append(group_id)
+                    mp_products[str(line_id.id) + '-' + str(group_id.id)] = []
                 add = True
 
-                for prod in mp_products[line_id.name + '-' + group_id.name]:
+                for prod in mp_products[
+                        str(line_id.id) + '-' + str(group_id.id)]:
                     if prod_line.product_id.id == prod['id']:
                         prod['product_qty'] = prod[
                             'product_qty'] + prod_line.product_qty
                         prod['standard_cost'] = prod_line.standard_cost
                         add = False
                 if add:
-                    mp_products[line_id.name + '-' + group_id.name].append({
-                        'id': prod_line.product_id.id,
-                        'location': prod_line.location_id.name,
-                        'product_code': prod_line.product_id.default_code,
-                        'product_name': prod_line.product_id.name,
-                        'standard_cost': prod_line.standard_cost,
-                        'product_qty': prod_line.product_qty,
-                        'uom': prod_line.product_uom.name,
-                    })
+                    mp_products[
+                        str(line_id.id) + '-' + str(group_id.id)].append({
+                            'id': prod_line.product_id.id,
+                            'location': prod_line.location_id.name,
+                            'product_code': prod_line.product_id.default_code,
+                            'product_name': prod_line.product_id.name,
+                            'standard_cost': prod_line.standard_cost,
+                            'product_qty': prod_line.product_qty,
+                            'uom': prod_line.product_uom.name,
+                        })
 
             docs.append({
                 'date': doc.date,
