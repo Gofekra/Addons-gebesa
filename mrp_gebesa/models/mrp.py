@@ -9,20 +9,32 @@ class MrpProduction(models.Model):
     _name = 'mrp.production'
     _inherit = 'mrp.production'
 
+    procurement_ids = fields.One2many(
+        'procurement.order',
+        'production_id',
+        string='Procurement',
+    )
     trace = fields.Char(
         string='Trace',
         compute='_compute_trace',
+        store=True,
     )
 
+    @api.depends(
+        'procurement_ids',
+        'procurement_ids.move_dest_id.picking_id',
+        'procurement_ids.move_dest_id.move_dest_id.picking_id',
+        'procurement_ids.move_dest_id.move_dest_id.move_dest_id.picking_id',
+        'procurement_ids.move_dest_id.move_dest_id.move_dest_id.move_dest_id.picking_id')
     def _compute_trace(self):
-        procu_obj = self.env['procurement.order']
         for production in self:
             production.trace = ''
-            produrement = procu_obj.search([(
-                'production_id', '=', production.id)])
+            produrement = production.procurement_ids
             if produrement.move_dest_id:
                 sm1 = produrement.move_dest_id
-                production.trace += sm1.origin + ', ' + sm1.picking_id.name
+                production.trace += sm1.origin + ', '
+                if sm1.picking_id.name:
+                    production.trace += sm1.picking_id.name
                 if sm1.move_dest_id.picking_id:
                     sm2 = sm1.move_dest_id
                     production.trace += ', ' + sm2.picking_id.name
