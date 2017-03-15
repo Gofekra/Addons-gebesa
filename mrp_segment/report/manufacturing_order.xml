@@ -99,7 +99,7 @@
                     <div class="manufacturing_order_div">
                         LINEA: <span t-esc="line.code"/>-<span t-esc="line.name"/>
                     </div>
-                    <t t-foreach="doc['groups'][line.name]" t-as="group">
+                    <t t-foreach="doc['groups'][line.id]" t-as="group">
                         <div class="manufacturing_order_div">
                             GRUPO: <span t-esc="group.name"/>
                         </div>
@@ -111,7 +111,7 @@
                                 <th width="13%">Cant.</th>
                                 <th width="13%">Cost. Tot.</th>
                             </tr>
-                            <t t-set="line_group" t-value="line.name+'-'+group.name"/>
+                            <t t-set="line_group" t-value="str(line.id)+'-'+str(group.id)"/>
                             <t t-set="cost" t-value="0.0"/>
                             <t t-set="total" t-value="0.0"/>
                             <t t-set="total_cost" t-value="0.0"/>
@@ -169,7 +169,7 @@
                     <div class="manufacturing_order_div">
                         LINEA: <span t-esc="mp_line.code"/>-<span t-esc="mp_line.name"/>
                     </div>
-                    <t t-foreach="doc['mp_groups'][mp_line.name]" t-as="mp_group">
+                    <t t-foreach="doc['mp_groups'][mp_line.id]" t-as="mp_group">
                         <div class="manufacturing_order_div">
                             GRUPO: <span t-esc="mp_group.name"/>
                         </div>
@@ -183,7 +183,7 @@
                                 <th width="10%">Unidad</th>
                                 <th width="13%">Cost. Tot.</th>
                             </tr>
-                            <t t-set="mp_line_group" t-value="mp_line.name+'-'+mp_group.name"/>
+                            <t t-set="mp_line_group" t-value="str(mp_line.id)+'-'+str(mp_group.id)"/>
                             <t t-set="cost" t-value="0.0"/>
                             <t t-set="total" t-value="0.0"/>
                             <t t-set="total_cost" t-value="0.0"/>
