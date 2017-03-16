@@ -13,6 +13,11 @@
         		</xpath>
                 <xpath expr="//group/group/field[@name='project_id']" position="attributes">
                     <attribute name="domain">[('use_salesorder', '=', True)]</attribute>
+                    <attribute name="string">Asigned Warehouse</attribute>
+                </xpath>
+                <xpath expr="//group/group/field[@name='partner_id']" position="attributes">
+                    <attribute name="domain">[('customer', '=', True),('company_type', '=', 'company'),('type' ,'=', 'invoice'),('parent_id', '=', False)]</attribute>
+
                 </xpath>
                 <!--xpath expr="//notebook/page/field[@name='warehouse_id']" position="attributes">
                     <attribute name="readonly">True</attribute>
