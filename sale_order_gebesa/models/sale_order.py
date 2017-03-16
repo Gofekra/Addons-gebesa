@@ -78,10 +78,8 @@ class SaleOrder(models.Model):
     )
 
     priority = fields.Selection(
-        [('low', _(u'Low')), ('medium', _(u'Medium')),
-         ('high', _(u'High')), ('replenishment', _(u'Replenishment')),
-         ('express', _(u'Express')), ('sample', _(u'Sample')),
-         ('complement', _(u'Complement'))],
+        [('high', _(u'High')), ('replenishment', _(u'Replenishment')),
+         ('express', _(u'Express')), ('sample', _(u'Sample'))],
         _(u'Manufacturing priority'),)
 
     complement_saleorder_id = fields.Many2one(
