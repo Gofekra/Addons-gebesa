@@ -48,6 +48,7 @@ class MrpSegment(models.Model):
     state = fields.Selection(
         [('draft', 'Draft'),
          ('cancel', 'Cancelled'),
+         ('construction', 'In Construction'),
          ('confirm', 'In Progress'),
          ('done', 'Validated')],
         string=_('Status'),
@@ -122,7 +123,7 @@ class MrpSegment(models.Model):
                 for production_line in vals:
                     self.env['mrp.segment.line'].create(production_line)
 
-        return self.write({'state': 'confirm'})
+        return self.write({'state': 'construction'})
 
     def _get_segment_lines(self):
         domain = [('segment_line_ids', '=', False),
@@ -165,6 +166,18 @@ class MrpSegment(models.Model):
         if done:
             self.state = 'done'
         return True
+
+    @api.multi
+    def validate_segment(self):
+        return self.write({'state': 'confirm'})
+
+    @api.multi
+    def cancel_segment(self):
+        for line in self.line_ids:
+            line.quantity = 0
+        for line in self.line_ids:
+            line.unlink()
+        return self.write({'state': 'cancel'})
 
     @api.multi
     def add(self):
@@ -336,3 +349,11 @@ class MrpSegmentLine(models.Model):
         for pur in purchase:
             pur.related_segment += segment.folio + ', '
         return super(MrpSegmentLine, self).create(vals)
+
+    @api.multi
+    def unlink(self):
+        for line in self:
+            if line.segment_id.state in ('confirm', 'done'):
+                raise UserError(_("Can only be removed in the \
+                    construction state of the segment"))
+        return super(MrpSegmentLine, self).unlink()
