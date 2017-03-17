@@ -9,5 +9,7 @@
         <menuitem id="gebesa_report_inven_menu" name="Inventarios" parent="gebesa_report_menu"/>
         <menuitem id="gebesa_report_compr_menu" name="Compras" parent="gebesa_report_menu"/>
         <menuitem id="gebesa_report_infor_menu" name="Informatica" parent="gebesa_report_menu"/>
+        <menuitem id="gebesa_report_logis_menu" name="Lógistica" parent="gebesa_report_menu"/>
+        <menuitem id="gebesa_report_produ_menu" name="Producción" parent="gebesa_report_menu"/>
     </data>
 </openerp>
