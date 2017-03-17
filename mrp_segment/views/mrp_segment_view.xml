@@ -40,8 +40,10 @@
                     <header>
                         <button name="prepare_segment" states="draft" string="Proceed" type="object" class="oe_highlight"/>
                         <button name="process_segment" states="confirm" string="Process" type="object" class="oe_highlight"/>
-                        <button name="add" states="confirm" string="Add production" type="object"/>
-                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done"/>
+                        <button name="validate_segment" states="construction" string="Validate" type="object" class="oe_highlight"/>
+                        <button name="add" states="construction" string="Add production" type="object"/>
+                        <button name="cancel_segment" states="construction" string="Cancel" type="object"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,construction,confirm,done"/>
                     </header>
                     <sheet>
                         <div class="oe_title">
@@ -61,7 +63,7 @@
                         <notebook attrs="{'invisible':[('state','=','draft')]}">
                             <page string="Segment Details" >
                                 <field name="line_ids" string="Manufacturing Orders Details" >
-                                    <tree string="Segment Details" editable="bottom" create="false" delete="false">
+                                    <tree string="Segment Details" editable="bottom" create="false">
                                         <field name="mrp_production_id"/>
                                         <field name="state"/>
                                         <field name="sale_name"/>

@@ -46,7 +46,7 @@ class MrpProductionSegment(models.TransientModel):
                         'sale_name': prod.origin,
                     })
         if segment.line_ids:
-            segment.state = 'confirm'
+            segment.state = 'construction'
         if segment:
             return {
                 'name': _('Segment'),
