@@ -129,6 +129,7 @@ class SaleOrder(models.Model):
     @api.multi
     def action_confirm(self):
         for order in self:
+            order.validate_manufacturing()
             if not order.notify_approval:
                 raise UserError(
                     _('The following field is not invalid:\nNotify approval'))
@@ -196,5 +197,36 @@ class SaleOrder(models.Model):
             order.total_freight = global_freight
             order.total_installation = global_installa
             order.profit_margin = global_profit_margin
+
+        return super(SaleOrder, self).action_confirm()
+
+    @api.multi
+    def validate_manufacturing(self):
+        for order in self:
+
+           # pending = self.env['sale.order'].search([('state', '=', 'draft')])
+            dife = 0.0
+            dife = order.amount_total - order.total_nste
+
+            if abs(dife) > 0.6000:
+                raise UserError(
+                    _('The amount are differents:\nAnalytic Account'))
+
+            for line in order.order_line:
+                if line.product_id:
+                    routes = line.product_id.route_ids + \
+                        line.product_id.categ_id.total_route_ids
+                    if len(routes) < 2:
+                        raise UserError(
+                    _('%s %s %s' % (
+                            _("The next product has no a valid Route"), line.product_id.id, line.product_id.name)))
+                    product_bom = False
+                    for bom in line.product_id.product_tmpl_id.bom_ids:
+                        if bom.product_id.id == line.product_id.id:
+                            product_bom = bom or False
+                    if not product_bom:
+                       raise UserError(
+                    _('%s %s %s' % (
+                            _("The next product has no a Bill of Materials"), line.product_id.id, line.product_id.name)))
 
         return super(SaleOrder, self).action_confirm()
