@@ -166,6 +166,20 @@ class MrpSegment(models.Model):
             self.state = 'done'
         return True
 
+    @api.multi
+    def add(self):
+        ctx = self.env.context.copy()
+        ctx.update({'default_location_id': self.location_id.id})
+        return {
+            'name': 'Add Production',
+            'type': 'ir.actions.act_window',
+            'res_model': 'mrp.segment.add.production',
+            'view_mode': 'form',
+            'view_type': 'form',
+            'target': 'new',
+            'context': ctx,
+        }
+
 
 class MrpSegmentLine(models.Model):
     _name = "mrp.segment.line"

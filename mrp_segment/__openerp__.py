@@ -30,6 +30,7 @@
     "data": [
         "data/ir_sequence.xml",
         'wizards/mrp_production_segment.xml',
+        "wizards/mrp_segment_add_production.xml",
         "views/mrp_segment_view.xml",
         "views/sale_order_view.xml",
         "views/mrp_production.xml",
