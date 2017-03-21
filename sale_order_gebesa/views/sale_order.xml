@@ -30,6 +30,9 @@
                 <xpath expr="//field[@name='order_line']/form/group/group/field[@name='price_unit']" position="after">
                     <field name="margin_justification"/>
                 </xpath>
+                <xpath expr="//notebook/page/field[@name='order_line']/form/div" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
                 <!--xpath expr="//field[@name='order_line']/tree/field[@name='product_id']" position="after">
                     <field name="fulfilled"/>
                     <field name="invoiced"/>
