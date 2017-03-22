@@ -101,18 +101,18 @@ msgstr "Actualizado por última vez el"
 #: model:ir.ui.view,arch_db:product_level_price.product_level_price_form
 #: model:ir.ui.view,arch_db:product_level_price.product_level_price_tree
 msgid "Level of Price by Articles"
-msgstr "Nivel de Producto por Articulos"
+msgstr "Nivel de Precio por Articulos"
 
 #. module: product_level_price
 #: model:ir.ui.view,arch_db:product_level_price.product_level_price_form
 msgid "Level of price by Articles"
-msgstr "Nivel de Producto por Articulos"
+msgstr "Nivel de Precio por Articulos"
 
 #. module: product_level_price
 #: model:ir.actions.act_window,name:product_level_price.product_level_price_action
 #: model:ir.ui.menu,name:product_level_price.product_level_price_menu
 msgid "Level of price by articles"
-msgstr "Nivel de Producto por Articulos"
+msgstr "Nivel de Precio por Articulos"
 
 #. module: product_level_price
 #: code:addons/product_level_price/models/product_level_price.py:124

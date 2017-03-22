@@ -21,3 +21,7 @@ class ProductGroup(models.Model):
         string=_('Active'),
         default=True
     )
+
+    mu_min = fields.Float(
+        string=_('M.U. Minimum')
+    )
