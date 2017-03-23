@@ -34,10 +34,11 @@
                             <field name="low_mu"/>
                         </group>
                         <group>
+                            <field name='profit_margin' readonly="True"/> 
                             <field name='freight_amount' readonly="True"/>
-                            <field name='installation_amount' readonly="True"/>
                             <field name='net_sale' readonly="True"/>
-                            <field name='profit_margin' readonly="True"/>
+                            <field name='purchase_price' readonly="True"/>
+                            <field name='installation_amount' readonly="True"/>
                         </group>
                     </group>
                 </xpath>
