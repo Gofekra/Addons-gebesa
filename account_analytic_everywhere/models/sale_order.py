@@ -16,6 +16,7 @@ class SaleOrder(models.Model):
         invoice = self.env['account.invoice'].browse(res)
         for inv in invoice:
             inv.account_analytic_id = inv.sale_id.project_id
+            inv.journal_id = inv.sale_id.project_id.journal_sale_id
         return res
 
 
