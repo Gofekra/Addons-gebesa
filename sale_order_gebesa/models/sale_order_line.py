@@ -58,11 +58,11 @@ class SaleOrderLine(models.Model):
     #      muline = record.product_id.product_templ_id.line_id.mu.min
     #      if muline > 0:
 
-    @api.depends('profit_margin', 'price_unit')
+    @api.depends('profit_margin', 'price_unit', 'order_id.perc_freight', 'order_id.perc_installation')
     def _compute_low_mu(self):
         ## ---> Set BreakPoint
-        #import pdb;
-        #pdb.set_trace()
+        import pdb;
+        pdb.set_trace()
         for record in self:
             mugroup = record.product_id.product_tmpl_id.group_id.mu_min
             muline = record.product_id.product_tmpl_id.line_id.mu_min
