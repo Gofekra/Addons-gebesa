@@ -38,3 +38,6 @@ class ProductLine(models.Model):
         'ir.actions.report.xml',
         string='Report',
     )
+    mu_min = fields.Float(
+        string=_('M.U. Minimum')
+    )

@@ -27,9 +27,21 @@
         			<field name="date_reception" required="True" />
                     <field name="date_production"/>
         		</xpath>
-                <xpath expr="//field[@name='order_line']/form/group/group/field[@name='price_unit']" position="after">
-                    <field name="margin_justification"/>
+                <xpath expr="//field[@name='order_line']/form/group" position="after">
+                    <group>
+                        <group>
+                            <field name="margin_justification"/>
+                            <field name="low_mu"/>
+                        </group>
+                        <group>
+                            <field name='freight_amount' readonly="True"/>
+                            <field name='installation_amount' readonly="True"/>
+                            <field name='net_sale' readonly="True"/>
+                            <field name='profit_margin' readonly="True"/>
+                        </group>
+                    </group>
                 </xpath>
+                
                 <xpath expr="//notebook/page/field[@name='order_line']/form/div" position="attributes">
                     <attribute name="invisible">True</attribute>
                 </xpath>
@@ -44,19 +56,20 @@
                     <field name="standard_cost" widget="monetary"/>
                     <field name="profit_margin" widget="monetary"/>
                     <field name="margin_justification"/>
+                    <field name="low_mu"/>
                 </xpath>
         		<xpath expr="//notebook/page[2]" position="after">
         			<page string="Sales data">
         				<group>
         					<group>
-        						<field name='total_net_sale' widget="monetary"/>
+        						<field name='total_net_sale' widget="monetary" readonly="True"/>
         						<field name='perc_freight'/>
-        						<field name='total_freight' widget="monetary"/>
+        						<field name='total_freight' widget="monetary" readonly="True"/>
         						<field name='perc_installation'/>
-        						<field name='total_installation' widget="monetary"/>
+        						<field name='total_installation' widget="monetary" readonly="True"/>
         					</group>
         					<group>
-        						<field name='profit_margin'/>
+        						<field name='profit_margin' readonly="True"/>
         						<field name='not_be_billed'/>
         						<field name='manufacture'/>
         						<field name='executive'/>
