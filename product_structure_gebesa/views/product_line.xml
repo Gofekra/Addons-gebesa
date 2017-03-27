@@ -32,7 +32,7 @@
         						<field name='product_family_id'/>
         					</group>
         					<group>
-                                <field name='report_id'/>
+                                <field name='report_type'/>
         						<field name='active'/>
         					</group>
                             <group>
