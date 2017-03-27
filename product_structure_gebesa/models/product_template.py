@@ -2,7 +2,7 @@
 # © <YEAR(S)> <AUTHOR(S)>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import _, fields, models
+from openerp import _, api, fields, models
 
 
 class ProductTemplate(models.Model):
@@ -32,3 +32,10 @@ class ProductTemplate(models.Model):
         'product.type',
         string=_('Type'),
     )
+
+    @api.model
+    def _get_buy_route(self):
+        make_route = self.env.ref('stock.route_warehouse0_mto')
+        if make_route:
+            return make_route.ids
+        return []
