@@ -30,7 +30,7 @@
                 <xpath expr="//field[@name='order_line']/form/group" position="after">
                     <group>
                         <group>
-                            <field name="margin_justification"/>
+                            <field name="margin_justification" attrs="{'required': [('low_mu', '=', True)]}"/>
                             <field name="low_mu"/>
                         </group>
                         <group>
