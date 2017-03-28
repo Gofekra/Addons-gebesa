@@ -15,14 +15,15 @@
         "bin": [],
     },
     "depends": [
-        "base", "product", "product_structure_gebesa",
+        "base",
+        "product",
+        "product_structure_gebesa",
     ],
     "data": [
         "data/report_paperformat.xml",
         "views/product_template.xml",
         "views/product_product_view.xml",
         "report/report_price_list.xml",
-        "report/report_modulares.xml",
     ],
     "demo": [
     ],

@@ -34,10 +34,12 @@ class ProductLine(models.Model):
         default=True
     )
 
-    report_id = fields.Many2one(
-        'ir.actions.report.xml',
-        string='Report',
+    report_type = fields.Selection(
+        [('normal', _('NORMAL')),
+         ('modulares', _('MODULARES'))],
+        string=_("Type Report"),
     )
+
     mu_min = fields.Float(
         string=_('M.U. Minimum')
     )
