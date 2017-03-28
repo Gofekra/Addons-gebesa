@@ -6,14 +6,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-16 00:21+0000\n"
-"PO-Revision-Date: 2017-03-16 00:21+0000\n"
+"POT-Creation-Date: 2017-03-28 17:31+0000\n"
+"PO-Revision-Date: 2017-03-28 17:31+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
+
+#. module: sale_order_gebesa
+#: code:addons/sale_order_gebesa/models/sale_order.py:230
+#: code:addons/sale_order_gebesa/models/sale_order.py:238
+#, python-format
+msgid "%s %s %s"
+msgstr ""
 
 #. module: sale_order_gebesa
 #: model:ir.model,name:sale_order_gebesa.model_account_analytic_account
@@ -29,7 +36,38 @@ msgstr ""
 
 #. module: sale_order_gebesa
 #: model:ir.ui.view,arch_db:sale_order_gebesa.view_order_form
+msgid "Approve"
+msgstr ""
+
+#. module: sale_order_gebesa
+#: model:res.groups,name:sale_order_gebesa.group_approve_button
+msgid "Approve Button"
+msgstr ""
+
+#. module: sale_order_gebesa
+#: code:addons/sale_order_gebesa/models/sale_order.py:117
+#: model:ir.model.fields,field_description:sale_order_gebesa.field_sale_order_approve
+#, python-format
+msgid "Approve Status"
+msgstr ""
+
+#. module: sale_order_gebesa
+#: code:addons/sale_order_gebesa/models/sale_order.py:114
+#: selection:sale.order,approve:0
+#, python-format
+msgid "Approved"
+msgstr ""
+
+#. module: sale_order_gebesa
+#: model:ir.ui.view,arch_db:sale_order_gebesa.view_order_form
 msgid "Asigned Warehouse"
+msgstr ""
+
+#. module: sale_order_gebesa
+#: code:addons/sale_order_gebesa/models/sale_order_line.py:45
+#: model:ir.model.fields,field_description:sale_order_gebesa.field_sale_order_line_low_mu
+#, python-format
+msgid "Bajo M.U."
 msgstr ""
 
 #. module: sale_order_gebesa
@@ -168,6 +206,13 @@ msgid "Normal"
 msgstr ""
 
 #. module: sale_order_gebesa
+#: code:addons/sale_order_gebesa/models/sale_order.py:115
+#: selection:sale.order,approve:0
+#, python-format
+msgid "Not Approved"
+msgstr ""
+
+#. module: sale_order_gebesa
 #: code:addons/sale_order_gebesa/models/sale_order.py:106
 #: model:ir.model.fields,field_description:sale_order_gebesa.field_sale_order_credit_note
 #, python-format
@@ -283,35 +328,42 @@ msgid "Suspended for Collection"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:147
+#: code:addons/sale_order_gebesa/models/sale_order.py:221
+#, python-format
+msgid "The amount are differents:\n"
+"Analytic Account"
+msgstr ""
+
+#. module: sale_order_gebesa
+#: code:addons/sale_order_gebesa/models/sale_order.py:156
 #, python-format
 msgid "The following field is not invalid:\n"
 "Analytic Account"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:140
+#: code:addons/sale_order_gebesa/models/sale_order.py:149
 #, python-format
 msgid "The following field is not invalid:\n"
 "Executive"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:137
+#: code:addons/sale_order_gebesa/models/sale_order.py:146
 #, python-format
 msgid "The following field is not invalid:\n"
 "Manufacture"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:143
+#: code:addons/sale_order_gebesa/models/sale_order.py:152
 #, python-format
 msgid "The following field is not invalid:\n"
 "Manufacturing                       priority"
 msgstr ""
 
 #. module: sale_order_gebesa
-#: code:addons/sale_order_gebesa/models/sale_order.py:134
+#: code:addons/sale_order_gebesa/models/sale_order.py:143
 #, python-format
 msgid "The following field is not invalid:\n"
 "Notify approval"
@@ -320,6 +372,12 @@ msgstr ""
 #. module: sale_order_gebesa
 #: sql_constraint:sale.order:0
 msgid "The order name must be unique"
+msgstr ""
+
+#. module: sale_order_gebesa
+#: code:addons/sale_order_gebesa/models/sale_order.py:246
+#, python-format
+msgid "This Sale Order is already approved"
 msgstr ""
 
 #. module: sale_order_gebesa

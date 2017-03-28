@@ -110,6 +110,14 @@ class SaleOrder(models.Model):
         string=_('Date of Production Termination'),
     )
 
+    approve = fields.Selection(
+        [('approved', _('Approved')),
+         ('not_approved', _('Not Approved'))],
+        default='not_approved',
+        string=_('Approve Status'),
+        store=True,
+    )
+
     _sql_constraints = [
         ('name_unique',
          'UNIQUE(name)',
@@ -218,15 +226,23 @@ class SaleOrder(models.Model):
                         line.product_id.categ_id.total_route_ids
                     if len(routes) < 2:
                         raise UserError(
-                    _('%s %s %s' % (
-                            _("The next product has no a valid Route"), line.product_id.id, line.product_id.name)))
+                            _('%s %s %s' % (
+                                _("The next product has no a valid Route"), line.product_id.id, line.product_id.name)))
                     product_bom = False
                     for bom in line.product_id.product_tmpl_id.bom_ids:
                         if bom.product_id.id == line.product_id.id:
                             product_bom = bom or False
                     if not product_bom:
-                       raise UserError(
-                    _('%s %s %s' % (
-                            _("The next product has no a Bill of Materials"), line.product_id.id, line.product_id.name)))
+                        raise UserError(
+                            _('%s %s %s' % (
+                                _("The next product has no a Bill of Materials"), line.product_id.id, line.product_id.name)))
 
         return super(SaleOrder, self).action_confirm()
+
+    @api.multi
+    def approve_action(self):
+        for order in self:
+            if order.approve == 'approved':
+                raise UserError(_('This Sale Order is already approved'))
+        self.write({'approve': 'approved'})
+        return True

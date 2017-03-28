@@ -393,3 +393,41 @@ msgstr "Justificación Margen Bajo para el Pedido de Venta"
 #, python-format
 msgid "not be billed"
 msgstr "No Facturar"
+
+#. module: sale_order_gebesa
+#: model:ir.ui.view,arch_db:sale_order_gebesa.view_order_form
+msgid "Approve"
+msgstr "Aprobar"
+
+#. module: sale_order_gebesa
+#: model:res.groups,name:sale_order_gebesa.group_approve_button
+msgid "Approve Button"
+msgstr "Botón Aprobar"
+
+#. module: sale_order_gebesa
+#: code:addons/sale_order_gebesa/models/sale_order.py:117
+#: model:ir.model.fields,field_description:sale_order_gebesa.field_sale_order_approve
+#, python-format
+msgid "Approve Status"
+msgstr "Estatus de Aprobación"
+
+#. module: sale_order_gebesa
+#: code:addons/sale_order_gebesa/models/sale_order.py:114
+#: selection:sale.order,approve:0
+#, python-format
+msgid "Approved"
+msgstr "Aprobado"
+
+#. module: sale_order_gebesa
+#: code:addons/sale_order_gebesa/models/sale_order.py:101
+#: selection:sale.order,credit_status:0
+#, python-format
+msgid "Suspended for Collection"
+msgstr "Suspender para la colección"
+
+#. module: sale_order_gebesa
+#: code:addons/sale_order_gebesa/models/sale_order.py:115
+#: selection:sale.order,approve:0
+#, python-format
+msgid "Not Approved"
+msgstr "No Aprobado"

@@ -20,6 +20,7 @@
         "stock_warehouse_analytic_id",
     ],
     "data": [
+        "security/security.xml",
         "views/sale_order.xml",
         "views/account_analytic_account_view.xml"
     ],
