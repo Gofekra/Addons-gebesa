@@ -8,13 +8,14 @@
         	<field name='model'>sale.order</field>
         	<field name='inherit_id' ref="sale.view_order_form"/>
         	<field name='arch' type='xml'>
-                <!--<header>
-                    <button name="bolean_button" string="Preciona" type="object" />
-                </header>-->
+                <xpath expr="//button[@name='action_confirm']" position="attributes">
+                    <attribute name="attrs">{'invisible':[('approve','=','not_approved')]}</attribute>
+                </xpath>
                 <xpath expr="//field[@name='state']" position="before">
                     <button name="approve_action" states="draft" type="object" string="Approve"
                         attrs="{'readonly':[('approve', '=', 'approved')]}" groups="sale_order_gebesa.group_approve_button"/>
                 </xpath> 
+
         		<xpath expr="//group/group/field[@name='project_id']" position="after">
         			<field name="notify_approval" widget="email" />
         		</xpath>

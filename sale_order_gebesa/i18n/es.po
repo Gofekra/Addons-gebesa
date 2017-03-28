@@ -397,7 +397,7 @@ msgstr "No Facturar"
 #. module: sale_order_gebesa
 #: model:ir.ui.view,arch_db:sale_order_gebesa.view_order_form
 msgid "Approve"
-msgstr "Aprobar"
+msgstr "Aprobar Credito"
 
 #. module: sale_order_gebesa
 #: model:res.groups,name:sale_order_gebesa.group_approve_button
@@ -409,7 +409,7 @@ msgstr "Botón Aprobar"
 #: model:ir.model.fields,field_description:sale_order_gebesa.field_sale_order_approve
 #, python-format
 msgid "Approve Status"
-msgstr "Estatus de Aprobación"
+msgstr "Estatus Credito"
 
 #. module: sale_order_gebesa
 #: code:addons/sale_order_gebesa/models/sale_order.py:114
