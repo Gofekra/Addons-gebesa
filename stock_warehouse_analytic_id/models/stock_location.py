@@ -18,3 +18,8 @@ class StockLocation(models.Model):
         'Analytic Account',
         related='stock_warehouse_id.account_analytic_id',
         readonly=True)
+
+    loc_finished_product = fields.Boolean(
+        string='Location finished product',
+        default=False,
+    )

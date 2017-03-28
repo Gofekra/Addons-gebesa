@@ -11,6 +11,7 @@
                     <field name="account_analytic_id" readonly="1"/-->
                     <field name="stock_warehouse_id"/>
                     <field name="account_analytic_id" readonly="1"/>
+                    <field name="loc_finished_product"/>
                 </xpath>        		
         	</field>
         </record>
