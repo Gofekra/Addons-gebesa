@@ -17,6 +17,11 @@ class SaleOrder(models.Model):
         compute='_compuete_segment_status'
     )
 
+    related_segment = fields.Char(
+        string='Relatad Segment',
+        default='',
+    )
+
     @api.model
     def _prepare_procurement_group(self):
         res = super(SaleOrder, self)._prepare_procurement_group()

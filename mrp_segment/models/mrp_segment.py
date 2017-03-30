@@ -348,6 +348,9 @@ class MrpSegmentLine(models.Model):
             ('origin', 'like', production.name)])
         for pur in purchase:
             pur.related_segment += segment.folio + ', '
+        sale = production.sale_id
+        if segment.folio not in sale.related_segment:
+            sale.related_segment += segment.folio + ', '
         return super(MrpSegmentLine, self).create(vals)
 
     @api.multi

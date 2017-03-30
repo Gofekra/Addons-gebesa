@@ -9,6 +9,9 @@
                 <xpath expr="//group/group/field[@name='pricelist_id']" position="before">
                     <field name="segment_status" readonly="1"/>
                 </xpath>
+                <xpath expr="//notebook/page/group/group/field[@name='invoice_status']" position="before">
+                    <field name="related_segment" readonly="1"/>
+                </xpath>
                 <xpath expr="//notebook/page/field[@name='order_line']/tree/field[@name='qty_to_invoice']" position="before">
                     <field name="segment_qty" readonly="1"/>
                 </xpath>
