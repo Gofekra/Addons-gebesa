@@ -5,12 +5,12 @@
 from openerp import models, fields, api, _
 
 
-class ProductProductKardex(models.Model):
+class ProductProductKardex(models.TransientModel):
     _name = 'product.product.kardex.wizard'
 
     product_id = fields.Many2one(
         'product.product',
-        string='Product',
+        string=_('Product'),
     )
     location_id = fields.Many2one(
         'stock.location',
@@ -22,7 +22,6 @@ class ProductProductKardex(models.Model):
     fecha_final = fields.Date(
         string=_('Date End'),
     )
-    # active_id = self._context.get('active_ids')
 
     @api.multi
     def print_report(self):
@@ -32,6 +31,6 @@ class ProductProductKardex(models.Model):
                    active_model=self._name)
         return{
             'type': 'ir.actions.report.xml',
-            'report_name': 'product_kardex_report',
+            'report_name': 'product.kardex.report',
             'context': ctx,
         }

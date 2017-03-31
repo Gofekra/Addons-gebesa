@@ -21,7 +21,7 @@
         "product",
     ],
     "data": [
-        #"wizards/product_product_kardex.xml",
+        "wizards/product_product_kardex.xml",
         "views/product_product.xml"
     ],
     "demo": [
