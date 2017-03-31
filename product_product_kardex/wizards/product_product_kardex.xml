@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model='ir.ui.view' id='product_product_kardex_wizard'>
+        	<field name='name'>product.product.kardex.wizard</field>
+        	<field name='model'>product.product</field>
+        	<field name='arch' type='xml'>
+        		<form>
+        			<group>
+                    
+        				<field name='location_id'/>
+        				<field name='fecha_inicial'/>
+
+        			</group>
+        			<footer>
+                        <button name="print_report" string="Export" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+        		</form>
+        	</field>
+        </record>
+    </data>
+</openerp>
