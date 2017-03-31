@@ -42,6 +42,8 @@
                                 <field name="product_id" on_change="onchange_product_id(product_id)"/>
                                 <field name="sequence"/>
                                 <field name="product_rounding" groups="mrp.group_rounding_efficiency"/>
+                                <field name="attribute_value_ids" widget="many2many_tags" domain="[('product_ids.product_tmpl_id', '=', parent.product_tmpl_id)]" groups="product.group_product_variant"/>
+                                <field name="property_ids" widget="many2many_tags" groups="product.group_mrp_properties"/>
                                 <!-- <field name="bom_id"/> -->
                             </group>
                             <group>
