@@ -35,18 +35,17 @@ class SaleOrder(models.Model):
     @api.depends('related_segment')
     def _compuete_segment_status(self):
         production_obj = self.env['mrp.production']
-        prod = production_obj.search([('sale_id', '=', self.id)])
-        prod_seg = production_obj.search([('sale_id', '=', self.id),
-                                          ('segment_line_ids', '!=', False)])
-        ## ---> Set BreakPoint
-        import pdb;
-        pdb.set_trace()
-        if not prod_seg:
-            self.segment_status = 'no_segment'
-        elif len(prod) == len(prod_seg):
-            self.segment_status = 'total_segment'
-        else:
-            self.segment_status = 'partial_segment'
+        for order in self:
+            prod = production_obj.search([('sale_id', '=', order.id)])
+            prod_seg = production_obj.search([('sale_id', '=', order.id),
+                                              ('segment_line_ids', '!=', False)
+                                              ])
+            if not prod_seg:
+                order.segment_status = 'no_segment'
+            elif len(prod) == len(prod_seg):
+                order.segment_status = 'total_segment'
+            else:
+                order.segment_status = 'partial_segment'
 
     @api.depends('order_line.segment_qty')
     def _compuete_production_status(self):
