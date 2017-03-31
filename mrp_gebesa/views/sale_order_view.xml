@@ -27,6 +27,9 @@
                     <field name="state_id" readonly="1"/>
                     <field name="city_id" readonly="1"/>
                 </xpath>
+                <xpath expr="//field[@name='invoice_status']" position="before">
+                    <field name='production_status' readonly="True"/>
+                </xpath>
             </field>
         </record>
     </data>

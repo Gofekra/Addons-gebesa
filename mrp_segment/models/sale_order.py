@@ -17,14 +17,38 @@ class SaleOrder(models.Model):
         compute='_compuete_segment_status'
     )
 
+    related_segment = fields.Char(
+        string='Relatad Segment',
+        default='',
+    )
+
+    production_status = fields.Selection(
+        compute='_compuete_production_status',
+    )
+
     @api.model
     def _prepare_procurement_group(self):
         res = super(SaleOrder, self)._prepare_procurement_group()
         res['sale_id'] = self.id
         return res
 
-    @api.depends('order_line.segment_qty')
+    @api.depends('related_segment')
     def _compuete_segment_status(self):
+        production_obj = self.env['mrp.production']
+        for order in self:
+            prod = production_obj.search([('sale_id', '=', order.id)])
+            prod_seg = production_obj.search([('sale_id', '=', order.id),
+                                              ('segment_line_ids', '!=', False)
+                                              ])
+            if not prod_seg:
+                order.segment_status = 'no_segment'
+            elif len(prod) == len(prod_seg):
+                order.segment_status = 'total_segment'
+            else:
+                order.segment_status = 'partial_segment'
+
+    @api.depends('order_line.segment_qty')
+    def _compuete_production_status(self):
         for sale in self:
             seg_qty = 0
             pro_qty = 0
@@ -32,11 +56,11 @@ class SaleOrder(models.Model):
                 seg_qty += line.segment_qty
                 pro_qty += line.product_uom_qty
             if seg_qty == pro_qty:
-                sale.segment_status = 'total_segment'
+                sale.production_status = 'total_production'
             elif seg_qty == 0:
-                sale.segment_status = 'no_segment'
+                sale.production_status = 'no_production'
             else:
-                sale.segment_status = 'partial_segment'
+                sale.production_status = 'partial_production'
 
 
 class SaleOrderLine(models.Model):
