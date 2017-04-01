@@ -116,7 +116,13 @@ class MrpShipment(models.Model):
     def done(self):
         ship_line_obj = self.env['mrp.shipment.line']
         ship_sale_obj = self.env['mrp.shipment.sale']
+        concat = ''
+        concatenate = ''
         for ship in self:
+            concat += ship.folio + ';' + ship.reference + ';' +\
+                ship.date + ';' + ship.departure_date + ';' +\
+                str(ship.meters) + ';' + str(ship.freight) + ';' +\
+                str(ship.amount)
             for line in ship.line_ids:
                 sale_order_id = line.sale_order_id
                 if line.quantity_shipped == 0:
@@ -130,8 +136,25 @@ class MrpShipment(models.Model):
                             ('shipment_id', '=', ship.id)])
                         if ship_sale:
                             ship_sale.unlink()
+                else:
+                    volume = line.quantity_shipped * line.product_id.volume
+                    weight = line.quantity_shipped * line.product_id.weight
+                    concatenate += line.partner_id.name + ';' +\
+                        line.country_id.name + ';' + line.state_id.name +\
+                        ';' + line.city + ';' + line.street + ' '
+                    if line.street2:
+                        concatenate += line.street2
+                    concatenate += ';' + line.sale_order_id.name + ';' +\
+                        line.sale_order_id.warehouse_id.name + ';' +\
+                        line.sale_order_id.warehouse_id.code + ';' +\
+                        str(line.sale_order_id.perc_freight) + ';' +\
+                        line.product_code + ';' + line.product_name + ';' +\
+                        str(volume) + ';' + str(weight) + ';' +\
+                        str(line.quantity_shipped) + ';' +\
+                        str(line.standard_cost) + ';' +\
+                        str(line.price_unit) + '|'
             ship.state = 'done'
-        return True
+        return concat, concatenate
 
     @api.multi
     def cancel(self):
@@ -315,6 +338,27 @@ class MrpShipmentLine(models.Model):
         string=_(u'Standard cost'),
         related='product_id.standard_price',
     )
+    price_unit = fields.Float(
+        string=_(u'Price Unit'),
+    )
+    total_price = fields.Float(
+        string=_(u'Total price'),
+        compute='_compute_total_price'
+    )
+    total_cost = fields.Float(
+        string=_(u'Total cost'),
+        compute='_compute_total_cost'
+    )
+
+    @api.depends('price_unit', 'quantity_shipped')
+    def _compute_total_price(self):
+        for line in self:
+            line.total_price = line.price_unit * line.quantity_shipped
+
+    @api.depends('standard_cost', 'quantity_shipped')
+    def _compute_total_cost(self):
+        for line in self:
+            line.total_cost = line.standard_cost * line.quantity_shipped
 
     @api.constrains('quantity_shipped')
     def _check_quantity_shipped(self):

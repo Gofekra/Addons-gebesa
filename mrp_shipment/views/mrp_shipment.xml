@@ -48,7 +48,7 @@
                         <button name="prepare_shipment" states="draft" string="Proceed" type="object" class="oe_highlight"/>
                         <button name="done" states="confirm" string="Done" type="object" class="oe_highlight"/>
                         <button name="finished" states="done" string="Finished" type="object" class="oe_highlight"/>
-                        <button name="cancel" string="Cancel" type="object" attrs="{'invisible':[('state','in', ['cancel', 'draft'])]}"/>
+                        <button name="cancel" string="Cancel" type="object" attrs="{'invisible':[('state','in', ['cancel', 'draft', 'done', 'finished'])]}"/>
                         <button name="add" states="confirm" string="Add Sale Order" type="object"/>
                         <field name="state" widget="statusbar"/>
                     </header>
@@ -100,6 +100,9 @@
                                         <field name="quantity" readonly="1"/>
                                         <field name='quantity_shipped'/>
                                         <field name="standard_cost" readonly="1"/>
+                                        <field name="price_unit" readonly="1"/>
+                                        <field name="total_cost" readonly="1"/>
+                                        <field name="total_price" readonly="1"/>
                                     </tree>
                                 </field>
                             </page>
