@@ -25,15 +25,15 @@ class MrpBomLine(models.Model):
         string=_('Location'),
         required=True)
 
-    @api.model
-    def create(self, values):
-        bom_obj = self.env['mrp.bom']
-        if 'bom_id' in values.keys():
-            bom = bom_obj.browse([values['bom_id']])
-            if bom.type == 'phantom':
-                product_bom = bom_obj.search([
-                    ('product_id', '=', values['product_id'])])
-                if not product_bom:
-                    raise UserError(_('You can not add a product that \
-                        has no BOM'))
-        return super(MrpBomLine, self).create(values)
+    # @api.model
+    # def create(self, values):
+    #     bom_obj = self.env['mrp.bom']
+    #     if 'bom_id' in values.keys():
+    #         bom = bom_obj.browse([values['bom_id']])
+    #         if bom.type == 'phantom':
+    #             product_bom = bom_obj.search([
+    #                 ('product_id', '=', values['product_id'])])
+    #             if not product_bom:
+    #                 raise UserError(_('You can not add a product that \
+    #                     has no BOM'))
+    #     return super(MrpBomLine, self).create(values)
