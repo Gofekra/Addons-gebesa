@@ -50,6 +50,7 @@ class MrpShipmentSaleOrder(models.TransientModel):
                                     'sale_order_id': sale.id,
                                     'order_line_id': line.id,
                                     'product_id': line.product_id.id,
+                                    'price_unit': line.price_unit,
                                     'quantity': line.missing_quantity,
                                     'quantity_shipped': line.missing_quantity,
                                 })
