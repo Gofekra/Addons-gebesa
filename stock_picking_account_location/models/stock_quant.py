@@ -146,11 +146,13 @@ class stock_quant(osv.osv):
         elif move.production_id:
             reference = move.production_id.name
             # + " " + trace or False
-            name = move.name + ' [' + move.product_id.default_code + '] ' + move.product_id.name
+            name = move.name + \
+                ' [' + move.product_id.default_code + '] ' + move.product_id.name
         elif move.raw_material_production_id:
             reference = move.raw_material_production_id.name
             # + " " + trace or False
-            name = move.name + ' [' + move.product_id.default_code + '] ' + move.product_id.name
+            name = move.name + \
+                ' [' + move.product_id.default_code + '] ' + move.product_id.name
         else:
             reference = "W/O Reference "
             name = move.product_id.name
@@ -191,6 +193,9 @@ class stock_quant(osv.osv):
                                   credit_account_id, debit_account_id,
                                   journal_id, context=None):
         # group quants by cost
+        if move.location_id.usage == 'production' or \
+                move.location_dest_id == 'production':
+            return
         quant_cost_qty = {}
         for quant in quants:
             if quant_cost_qty.get(quant.cost):
