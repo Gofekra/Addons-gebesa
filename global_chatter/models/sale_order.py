@@ -5,6 +5,6 @@
 from openerp import fields, models
 
 
-class AccountPayment(models.Model):
-    _name = 'account.payment'
-    _inherit = ['account.payment', 'message.post.show.all']
+class SaleOrder(models.Model):
+    _name = 'sale.order'
+    _inherit = ['sale.order', 'message.post.show.all']
