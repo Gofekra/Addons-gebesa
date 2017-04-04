@@ -18,8 +18,10 @@
     "depends": [
         "base",
         "account",
+        "mrp",
         "product",
         "sale",
+        "stock",
         'message_post_model'
     ],
     "data": [
