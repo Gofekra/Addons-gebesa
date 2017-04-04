@@ -16,9 +16,24 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: global_privilege_button
+#: model:ir.model,name:global_privilege_button.model_mrp_bom
+msgid "Bill of Material"
+msgstr "Lista de Materiales"
+
+#. module: global_privilege_button
 #: model:ir.ui.view,arch_db:global_privilege_button.purchase_order_cancel_button_form
 msgid "Cancel"
 msgstr "Cancelar"
+
+#. module: global_privilege_button
+#: code:addons/global_privilege_button/models/mrp_bom.py:16
+#: code:addons/global_privilege_button/models/mrp_bom_line.py:16
+#: code:addons/global_privilege_button/models/mrp_bom_line_detail.py:16
+#, python-format
+msgid "Error!\n"
+"You do not have privileges to Create Material(s) list.\n"
+"Check with your System Administrator."
+msgstr "Error! Tu no tienes privilegios para Crear Lista de Materiales. Consulte con el Administrador del Sistema. "
 
 #. module: global_privilege_button
 #: code:addons/global_privilege_button/models/product_product.py:16
@@ -30,6 +45,16 @@ msgid "Error!\n"
 msgstr "Error! Tu no tienes privilegios para Crear Producto(s). Consulte con el Administrador del Sistema. "
 
 #. module: global_privilege_button
+#: code:addons/global_privilege_button/models/mrp_bom.py:34
+#: code:addons/global_privilege_button/models/mrp_bom_line.py:34
+#: code:addons/global_privilege_button/models/mrp_bom_line_detail.py:34
+#, python-format
+msgid "Error!\n"
+"You do not have privileges to Delete Material(s) list.\n"
+"Check with your System Administrator."
+msgstr "Error! Tu no tienes privilegios para Eliminar Lista de Materiales. Consulte con el Administrador del Sistema. "
+
+#. module: global_privilege_button
 #: code:addons/global_privilege_button/models/product_product.py:34
 #: code:addons/global_privilege_button/models/product_template.py:34
 #, python-format
@@ -39,6 +64,16 @@ msgid "Error!\n"
 msgstr "Error! Tu no tienes privilegios para Eliminar Producto(s). Consulte con el Administrador del Sistema. "
 
 #. module: global_privilege_button
+#: code:addons/global_privilege_button/models/mrp_bom.py:25
+#: code:addons/global_privilege_button/models/mrp_bom_line.py:25
+#: code:addons/global_privilege_button/models/mrp_bom_line_detail.py:25
+#, python-format
+msgid "Error!\n"
+"You do not have privileges to Modify Material(s) list.\n"
+"Check with your System Administrator."
+msgstr "Error! Tu no tienes privilegios para Modificar Lista de Materiales. Consulte con el Administrador del Sistema. "
+
+#. module: global_privilege_button
 #: code:addons/global_privilege_button/models/product_product.py:25
 #: code:addons/global_privilege_button/models/product_template.py:25
 #, python-format
@@ -46,6 +81,11 @@ msgid "Error!\n"
 "You do not have privileges to Modify Product(s).\n"
 "Check with your System Administrator."
 msgstr "Error! Tu no tienes privilegios para Modificar Producto(s). Consulte con el Administrador del Sistema. "
+
+#. module: global_privilege_button
+#: model:res.groups,name:global_privilege_button.group_manager_ldm
+msgid "LDM Manager (Create, Delete, Write)"
+msgstr "Administrador LDM (Crear, Eliminar, Modificar)"
 
 #. module: global_privilege_button
 #: model:ir.model,name:global_privilege_button.model_product_product
@@ -71,4 +111,14 @@ msgstr "Plantilla del Producto"
 #: model:res.groups,name:global_privilege_button.group_cancel_purchase
 msgid "Purchase Order Cancel Button"
 msgstr "Botòn Cancelar Orden de Compra"
+
+#. module: global_privilege_button
+#: model:ir.model,name:global_privilege_button.model_mrp_bom_line
+msgid "mrp.bom.line"
+msgstr "mrp.bom.line"
+
+#. module: global_privilege_button
+#: model:ir.model,name:global_privilege_button.model_mrp_bom_line_detail
+msgid "mrp.bom.line.detail"
+msgstr "mrp.bom.line.detail"
 
