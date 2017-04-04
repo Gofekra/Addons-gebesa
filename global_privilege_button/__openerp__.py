@@ -18,6 +18,7 @@
     "depends": [
         "product",
         "purchase",
+        "mrp_cut_detail",
     ],
     "data": [
         "security/security.xml",
