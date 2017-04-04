@@ -18,6 +18,9 @@
     "depends": [
         "base",
         "account",
+        "product",
+        "sale",
+        'message_post_model'
     ],
     "data": [
         "views/account_payment_view.xml"
