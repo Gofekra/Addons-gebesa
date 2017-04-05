@@ -23,7 +23,7 @@
                             <field name="company_id" can_create="true" can_write="true"/>
                             <field name="currency_id" can_create="true" can_write="true" modifiers="{'readonly': true}"/>
                             <field name="rate_mex" />
-                            <field name="rate" readonly="1"/>
+                            <field name="rate" invisible="True"/>
                         </group>
                     </sheet>
                 </form>
