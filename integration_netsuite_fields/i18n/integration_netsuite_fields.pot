@@ -4,16 +4,26 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 9.0c\n"
+"Project-Id-Version: Odoo Server 9.0e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-30 23:50+0000\n"
-"PO-Revision-Date: 2016-03-30 23:50+0000\n"
+"POT-Creation-Date: 2017-04-06 20:49+0000\n"
+"PO-Revision-Date: 2017-04-06 20:49+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
+
+#. module: integration_netsuite_fields
+#: model:ir.model.fields,field_description:integration_netsuite_fields.field_sale_order_city_id
+msgid "City"
+msgstr ""
+
+#. module: integration_netsuite_fields
+#: model:ir.model.fields,field_description:integration_netsuite_fields.field_sale_order_date_production
+msgid "Date of Production Termination"
+msgstr ""
 
 #. module: integration_netsuite_fields
 #: code:addons/integration_netsuite_fields/models/res_partner.py:17
@@ -37,6 +47,12 @@ msgstr ""
 #: model:ir.ui.view,arch_db:integration_netsuite_fields.product_template_form_ns_inherit_view
 #, python-format
 msgid "Internal ID in Netsuite"
+msgstr ""
+
+#. module: integration_netsuite_fields
+#: code:addons/integration_netsuite_fields/models/product.py:22
+#, python-format
+msgid "Internal ID in Netsuite:"
 msgstr ""
 
 #. module: integration_netsuite_fields
@@ -87,8 +103,11 @@ msgid "Line number in Netsuite"
 msgstr ""
 
 #. module: integration_netsuite_fields
+#: code:addons/integration_netsuite_fields/models/account_invoice_line.py:14
+#: code:addons/integration_netsuite_fields/models/stock_move.py:14
 #: model:ir.model.fields,help:integration_netsuite_fields.field_account_invoice_line_netsuite_line
 #: model:ir.model.fields,help:integration_netsuite_fields.field_stock_move_netsuite_line
+#, python-format
 msgid "Line number on Netsuite"
 msgstr ""
 
@@ -114,7 +133,7 @@ msgid "Netsuite Updated"
 msgstr ""
 
 #. module: integration_netsuite_fields
-#: code:addons/integration_netsuite_fields/models/sale_order.py:30
+#: code:addons/integration_netsuite_fields/models/sale_order.py:29
 #: model:ir.model.fields,field_description:integration_netsuite_fields.field_sale_order_ok_etl
 #, python-format
 msgid "OK ETL"
@@ -126,6 +145,21 @@ msgstr ""
 #: model:ir.model.fields,help:integration_netsuite_fields.field_sale_order_line_options
 #, python-format
 msgid "Options"
+msgstr ""
+
+#. module: integration_netsuite_fields
+#: model:ir.model,name:integration_netsuite_fields.model_res_partner
+msgid "Partner"
+msgstr ""
+
+#. module: integration_netsuite_fields
+#: model:ir.model.fields,field_description:integration_netsuite_fields.field_account_invoice_petition_number
+msgid "Petition number"
+msgstr ""
+
+#. module: integration_netsuite_fields
+#: model:ir.model,name:integration_netsuite_fields.model_product_product
+msgid "Product"
 msgstr ""
 
 #. module: integration_netsuite_fields
@@ -141,6 +175,11 @@ msgstr ""
 #. module: integration_netsuite_fields
 #: model:ir.model,name:integration_netsuite_fields.model_sale_order_line
 msgid "Sales Order Line"
+msgstr ""
+
+#. module: integration_netsuite_fields
+#: model:ir.model.fields,field_description:integration_netsuite_fields.field_sale_order_state_id
+msgid "State"
 msgstr ""
 
 #. module: integration_netsuite_fields
@@ -161,3 +200,4 @@ msgstr ""
 #, python-format
 msgid "Total order in NetSuite"
 msgstr ""
+

@@ -161,3 +161,9 @@ msgstr "Total Netsuite"
 #, python-format
 msgid "Total order in NetSuite"
 msgstr "Total del Pedido en Netsuite"
+
+#. module: integration_netsuite_fields
+#: code:addons/integration_netsuite_fields/models/product.py:22
+#, python-format
+msgid "Internal ID in Netsuite:"
+msgstr "ID Interno en Netsuite:"
