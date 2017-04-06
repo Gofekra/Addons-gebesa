@@ -34,9 +34,10 @@
                 <form string='BoM Line'>
                     <sheet>
                         <h4>
-                            <separator string='BoM Line'/>
+                            <separator string='BoM Line' />
                         </h4>           
                         <group>
+                            <!-- <field name='bom_id' readonly="0"/> -->
                             <group>
                                 <field name="product_rounding" groups="mrp.group_rounding_efficiency"/>
                                 <field name="product_id" on_change="onchange_product_id(product_id)"/>
@@ -44,7 +45,7 @@
                                 <field name="product_rounding" groups="mrp.group_rounding_efficiency"/>
                                 <field name="attribute_value_ids" widget="many2many_tags" domain="[('product_ids.product_tmpl_id', '=', parent.product_tmpl_id)]" groups="product.group_product_variant"/>
                                 <field name="property_ids" widget="many2many_tags" groups="product.group_mrp_properties"/>
-                                <!-- <field name="bom_id"/> -->
+                                <field name="bom_id" required="False" readonly="True"/> 
                             </group>
                             <group>
                                 <field name="date_stop"/>
