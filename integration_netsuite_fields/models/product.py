@@ -12,3 +12,12 @@ class ProductTemplate(models.Model):
     id_ns = fields.Integer(
         _('Internal ID in Netsuite'),
     )
+
+
+class ProductProduct(models.Model):
+    _name = 'product.product'
+    _inherit = 'product.product'
+
+    id_ns = fields.Integer(
+        _('Internal ID in Netsuite:')
+    )
