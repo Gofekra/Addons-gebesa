@@ -28,11 +28,16 @@ class SaleOrder(models.Model):
         string='Date shipped',
         compute='_compuete_folio_shipped'
     )
+    shipped_departure_date = fields.Char(
+        string='shipped Departure Date',
+        compute='_compuete_folio_shipped'
+    )
 
     @api.depends('order_line.shipment_line_ids')
     def _compuete_folio_shipped(self):
         for sale in self:
             fol = date = ''
+            date2 = ''
             folio = []
             for line in sale.order_line:
                 for shipment_line in line.shipment_line_ids:
@@ -40,9 +45,12 @@ class SaleOrder(models.Model):
                     if shipment.folio not in folio:
                         folio.append(shipment.folio)
                         date = date + ' ' + shipment.date + ','
+                        date2 = date2 + ' ' + shipment.departure_date + ','
                         fol = fol + ' ' + shipment.folio + ','
             sale.folio_shipped = fol[1:-1]
             sale.date_shipped = date[1:-1]
+            # se asigna la var y se le un arreglo, quit la pos ini y pos fin
+            sale.shipped_departure_date = date2[1:-1]
 
     @api.depends('order_line.quantity_shipped')
     def _compuete_shiptment_status(self):
