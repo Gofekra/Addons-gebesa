@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model='ir.ui.view' id='product_normal_form_view'>
+            <field name='name'>product.normal.individual.name.form.view</field>
+            <field name='model'>product.product</field>
+            <field name='inherit_id' ref="product.product_normal_form_view"/>
+            <field name='arch' type='xml'>
+                <xpath expr="//div[@class='oe_title']" position="inside">
+                    <div name="indiv_name">
+                        <label class="oe_edit_only" for="individual_name"/>
+                        <field name='individual_name'/>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>
