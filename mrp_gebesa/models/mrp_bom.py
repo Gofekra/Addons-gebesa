@@ -15,6 +15,32 @@ class MrpBom(models.Model):
         string=_('Warehouse'),
         required=True)
 
+    @api.multi
+    def write(self, values):
+        # te traes el producto anterior
+        # val = self.product_tmpl_id
+
+        if 'product_tmpl_id' in values.keys():
+            # te traes el objeto vacio
+            template = self.env['product.template']
+            # se construye el objeto, y los busca por medio del values
+            val = template.browse(values['product_tmpl_id'])
+            # condicion para la busquedan
+            for route in val.route_ids:
+                # Se le agrega el id como busqueda, cambia bd cambiarlo
+                if route.id == 6:
+                    raise UserError(_('This product is raw material'))
+        return super(MrpBom, self).write(values)
+
+    @api.model
+    def create(self, vals):
+        template = self.env['product.template']
+        val = template.browse(vals['product_tmpl_id'])
+        for route in val.route_ids:
+            if route.id == 6:
+                raise UserError(_('This product is raw material'))
+        return super(MrpBom, self).create(vals)
+
 
 class MrpBomLine(models.Model):
     _name = "mrp.bom.line"

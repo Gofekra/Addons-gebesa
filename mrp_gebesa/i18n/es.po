@@ -111,3 +111,10 @@ msgstr "No puede agregar un producto que no tenga una lista de materiales"
 #: model:ir.model,name:mrp_gebesa.model_mrp_bom_line
 msgid "mrp.bom.line"
 msgstr "mrp.bom.line"
+
+#. module: mrp_gebesa
+#: code:addons/mrp_gebesa/models/mrp_bom.py:32
+#: code:addons/mrp_gebesa/models/mrp_bom.py:41
+#, python-format
+msgid "This product is raw material"
+msgstr "Este producto es materia prima"
