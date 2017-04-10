@@ -27,6 +27,7 @@
         "views/product_line.xml",
         "views/product_type.xml",
         "views/product_template.xml",
+        "views/product_product.xml",
         "security/ir.model.access.csv",
     ],
     "demo": [
