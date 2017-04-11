@@ -8,3 +8,8 @@ from openerp import fields, models
 class StockPicking(models.Model):
     _name = 'stock.picking'
     _inherit = ['stock.picking', 'message.post.show.all']
+
+
+class StockBatchPicking(models.Model):
+    _name = 'stock.batch.picking'
+    _inherit = ['stock.batch.picking', 'message.post.show.all']

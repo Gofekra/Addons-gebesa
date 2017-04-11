@@ -22,10 +22,14 @@
         "product",
         "sale",
         "stock",
-        'message_post_model'
+        'message_post_model',
+        "mrp_shipment",
+        "stock_batch_picking",
     ],
     "data": [
-        "views/account_payment_view.xml"
+        "views/account_payment_view.xml",
+        "views/mrp_view.xml",
+        "views/stock_view.xml",
     ],
     "demo": [
 

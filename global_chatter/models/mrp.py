@@ -18,3 +18,8 @@ class MrpBomLine(models.Model):
 class MrpProduction(models.Model):
     _name = 'mrp.production'
     _inherit = ['mrp.production', 'message.post.show.all']
+
+
+class MrpShipment(models.Model):
+    _name = 'mrp.shipment'
+    _inherit = ['mrp.shipment', 'message.post.show.all']
