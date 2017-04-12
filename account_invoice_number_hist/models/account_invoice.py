@@ -24,3 +24,13 @@ class AccountInvoice(models.Model):
             if line.product_id.id in (975887, 975888, 507890):
                 return []
         return super(AccountInvoice, self).do_cfdi_workflow()
+
+
+class AccountInvoiceLine(models.Model):
+    _inherit = 'account.invoice.line'
+
+    @api.model
+    def create(self, vals):
+        line = super(AccountInvoiceLine, self).create(vals)
+        line.invoice_id.compute_taxes()
+        return line
