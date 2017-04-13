@@ -227,7 +227,7 @@ class SaleOrder(models.Model):
                     if len(routes) < 2:
                         raise UserError(
                             _('%s %s %s' % (
-                                _("The next product has no a valid Route"), line.product_id.id, line.product_id.name)))
+                                _("The next product has no a valid Route"), line.product_id.default_code, line.product_id.name)))
                     product_bom = False
                     for bom in line.product_id.product_tmpl_id.bom_ids:
                         if bom.product_id.id == line.product_id.id:
@@ -235,7 +235,7 @@ class SaleOrder(models.Model):
                     if not product_bom:
                         raise UserError(
                             _('%s %s %s' % (
-                                _("The next product has no a Bill of Materials"), line.product_id.id, line.product_id.name)))
+                                _("The next product has no a Bill of Materials"), line.product_id.default_code, line.product_id.name)))
 
         return super(SaleOrder, self).action_confirm()
 

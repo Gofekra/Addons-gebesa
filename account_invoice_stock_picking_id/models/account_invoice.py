@@ -175,8 +175,11 @@ class AccountInvoice(models.Model):
         return True
 
     def _prepare_order_line_move(self, line, picking_id, date_planned):
+        location_obj = self.env['stock.location']
         warehouse_id = self.account_analytic_id.warehouse_id
-        location_id = warehouse_id.wh_output_stock_loc_id.id
+        location_id = location_obj.search([
+            ('stock_warehouse_id', '=', warehouse_id.id),
+            ('loc_finished_product', '=', True)])
         output_id = self.partner_id.property_stock_customer.id
         move_type_obj = self.env['stock.move.type']
         move_type_id = move_type_obj.search([('code', '=', 'S1')]) or False
@@ -192,7 +195,7 @@ class AccountInvoice(models.Model):
             'product_uos': line.product_id.uom_id.id,
             'product_packaging': False,
             'partner_id': self.partner_shipping_id.id,
-            'location_id': location_id,
+            'location_id': location_id.id,
             'location_dest_id': output_id,
             'invoice_line_id': line.id,
             'tracking_id': False,
