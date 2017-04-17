@@ -224,3 +224,16 @@ msgstr "mrp.bom.line.detail"
 msgid "mrp.bom.line.detail.operation"
 msgstr "mrp.bom.line.detail.operation"
 
+#. module: mrp_cut_detail
+#: code:addons/mrp_cut_detail/models/mrp_bom_line.py:33
+#: code:addons/mrp_cut_detail/models/mrp_bom_line.py:49
+#, python-format
+msgid "This product only once"
+msgstr "Este producto sólo una vez"
+
+#. module: mrp_cut_detail
+#: code:addons/mrp_cut_detail/models/mrp_bom_line.py:30
+#: code:addons/mrp_cut_detail/models/mrp_bom_line.py:46
+#, python-format
+msgid "This product previously used"
+msgstr "Este producto fue usado previamente"
