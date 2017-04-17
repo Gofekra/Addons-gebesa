@@ -34,8 +34,18 @@ class MrpBom(models.Model):
 
     @api.model
     def create(self, vals):
+        # ---> Set BreakPoint
+        import pdb
+        pdb.set_trace()
+        # objeto para no guardar variantes ya existentes
+        # bom_obj = self.env['mrp.bom']
         template = self.env['product.template']
         val = template.browse(vals['product_tmpl_id'])
+        # objeto de busqueda para ver si ya existe
+        # bom_id = bom_obj.search([('product_id', "=", vals['product_id']),
+        #                         ('active', '=', True)])
+        # if len(bom_id) > 0:
+        #    raise UserError(_('This product is already exists'))
         for route in val.route_ids:
             if route.id == 6:
                 raise UserError(_('This product is raw material'))
