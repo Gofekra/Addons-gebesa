@@ -34,9 +34,6 @@ class MrpBom(models.Model):
 
     @api.model
     def create(self, vals):
-        # ---> Set BreakPoint
-        import pdb
-        pdb.set_trace()
         # objeto para no guardar variantes ya existentes
         # bom_obj = self.env['mrp.bom']
         template = self.env['product.template']
