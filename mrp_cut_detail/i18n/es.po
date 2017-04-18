@@ -224,3 +224,16 @@ msgstr "mrp.bom.line.detail"
 msgid "mrp.bom.line.detail.operation"
 msgstr "mrp.bom.line.detail.operation"
 
+#. module: mrp_cut_detail
+#: code:addons/mrp_cut_detail/models/mrp_bom_line.py:30
+#: code:addons/mrp_cut_detail/models/mrp_bom_line.py:43
+#, python-format
+msgid "This product is already in this Bom"
+msgstr "Este producto ya está en este Bom"
+
+#. module: mrp_cut_detail
+#: code:addons/mrp_cut_detail/models/mrp_bom_line.py:27
+#: code:addons/mrp_cut_detail/models/mrp_bom_line.py:40
+#, python-format
+msgid "One product cannot be detail of itself"
+msgstr "Un producto no puede ser detalle de sí mismo"
