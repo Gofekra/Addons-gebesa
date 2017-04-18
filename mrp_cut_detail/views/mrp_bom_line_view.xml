@@ -57,7 +57,7 @@
                         </group>
                         <notebook>
                             <page string="BoM Line Details">
-                                <field name="bom_line_detail_ids" widget="one2many_list">
+                                <field name="bom_line_detail_ids" widget="one2many_list" context="{'default_bom_line_id': active_id}">
                                     <tree string="List Details">
                                         <field name="name"/>
                                         <field name="material"/>
