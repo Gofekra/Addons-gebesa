@@ -10,17 +10,14 @@ class MrpBomLineDetail(models.Model):
     _order = "row"
     # _rec_name = 'bom_line_id'
 
-    # @api.model
-    # def _default_row(self):
-    #    last_id = 1
-    #    # get_count = self.search_count([(1, '=', 1)])
-    #    get_count = self.search_count([('bom_line_id', '=', self.bom_line_id)])
-    #    if get_count:
-    #        last_id = get_count + 1
-    #    # else:
-    #    #    last_id = 1
-    #    # row = str(last_id).rjust(5, '0')
-    #    return last_id
+    @api.model
+    def _default_row(self):
+        last_id = 1
+        get_count = self.search_count([
+            ('bom_line_id', '=', self._context['default_bom_line_id'])])
+        if get_count:
+            last_id = get_count + 1
+        return last_id
 
     bom_line_id = fields.Many2one(
         'mrp.bom.line',
@@ -43,7 +40,7 @@ class MrpBomLineDetail(models.Model):
 
     row = fields.Integer(
         _('Row'),
-        # default=_default_row,
+        default=_default_row,
         help=_('Gives the row order when displaying.'),
     )
 

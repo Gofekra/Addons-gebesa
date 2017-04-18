@@ -18,6 +18,7 @@
     "depends": [
         "base", "mrp", "sale",
         "stock_warehouse_analytic_id",
+        "mrp_segment",
     ],
     "data": [
         "data/ir_sequence.xml",

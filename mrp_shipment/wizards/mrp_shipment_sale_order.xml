@@ -6,7 +6,7 @@
             <field name='model'>mrp.shipment.sale.order</field>
             <field name='arch' type='xml'>
                 <form string='Sale Orders'>
-                    <field name="sale_ids" nolabel="1" domain="[('state','=','done'),('shiptment_status', 'in', ('no_shipment', 'partial_shipment'))]">
+                    <field name="sale_ids" nolabel="1" domain="[('state','=','done'),('segment_status', 'in', ('partial_segment', 'total_segment')),('shiptment_status', 'in', ('no_shipment', 'partial_shipment')),]">
                         <tree string="Shipment Details" edit="false" delete="false" editable="bottom">
                             <field name='name'/>
                             <field name='date_order'/>
