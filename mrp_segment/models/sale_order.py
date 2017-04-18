@@ -14,7 +14,8 @@ class SaleOrder(models.Model):
          ('total_segment', _('Total Segment'))],
         string=_("Segment Status"),
         default='no_segment',
-        compute='_compuete_segment_status'
+        compute='_compuete_segment_status',
+        store=True,
     )
 
     related_segment = fields.Char(
