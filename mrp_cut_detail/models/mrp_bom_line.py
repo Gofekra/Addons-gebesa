@@ -18,11 +18,14 @@ class MrpBomLine(models.Model):
 
     @api.multi
     def write(self, values):
-        if 'product_id' in values.keys():
-            bom_obj = self.env['mrp.bom']
-            product_obj = self.env['product.product']
-            producto = product_obj.browse(values['product_id'])
+        bom_obj = self.env['mrp.bom']
+        product_obj = self.env['product.product']
+        if 'bom_id' in values.keys():
             bom = bom_obj.browse(values['bom_id'])
+        else:
+            bom = self.bom_id
+        if 'product_id' in values.keys():
+            producto = product_obj.browse(values['product_id'])
             if producto.id == bom.product_id.id:
                 raise UserError(_('One product cannot be detail of itself'))
             for line in bom.bom_line_ids:
