@@ -32,25 +32,28 @@ class MrpShipmentSaleOrder(models.TransientModel):
                     for line in sale.order_line:
                         if line.id not in order_line_id:
                             if line.missing_quantity > 0:
-                                if sale.id not in sale_id:
-                                    ship_sale = ship_sale_obj.create({
-                                        'sale_id': sale.id,
-                                        'shipment_id': shipment.id
+                                miss_seg = line.segment_qty
+                                miss_seg = miss_seg - line.quantity_shipped
+                                if miss_seg > 0:
+                                    if sale.id not in sale_id:
+                                        ship_sale = ship_sale_obj.create({
+                                            'sale_id': sale.id,
+                                            'shipment_id': shipment.id
+                                        })
+                                        sale_id.append(sale.id)
+                                    else:
+                                        ship_sale = ship_sale_obj.search([
+                                            ('sale_id', '=', sale.id),
+                                            ('shipment_id', '=', shipment.id)
+                                        ])
+                                    shipment_line_obj.create({
+                                        'shipment_id': shipment.id,
+                                        'shipment_sale_id': ship_sale.id,
+                                        'partner_id': line.order_partner_id.id,
+                                        'sale_order_id': sale.id,
+                                        'order_line_id': line.id,
+                                        'product_id': line.product_id.id,
+                                        'price_unit': line.price_unit,
+                                        'quantity': miss_seg,
+                                        'quantity_shipped': miss_seg,
                                     })
-                                    sale_id.append(sale.id)
-                                else:
-                                    ship_sale = ship_sale_obj.search([
-                                        ('sale_id', '=', sale.id),
-                                        ('shipment_id', '=', shipment.id)
-                                    ])
-                                shipment_line_obj.create({
-                                    'shipment_id': shipment.id,
-                                    'shipment_sale_id': ship_sale.id,
-                                    'partner_id': line.order_partner_id.id,
-                                    'sale_order_id': sale.id,
-                                    'order_line_id': line.id,
-                                    'product_id': line.product_id.id,
-                                    'price_unit': line.price_unit,
-                                    'quantity': line.missing_quantity,
-                                    'quantity_shipped': line.missing_quantity,
-                                })
