@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-17 20:48+0000\n"
-"PO-Revision-Date: 2017-04-17 20:48+0000\n"
+"POT-Creation-Date: 2017-04-17 23:56+0000\n"
+"PO-Revision-Date: 2017-04-17 23:56+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -193,6 +193,13 @@ msgid "Name"
 msgstr ""
 
 #. module: mrp_cut_detail
+#: code:addons/mrp_cut_detail/models/mrp_bom_line.py:27
+#: code:addons/mrp_cut_detail/models/mrp_bom_line.py:40
+#, python-format
+msgid "One product cannot be detail of itself"
+msgstr ""
+
+#. module: mrp_cut_detail
 #: model:ir.actions.act_window,name:mrp_cut_detail.action_mrp_operation
 #: model:ir.model.fields,field_description:mrp_cut_detail.field_mrp_routing_workcenter_operation_id
 #: model:ir.ui.menu,name:mrp_cut_detail.mrp_operation_menu
@@ -267,17 +274,10 @@ msgid "Thickness"
 msgstr ""
 
 #. module: mrp_cut_detail
-#: code:addons/mrp_cut_detail/models/mrp_bom_line.py:33
-#: code:addons/mrp_cut_detail/models/mrp_bom_line.py:49
-#, python-format
-msgid "This product only once"
-msgstr ""
-
-#. module: mrp_cut_detail
 #: code:addons/mrp_cut_detail/models/mrp_bom_line.py:30
-#: code:addons/mrp_cut_detail/models/mrp_bom_line.py:46
+#: code:addons/mrp_cut_detail/models/mrp_bom_line.py:43
 #, python-format
-msgid "This product previously used"
+msgid "This product is already in this Bom"
 msgstr ""
 
 #. module: mrp_cut_detail

@@ -24,10 +24,10 @@ class MrpBomLine(models.Model):
             producto = product_obj.browse(values['product_id'])
             bom = bom_obj.browse(values['bom_id'])
             if producto.id == bom.product_id.id:
-                raise UserError(_('This product previously used'))
+                raise UserError(_('One product cannot be detail of itself'))
             for line in bom.bom_line_ids:
                 if line.product_id.id == producto.id:
-                    raise UserError(_('This product only once'))
+                    raise UserError(_('This product is already in this Bom'))
         return super(MrpBomLine, self).write(values)
 
     @api.multi
@@ -37,8 +37,8 @@ class MrpBomLine(models.Model):
         producto = product_obj.browse(vals['product_id'])
         bom = bom_obj.browse(vals['bom_id'])
         if producto.id == bom.product_id.id:
-            raise UserError(_('This product previously used'))
+            raise UserError(_('One product cannot be detail of itself'))
         for line in bom.bom_line_ids:
             if line.product_id.id == producto.id:
-                raise UserError(_('This product only once'))
+                raise UserError(_('This product is already in this Bom'))
         return super(MrpBomLine, self).create(vals)
