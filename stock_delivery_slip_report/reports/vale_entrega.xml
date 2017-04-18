@@ -4,14 +4,14 @@
         <report
             id="vale_entrega"
             model="stock.picking"
-            string="Vale Entrega 2"
+            string="Picking Format"
             report_type="qweb-pdf"
             name="stock_delivery_slip_report.report_vale_entrega"
             file="stock_delivery_slip_report.report_vale_entrega"
         />
         <template id="report_vale_entrega_document">
             <t t-call="report.html_container">
-                <t t-call="report.external_layout">
+                <t t-call="report.internal_layout">
                     <t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})" />
                     <div class="page">
                         <div class="row">
@@ -35,7 +35,7 @@
                             Observ: <span t-field="o.note"/>
                         </h5>
                         <h5>
-                            Tipo: <span t-field="o.type_adjustment_id"/>
+                            Type: <span t-field="o.type_adjustment_id"/>
                         </h5>
 
                         <table class="table table-condensed">
@@ -60,13 +60,13 @@
                             <t t-set="total_imp" t-value="0"/>
                             <thead>
                                 <tr>
-                                    <th><strong>Clave</strong></th>
+                                    <th><strong>Code</strong></th>
                                     <th><strong>Product</strong></th>
                                     <th><strong>Status</strong></th>
                                     <th><strong>Location</strong></th>
                                     <th class="text-right"><strong>Quantity</strong></th>
-                                    <th><strong>Costo</strong></th>
-                                    <th><strong>Importe</strong></th>
+                                    <th><strong>Cost</strong></th>
+                                    <th><strong>Import</strong></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -92,7 +92,7 @@
                                 <tr>
                                     <td colspan="6"></td>    
                                     <td>
-                                       <strong>Importe</strong>: <span t-esc="total_imp"></span>
+                                       <strong>Import Total</strong>: <span t-esc="total_imp"></span>
                                     </td>
                                 </tr>
                             </tfoot>
@@ -102,14 +102,14 @@
                             <t t-set="total_imp" t-value="0"/>
                             <thead>
                                 <tr>
-                                    <th><strong>Clave</strong></th>
+                                    <th><strong>Code</strong></th>
                                     <th><strong>Product</strong></th>
                                     <th t-if="has_serial_number"><strong>Serial Number</strong></th>
                                     <th><strong>Status</strong></th>
                                     <th><strong>Location</strong></th>
                                     <th class="text-right"><strong>Quantity</strong></th>
-                                    <th><strong>Costo</strong></th>
-                                    <th><strong>Importe</strong></th>
+                                    <th><strong>Cost</strong></th>
+                                    <th><strong>Import</strong></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -178,7 +178,7 @@
                                 <tr>
                                     <td colspan="6"></td>    
                                     <td>
-                                       <strong>Importe</strong>: <span t-esc="total_imp"></span>
+                                       <strong>Import Total</strong>: <span t-esc="total_imp"></span>
                                     </td>
                                 </tr>
                             </tfoot>
