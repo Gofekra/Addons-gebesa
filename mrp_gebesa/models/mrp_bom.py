@@ -19,7 +19,10 @@ class MrpBom(models.Model):
     def write(self, values):
         # te traes el producto anterior
         # val = self.product_tmpl_id
-
+        if 'type' in values.keys():
+            types = values['type']
+        else:
+            types = self.type
         if 'warehouse_id' in values.keys():
             ware_obj = self.env['stock.warehouse']
             ware = ware_obj.browse(values['warehouse_id'])
@@ -30,10 +33,10 @@ class MrpBom(models.Model):
             routing = routing_obj.browse(values['routing_id'])
         else:
             routing = self.routing_id
-
-        if ware.id != routing.location_id.stock_warehouse_id.id:
-            raise UserError(_('The production route must'
-                              ' be in the same warehouse than the bom'))
+        if types == 'normal':
+            if ware.id != routing.location_id.stock_warehouse_id.id:
+                raise UserError(_('The production route must'
+                                  ' be in the same warehouse than the bom'))
 
         if 'product_tmpl_id' in values.keys():
             # te traes el objeto vacio
@@ -79,10 +82,10 @@ class MrpBom(models.Model):
         #                         ('active', '=', True)])
         # if len(bom_id) > 0:
         #    raise UserError(_('This product is already exists'))
-
-        if ware.id != routing.location_id.stock_warehouse_id.id:
-            raise UserError(_('The production route must'
-                              'be in the same warehouse than the bom'))
+        if vals['type'] == 'normal':
+            if ware.id != routing.location_id.stock_warehouse_id.id:
+                raise UserError(_('The production route must'
+                                  'be in the same warehouse than the bom'))
         for route in val.route_ids:
             if route.id == 6:
                 raise UserError(_('This product is raw material'))
