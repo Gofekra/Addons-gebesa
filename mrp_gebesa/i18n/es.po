@@ -137,3 +137,10 @@ msgstr "La ruta de producción debe estar en el mismo almacén que el Bom"
 #, python-format
 msgid "Product and template it does not match"
 msgstr "El producto y el template no son los mismos"
+
+#. module: mrp_gebesa
+#: code:addons/mrp_gebesa/models/mrp_bom.py:42
+#: code:addons/mrp_gebesa/models/mrp_bom.py:94
+#, python-format
+msgid "Kit products should not have route production"
+msgstr "Productos kit no deben de tener ruta de producción"
