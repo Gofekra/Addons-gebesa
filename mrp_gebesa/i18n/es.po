@@ -118,3 +118,15 @@ msgstr "mrp.bom.line"
 #, python-format
 msgid "This product is raw material"
 msgstr "Este producto es materia prima"
+
+#. module: mrp_gebesa
+#: code:addons/mrp_gebesa/models/mrp_bom.py:34
+#, python-format
+msgid "The production route must be in the same warehouse than the bom"
+msgstr "La ruta de producción debe estar en el mismo almacén que el Bom"
+
+#. module: mrp_gebesa
+#: code:addons/mrp_gebesa/models/mrp_bom.py:67
+#, python-format
+msgid "The production route mustbe in the same warehouse than the bom"
+msgstr "La ruta de producción debe estar en el mismo almacén que el Bom"

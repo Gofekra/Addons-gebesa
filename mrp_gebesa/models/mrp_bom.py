@@ -19,6 +19,20 @@ class MrpBom(models.Model):
     def write(self, values):
         # te traes el producto anterior
         # val = self.product_tmpl_id
+        if 'warehouse_id' in values.keys():
+            ware_obj = self.env['stock.warehouse']
+            ware = ware_obj.browse(values['warehouse_id'])
+        else:
+            ware = self.warehouse_id
+        if 'routing_id' in values.keys():
+            routing_obj = self.env['mrp.routing']
+            routing = routing_obj.browse(values['routing_id'])
+        else:
+            routing = self.routing_id
+
+        if ware.id != routing.location_id.stock_warehouse_id.id:
+            raise UserError(_('The production route must'
+                              ' be in the same warehouse than the bom'))
 
         if 'product_tmpl_id' in values.keys():
             # te traes el objeto vacio
@@ -36,13 +50,22 @@ class MrpBom(models.Model):
     def create(self, vals):
         # objeto para no guardar variantes ya existentes
         # bom_obj = self.env['mrp.bom']
+        ware_obj = self.env['stock.warehouse']
+        routing_obj = self.env['mrp.routing']
         template = self.env['product.template']
         val = template.browse(vals['product_tmpl_id'])
+        ware = ware_obj.browse(vals['warehouse_id'])
+        routing = routing_obj.browse(vals['routing_id'])
+
         # objeto de busqueda para ver si ya existe
         # bom_id = bom_obj.search([('product_id', "=", vals['product_id']),
         #                         ('active', '=', True)])
         # if len(bom_id) > 0:
         #    raise UserError(_('This product is already exists'))
+
+        if ware.id != routing.location_id.stock_warehouse_id.id:
+            raise UserError(_('The production route must'
+                              'be in the same warehouse than the bom'))
         for route in val.route_ids:
             if route.id == 6:
                 raise UserError(_('This product is raw material'))
