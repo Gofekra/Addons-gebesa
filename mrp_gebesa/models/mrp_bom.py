@@ -19,6 +19,7 @@ class MrpBom(models.Model):
     def write(self, values):
         # te traes el producto anterior
         # val = self.product_tmpl_id
+
         if 'warehouse_id' in values.keys():
             ware_obj = self.env['stock.warehouse']
             ware = ware_obj.browse(values['warehouse_id'])
@@ -44,6 +45,18 @@ class MrpBom(models.Model):
                 # Se le agrega el id como busqueda, cambia bd cambiarlo
                 if route.id == 6:
                     raise UserError(_('This product is raw material'))
+        else:
+            val = self.product_tmpl_id
+
+        if 'product_id' in values.keys():
+            producto_obj = self.env['product.product']
+            product = producto_obj.browse(values['product_id'])
+
+        else:
+            product = self.product_id
+
+        if val.id != product.product_tmpl_id.id:
+            raise UserError(_('Product and template it does not match'))
         return super(MrpBom, self).write(values)
 
     @api.model
@@ -52,11 +65,15 @@ class MrpBom(models.Model):
         # bom_obj = self.env['mrp.bom']
         ware_obj = self.env['stock.warehouse']
         routing_obj = self.env['mrp.routing']
+        producto_obj = self.env['product.product']
         template = self.env['product.template']
         val = template.browse(vals['product_tmpl_id'])
         ware = ware_obj.browse(vals['warehouse_id'])
         routing = routing_obj.browse(vals['routing_id'])
-
+        if 'product_id' in vals.keys():
+            product = producto_obj.browse(vals['product_id'])
+            if val.id != product.product_tmpl_id.id:
+                raise UserError(_('Product and template it does not match'))
         # objeto de busqueda para ver si ya existe
         # bom_id = bom_obj.search([('product_id', "=", vals['product_id']),
         #                         ('active', '=', True)])
