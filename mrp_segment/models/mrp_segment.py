@@ -192,10 +192,11 @@ class MrpSegment(models.Model):
                 for pur in purchase:
                     pur.related_segment += segment.folio + ', '
                 sale = line.mrp_production_id.sale_id
-                if not sale.related_segment:
-                    sale.related_segment = ''
-                if segment.folio not in sale.related_segment:
-                    sale.related_segment += segment.folio + ', '
+                if sale:
+                    if not sale.related_segment:
+                        sale.related_segment = ' '
+                    if segment.folio not in sale.related_segment:
+                        sale.related_segment += segment.folio + ', '
 
         return self.write({'state': 'confirm'})
 
