@@ -20,6 +20,7 @@
     ],
     "data": [
         "views/account_invoice_view.xml",
+        "security/security.xml"
     ],
     "demo": [
 

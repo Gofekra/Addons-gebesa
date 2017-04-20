@@ -6,6 +6,9 @@
         	<field name='model'>account.invoice</field>
         	<field name='inherit_id' ref='account.invoice_form'/>
         	<field name='arch' type='xml'>
+                <xpath expr="//button[@name='invoice_cancel']" position="after">
+                    <button name="cancel_picking" states="cancel" string="Cancel Picking" type="object" icon="fa-ban" groups="account_invoice_stock_picking_id.group_invoice_cancel_picking"/>
+                </xpath>
         		<field name='move_id' position='after'>
         			<field name='picking_id'/>
         		</field>
