@@ -121,7 +121,8 @@ class MrpBomLine(models.Model):
                 if not product_bom:
                     raise UserError(_('You can not add a product that \
                         has no BOM: %s') % (product.name,))
-            if product.standard_price == 0:
-                raise UserError(_('You can not add a product with cost 0: %s')
-                                % (product.name,))
+            # Comentariado temporalmente para subir detalles restantes
+            #if product.standard_price == 0:
+            #    raise UserError(_('You can not add a product with cost 0: %s')
+            #                    % (product.name,))
         return super(MrpBomLine, self).create(values)
