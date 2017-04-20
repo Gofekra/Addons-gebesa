@@ -114,6 +114,19 @@ class MrpSegment(models.Model):
         return super(MrpSegment, self).create(vals)
 
     @api.multi
+    def write(self, values):
+        if self._uid != self.create_uid.id:
+            raise UserError(_('You can not modify this segment'))
+        return super(MrpSegment, self).write(values)
+
+    @api.multi
+    def unlink(self):
+        for segment in self:
+            if self._uid != segment.create_uid.id:
+                raise UserError(_('You can not delete this segment'))
+        return super(MrpSegment, self).unlink()
+
+    @api.multi
     def prepare_segment(self):
         for segment in self:
             line_ids = [line.id for line in segment.line_ids]
