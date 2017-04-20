@@ -20,6 +20,7 @@
             <field name="inherit_id" ref="mrp.mrp_production_tree_view" />
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='date_planned']" position="before">
+                    <field name='warehouse_id'/>
                     <field name='partner_id'/>
                     <field name='city_shipping'/>
                 </xpath>
