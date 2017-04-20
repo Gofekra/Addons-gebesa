@@ -825,3 +825,15 @@ msgstr "report.mrp_segment.report_manufacturing_order"
 #: model:ir.model,name:mrp_segment.model_report_mrp_segment_report_manufacturing_order_production
 msgid "report.mrp_segment.report_manufacturing_order_production"
 msgstr "report.mrp_segment.report_manufacturing_order_production"
+
+#. module: mrp_segment
+#: code:addons/mrp_segment/models/mrp_segment.py:126
+#, python-format
+msgid "You can not delete this segment"
+msgstr "No puedes eliminar este segmento"
+
+#. module: mrp_segment
+#: code:addons/mrp_segment/models/mrp_segment.py:119
+#, python-format
+msgid "You can not modify this segment"
+msgstr "No puedes modificar este segmento"
