@@ -7,6 +7,7 @@ from openerp.tools import DEFAULT_SERVER_DATE_FORMAT
 from openerp.tools import DEFAULT_SERVER_DATETIME_FORMAT
 from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
+from openerp.exceptions import UserError
 import pytz
 
 
@@ -32,8 +33,8 @@ class AccountInvoice(models.Model):
     def _create_pickings_and_procurements(self, picking_id=False):
         move_obj = self.env['stock.move']
         picking_obj = self.env['stock.picking']
-        procurement_obj = self.env['procurement.order']
-        proc_ids = []
+        # procurement_obj = self.env['procurement.order']
+        # proc_ids = []
         generate = False
         for line in self.invoice_line_ids:
             if line.product_id.type == 'product':
@@ -48,18 +49,19 @@ class AccountInvoice(models.Model):
                         if not picking_id:
                             picking_id = picking_obj.create(
                                 self._prepare_order_picking(line))
-                        move_id = move_obj.create(
+                        # move_id = move_obj.create(
+                        move_obj.create(
                             self._prepare_order_line_move(line, picking_id,
                                                           date_planned))
-                    else:
-                        move_id = False
+                    # else:
+                    #    move_id = False
 
-                    proc_id = procurement_obj.create(
-                        self._prepare_order_line_procurement(
-                            line, move_id, date_planned))
-                    proc_ids.append(proc_id)
-                    line.procurement_id = proc_id
-                    self.ship_recreate(line, move_id, proc_id)
+                    # proc_id = procurement_obj.create(
+                    #    self._prepare_order_line_procurement(
+                    #         line, move_id, date_planned))
+                    # proc_ids.append(proc_id)
+                    # line.procurement_id = proc_id
+                    # self.ship_recreate(line, move_id, proc_id)
 
         if picking_id:
             for picking in picking_id:
@@ -68,8 +70,8 @@ class AccountInvoice(models.Model):
                     move.force_assign()
                 picking.do_transfer()
 
-        for proc_id in proc_ids:
-            proc_id.run()
+        # for proc_id in proc_ids:
+        #    proc_id.run()
 
         if picking_id:
             self.picking_id = picking_id
@@ -129,50 +131,50 @@ class AccountInvoice(models.Model):
             return user_datetime.strftime(DEFAULT_SERVER_DATETIME_FORMAT)
         return user_date.strftime(DEFAULT_SERVER_DATETIME_FORMAT)
 
-    def _prepare_order_line_procurement(self, line, move_id, date_planned):
-        warehouse_id = self.account_analytic_id.warehouse_id
-        return{
-            'name': line.name[:50],
-            'origin': self.name,
-            'date_planned': date_planned,
-            'product_id': line.product_id.id,
-            'product_qty': line.quantity,
-            'product_uom': line.product_id.uom_id.id,
-            'product_uos_qty': line.product_id.uom_id.id,
-            'product_uos': line.product_id.uom_id.id,
-            'location_id': warehouse_id.wh_output_stock_loc_id.id,
-            'move_id': move_id,
-            'company_id': self.company_id.id,
-            'note': line.name,
-        }
+    # def _prepare_order_line_procurement(self, line, move_id, date_planned):
+    #     warehouse_id = self.account_analytic_id.warehouse_id
+    #     return{
+    #         'name': line.name[:50],
+    #         'origin': self.name,
+    #         'date_planned': date_planned,
+    #         'product_id': line.product_id.id,
+    #         'product_qty': line.quantity,
+    #         'product_uom': line.product_id.uom_id.id,
+    #         'product_uos_qty': line.product_id.uom_id.id,
+    #         'product_uos': line.product_id.uom_id.id,
+    #         'location_id': warehouse_id.wh_output_stock_loc_id.id,
+    #         'move_dest_id': move_id,
+    #         'company_id': self.company_id.id,
+    #         'note': line.name,
+    #     }
 
-    def ship_recreate(self, line, move_id, proc_id):
-        move_obj = self.env['stock.move']
-        proc_obj = self.env['procurement.order']
+    # def ship_recreate(self, line, move_id, proc_id):
+    #     move_obj = self.env['stock.move']
+    #     proc_obj = self.env['procurement.order']
 
-        if move_id and self.state == 'shipping_except':
-            cur_mov = move_obj.browse(move_id)
-            moves = []
-            for pick in self.picking_ids:
-                if pick.id != cur_mov.picking_id.id and pick.state != 'cancel':
-                    moves.extend(
-                        move for move in pick.move_lines if move.state !=
-                        'cancel' and move.invoice_line_id.id == line.id)
-            if moves:
-                product_qty = cur_mov.product_qty
-                product_uos_qty = cur_mov.product_uos_qty
-                for move in moves:
-                    product_qty -= move.product_qty
-                    product_uos_qty -= move.product_uos_qty
-                if product_qty > 0 or product_uos_qty > 0:
-                    move_id.product_qty = product_qty
-                    move_id.product_uos_qty = product_uos_qty
-                    proc_id.product_qty = product_qty
-                    proc_id.product_uos_qty = product_uos_qty
-                else:
-                    cur_mov.unlink()
-                    proc_obj.unlink([proc_id])
-        return True
+    #     if move_id and self.state == 'shipping_except':
+    #         cur_mov = move_obj.browse(move_id)
+    #         moves = []
+    #         for pick in self.picking_ids:
+    #           if pick.id != cur_mov.picking_id.id and pick.state != 'cancel':
+    #                 moves.extend(
+    #                     move for move in pick.move_lines if move.state !=
+    #                     'cancel' and move.invoice_line_id.id == line.id)
+    #         if moves:
+    #             product_qty = cur_mov.product_qty
+    #             product_uos_qty = cur_mov.product_uos_qty
+    #             for move in moves:
+    #                 product_qty -= move.product_qty
+    #                 product_uos_qty -= move.product_uos_qty
+    #             if product_qty > 0 or product_uos_qty > 0:
+    #                 move_id.product_qty = product_qty
+    #                 move_id.product_uos_qty = product_uos_qty
+    #                 proc_id.product_qty = product_qty
+    #                 proc_id.product_uos_qty = product_uos_qty
+    #             else:
+    #                 cur_mov.unlink()
+    #                 proc_obj.unlink([proc_id])
+    #     return True
 
     def _prepare_order_line_move(self, line, picking_id, date_planned):
         location_obj = self.env['stock.location']
@@ -203,3 +205,21 @@ class AccountInvoice(models.Model):
             'price_unit': line.product_id.standard_price or 0.0,
             'stock_move_type_id': move_type_id[0].id,
         }
+
+    @api.multi
+    def cancel_picking(self):
+        invoice_obj = self.env['account.invoice']
+        for invoice in self:
+            if not invoice.picking_id:
+                raise UserError(_('This invoice not picking'))
+            invoices = invoice_obj.search(
+                [('picking_id', '=', invoice.picking_id.id),
+                 ('state', '!=', 'cancel')])
+            if invoices:
+                raise UserError(_('Facturas vivas'))
+            moves = [move for move in invoice.picking_id.move_lines]
+            for move in moves:
+                if move.acc_move_id:
+                    move.acc_move_id.write({'state': 'draft'})
+                move.write({'state': 'cancel'})
+            invoice.picking_id.write({'state': 'cancel'})
