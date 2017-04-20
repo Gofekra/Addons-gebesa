@@ -26,6 +26,9 @@
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_quotation_tree"/>
             <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="client_order_ref"/>
+                </xpath>
                 <xpath expr="//field[@name='state']" position="before">
                     <field name="total_nste"/>
                     <field name="ok_etl"/>
@@ -38,6 +41,9 @@
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_tree"/>
             <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="client_order_ref"/>
+                </xpath>
                 <xpath expr="//field[@name='state']" position="before">
                     <field name="total_nste"/>
                     <field name="ok_etl"/>
