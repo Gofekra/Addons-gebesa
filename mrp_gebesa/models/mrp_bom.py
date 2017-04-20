@@ -37,6 +37,9 @@ class MrpBom(models.Model):
             if ware.id != routing.location_id.stock_warehouse_id.id:
                 raise UserError(_('The production route must'
                                   ' be in the same warehouse than the bom'))
+        if types == 'phantom':
+            if routing.id != 0:
+                raise UserError(_('Kit products should not have route production'))
 
         if 'product_tmpl_id' in values.keys():
             # te traes el objeto vacio
@@ -86,9 +89,13 @@ class MrpBom(models.Model):
             if ware.id != routing.location_id.stock_warehouse_id.id:
                 raise UserError(_('The production route must'
                                   'be in the same warehouse than the bom'))
+        if vals['type'] == 'phantom':
+            if routing.id != 0:
+                raise UserError(_('Kit products should not have route production'))
         for route in val.route_ids:
             if route.id == 6:
                 raise UserError(_('This product is raw material'))
+
         return super(MrpBom, self).create(vals)
 
 
