@@ -221,5 +221,6 @@ class AccountInvoice(models.Model):
             for move in moves:
                 if move.acc_move_id:
                     move.acc_move_id.write({'state': 'draft'})
+                    move.acc_move_id.unlink()
                 move.write({'state': 'cancel'})
             invoice.picking_id.write({'state': 'cancel'})

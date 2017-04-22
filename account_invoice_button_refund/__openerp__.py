@@ -17,6 +17,7 @@
     },
     "depends": [
         "base", "account",
+        "res_users_cancel_invoice",
     ],
     "data": [
         "views/account_invoice.xml"
