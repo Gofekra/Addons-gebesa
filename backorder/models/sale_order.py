@@ -39,7 +39,8 @@ class SaleOrder(models.Model):
     )
     standard_cost_pending = fields.Float(
         'Standard cost pending',
-        compute='_compute_standard_cost_pending'
+        compute='_compute_standard_cost_pending',
+        store=True,
     )
 
     @api.depends('order_line.pending_qty', 'order_line.price_unit')

@@ -12,7 +12,8 @@ class SaleOrderLine(models.Model):
     pending_qty = fields.Float(
         'Pending',
         digits=dp.get_precision('Product Unit of Measure'),
-        compute='_compute_pending_qty'
+        compute='_compute_pending_qty',
+        store=True,
     )
 
     @api.model
