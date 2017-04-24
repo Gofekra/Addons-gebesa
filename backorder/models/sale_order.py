@@ -40,7 +40,7 @@ class SaleOrder(models.Model):
     standard_cost_pending = fields.Float(
         'Standard cost pending',
         compute='_compute_standard_cost_pending',
-        store=True,
+        store=False,
     )
 
     @api.depends('order_line.pending_qty', 'order_line.price_unit')
@@ -50,12 +50,13 @@ class SaleOrder(models.Model):
                 sale.amount_pending += line.pending_qty * line.price_unit
 
     @api.depends('order_line.standard_cost',
-                 'order_line.pending_qty')
+                 'order_line.pending_qty',
+                 'order_line.product_uom_qty')
     def _compute_standard_cost_pending(self):
         for sale in self:
             for line in sale.order_line:
                 sale.standard_cost_pending += line.pending_qty *\
-                    line.standard_cost
+                    (line.standard_cost / line.product_uom_qty)
 
     @api.depends('date_order')
     def _compute_delay(self):
