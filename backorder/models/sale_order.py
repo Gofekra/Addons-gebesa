@@ -55,8 +55,11 @@ class SaleOrder(models.Model):
     def _compute_standard_cost_pending(self):
         for sale in self:
             for line in sale.order_line:
-                sale.standard_cost_pending += line.pending_qty *\
-                    (line.standard_cost / line.product_uom_qty)
+                if line.product_uom_qty != 0:
+                    sale.standard_cost_pending += line.pending_qty *\
+                        (line.standard_cost / line.product_uom_qty)
+                else:
+                    sale.standard_cost_pending = 0
 
     @api.depends('date_order')
     def _compute_delay(self):
