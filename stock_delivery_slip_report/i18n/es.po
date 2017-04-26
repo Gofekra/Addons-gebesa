@@ -1,0 +1,112 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* stock_delivery_slip_report
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-26 13:44+0000\n"
+"PO-Revision-Date: 2017-04-26 13:44+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: stock_delivery_slip_report
+#: model:ir.ui.view,arch_db:stock_delivery_slip_report.report_vale_entrega_document
+msgid "<span><strong>Customer Address:</strong></span>"
+msgstr "Dirección"
+
+#. module: stock_delivery_slip_report
+#: model:ir.ui.view,arch_db:stock_delivery_slip_report.report_vale_entrega_document
+msgid "<strong>Code</strong>"
+msgstr "Código"
+
+#. module: stock_delivery_slip_report
+#: model:ir.ui.view,arch_db:stock_delivery_slip_report.report_vale_entrega_document
+msgid "<strong>Cost</strong>"
+msgstr "Costo"
+
+#. module: stock_delivery_slip_report
+#: model:ir.ui.view,arch_db:stock_delivery_slip_report.report_vale_entrega_document
+msgid "<strong>Import Total</strong>:"
+msgstr "Importe Total"
+
+#. module: stock_delivery_slip_report
+#: model:ir.ui.view,arch_db:stock_delivery_slip_report.report_vale_entrega_document
+msgid "<strong>Import</strong>"
+msgstr "Importe"
+
+#. module: stock_delivery_slip_report
+#: model:ir.ui.view,arch_db:stock_delivery_slip_report.report_vale_entrega_document
+msgid "<strong>Location</strong>"
+msgstr "Locación"
+
+#. module: stock_delivery_slip_report
+#: model:ir.ui.view,arch_db:stock_delivery_slip_report.report_vale_entrega_document
+msgid "<strong>Order (Origin)</strong>"
+msgstr "Orden (Original)"
+
+#. module: stock_delivery_slip_report
+#: model:ir.ui.view,arch_db:stock_delivery_slip_report.report_vale_entrega_document
+msgid "<strong>Product</strong>"
+msgstr "Producto"
+
+#. module: stock_delivery_slip_report
+#: model:ir.ui.view,arch_db:stock_delivery_slip_report.report_vale_entrega_document
+msgid "<strong>Quantity</strong>"
+msgstr "Cantidad"
+
+#. module: stock_delivery_slip_report
+#: model:ir.ui.view,arch_db:stock_delivery_slip_report.report_vale_entrega_document
+msgid "<strong>Scheduled Date</strong>"
+msgstr "Fecha Programada"
+
+#. module: stock_delivery_slip_report
+#: model:ir.ui.view,arch_db:stock_delivery_slip_report.report_vale_entrega_document
+msgid "<strong>Serial Number</strong>"
+msgstr "Número de Serie"
+
+#. module: stock_delivery_slip_report
+#: model:ir.ui.view,arch_db:stock_delivery_slip_report.report_vale_entrega_document
+msgid "<strong>Status</strong>"
+msgstr "Estatus"
+
+#. module: stock_delivery_slip_report
+#: model:ir.ui.view,arch_db:stock_delivery_slip_report.report_vale_entrega_document
+msgid "<strong>Total</strong>"
+msgstr "Total"
+
+#. module: stock_delivery_slip_report
+#: model:ir.ui.view,arch_db:stock_delivery_slip_report.report_vale_entrega_document
+msgid "Folio:"
+msgstr "Fólio:"
+
+#. module: stock_delivery_slip_report
+#: model:ir.ui.view,arch_db:stock_delivery_slip_report.report_vale_entrega_document
+msgid "Lot"
+msgstr "Lote:"
+
+#. module: stock_delivery_slip_report
+#: model:ir.ui.view,arch_db:stock_delivery_slip_report.report_vale_entrega_document
+msgid "Observ:"
+msgstr "Observación:"
+
+#. module: stock_delivery_slip_report
+#: model:ir.actions.report.xml,name:stock_delivery_slip_report.vale_entrega
+msgid "Picking Format"
+msgstr "Formato Picking"
+
+#. module: stock_delivery_slip_report
+#: model:ir.ui.view,arch_db:stock_delivery_slip_report.report_vale_entrega_document
+msgid "Qty"
+msgstr "Cantidad:"
+
+#. module: stock_delivery_slip_report
+#: model:ir.ui.view,arch_db:stock_delivery_slip_report.report_vale_entrega_document
+msgid "Type:"
+msgstr "Tipo:"
+
