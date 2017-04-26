@@ -67,6 +67,7 @@
                                     <th class="text-right"><strong>Quantity</strong></th>
                                     <th><strong>Cost</strong></th>
                                     <th><strong>Import</strong></th>
+                                    <th><strong>Total</strong></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -84,8 +85,9 @@
                                     <td><span t-esc="move.product_uom_qty * move.product_id.standard_price"/>
                                     </td>
                                     <td>
-                                        <t t-set="total_imp" t-value="total_imp+(pack_operation.product_qty * pack_operation.product_id.standard_price)"/>
+                                        <t t-set="total_imp" t-value="total_imp+(move.product_uom_qty * move.product_id.standard_price)"/>
                                     </td>
+                                    
                                 </tr>
                             </tbody>
                             <tfoot>
@@ -110,6 +112,7 @@
                                     <th class="text-right"><strong>Quantity</strong></th>
                                     <th><strong>Cost</strong></th>
                                     <th><strong>Import</strong></th>
+                                    <th><strong>Total</strong></th>
                                 </tr>
                             </thead>
                             <tbody>
