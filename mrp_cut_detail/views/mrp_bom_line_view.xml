@@ -5,6 +5,7 @@
             <field name='name'>BoM Lines</field>
             <field name='res_model'>mrp.bom.line</field>
             <field name='view_type'>form</field>
+            <field name="view_id" ref="mrp_cut_detail.mrp_bom_line_tree_geb"/>
             <field name='view_mode'>tree,form</field>
         </record>
 
