@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-20 21:47+0000\n"
-"PO-Revision-Date: 2017-04-20 21:47+0000\n"
+"POT-Creation-Date: 2017-04-26 20:40+0000\n"
+"PO-Revision-Date: 2017-04-26 20:40+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -50,6 +50,12 @@ msgstr ""
 #. module: mrp_segment
 #: model:ir.ui.view,arch_db:mrp_segment.view_segment_form
 msgid "Add production"
+msgstr ""
+
+#. module: mrp_segment
+#: code:addons/mrp_segment/models/stock.py:34
+#, python-format
+msgid "Already reviewed"
 msgstr ""
 
 #. module: mrp_segment
@@ -121,6 +127,18 @@ msgstr ""
 #. module: mrp_segment
 #: model:ir.ui.view,arch_db:mrp_segment.report_cut_order_wood_document
 msgid "Caras"
+msgstr ""
+
+#. module: mrp_segment
+#: code:addons/mrp_segment/models/stock.py:20
+#: model:ir.model.fields,field_description:mrp_segment.field_stock_picking_review
+#, python-format
+msgid "Change"
+msgstr ""
+
+#. module: mrp_segment
+#: model:ir.ui.view,arch_db:mrp_segment.view_picking_form
+msgid "Check"
 msgstr ""
 
 #. module: mrp_segment
@@ -465,9 +483,22 @@ msgid "Name for Segment"
 msgstr ""
 
 #. module: mrp_segment
+#: code:addons/mrp_segment/models/stock.py:45
+#, python-format
+msgid "Needs to be reviewed"
+msgstr ""
+
+#. module: mrp_segment
 #: code:addons/mrp_segment/models/mrp_segment.py:259
 #, python-format
 msgid "New"
+msgstr ""
+
+#. module: mrp_segment
+#: code:addons/mrp_segment/models/stock.py:18
+#: selection:stock.picking,review:0
+#, python-format
+msgid "No Review"
 msgstr ""
 
 #. module: mrp_segment
@@ -619,6 +650,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:mrp_segment.field_stock_move_related_segment
 #: model:ir.model.fields,field_description:mrp_segment.field_stock_picking_related_segment
 msgid "Relatad Segment"
+msgstr ""
+
+#. module: mrp_segment
+#: code:addons/mrp_segment/models/stock.py:19
+#: selection:stock.picking,review:0
+#, python-format
+msgid "Review"
 msgstr ""
 
 #. module: mrp_segment
@@ -931,6 +969,12 @@ msgstr ""
 #: code:addons/mrp_segment/models/mrp_segment.py:126
 #, python-format
 msgid "You can not delete this segment"
+msgstr ""
+
+#. module: mrp_segment
+#: code:addons/mrp_segment/models/stock.py:31
+#, python-format
+msgid "You can not modify this picking"
 msgstr ""
 
 #. module: mrp_segment
