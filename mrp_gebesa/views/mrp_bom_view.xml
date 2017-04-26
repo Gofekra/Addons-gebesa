@@ -7,7 +7,7 @@
             <field name="inherit_id" ref="mrp_cut_detail.mrp_bom_line_tree_geb"/>
             <field name='arch' type='xml'>
                 <xpath expr="//field[@name='bom_id']" position="after">
-                    <field name="location_id"/>
+                    <field name="location_id" readonly="1"/>
                 </xpath>
             </field>
         </record>
