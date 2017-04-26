@@ -32,6 +32,9 @@ class ProductTemplate(models.Model):
         'product.type',
         string=_('Type'),
     )
+    cutting_detail = fields.Boolean(
+        string='Requires cutting detail',
+    )
 
     @api.model
     def _get_buy_route(self):
