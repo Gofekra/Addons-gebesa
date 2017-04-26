@@ -6,15 +6,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-23 20:40+0000\n"
-"PO-Revision-Date: 2016-09-23 15:48-0600\n"
+"POT-Creation-Date: 2017-04-26 23:42+0000\n"
+"PO-Revision-Date: 2017-04-26 18:47-0500\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 #. module: product_structure_gebesa
 #: code:addons/product_structure_gebesa/models/product_family.py:21
@@ -94,7 +94,14 @@ msgstr "Nombre de la grupo del producto"
 #: model:ir.model.fields,field_description:product_structure_gebesa.field_product_line_id
 #: model:ir.model.fields,field_description:product_structure_gebesa.field_product_type_id
 msgid "ID"
-msgstr "Id"
+msgstr "ID"
+
+#. module: product_structure_gebesa
+#: code:addons/product_structure_gebesa/models/product_product.py:12
+#: model:ir.model.fields,field_description:product_structure_gebesa.field_product_product_individual_name
+#, python-format
+msgid "Individual name"
+msgstr "Nombre individual"
 
 #. module: product_structure_gebesa
 #: model:ir.model.fields,field_description:product_structure_gebesa.field_product_family___last_update
@@ -149,6 +156,29 @@ msgid "Line name product"
 msgstr "Nombre de la linea del producto"
 
 #. module: product_structure_gebesa
+#: code:addons/product_structure_gebesa/models/product_group.py:26
+#: code:addons/product_structure_gebesa/models/product_line.py:44
+#: model:ir.model.fields,field_description:product_structure_gebesa.field_product_group_mu_min
+#: model:ir.model.fields,field_description:product_structure_gebesa.field_product_line_mu_min
+#, python-format
+msgid "M.U. Minimum"
+msgstr "M.U. Minimum"
+
+#. module: product_structure_gebesa
+#: code:addons/product_structure_gebesa/models/product_line.py:39
+#: selection:product.line,report_type:0
+#, python-format
+msgid "MODULARES"
+msgstr "MODULARES"
+
+#. module: product_structure_gebesa
+#: code:addons/product_structure_gebesa/models/product_line.py:38
+#: selection:product.line,report_type:0
+#, python-format
+msgid "NORMAL"
+msgstr "NORMAL"
+
+#. module: product_structure_gebesa
 #: code:addons/product_structure_gebesa/models/product_family.py:14
 #: code:addons/product_structure_gebesa/models/product_group.py:14
 #: code:addons/product_structure_gebesa/models/product_line.py:21
@@ -160,6 +190,11 @@ msgstr "Nombre de la linea del producto"
 #, python-format
 msgid "Name"
 msgstr "Nombre"
+
+#. module: product_structure_gebesa
+#: model:ir.model,name:product_structure_gebesa.model_product_product
+msgid "Product"
+msgstr "Producto"
 
 #. module: product_structure_gebesa
 #: code:addons/product_structure_gebesa/models/product_line.py:29
@@ -220,9 +255,16 @@ msgid "Product structure gebesa"
 msgstr "Estructura producto gebesa"
 
 #. module: product_structure_gebesa
-#: model:ir.model.fields,field_description:product_structure_gebesa.field_product_line_report_id
-msgid "Report"
-msgstr "Reporte"
+#: model:ir.model.fields,field_description:product_structure_gebesa.field_product_product_cutting_detail
+#: model:ir.model.fields,field_description:product_structure_gebesa.field_product_template_cutting_detail
+msgid "Requires cutting detail"
+msgstr "Requiere detalle de corte"
+
+#. module: product_structure_gebesa
+#: code:addons/product_structure_gebesa/models/product_product.py:16
+#, python-format
+msgid "Template Name"
+msgstr "Template Name"
 
 #. module: product_structure_gebesa
 #: code:addons/product_structure_gebesa/models/product_template.py:33
@@ -230,6 +272,13 @@ msgstr "Reporte"
 #, python-format
 msgid "Type"
 msgstr "Tipo"
+
+#. module: product_structure_gebesa
+#: code:addons/product_structure_gebesa/models/product_line.py:40
+#: model:ir.model.fields,field_description:product_structure_gebesa.field_product_line_report_type
+#, python-format
+msgid "Type Report"
+msgstr "Tipo de reporte"
 
 #. module: product_structure_gebesa
 #: code:addons/product_structure_gebesa/models/product_type.py:17

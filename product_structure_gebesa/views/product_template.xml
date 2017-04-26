@@ -9,6 +9,9 @@
                 <xpath expr="//notebook/page/group/group/field[@name='type']" position="attributes">
                     <attribute name="attrs">{'readonly': True}</attribute>
                 </xpath>
+                <xpath expr="//notebook/page/group/group/field[@name='type']" position="after">
+                    <field name='cutting_detail'/>
+                </xpath>
                 <xpath expr="//notebook/page[1]" position="after">
                     <page string="Product classification">
                         <group>

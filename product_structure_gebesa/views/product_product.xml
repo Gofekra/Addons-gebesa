@@ -9,7 +9,7 @@
                 <xpath expr="//div[@class='oe_title']" position="inside">
                     <div name="indiv_name">
                         <label class="oe_edit_only" for="individual_name"/>
-                        <field name='individual_name'/>
+                        <field name='individual_name' readonly="1"/>
                     </div>
                 </xpath>
             </field>
