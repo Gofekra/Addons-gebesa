@@ -21,6 +21,7 @@
         "mrp",
         "mrp_product_color",
         "mrp_product_caliber",
+        "mrp_gebesa",
     ],
     "data": [
         "views/mrp_view.xml",
