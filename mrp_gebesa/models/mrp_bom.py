@@ -16,6 +16,12 @@ class MrpBom(models.Model):
         required=True)
 
     @api.multi
+    def unlink(self):
+        for bom in self:
+            if bom.bom_line_ids:
+                raise UserError(_('This BOM has detail'))
+
+    @api.multi
     def write(self, values):
         # te traes el producto anterior
         # val = self.product_tmpl_id
