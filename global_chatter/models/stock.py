@@ -23,3 +23,8 @@ class StockWarehouse(models.Model):
 class StockLocation(models.Model):
     _name = 'stock.location'
     _inherit = ['stock.location', 'message.post.show.all']
+
+
+class StockPickingType(models.Model):
+    _name = 'stock.picking.type'
+    _inherit = ['stock.picking.type', 'message.post.show.all']
