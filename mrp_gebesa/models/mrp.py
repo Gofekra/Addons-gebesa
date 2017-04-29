@@ -19,6 +19,36 @@ class MrpProduction(models.Model):
         compute='_compute_trace',
         store=True,
     )
+    picking_raw_material_ids = fields.Many2many(
+        'stock.picking',
+        string='Picking Raw Material',
+        compute='_compute_picking_raw_material_ids',
+    )
+    picking_move_prod_id = fields.Many2one(
+        'stock.picking',
+        string='Picking Production',
+        compute='_compute_picking_move_prod_id',
+    )
+
+    @api.depends('move_prod_id')
+    def _compute_picking_move_prod_id(self):
+        for prod in self:
+            move = prod.move_prod_id
+            prod.picking_move_prod_id = move.picking_id.id
+
+    @api.depends('move_lines', 'move_lines2')
+    def _compute_picking_raw_material_ids(self):
+        move_obj = self.env['stock.move']
+        for prod in self:
+            moves = []
+            for move in prod.move_lines:
+                moves.append(move.id)
+            moves_dest = move_obj.search([('move_dest_id', 'in', moves)])
+            pickings = []
+            for mov in moves_dest:
+                if mov.picking_id.id not in pickings:
+                    pickings.append(mov.picking_id.id)
+            prod.picking_raw_material_ids = pickings
 
     @api.depends(
         'procurement_ids',

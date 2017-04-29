@@ -68,6 +68,14 @@
                 <xpath expr="//field[@name='location_src_id']" position="attributes">
                     <attribute name="invisible">True</attribute>
                 </xpath>
+                <xpath expr="//notebook/page/group" position="after">
+                    <group string="Picking Raw Material">
+                        <field name='picking_raw_material_ids' nolabel="1" readonly='1'/>
+                    </group>
+                </xpath>
+                <xpath expr="//notebook/page/group/group/field[@name='move_prod_id']" position="after">
+                    <field name='picking_move_prod_id' readonly='1'/>
+                </xpath>
             </field>
         </record>
 
