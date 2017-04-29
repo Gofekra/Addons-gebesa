@@ -59,9 +59,6 @@
             <field name="model">mrp.production</field>
             <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
             <field name="arch" type="xml">
-                <xpath expr="//header">
-                    <button name="jajaja" string="string" type="object"/>
-                </xpath>
                 <xpath expr="//group/group/field[@name='date_planned']" position="attributes">
                     <attribute name="attrs">{'readonly': [('state', 'not in', ('draft','confirmed','ready'))]}</attribute>
                 </xpath>
