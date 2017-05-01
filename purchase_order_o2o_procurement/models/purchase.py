@@ -38,6 +38,7 @@ class ProcurementOrder(models.Model):
             domain = (
                 ('partner_id', '=', partner.id),
                 ('review', '=', 'no_review'),
+                ('state', '=', 'draft'),
                 ('picking_type_id', '=', procurement.rule_id.picking_type_id.id),
                 ('company_id', '=', procurement.company_id.id),
                 # ('origin', '=', procurement.origin), # do not group diferent proc's origins

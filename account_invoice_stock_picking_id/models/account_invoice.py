@@ -95,7 +95,7 @@ class AccountInvoice(models.Model):
         move_type_id = move_type_obj.search([('code', '=', 'S1')]) or False
         location = location_obj.search([
             ('stock_warehouse_id', '=', warehouse_id.id),
-            ('loc_finished_product', '=', True)])
+            ('type_stock_loc', '=', 'fp')])
         return {
             'name': picking_name,
             'origin': self.name,
@@ -181,7 +181,7 @@ class AccountInvoice(models.Model):
         warehouse_id = self.account_analytic_id.warehouse_id
         location_id = location_obj.search([
             ('stock_warehouse_id', '=', warehouse_id.id),
-            ('loc_finished_product', '=', True)])
+            ('type_stock_loc', '=', 'fp')])
         output_id = self.partner_id.property_stock_customer.id
         move_type_obj = self.env['stock.move.type']
         move_type_id = move_type_obj.search([('code', '=', 'S1')]) or False
