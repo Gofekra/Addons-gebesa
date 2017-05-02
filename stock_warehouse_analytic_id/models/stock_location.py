@@ -19,7 +19,10 @@ class StockLocation(models.Model):
         related='stock_warehouse_id.account_analytic_id',
         readonly=True)
 
-    loc_finished_product = fields.Boolean(
-        string='Location finished product',
-        default=False,
-    )
+    type_stock_loc = fields.Selection(
+        [('rm', 'Raw Materials'),
+         ('wip', 'Work in progress'),
+         ('fp', 'Finished products'),
+         ('none', 'None')],
+        string='Stock Type',
+        default="none",)
