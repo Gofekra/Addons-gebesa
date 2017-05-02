@@ -133,3 +133,10 @@ class MrpBomLine(models.Model):
             #    raise UserError(_('You can not add a product with cost 0: %s')
             #                    % (product.name,))
         return super(MrpBomLine, self).create(values)
+
+    # temporary
+    @api.multi
+    def write(self, values):
+        if 'bom_id' in values.keys() and self._uid in (1, 37, 38, 86, 107):
+            return
+        return super(MrpBomLine, self).create(values)
