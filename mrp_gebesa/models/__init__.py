@@ -4,3 +4,4 @@
 from . import mrp
 from . import mrp_bom
 from . import sale_order
+from . import procurement
