@@ -2,7 +2,8 @@
 # © <2016> <César Barrón Butista>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import api, fields, models
+from openerp import _, api, fields, models
+from openerp.exceptions import UserError
 
 
 class MrpProduction(models.Model):
@@ -28,6 +29,9 @@ class MrpProduction(models.Model):
         'stock.picking',
         string='Picking Production',
         compute='_compute_picking_move_prod_id',
+    )
+    cancellation_reason = fields.Text(
+        string='Cancellation reason',
     )
 
     @api.depends('move_prod_id')
@@ -146,3 +150,10 @@ class MrpProduction(models.Model):
                 source_location_id, context=context)
             stock_move.action_confirm(cr, uid, [prev_move], context=context)
         return move_id
+
+    @api.multi
+    def action_cancel(self):
+        for production in self:
+            if not production.cancellation_reason:
+                raise UserError(_('Specify the reason for cancellation'))
+        return super(MrpProduction, self).action_cancel()

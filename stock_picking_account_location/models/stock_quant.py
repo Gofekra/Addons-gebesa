@@ -53,7 +53,7 @@ class stock_quant(osv.osv):
                     acc_src = acc_valuation.id
                     acc_valuation = move.location_dest_id.account_id
             elif pick_type == 'internal':
-                acc_valuation = move.location_id.account_id or False
+                acc_valuation = move.location_dest_id.account_id or False
             else:
                 acc_valuation = move.location_id.account_id or False
         else:
@@ -193,8 +193,8 @@ class stock_quant(osv.osv):
                                   credit_account_id, debit_account_id,
                                   journal_id, context=None):
         # group quants by cost
-        if move.location_id.usage == 'production' or \
-                move.location_dest_id == 'production':
+        if move.location_id.usage == 'production' and \
+                move.location_dest_id.usage == 'production':
             return
         quant_cost_qty = {}
         for quant in quants:

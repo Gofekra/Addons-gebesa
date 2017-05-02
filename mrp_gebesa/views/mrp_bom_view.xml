@@ -76,6 +76,9 @@
                 <xpath expr="//notebook/page/group/group/field[@name='move_prod_id']" position="after">
                     <field name='picking_move_prod_id' readonly='1'/>
                 </xpath>
+                <xpath expr="//notebook/page/group/group/field[@name='date_finished']" position="after">
+                    <field name='cancellation_reason'/>
+                </xpath>
             </field>
         </record>
 
