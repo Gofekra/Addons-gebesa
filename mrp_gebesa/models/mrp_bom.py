@@ -20,6 +20,7 @@ class MrpBom(models.Model):
         for bom in self:
             if bom.bom_line_ids:
                 raise UserError(_('This BOM has detail'))
+        return super(MrpBom, self).unlink()
 
     @api.multi
     def write(self, values):
