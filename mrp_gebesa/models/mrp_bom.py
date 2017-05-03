@@ -139,4 +139,4 @@ class MrpBomLine(models.Model):
     def write(self, values):
         if 'bom_id' in values.keys() and self._uid in (1, 37, 38, 86, 107):
             return
-        return super(MrpBomLine, self).create(values)
+        return super(MrpBomLine, self).write(values)
