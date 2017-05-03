@@ -12,11 +12,12 @@ class PurchaseOrder(models.Model):
         'stock.warehouse',
         # related='picking_type_id.warehouse_id',
         string=_('Warehouse'),
+        compute='_compute_warehouse_id',
         store=True,
     )
 
-    @api.onchange('picking_type_id')
-    def _onchange_picking_type_id(self):
+    @api.depends('picking_type_id')
+    def _compute_warehouse_id(self):
         super(PurchaseOrder, self)._onchange_picking_type_id()
         warehouse = self.picking_type_id.warehouse_id
         self.warehouse_id = warehouse.id
