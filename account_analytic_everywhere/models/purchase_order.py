@@ -12,11 +12,11 @@ class PurchaseOrder(models.Model):
         'account.analytic.account',
         # related='picking_type_id.warehouse_id.account_analytic_id',
         string=_(u'Analytic Account'),
+        compute='_compute_account_analytic_id',
         store=True,
     )
 
-    @api.onchange('picking_type_id')
-    def _onchange_picking_type_id(self):
-        super(PurchaseOrder, self)._onchange_picking_type_id()
+    @api.depends('picking_type_id')
+    def _compute_account_analytic_id(self):
         warehouse = self.picking_type_id.warehouse_id
         self.account_analytic_id = warehouse.account_analytic_id.id
