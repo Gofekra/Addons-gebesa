@@ -47,6 +47,8 @@ class MrpProduction(models.Model):
             moves = []
             for move in prod.move_lines:
                 moves.append(move.id)
+            for move in prod.move_lines2:
+                moves.append(move.id)
             moves_dest = move_obj.search([('move_dest_id', 'in', moves)])
             pickings = []
             for mov in moves_dest:
