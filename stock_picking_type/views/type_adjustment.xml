@@ -43,6 +43,7 @@
         						<field name='type_adjustment' required='True'/>
         						<field name='type_calculation' required='True'/>
                                 <field name='account_id' required='True'/>
+                                <field name='active'/>
         					</group>
         				</group>
         			</sheet>
