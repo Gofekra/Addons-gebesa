@@ -7,3 +7,4 @@ from . import sale_order
 from . import procurement_order
 from . import purchase
 from . import stock
+from . import sale_order_line
