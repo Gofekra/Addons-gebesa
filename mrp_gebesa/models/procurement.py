@@ -36,7 +36,7 @@ class ProcurementOrder(models.Model):
                                            _('is Not Equal to its Product cost!'))
                     mail = mail_obj.create({
                         'subject': 'Wrong Cost in BoM',
-                        'email_to': 'cesar.barron@gebesa.com',
+                        'email_to': 'sistemas@gebesa.com,servicioalcliente@gebesa.com,costos@gebesa.com',
                         'headers': "{'Return-Path': u'odoo@gebesa.com'}",
                         'body_html': body_mail + ' ' + body_mail,
                         'auto_delete': True,
@@ -56,7 +56,7 @@ class ProcurementOrder(models.Model):
                                            _('is for Manufacturing, but has not a Production Route!'))
                     mail = mail_obj.create({
                         'subject': 'Wrong Routing in a Production BoM',
-                        'email_to': 'cesar.barron@gebesa.com',
+                        'email_to': 'sistemas@gebesa.com,servicioalcliente@gebesa.com,costos@gebesa.com',
                         'headers': "{'Return-Path': u'odoo@gebesa.com'}",
                         'body_html': body_mail + ' ' + body_mail,
                         'auto_delete': True,
@@ -76,7 +76,7 @@ class ProcurementOrder(models.Model):
                                            _('is a Kit, but it has a Production Route!'))
                     mail = mail_obj.create({
                         'subject': 'Wrong Routing in a Kit BoM',
-                        'email_to': 'cesar.barron@gebesa.com',
+                        'email_to': 'sistemas@gebesa.com,servicioalcliente@gebesa.com,costos@gebesa.com',
                         'headers': "{'Return-Path': u'odoo@gebesa.com'}",
                         'body_html': body_mail + ' ' + body_mail,
                         'auto_delete': True,
