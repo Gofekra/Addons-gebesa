@@ -27,15 +27,18 @@ class TypeAdjustment(models.Model):
         default=_default_consecutive,
         help=_(u'Key type of adjustment'),
     )
+
     description = fields.Char(
         string=_(u'Description'), size=150,
         help=_(u'Description type of adjustment')
     )
+
     type_adjustment = fields.Selection(
         [('input', _(u'Input')),
          ('output', _(u'Output'))],
         string=_(u"Type of adjustment"),
     )
+
     type_calculation = fields.Selection(
         [('none', _(u'None')),
          ('extra_outputs', _(u'Extra outputs')),
@@ -43,9 +46,14 @@ class TypeAdjustment(models.Model):
          ('extra_inputs', _(u'Extra inputs'))],
         string=_(u"Type of calculation"),
     )
+
     account_id = fields.Many2one(
         'account.account', string=_(u'Account'),
     )
+
+    active = fields.Boolean(
+        default=True,
+        help="Set active to false to hide the tax without removing it.")
 
     _sql_constraints = [
         ('_check_consecutive_uniq', 'unique (consecutive)',

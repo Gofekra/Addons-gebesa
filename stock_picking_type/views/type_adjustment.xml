@@ -20,6 +20,7 @@
         			<field name='type_adjustment'/>
                     <field name='type_calculation'/>
                     <field name='account_id'/>
+                    <field name='active'/>
         		</tree>
         	</field>
         </record>
