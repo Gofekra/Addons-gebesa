@@ -156,6 +156,7 @@ class MrpProduction(models.Model):
     @api.multi
     def action_cancel(self):
         for production in self:
+            raise UserError(_('This order can not be cancelled'))
             if not production.cancellation_reason:
                 raise UserError(_('Specify the reason for cancellation'))
         return super(MrpProduction, self).action_cancel()
