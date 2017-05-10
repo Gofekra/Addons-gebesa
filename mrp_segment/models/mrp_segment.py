@@ -360,8 +360,18 @@ class MrpSegmentLine(models.Model):
                 ('group_id', '=', group.id),
                 ('product_id', '=', production.product_id.id),
                 ('sale_line_id', '!=', False)])
+            procurement3 = procurement_obj.search([
+                ('group_id', '=', group.id),
+                ('product_id', '=', production.product_id.id),
+                ('sale_line_id', '=', False),
+                ('production_id', '!=', False)])
+            count = -1
+            for proc3 in procurement3:
+                count += 1
+                if procurement.id == proc3.id:
+                    break
             if procurement2:
-                procurement2.sale_line_id.write(
+                procurement2[count].sale_line_id.write(
                     {'segment_qty': line.product_qty - line.manufacture_qty})
 
     # @api.model
