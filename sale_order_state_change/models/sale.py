@@ -29,28 +29,37 @@ class SaleOrder(models.Model):
 
     @api.multi
     def all_cancel(self):
-        move_obj = self.env['stock.move']
+        # move_obj = self.env['stock.move']
         prod_obj = self.env['mrp.production']
         proc_obj = self.env['procurement.order']
-        purchase_obj = self.env['purchase.order']
+        # purchase_obj = self.env['purchase.order']
         for order in self:
             for pick in order.picking_ids:
                 if pick.state in ['draft', 'waiting', 'confirmed',
                                   'partially_available', 'assigned']:
-                    moves = [move.id for move in pick.move_lines]
-                    move_obj.browse(moves).action_cancel()
+                    moves = ''
+                    for move in pick.move_lines:
+                        moves += str(move.id) + ','
+                    moves = moves[:-1]
+                    self.env.cr.execute("""UPDATE stock_move SET state = 'cancel'
+                                    WHERE id in (%s) """ % (moves))
+                    # move_obj.browse(moves).action_cancel()
             production = prod_obj.search([('sale_id', '=', order.id)])
             for prod in production:
                 if prod.state in ['draft', 'confirmed', 'ready']:
-                    prod.action_cancel()
+                    self.env.cr.execute("""UPDATE mrp_production SET state = 'cancel'
+                                    WHERE id = %s """ % (prod.id))
+                    # prod.action_cancel()
             procurement = proc_obj.search([('sale_id', '=', order.id)])
             for proc in procurement:
                 if proc.state in ['confirmed', 'exception', 'running']:
-                    proc.cancel()
-            purchase = purchase_obj.search([('origin', 'like', order.name)])
-            for purc in purchase:
-                if purc.state in ['draft']:
-                    purc.button_cancel()
+                    self.env.cr.execute("""UPDATE procurement_order SET state = 'cancel'
+                                    WHERE id = %s """ % (proc.id))
+                    # proc.cancel()
+            # purchase = purchase_obj.search([('origin', 'like', order.name)])
+            # for purc in purchase:
+            #    if purc.state in ['draft']:
+            #        purc.button_cancel()
 
     @api.multi
     def action_closed(self):
@@ -67,7 +76,7 @@ class SaleOrder(models.Model):
     def action_cancel(self):
         prod_obj = self.env['mrp.production']
         proc_obj = self.env['procurement.order']
-        purchase_obj = self.env['purchase.order']
+        # purchase_obj = self.env['purchase.order']
         for order in self:
             for pick in order.picking_ids:
                 if pick.state in ['done']:
@@ -83,11 +92,11 @@ class SaleOrder(models.Model):
                 if proc.state in ['done']:
                     raise UserError(_("The sales order cannot be canceled. \
                         Please close it"))
-            purchase = purchase_obj.search([('origin', 'like', order.name)])
-            for purc in purchase:
-                if purc.state not in ['draft']:
-                    raise UserError(_("The sales order cannot be canceled. \
-                        Please close it"))
+            # purchase = purchase_obj.search([('origin', 'like', order.name)])
+            # for purc in purchase:
+            #    if purc.state not in ['draft']:
+            #        raise UserError(_("The sales order cannot be canceled. \
+            #            Please close it"))
         self.all_cancel()
         super(SaleOrder, self).action_cancel()
 
