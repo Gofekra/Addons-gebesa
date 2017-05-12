@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-29 17:20+0000\n"
-"PO-Revision-Date: 2017-04-29 17:20+0000\n"
+"POT-Creation-Date: 2017-05-12 16:45+0000\n"
+"PO-Revision-Date: 2017-05-12 16:45+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -39,14 +39,14 @@ msgid "Country"
 msgstr ""
 
 #. module: mrp_gebesa
-#: code:addons/mrp_gebesa/models/mrp_bom.py:48
-#: code:addons/mrp_gebesa/models/mrp_bom.py:100
+#: code:addons/mrp_gebesa/models/mrp_bom.py:49
+#: code:addons/mrp_gebesa/models/mrp_bom.py:101
 #, python-format
 msgid "Kit products should not have route production"
 msgstr ""
 
 #. module: mrp_gebesa
-#: code:addons/mrp_gebesa/models/mrp_bom.py:114
+#: code:addons/mrp_gebesa/models/mrp_bom.py:115
 #: model:ir.model.fields,field_description:mrp_gebesa.field_mrp_bom_line_location_id
 #, python-format
 msgid "Location"
@@ -62,6 +62,19 @@ msgstr ""
 #: selection:sale.order,production_status:0
 #, python-format
 msgid "No Production"
+msgstr ""
+
+#. module: mrp_gebesa
+#: code:addons/mrp_gebesa/models/mrp.py:38
+#: selection:mrp.production,transfer_status:0
+#, python-format
+msgid "Not transferred"
+msgstr ""
+
+#. module: mrp_gebesa
+#: code:addons/mrp_gebesa/models/mrp.py:176
+#, python-format
+msgid "Only Administrator can cancel"
 msgstr ""
 
 #. module: mrp_gebesa
@@ -83,13 +96,14 @@ msgid "Picking Raw Material"
 msgstr ""
 
 #. module: mrp_gebesa
+#: model:ir.model,name:mrp_gebesa.model_procurement_order
 #: model:ir.model.fields,field_description:mrp_gebesa.field_mrp_production_procurement_ids
 msgid "Procurement"
 msgstr ""
 
 #. module: mrp_gebesa
-#: code:addons/mrp_gebesa/models/mrp_bom.py:71
-#: code:addons/mrp_gebesa/models/mrp_bom.py:88
+#: code:addons/mrp_gebesa/models/mrp_bom.py:72
+#: code:addons/mrp_gebesa/models/mrp_bom.py:89
 #, python-format
 msgid "Product and template it does not match"
 msgstr ""
@@ -107,7 +121,7 @@ msgid "Sales Order"
 msgstr ""
 
 #. module: mrp_gebesa
-#: code:addons/mrp_gebesa/models/mrp.py:158
+#: code:addons/mrp_gebesa/models/mrp.py:179
 #, python-format
 msgid "Specify the reason for cancellation"
 msgstr ""
@@ -119,15 +133,27 @@ msgid "State"
 msgstr ""
 
 #. module: mrp_gebesa
-#: code:addons/mrp_gebesa/models/mrp_bom.py:44
+#: code:addons/mrp_gebesa/models/mrp_bom.py:45
 #, python-format
 msgid "The production route must be in the same warehouse than the bom"
 msgstr ""
 
 #. module: mrp_gebesa
-#: code:addons/mrp_gebesa/models/mrp_bom.py:96
+#: code:addons/mrp_gebesa/models/mrp_bom.py:97
 #, python-format
 msgid "The production route mustbe in the same warehouse than the bom"
+msgstr ""
+
+#. module: mrp_gebesa
+#: code:addons/mrp_gebesa/models/procurement.py:34
+#, python-format
+msgid "The total cost of this BoM:"
+msgstr ""
+
+#. module: mrp_gebesa
+#: code:addons/mrp_gebesa/models/procurement.py:48
+#, python-format
+msgid "The total cost of this BoM: %s is Not Equal to its Product cost!"
 msgstr ""
 
 #. module: mrp_gebesa
@@ -137,8 +163,27 @@ msgid "This BOM has detail"
 msgstr ""
 
 #. module: mrp_gebesa
-#: code:addons/mrp_gebesa/models/mrp_bom.py:59
-#: code:addons/mrp_gebesa/models/mrp_bom.py:103
+#: code:addons/mrp_gebesa/models/procurement.py:54
+#: code:addons/mrp_gebesa/models/procurement.py:74
+#, python-format
+msgid "This BoM:"
+msgstr ""
+
+#. module: mrp_gebesa
+#: code:addons/mrp_gebesa/models/procurement.py:88
+#, python-format
+msgid "This BoM: %s  is a Kit, but it has a Production Route!"
+msgstr ""
+
+#. module: mrp_gebesa
+#: code:addons/mrp_gebesa/models/procurement.py:68
+#, python-format
+msgid "This BoM: %s  is for Manufacturing, but has not a Production Route!"
+msgstr ""
+
+#. module: mrp_gebesa
+#: code:addons/mrp_gebesa/models/mrp_bom.py:60
+#: code:addons/mrp_gebesa/models/mrp_bom.py:104
 #, python-format
 msgid "This product is raw material"
 msgstr ""
@@ -156,6 +201,20 @@ msgid "Trace"
 msgstr ""
 
 #. module: mrp_gebesa
+#: code:addons/mrp_gebesa/models/mrp.py:40
+#: model:ir.model.fields,field_description:mrp_gebesa.field_mrp_production_transfer_status
+#, python-format
+msgid "Transfer status"
+msgstr ""
+
+#. module: mrp_gebesa
+#: code:addons/mrp_gebesa/models/mrp.py:39
+#: selection:mrp.production,transfer_status:0
+#, python-format
+msgid "Transferred"
+msgstr ""
+
+#. module: mrp_gebesa
 #: code:addons/mrp_gebesa/models/mrp_bom.py:15
 #: model:ir.model.fields,field_description:mrp_gebesa.field_mrp_bom_warehouse_id
 #, python-format
@@ -170,6 +229,24 @@ msgstr ""
 #. module: mrp_gebesa
 #: model:ir.model.fields,help:mrp_gebesa.field_mrp_bom_website_message_ids
 msgid "Website communication history"
+msgstr ""
+
+#. module: mrp_gebesa
+#: code:addons/mrp_gebesa/models/procurement.py:36
+#, python-format
+msgid "is Not Equal to its Product cost!"
+msgstr ""
+
+#. module: mrp_gebesa
+#: code:addons/mrp_gebesa/models/procurement.py:76
+#, python-format
+msgid "is a Kit, but it has a Production Route!"
+msgstr ""
+
+#. module: mrp_gebesa
+#: code:addons/mrp_gebesa/models/procurement.py:56
+#, python-format
+msgid "is for Manufacturing, but has not a Production Route!"
 msgstr ""
 
 #. module: mrp_gebesa
