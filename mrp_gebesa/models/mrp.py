@@ -34,6 +34,13 @@ class MrpProduction(models.Model):
         string='Cancellation reason',
     )
 
+    transfer_status = fields.Selection(
+        [('not_transferred', _('Not transferred')),
+         ('transferred', _('Transferred'))],
+        string=_("Transfer status"),
+        compute='_compute_transfer_status',
+    )
+
     @api.depends('move_prod_id')
     def _compute_picking_move_prod_id(self):
         for prod in self:
@@ -80,6 +87,14 @@ class MrpProduction(models.Model):
                         if sm3.move_dest_id.picking_id:
                             sm4 = sm3.move_dest_id
                             production.trace += ', ' + sm4.picking_id.name
+
+    @api.depends('picking_move_prod_id', 'picking_move_prod_id.state')
+    def _compute_transfer_status(self):
+        for prod in self:
+            prod.transfer_status = 'not_transferred'
+            pick = prod.picking_move_prod_id
+            if pick and pick.state == 'done':
+                prod.transfer_status = 'transferred'
 
     def _make_consume_line_from_data(
             self, cr, uid, production, product,
