@@ -374,11 +374,11 @@ class MrpSegmentLine(models.Model):
                 procurement2[count].sale_line_id.write(
                     {'segment_qty': line.product_qty - line.manufacture_qty})
 
-    # @api.model
-    # def create(self, vals):
-    #     production_obj = self.env['mrp.production']
-    #     segment_obj = self.env['mrp.segment']
-    #     procurement_obj = self.env['procurement.order']
+    @api.model
+    def create(self, vals):
+        #     production_obj = self.env['mrp.production']
+        #    segment_obj = self.env['mrp.segment']
+        procurement_obj = self.env['procurement.order']
     #     picking_obj = self.env['stock.picking']
     #     move_obj = self.env['stock.move']
     #     purchase_obj = self.env['purchase.order']
@@ -403,7 +403,16 @@ class MrpSegmentLine(models.Model):
     #     sale = production.sale_id
     #     if segment.folio not in sale.related_segment:
     #         sale.related_segment += segment.folio + ', '
-    #     return super(MrpSegmentLine, self).create(vals)
+        procurement = procurement_obj.search(
+            [('production_id', '=', vals['mrp_production_id'])])
+        procurements = procurement_obj.search(
+            [('group_id', '=', procurement.group_id.id),
+             ('state', 'in', ['exception', 'confirmed'])])
+        if len(procurements) > 0:
+            raise UserError(_(
+                "You can not segment because order %s has exceptions") % (
+                procurement.group_id.name))
+        return super(MrpSegmentLine, self).create(vals)
 
     @api.multi
     def unlink(self):
