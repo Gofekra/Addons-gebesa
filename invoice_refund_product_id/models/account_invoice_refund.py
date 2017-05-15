@@ -43,6 +43,7 @@ class AccountInvoiceRefund(models.Model):
                     raise ValidationError(_(u"Invalid operation, the balance \
                                           of the invoice is less than the \
                                           amount payable"))
+                ctx.update({'type': inv.type})
 
         ctx.update({'product_id': product_id})
         ctx.update({'mode': mode})
