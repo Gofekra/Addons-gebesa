@@ -4,6 +4,7 @@
 
 from openerp import _, api, fields, models
 from openerp.exceptions import ValidationError
+from datetime import timedelta, datetime
 
 
 class AccountInvoice(models.Model):
@@ -31,7 +32,17 @@ class AccountInvoice(models.Model):
 
     @api.multi
     def action_payment_auth_request(self):
+        limit_date = timedelta(days=3)
+        # limit_date = fields.Date(default=3)
+        currenty_date = datetime.now()
+        # date_due_obj = self.env['account_invoice']
+        # due = date_due_obj.browse(vals['date_due'])
         for invoice in self:
+            # invoice.limit_date = (currenty_date).days + 3
+            start = fields.Datetime.from_string(invoice.date_due)
+            tot_date = start - limit_date
+            if tot_date > currenty_date:
+                raise ValidationError(_("Invoice does not expire yet"))
             if not invoice.authorizes_id.id:
                 raise ValidationError(_("Error!\nField Authorized it's not \
                                       valid"))
