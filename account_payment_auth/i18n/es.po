@@ -116,3 +116,9 @@ msgstr "Rechazar Pago"
 #, python-format
 msgid "Rejected"
 msgstr "Rechazado"
+
+#. module: account_payment_auth
+#: code:addons/account_payment_auth/models/account_invoice.py:45
+#, python-format
+msgid "Invoice does not expire yet"
+msgstr "La factura no expira todavía"
