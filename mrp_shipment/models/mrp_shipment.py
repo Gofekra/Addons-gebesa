@@ -161,6 +161,7 @@ class MrpShipment(models.Model):
         for ship in self:
             for line in ship.line_ids:
                 line.quantity_shipped = 0
+                line.order_line_id._quantity_shipped()
             ship.state = 'cancel'
         return True
 
