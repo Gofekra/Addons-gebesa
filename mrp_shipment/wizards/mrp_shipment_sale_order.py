@@ -28,7 +28,7 @@ class MrpShipmentSaleOrder(models.TransientModel):
             order_line_id.append(lines.order_line_id.id)
         for shipment_sale in self:
             for sale in shipment_sale.sale_ids:
-                if sale.state == "done":
+                if sale.state in ("done", "sale"):
                     for line in sale.order_line:
                         if line.id not in order_line_id:
                             if line.missing_quantity > 0:
