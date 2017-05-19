@@ -47,6 +47,10 @@ class SaleOrderLine(models.Model):
         default=False
     )
 
+    volume = fields.Float(
+        string=_('Volume'),
+        related='product_id.volume'
+    )
     #  @api.multi
     # def _check_mu(self):
     #    for record in self:
