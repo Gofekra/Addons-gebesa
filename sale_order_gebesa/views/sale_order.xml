@@ -60,6 +60,9 @@
                     <field name="fulfilled"/>
                     <field name="invoiced"/>
                 </xpath-->
+                <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom_qty']" position="after">
+                    <field name='volume'/>
+                </xpath>
                 <xpath expr="//field[@name='order_line']/tree/field[@name='tax_id']" position="after">
                     <field name="net_sale" widget="monetary"/>
                     <field name="freight_amount" widget="monetary"/>
