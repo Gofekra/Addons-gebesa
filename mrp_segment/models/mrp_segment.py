@@ -405,13 +405,14 @@ class MrpSegmentLine(models.Model):
     #         sale.related_segment += segment.folio + ', '
         procurement = procurement_obj.search(
             [('production_id', '=', vals['mrp_production_id'])])
-        procurements = procurement_obj.search(
-            [('group_id', '=', procurement.group_id.id),
-             ('state', 'in', ['exception', 'confirmed'])])
-        if len(procurements) > 0:
-            raise UserError(_(
-                "You can not segment because order %s has exceptions") % (
-                procurement.group_id.name))
+        if procurement.group_id:
+            procurements = procurement_obj.search(
+                [('group_id', '=', procurement.group_id.id),
+                 ('state', 'in', ['exception', 'confirmed'])])
+            if len(procurements) > 0:
+                raise UserError(_(
+                    "You can not segment because order %s has exceptions") % (
+                    procurement.group_id.name))
         return super(MrpSegmentLine, self).create(vals)
 
     @api.multi
