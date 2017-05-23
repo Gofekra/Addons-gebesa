@@ -113,4 +113,4 @@ class SaleOrderLine(models.Model):
                 [('sale_name', '=', line.order_id.name)])
             for segment in segment_line:
                 if line.product_id == segment.product_id:
-                    line.qty_segmented += segment.qty_segmented
+                    line.qty_segmented += segment.product_qty - segment.manufacture_qty
