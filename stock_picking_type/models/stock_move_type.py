@@ -14,6 +14,7 @@ class StockMoveType(models.Model):
     code = fields.Char(
         string=_(u'Code'), size=5,
         help=_(u'Code'),
+        readonly=True,
     )
     name = fields.Char(
         string=_(u'Name'), size=120,

@@ -16,7 +16,11 @@
         "bin": [],
     },
     "depends": [
-        "base", "stock_account", "stock_location_account_account",
+        "base",
+        "stock_account",
+        "stock_location_account_account",
+        "stock_picking_move_id",
+        "stock_picking_type",
     ],
     "data": [
     ],
