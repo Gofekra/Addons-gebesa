@@ -49,7 +49,9 @@ class stock_quant(osv.osv):
             elif pick_type == 'outgoing':
                 acc_valuation = move.location_id.account_id or False
                 acc_dest = move.location_dest_id.account_id.id or False
-                if move.location_id.usage not in ('internal', 'transit', 'customer') and move.location_dest_id.usage == 'internal':
+                if move.location_id.usage not in (
+                        'internal', 'transit', 'customer') and \
+                        move.location_dest_id.usage == 'internal':
                     acc_src = acc_valuation.id
                     acc_valuation = move.location_dest_id.account_id
             elif pick_type == 'internal':
@@ -58,6 +60,16 @@ class stock_quant(osv.osv):
                 acc_valuation = move.location_id.account_id or False
         else:
             acc_valuation = move.location_id.account_id or False
+
+        if move.picking_id.stock_move_type_id:
+            move_type = move.picking_id.stock_move_type_id.code
+            adjustment = move.picking_id.type_adjustment_id
+            if move_type in ('E4', 'S4') and not adjustment:
+                raise ValidationError(_('Specify an adjustment type'))
+            if move_type == 'E4':
+                acc_src = adjustment.account_id.id
+            if move_type == 'S4':
+                acc_dest = adjustment.account_id.id
 
         if move.inventory_id:
             acc_valuation = move.location_dest_id.account_id or False
