@@ -14,6 +14,24 @@ class AccountInvoice(models.Model):
     )
 
     @api.multi
+    def action_date_assign(self):
+        res = super(AccountInvoice, self).action_date_assign()
+        for inv in self:
+            if inv.type in ('in_invoice', 'in_refund'):
+                continue
+            for line in inv.invoice_line_ids:
+                line.account_analytic_id = inv.account_analytic_id.id
+        return res
+
+    @api.model
+    def line_get_convert(self, line, part):
+        res = super(AccountInvoice, self).line_get_convert(line, part)
+        if not res['analytic_account_id'] and self.type in (
+                'out_invoice', 'out_refund'):
+            res['analytic_account_id'] = self.account_analytic_id.id
+        return res
+
+    @api.multi
     def action_move_create(self):
         res = super(AccountInvoice, self).action_move_create()
         for inv in self:
