@@ -91,8 +91,8 @@
                                     <span t-esc="partner"/>
                                     <br />
                                     <t t-foreach="shipment[doc.id][ship][partner]" t-as="city">
-                                        <span t-esc="city"/>
                                         <div class="col-xs-12" aling="center" style="text-align:center;margin-top:5px">
+                                            <span t-esc="city"/>
                                             <t t-set="pedido" t-value="''"/>
                                             <t t-set="mts" t-value="0"/>
                                             <t t-set="peso" t-value="0"/>
