@@ -177,7 +177,7 @@ class MrpSegment(models.Model):
                 done = False
             produ.quantity = 0
         if done:
-            self.state = 'done'
+            return self.write({'state': 'done'})
         return True
 
     @api.multi
@@ -349,9 +349,13 @@ class MrpSegmentLine(models.Model):
     @api.depends('mrp_production_id.move_created_ids.product_uom_qty')
     def _compute_manufacture_qty(self):
         procurement_obj = self.env['procurement.order']
+        segment = []
         for line in self:
             line.manufacture_qty = line.mrp_production_id.move_created_ids.\
                 product_uom_qty
+            if line.manufacture_qty == 0:
+                if line.segment_id not in segment:
+                    segment.append(line.segment_id)
             production = line.mrp_production_id
             procurement = procurement_obj.search([
                 ('production_id', '=', production.id)])
@@ -373,6 +377,17 @@ class MrpSegmentLine(models.Model):
             if procurement2:
                 procurement2[count].sale_line_id.write(
                     {'segment_qty': line.product_qty - line.manufacture_qty})
+        for seg in segment:
+            done = True
+            for produ in seg.line_ids:
+                if produ.manufacture_qty > 0:
+                    done = False
+                produ.quantity = 0
+            if done:
+                # seg.state = 'done'
+                self.env.cr.execute(
+                    "update mrp_segment set state = 'done' where id = %s",
+                    (seg.id,))
 
     @api.model
     def create(self, vals):
