@@ -19,7 +19,7 @@
                     <attribute name="attrs">{'readonly': True}</attribute>
                 </xpath>
                 <xpath expr="//field[@name='picking_type_id']" position="attributes">
-                    <attribute name="attrs">{'readonly': True}</attribute>
+                    <attribute name="attrs">{'readonly': False}</attribute>
                 </xpath>
                 <xpath expr="//field[@name='group_id']" position="attributes">
                     <attribute name="attrs">{'readonly': False}</attribute>
