@@ -118,11 +118,21 @@ class SaleOrder(models.Model):
         store=True,
     )
 
+    so_total_cost = fields.Float(
+        string=_('Total cost of the line'),
+    )
+
     _sql_constraints = [
         ('name_unique',
          'UNIQUE(name)',
          "The order name must be unique"),
     ]
+
+    @api.multi
+    def so_total_cost(self, default=None):
+        for sale in self:
+            for line in sale.order_line:
+                sale.so_total_cost += line.standard_cost
 
     @api.multi
     @api.onchange('project_id')
