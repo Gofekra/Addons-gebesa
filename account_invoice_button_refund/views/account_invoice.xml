@@ -23,6 +23,9 @@
                 <xpath expr="//button[3]" position="attributes">
                     <attribute name="attrs">{'invisible': ['|',('type', '=', 'in_refund'),('state','not in',('open'))]}</attribute>
                 </xpath>
+                <xpath expr="//button[3]" position="after">
+                    <button name="cancel_invoice_refund" string="Cancel Refund" type="object" icon="fa-times" attrs="{'invisible': ['|', ('state','not in',('paid')), ('type','!=','in_refund')]}" groups='res_users_cancel_invoice.group_cancel_invoice'/>
+                </xpath>
             </field>
         </record>
     </data>
