@@ -12,7 +12,7 @@ class AccountInvoice(models.Model):
     @api.multi
     def cancel_invoice_refund(self):
         for invoice in self:
-            if invoice.type not in ('out_refund'):
+            if invoice.type not in ('out_refund', 'in_refund'):
                 raise UserError(_(u"This invoice is not a credit note"))
             if invoice.date_invoice and not self.env.user.has_group(
                     'res_users_invoice_premonth.group_invoice_premonth'):
