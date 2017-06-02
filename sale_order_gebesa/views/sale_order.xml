@@ -33,7 +33,6 @@
         		<xpath expr="//group/group/field[@name='validity_date']" position="after">
         			<field name="date_delivery" required="True" />
         			<field name="date_reception" required="True" />
-                    <field name='so_total_cost'/>
                     <field name="date_production"/>
         		</xpath>
                 <xpath expr="//field[@name='order_line']/form/group" position="after">
@@ -85,6 +84,7 @@
         						<field name='total_installation' widget="monetary" readonly="True"/>
         					</group>
         					<group>
+                                <field name='total_cost'/>
         						<field name='profit_margin' readonly="True"/>
         						<field name='not_be_billed'/>
         						<field name='manufacture'/>

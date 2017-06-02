@@ -118,8 +118,8 @@ class SaleOrder(models.Model):
         store=True,
     )
 
-    so_total_cost = fields.Float(
-        string=_('Total cost of the line'),
+    total_cost = fields.Float(
+        string=_('Total cost'),
     )
 
     _sql_constraints = [
@@ -127,12 +127,6 @@ class SaleOrder(models.Model):
          'UNIQUE(name)',
          "The order name must be unique"),
     ]
-
-    @api.multi
-    def so_total_cost(self, default=None):
-        for sale in self:
-            for line in sale.order_line:
-                sale.so_total_cost += line.standard_cost
 
     @api.multi
     @api.onchange('project_id')
@@ -222,7 +216,8 @@ class SaleOrder(models.Model):
     def validate_manufacturing(self):
         for order in self:
 
-           # pending = self.env['sale.order'].search([('state', '=', 'draft')])
+            # pending = self.env['sale.order'].search(
+            # [('state', '=', 'draft')])
             dife = 0.0
             dife = order.amount_total - order.total_nste
 
@@ -237,7 +232,9 @@ class SaleOrder(models.Model):
                     if len(routes) < 2:
                         raise UserError(
                             _('%s %s %s' % (
-                                _("The next product has no a valid Route"), line.product_id.default_code, line.product_id.name)))
+                                _("The next product has no a valid Route"),
+                                line.product_id.default_code,
+                                line.product_id.name)))
                     product_bom = False
                     for bom in line.product_id.product_tmpl_id.bom_ids:
                         if bom.product_id.id == line.product_id.id:
@@ -245,9 +242,10 @@ class SaleOrder(models.Model):
                     if not product_bom:
                         raise UserError(
                             _('%s %s %s' % (
-                                _("The next product has no a Bill of Materials"), line.product_id.default_code, line.product_id.name)))
+                                _("The next product has no a Bill of Materials"),
+                                line.product_id.default_code, line.product_id.name)))
 
-        return super(SaleOrder, self).action_confirm()
+        return True
 
     @api.multi
     def approve_action(self):
