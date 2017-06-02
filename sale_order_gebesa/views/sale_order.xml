@@ -46,6 +46,7 @@
                             <field name='freight_amount' readonly="True"/>
                             <field name='net_sale' readonly="True"/>
                             <field name='purchase_price' readonly="True"/>
+                            <field name='standard_cost' readonly="True"/>
                             <field name='installation_amount' readonly="True"/>
                         </group>
                     </group>
@@ -83,6 +84,7 @@
         						<field name='total_installation' widget="monetary" readonly="True"/>
         					</group>
         					<group>
+                                <field name='total_cost'/>
         						<field name='profit_margin' readonly="True"/>
         						<field name='not_be_billed'/>
         						<field name='manufacture'/>

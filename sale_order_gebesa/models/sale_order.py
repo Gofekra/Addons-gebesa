@@ -118,6 +118,10 @@ class SaleOrder(models.Model):
         store=True,
     )
 
+    total_cost = fields.Float(
+        string=_('Total cost'),
+    )
+
     _sql_constraints = [
         ('name_unique',
          'UNIQUE(name)',
@@ -212,7 +216,8 @@ class SaleOrder(models.Model):
     def validate_manufacturing(self):
         for order in self:
 
-           # pending = self.env['sale.order'].search([('state', '=', 'draft')])
+            # pending = self.env['sale.order'].search(
+            # [('state', '=', 'draft')])
             dife = 0.0
             dife = order.amount_total - order.total_nste
 
@@ -227,7 +232,9 @@ class SaleOrder(models.Model):
                     if len(routes) < 2:
                         raise UserError(
                             _('%s %s %s' % (
-                                _("The next product has no a valid Route"), line.product_id.default_code, line.product_id.name)))
+                                _("The next product has no a valid Route"),
+                                line.product_id.default_code,
+                                line.product_id.name)))
                     product_bom = False
                     for bom in line.product_id.product_tmpl_id.bom_ids:
                         if bom.product_id.id == line.product_id.id:
@@ -235,9 +242,10 @@ class SaleOrder(models.Model):
                     if not product_bom:
                         raise UserError(
                             _('%s %s %s' % (
-                                _("The next product has no a Bill of Materials"), line.product_id.default_code, line.product_id.name)))
+                                _("The next product has no a Bill of Materials"),
+                                line.product_id.default_code, line.product_id.name)))
 
-        return super(SaleOrder, self).action_confirm()
+        return True
 
     @api.multi
     def approve_action(self):
