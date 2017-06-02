@@ -16,6 +16,11 @@ class StockBatchPickingCreator(models.TransientModel):
             ('batch_picking_id', '=', False),
             ('state', 'not in', ('cancel', 'done'))
         ])
+        if not pickings:
+            raise UserError(_(
+                "There's no one picking to be grouped"
+            ))
+
         location = pickings[0].location_id
         for pick in pickings:
             if pick.location_id != location:
