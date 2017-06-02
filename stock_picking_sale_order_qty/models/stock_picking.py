@@ -40,9 +40,11 @@ class StockPicking(models.Model):
                         products[line.product_id.id] = qty
             for move in pick.move_lines_related:
                 products[move.product_id.id] -= move.product_uom_qty
-            if pick.related_segment:
-                for move in pick.related_segment.move_lines_related:
+            backorder = pick.backorder_id
+            while backorder:
+                for move in backorder.move_lines_related:
                     products[move.product_id.id] -= move.product_uom_qty
+                backorder = backorder.backorder_id
             for prod in products:
                 if products[prod] > 0:
                     product = product_obj.browse([prod])
