@@ -11,7 +11,8 @@ class SaleOrder(models.Model):
 
     week_number = fields.Integer(
         'Numero de la semana',
-        compute="_compute_week_number"
+        compute="_compute_week_number",
+        store=True,
     )
 
     @api.depends('date_order')
@@ -29,7 +30,7 @@ class SaleOrder(models.Model):
             arreglo2=arreglo[0].split("/");
             #ahora solo se unen por medio de guiones y se guarda en una cadena alterna 
             cadena_n=("-").join(arreglo2);
-            
+
             sale.week_number = int(datetime.datetime.strptime(
                 cadena_n, '%Y-%m-%d').strftime('%W'))
 

@@ -23,6 +23,7 @@
             <field name='inherit_id' ref="sale.view_order_tree"/>
             <field name='arch' type='xml'>
                 <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name='profit_margin'/>
                     <field name="country_id" readonly="1"/>
                     <field name="state_id" readonly="1"/>
                     <field name="city_id" readonly="1"/>
