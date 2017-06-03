@@ -92,6 +92,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='date_planned']" position="before">
                     <field name="location_dest_id"/>
+                    <field name='transfer_status'/>
                     <field name="trace"/>
                 </xpath>
             </field>
