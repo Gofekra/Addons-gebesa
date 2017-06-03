@@ -39,7 +39,7 @@ class MrpProduction(models.Model):
          ('transferred', _('Transferred'))],
         string=_("Transfer status"),
         compute='_compute_transfer_status',
-        store=True,
+        # store=True,
     )
 
     @api.depends('move_prod_id')
