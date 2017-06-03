@@ -163,12 +163,15 @@ class SaleOrder(models.Model):
             global_freight = 0.0
             global_installa = 0.0
             global_profit_margin = 0.0
+            currency = order.company_id.currency_id
             for line in order.order_line:
                 product = line.product_id
                 standard_cost = product.standard_price or 0.0
-                if standard_cost > 0:
-                    standard_cost = standard_cost
-                    # * inv.rate
+                standard_cost = currency.compute(
+                    standard_cost, order.pricelist_id.currency_id) or 0.0
+                # if standard_cost > 0:
+                # standard_cost = standard_cost
+                # * inv.rate
                 total_cost = standard_cost * line.product_uom_qty
                 perc_freight = order.perc_freight or False
                 freight = 0.0
