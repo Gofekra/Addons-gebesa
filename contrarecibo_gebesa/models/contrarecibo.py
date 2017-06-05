@@ -57,5 +57,5 @@ class Contrarecibo(models.Model):
     def create(self, vals):
         if vals.get('consecutive', 'New') == 'New':
             vals['consecutive'] = self.env['ir.sequence'].next_by_code(
-                'factoring.customer') or '/'
+                'contrarecibo') or '/'
         return super(Contrarecibo, self).create(vals)
