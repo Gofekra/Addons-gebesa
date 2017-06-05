@@ -32,8 +32,8 @@
                     <field name='total_freight'/>
                     <field name='total_installation'/>
                     <field name='total_net_sale'/>
-                    <field name='segment_status' string="Estatus Segmento"/>
-                    <field name='shiptment_status' string="Estatus Envío"/>                    
+                    <field name='segment_status' string="Estatus Segmento "/>
+                    <field name='shiptment_status' string="Estatus Envío "/>                    
         		</tree>
         	</field>
             <!--Cierre de Registro-->
