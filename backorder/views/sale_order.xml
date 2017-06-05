@@ -34,6 +34,8 @@
                     <field name='date_delivery' string="Fecha Entre."/>
                     <field name='priority' string="Prioridad"/>
                     <field name='delay' string="Atraso"/>
+                    <field name='segment_status' string="Estatus Segmento"/>
+                    <field name='shiptment_status' string="Estatus Envío"/>
                 </tree>
             </field>
         </record>

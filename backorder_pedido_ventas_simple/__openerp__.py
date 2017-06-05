@@ -19,7 +19,9 @@
         "base",
         "sale",
         "sale_order_gebesa",
-        "mrp_gebesa"
+        "mrp_gebesa",
+        "mrp_segment",
+        "mrp_shipment",
     ],
     "data": [
         "views/sale_order.xml",
