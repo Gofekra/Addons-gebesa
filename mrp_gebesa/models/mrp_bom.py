@@ -126,13 +126,12 @@ class MrpBomLine(models.Model):
                 product_bom = bom_obj.search([
                     ('product_id', '=', values['product_id'])])
             # Comentariado temporalmente para subir detalles restantes
-                # if not product_bom:
-                #     raise UserError(_('You can not add a product that \
-                #         has no BOM: %s') % (product.name,))
-            
-            #if product.standard_price == 0:
-            #    raise UserError(_('You can not add a product with cost 0: %s')
-            #                    % (product.name,))
+                if not product_bom:
+                    raise UserError(_('You can not add a product that \
+                        has no BOM: %s') % (product.name,))
+            if product.standard_price == 0:
+                raise UserError(_('You can not add a product with cost 0: %s')
+                                % (product.name,))
         return super(MrpBomLine, self).create(values)
 
     # temporary
