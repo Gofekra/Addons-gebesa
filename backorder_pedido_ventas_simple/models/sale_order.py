@@ -11,8 +11,7 @@ class SaleOrder(models.Model):
 
     week_number = fields.Integer(
         'Numero de la semana',
-        compute="_compute_week_number",
-        store=True,
+        compute="_compute_week_number"
     )
 
     @api.depends('date_order')
