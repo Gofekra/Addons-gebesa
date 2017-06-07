@@ -167,8 +167,8 @@ class SaleOrder(models.Model):
             for line in order.order_line:
                 product = line.product_id
                 standard_cost = product.standard_price or 0.0
-                standard_cost = currency.compute(
-                    standard_cost, order.pricelist_id.currency_id) or 0.0
+                # standard_cost = currency.compute(
+                #    standard_cost, order.pricelist_id.currency_id) or 0.0
                 # if standard_cost > 0:
                 # standard_cost = standard_cost
                 # * inv.rate
@@ -188,7 +188,9 @@ class SaleOrder(models.Model):
                 net_sale = net_sale - installation
 
                 if net_sale > 0.000000:
-                    profit_margin = (1 - (total_cost) / net_sale)
+                    total_pm = currency.compute(
+                        total_cost, order.pricelist_id.currency_id)
+                    profit_margin = (1 - (total_pm) / net_sale)
                     profit_margin = profit_margin * 100
 
                 line.freight_amount = freight
