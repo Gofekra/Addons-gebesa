@@ -28,10 +28,16 @@
                     <field name='date_reception'/>
                     <field name='warehouse_id'/>
                     <field name='project_id'/>
+                    <field name="coint"/>
+                    <field name="rate_mex"/>
                     <field name='amount_total'/>
+                    <field name="total_rate_mex"/>
                     <field name='total_freight'/>
+                    <field name="freight_rate_mex"/>
                     <field name='total_installation'/>
+                    <field name="installation_rate_mex"/>
                     <field name='total_net_sale'/>
+                    <field name="net_sale_rate_mex"/>
                     <field name='segment_status' string="Estatus Segmento "/>
                     <field name='shiptment_status' string="Estatus Envío "/>                    
         		</tree>
