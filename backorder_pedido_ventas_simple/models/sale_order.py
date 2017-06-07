@@ -14,6 +14,77 @@ class SaleOrder(models.Model):
         compute="_compute_week_number"
     )
 
+    coint = fields.Char(
+        'Moneda',
+        compute="_compute_coin"
+    )
+
+    rate_mex = fields.Float(
+        'Rate',
+        compute="_compute_rate_mex"
+    )
+
+    total_rate_mex = fields.Float(
+        'Total MXN',
+        compute="_compute_total_rate_",)
+
+    freight_rate_mex = fields.Float(
+        'Flete MXN',
+        compute="_compute_total_rate_",
+    )
+
+    installation_rate_mex = fields.Float(
+        'Instalación MXN',
+        compute="_compute_total_rate_",
+    )
+    net_sale_rate_mex = fields.Float(
+        'Vta Net MEX',
+        compute="_compute_total_rate_",
+    )
+
+    @api.depends('pricelist_id.currency_id')
+    def _compute_coin(self):
+        # currency_obj = self.env['res.currency']
+        for sale in self:
+            currency_id = sale.pricelist_id.currency_id.name
+            sale.coint = currency_id
+
+    @api.depends('pricelist_id.currency_id', 'date_order')
+    def _compute_rate_mex(self):
+        # pricelist_obj = self.env['product.pricelist']
+        # date = context.get('date_order')
+        # currency_id = contex.get('pricelist_id.currency_id')
+        # company_id = context.get('company_id')
+        for sale in self:
+            date = sale.date_order
+            currency_id = sale.pricelist_id.currency_id.id
+            company_id = sale.company_id.id
+            self._cr.execute("""SELECT rate_mex From res_currency_rate
+                            WHERE currency_id = %s
+                            AND CAST(name AS DATE) = CAST(%s AS DATE)
+                            AND (company_id is null
+                                OR company_id = %s)
+                            """, (currency_id, date, company_id))
+            if self._cr.rowcount:
+                sale.rate_mex = self._cr.fetchone()[0]
+            else:
+                sale.rate_mex = 1
+        return sale.rate_mex
+
+    @api.depends('amount_total', 'rate_mex')
+    def _compute_total_rate_(self):
+        for sale in self:
+            amount = sale.amount_untaxed
+            freight = sale.total_freight
+            installation = sale.total_installation
+            net_sale = sale.total_net_sale
+            rate = sale.rate_mex
+            sale.total_rate_mex = amount * rate
+            sale.freight_rate_mex = freight * rate
+            sale.installation_rate_mex = installation * rate
+            sale.net_sale_rate_mex = net_sale * rate
+
+
     @api.depends('date_order')
     def _compute_week_number(self):
         for sale in self:
