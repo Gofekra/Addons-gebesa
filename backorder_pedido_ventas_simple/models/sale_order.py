@@ -74,7 +74,7 @@ class SaleOrder(models.Model):
     @api.depends('amount_total', 'rate_mex')
     def _compute_total_rate_(self):
         for sale in self:
-            amount = sale.amount_total
+            amount = sale.amount_untaxed
             freight = sale.total_freight
             installation = sale.total_installation
             net_sale = sale.total_net_sale

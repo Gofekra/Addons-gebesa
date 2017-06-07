@@ -30,7 +30,7 @@
                     <field name='project_id'/>
                     <field name="coint"/>
                     <field name="rate_mex"/>
-                    <field name='amount_total'/>
+                    <field name='amount_untaxed'/>
                     <field name="total_rate_mex"/>
                     <field name='total_freight'/>
                     <field name="freight_rate_mex"/>
