@@ -259,3 +259,13 @@ class SaleOrder(models.Model):
                 raise UserError(_('This Sale Order is already approved'))
         self.write({'approve': 'approved'})
         return True
+
+    @api.multi
+    def _prepare_invoice(self):
+        invoice_vals = super(SaleOrder, self)._prepare_invoice()
+        invoice_vals['perc_freight'] = self.perc_freight
+        invoice_vals['perc_installation'] = self.perc_installation
+        invoice_vals['executive'] = self.executive
+        invoice_vals['manufacture'] = self.manufacture
+
+        return invoice_vals

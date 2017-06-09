@@ -18,6 +18,7 @@
     "depends": [
         "base", "stock",
         "stock_warehouse_analytic_id",
+        "account_invoice_sale_data",
     ],
     "data": [
         "security/security.xml",
