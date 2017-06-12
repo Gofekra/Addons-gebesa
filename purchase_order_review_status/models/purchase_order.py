@@ -67,6 +67,10 @@ class PurchaseOrderLine(models.Model):
                     [('order_id', '=', line.order_id.id),
                      ('reviewed', '=', True)]))
             if valid_lines == lines:
-                line.order_id.review = 'yes_review'
+                if(line.order_id.review != 'yes_review'):
+
+                    line.order_id.review = 'yes_review'
             else:
-                line.order_id.review = 'no_review'
+                if(line.order_id.review != 'no_review'):
+
+                    line.order_id.review = 'no_review'
