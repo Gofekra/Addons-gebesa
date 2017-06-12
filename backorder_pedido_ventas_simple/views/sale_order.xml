@@ -17,29 +17,37 @@
         		<tree string='Sale'>
               <!--Field es un campo en la base de datos 
               name es nombre del atributo o columna de la base de 
-              datos que se desea mostrar-->      
-                    <field name='state'/>
-        			<field name='week_number'/>
-                    <field name='name'/>
-        			<field name='date_order'/>
+              datos que se desea mostrar--> 
+                    <field name='segment_status' string="Estatus Segmento"/>
+                    <field name='shiptment_status' string="Estatus Embarque"/>     
+        			<field name='week_number' string='Número de la Semana'/>
+                    <field name='name' string='Pedido de Venta'/>
+        			<field name='date_order' string='Fecha de Pedido'/>
                     <field name='partner_id'/>
-                    <field name='city_id'/>
-                    <field name='state_id'/>
-                    <field name='date_reception'/>
+                    <field name='date_reception' string='Fecha Recepción O.C.'/>
                     <field name='warehouse_id'/>
-                    <field name='project_id'/>
-                    <field name="coint"/>
-                    <field name="rate_mex"/>
-                    <field name='amount_untaxed'/>
+                    <field name='project_id' string='Cuenta Analítica'/>
+                    <field name='city_id' string='Ciudad'/>
+                    <field name='state_id' string='Estado'/>
+                    
                     <field name="total_rate_mex"/>
-                    <field name='total_freight'/>
                     <field name="freight_rate_mex"/>
-                    <field name='total_installation'/>
                     <field name="installation_rate_mex"/>
-                    <field name='total_net_sale'/>
                     <field name="net_sale_rate_mex"/>
-                    <field name='segment_status' string="Estatus Segmento "/>
-                    <field name='shiptment_status' string="Estatus Envío "/>                    
+                    <field name="profit_margin" string='Margen de Utilidad'/>
+                    <field name="total_cost" string='Cost X Sur'/>
+                    <field name="amount_pending_mex" string='Imp X Sur'/>
+                    <field name="folio_shipped" string='Fólio Embarque'/>
+                    <field name="shipped_departure_date" string='Fecha Salida Embarque'/>
+                    <field name="coint"/>
+                    <field name='amount_untaxed' string='Total'/>
+                    <field name='total_freight' string='Total Flete'/>
+                    <field name='total_installation' string='Total Instalación'/>
+                    <field name='total_net_sale' string='Vta Neta Total'/>
+
+
+                    <field name='state'/>
+                                      
         		</tree>
         	</field>
             <!--Cierre de Registro-->
