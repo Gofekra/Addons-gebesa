@@ -49,6 +49,8 @@ class stock_quant(osv.osv):
             elif pick_type == 'outgoing':
                 acc_valuation = move.location_id.account_id or False
                 acc_dest = move.location_dest_id.account_id.id or False
+                if move.location_dest_id.usage == 'supplier':
+                    acc_src = move.location_dest_id.account_id.id
                 if move.location_id.usage not in (
                         'internal', 'transit', 'customer') and \
                         move.location_dest_id.usage == 'internal':
