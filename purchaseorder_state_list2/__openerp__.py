@@ -21,7 +21,9 @@
     ],
     'data': [
         'views/purchaseorder_state_hist_view.xml',
-        'views/purchase_order_view.xml'
+        'views/purchase_order_view.xml',
+        'security/ir.model.access.csv',
+
 
     ],
     'demo': [
