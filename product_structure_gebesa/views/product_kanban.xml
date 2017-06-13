@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model='ir.ui.view' id='product_normal_cost_kanban_view'>
+            <field name='name'>product.normal.cost.kanban.view</field>
+            <field name='model'>product.template</field>
+            <field name='inherit_id' ref="product.product_template_kanban_view"/>
+            <field name='arch' type='xml'>
+                <field name="lst_price" position="after">
+                    <field name="standard_price"/>
+                </field>
+                <ul position="inside">
+                    <li>Costo: <field name="standard_price" widget="monetary"/></li>
+                </ul>
+                
+            </field>
+        </record>
+    </data>
+</openerp>

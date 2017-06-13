@@ -28,6 +28,8 @@
         "views/product_type.xml",
         "views/product_template.xml",
         "views/product_product.xml",
+        "views/product_tree.xml",
+        "views/product_kanban.xml",
         "security/ir.model.access.csv",
     ],
     "demo": [
