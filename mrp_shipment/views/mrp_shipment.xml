@@ -2,7 +2,7 @@
 <openerp>
     <data>
         
-        <menuitem id="logistics_menu" name="Logistics" web_icon="mrp_shipment,static/description/web_icon.png" icon="fa-usd" groups="mrp.group_mrp_user"/>
+        <menuitem id="logistics_menu" name="Logistics" web_icon="mrp_shipment,static/description/web_icon.png" icon="fa-usd" groups="mrp_shipment.group_logistic_user"/>
         <menuitem id="menu_mrp_shipment"
             name="Shipments"
             parent="logistics_menu"
