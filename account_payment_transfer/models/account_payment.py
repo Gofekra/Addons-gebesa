@@ -2,7 +2,7 @@
 # © <YEAR(S)> <AUTHOR(S)>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import _, fields, models
+from openerp import _, api, fields, models
 
 
 class AccountPayment(models.Model):
@@ -28,3 +28,12 @@ class AccountPayment(models.Model):
             'operating_unit_id':
                 self.destination_journal_id.operating_unit_id.id or False})
         return dst_liquidity_aml_dict
+
+    @api.multi
+    def cancel(self):
+        for rec in self:
+            if rec.payment_type == 'transfer':
+                for line in rec.move_line_ids:
+                    if line.reconciled:
+                        line.remove_move_reconcile()
+        return super(AccountPayment, self).cancel()
