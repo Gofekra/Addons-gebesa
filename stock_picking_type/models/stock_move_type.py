@@ -18,7 +18,8 @@ class StockMoveType(models.Model):
     )
     name = fields.Char(
         string=_(u'Name'), size=120,
-        help=_(u'Process name')
+        help=_(u'Process name'),
+        translate=True,
     )
     type = fields.Selection(
         [('input', _(u'Input')),
