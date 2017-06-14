@@ -52,7 +52,7 @@ class SaleOrder(models.Model):
             # se asigna la var y se le un arreglo, quit la pos ini y pos fin
             sale.shipped_departure_date = date2[1:-1]
 
-    @api.depends('order_line.quantity_shipped')
+    @api.depends('order_line.quantity_shipped', 'order_line.product_uom_qty')
     def _compuete_shiptment_status(self):
         for sale in self:
             ship_qty = 0
@@ -60,9 +60,9 @@ class SaleOrder(models.Model):
             for line in sale.order_line:
                 ship_qty += line.quantity_shipped
                 pro_qty += line.product_uom_qty
-            if ship_qty == pro_qty:
-                sale.shiptment_status = 'total_shipment'
-            elif ship_qty == 0:
+            if ship_qty == 0:
                 sale.shiptment_status = 'no_shipment'
+            elif ship_qty == pro_qty:
+                sale.shiptment_status = 'total_shipment'
             else:
                 sale.shiptment_status = 'partial_shipment'
