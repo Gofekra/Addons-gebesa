@@ -23,6 +23,12 @@
                     <field name='warehouse_id'/>
                     <field name='partner_id'/>
                     <field name='city_shipping'/>
+                    <field name="create_date" string='Fecha Creación'/>
+                    <field name="date_start" />
+                    <field name="date_finished"/>
+                </xpath>
+                <xpath expr="//field[@name='date_planned']" position="attributes">
+                    <attribute name="invisible">1</attribute>
                 </xpath>
             </field>
         </record>
