@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-20 23:56+0000\n"
-"PO-Revision-Date: 2017-02-20 23:56+0000\n"
+"POT-Creation-Date: 2017-06-14 18:33+0000\n"
+"PO-Revision-Date: 2017-06-14 18:33+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgid "Add Sale Order"
 msgstr ""
 
 #. module: mrp_shipment
-#: code:addons/mrp_shipment/models/mrp_shipment.py:59
+#: code:addons/mrp_shipment/models/mrp_shipment.py:56
 #: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_amount
 #, python-format
 msgid "Amount"
@@ -54,8 +54,10 @@ msgid "Cantidad"
 msgstr ""
 
 #. module: mrp_shipment
-#: code:addons/mrp_shipment/models/mrp_shipment.py:256
+#: code:addons/mrp_shipment/models/mrp_shipment.py:234
+#: code:addons/mrp_shipment/models/mrp_shipment.py:296
 #: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_line_city
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_sale_city
 #, python-format
 msgid "City"
 msgstr ""
@@ -71,10 +73,15 @@ msgid "Click to start a shipment."
 msgstr ""
 
 #. module: mrp_shipment
-#: code:addons/mrp_shipment/models/mrp_shipment.py:302
+#: code:addons/mrp_shipment/models/mrp_shipment.py:334
 #: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_line_product_code
 #, python-format
 msgid "Code product"
+msgstr ""
+
+#. module: mrp_shipment
+#: model:ir.ui.view,arch_db:mrp_shipment.report_shipment_document
+msgid "Codigo de Barras"
 msgstr ""
 
 #. module: mrp_shipment
@@ -83,21 +90,39 @@ msgid "Cost of the product template used for standard stock valuation in account
 msgstr ""
 
 #. module: mrp_shipment
-#: code:addons/mrp_shipment/models/mrp_shipment.py:243
+#: code:addons/mrp_shipment/models/mrp_shipment.py:223
+#: code:addons/mrp_shipment/models/mrp_shipment.py:285
 #: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_line_country_id
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_sale_country_id
 #, python-format
 msgid "Country"
 msgstr ""
 
 #. module: mrp_shipment
-#: code:addons/mrp_shipment/models/mrp_shipment.py:238
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_sale_order_create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: mrp_shipment
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_sale_order_create_date
+msgid "Created on"
+msgstr ""
+
+#. module: mrp_shipment
+#: code:addons/mrp_shipment/models/mrp_shipment.py:213
+#: code:addons/mrp_shipment/models/mrp_shipment.py:218
+#: code:addons/mrp_shipment/models/mrp_shipment.py:274
+#: code:addons/mrp_shipment/models/mrp_shipment.py:280
 #: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_line_partner_id
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_line_partner_shipping_id
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_sale_partner_id
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_sale_partner_shipping_id
 #, python-format
 msgid "Customer"
 msgstr ""
 
 #. module: mrp_shipment
-#: code:addons/mrp_shipment/models/mrp_shipment.py:41
+#: code:addons/mrp_shipment/models/mrp_shipment.py:39
 #: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_date
 #, python-format
 msgid "Date of shipment"
@@ -109,7 +134,13 @@ msgid "Date shipped"
 msgstr ""
 
 #. module: mrp_shipment
-#: code:addons/mrp_shipment/models/mrp_shipment.py:45
+#: model:ir.model.fields,help:mrp_shipment.field_mrp_shipment_line_partner_shipping_id
+#: model:ir.model.fields,help:mrp_shipment.field_mrp_shipment_sale_partner_shipping_id
+msgid "Delivery address for current sales order."
+msgstr ""
+
+#. module: mrp_shipment
+#: code:addons/mrp_shipment/models/mrp_shipment.py:43
 #: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_departure_date
 #, python-format
 msgid "Departure date"
@@ -181,7 +212,7 @@ msgid "Folio:"
 msgstr ""
 
 #. module: mrp_shipment
-#: code:addons/mrp_shipment/models/mrp_shipment.py:54
+#: code:addons/mrp_shipment/models/mrp_shipment.py:51
 #: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_freight
 #, python-format
 msgid "Freight"
@@ -193,6 +224,7 @@ msgid "Group By"
 msgstr ""
 
 #. module: mrp_shipment
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_sale_order_id
 #: model:ir.model.fields,field_description:mrp_shipment.field_report_mrp_shipment_report_shipment_id
 msgid "ID"
 msgstr ""
@@ -222,11 +254,22 @@ msgid "Last Modified on"
 msgstr ""
 
 #. module: mrp_shipment
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_sale_order_write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: mrp_shipment
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_sale_order_write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: mrp_shipment
 #: model:ir.actions.report.xml,name:mrp_shipment.shipment_report
 msgid "Lista de embarques"
 msgstr ""
 
 #. module: mrp_shipment
+#: model:ir.module.category,name:mrp_shipment.module_logistic
 #: model:ir.ui.menu,name:mrp_shipment.logistics_menu
 msgid "Logistics"
 msgstr ""
@@ -237,7 +280,12 @@ msgid "MTS"
 msgstr ""
 
 #. module: mrp_shipment
-#: code:addons/mrp_shipment/models/mrp_shipment.py:50
+#: model:res.groups,name:mrp_shipment.group_logistic_superuser
+msgid "Manager"
+msgstr ""
+
+#. module: mrp_shipment
+#: code:addons/mrp_shipment/models/mrp_shipment.py:47
 #: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_meters
 #, python-format
 msgid "Meters"
@@ -254,7 +302,7 @@ msgid "Mts:"
 msgstr ""
 
 #. module: mrp_shipment
-#: code:addons/mrp_shipment/models/mrp_shipment.py:297
+#: code:addons/mrp_shipment/models/mrp_shipment.py:329
 #: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_line_product_name
 #, python-format
 msgid "Name product"
@@ -310,31 +358,33 @@ msgid "Peso:"
 msgstr ""
 
 #. module: mrp_shipment
+#: code:addons/mrp_shipment/models/mrp_shipment.py:343
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_line_price_unit
+#, python-format
+msgid "Price Unit"
+msgstr ""
+
+#. module: mrp_shipment
 #: model:ir.ui.view,arch_db:mrp_shipment.mrp_shipment_form
 msgid "Proceed"
 msgstr ""
 
 #. module: mrp_shipment
-#: code:addons/mrp_shipment/models/mrp_shipment.py:293
+#: code:addons/mrp_shipment/models/mrp_shipment.py:326
 #: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_line_product_id
 #, python-format
 msgid "Product"
 msgstr ""
 
 #. module: mrp_shipment
-#: model:ir.ui.view,arch_db:mrp_shipment.mrp_shipment_form
-msgid "Prueba"
-msgstr ""
-
-#. module: mrp_shipment
-#: code:addons/mrp_shipment/models/mrp_shipment.py:284
+#: code:addons/mrp_shipment/models/mrp_shipment.py:319
 #: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_line_quantity
 #, python-format
 msgid "Quantity"
 msgstr ""
 
 #. module: mrp_shipment
-#: code:addons/mrp_shipment/models/mrp_shipment.py:288
+#: code:addons/mrp_shipment/models/mrp_shipment.py:322
 #: code:addons/mrp_shipment/models/sale_order_line.py:12
 #: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_line_quantity_shipped
 #: model:ir.model.fields,field_description:mrp_shipment.field_sale_order_line_quantity_shipped
@@ -343,7 +393,7 @@ msgid "Quantity shipped"
 msgstr ""
 
 #. module: mrp_shipment
-#: code:addons/mrp_shipment/models/mrp_shipment.py:36
+#: code:addons/mrp_shipment/models/mrp_shipment.py:35
 #: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_reference
 #, python-format
 msgid "Reference"
@@ -363,14 +413,14 @@ msgid "Sale Orders"
 msgstr ""
 
 #. module: mrp_shipment
-#: code:addons/mrp_shipment/models/mrp_shipment.py:275
+#: code:addons/mrp_shipment/models/mrp_shipment.py:312
 #: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_line_sale_order_id
 #, python-format
 msgid "Sale order"
 msgstr ""
 
 #. module: mrp_shipment
-#: code:addons/mrp_shipment/models/mrp_shipment.py:280
+#: code:addons/mrp_shipment/models/mrp_shipment.py:316
 #, python-format
 msgid "Sale order line "
 msgstr ""
@@ -396,8 +446,8 @@ msgid "Segment Status"
 msgstr ""
 
 #. module: mrp_shipment
-#: code:addons/mrp_shipment/models/mrp_shipment.py:209
-#: code:addons/mrp_shipment/models/mrp_shipment.py:232
+#: code:addons/mrp_shipment/models/mrp_shipment.py:208
+#: code:addons/mrp_shipment/models/mrp_shipment.py:262
 #: code:addons/mrp_shipment/models/sale_order_line.py:26
 #: model:ir.actions.act_window,name:mrp_shipment.action_shipment_form
 #: model:ir.model,name:mrp_shipment.model_mrp_shipment
@@ -416,6 +466,13 @@ msgid "Shipment Details"
 msgstr ""
 
 #. module: mrp_shipment
+#: code:addons/mrp_shipment/models/mrp_shipment.py:241
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_sale_line_ids
+#, python-format
+msgid "Shipment Line"
+msgstr ""
+
+#. module: mrp_shipment
 #: model:ir.model.fields,help:mrp_shipment.field_mrp_shipment_line_ids
 msgid "Shipment Lines."
 msgstr ""
@@ -426,14 +483,14 @@ msgid "Shipment Month"
 msgstr ""
 
 #. module: mrp_shipment
-#: code:addons/mrp_shipment/models/mrp_shipment.py:75
+#: code:addons/mrp_shipment/models/mrp_shipment.py:72
 #: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_sale_ids
 #, python-format
 msgid "Shipment Order"
 msgstr ""
 
 #. module: mrp_shipment
-#: code:addons/mrp_shipment/models/mrp_shipment.py:66
+#: code:addons/mrp_shipment/models/mrp_shipment.py:63
 #: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_line_ids
 #, python-format
 msgid "Shipment Products"
@@ -442,6 +499,13 @@ msgstr ""
 #. module: mrp_shipment
 #: model:ir.ui.view,arch_db:mrp_shipment.view_shipment_filter
 msgid "Shipment Reference"
+msgstr ""
+
+#. module: mrp_shipment
+#: code:addons/mrp_shipment/models/mrp_shipment.py:268
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_line_shipment_sale_id
+#, python-format
+msgid "Shipment Sale"
 msgstr ""
 
 #. module: mrp_shipment
@@ -467,15 +531,17 @@ msgid "Shiptment statu"
 msgstr ""
 
 #. module: mrp_shipment
-#: code:addons/mrp_shipment/models/mrp_shipment.py:307
+#: code:addons/mrp_shipment/models/mrp_shipment.py:339
 #: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_line_standard_cost
 #, python-format
 msgid "Standard cost"
 msgstr ""
 
 #. module: mrp_shipment
-#: code:addons/mrp_shipment/models/mrp_shipment.py:250
+#: code:addons/mrp_shipment/models/mrp_shipment.py:229
+#: code:addons/mrp_shipment/models/mrp_shipment.py:291
 #: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_line_state_id
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_sale_state_id
 #, python-format
 msgid "State"
 msgstr ""
@@ -489,23 +555,45 @@ msgid "Status"
 msgstr ""
 
 #. module: mrp_shipment
-#: code:addons/mrp_shipment/models/mrp_shipment.py:262
+#: code:addons/mrp_shipment/models/mrp_shipment.py:301
 #: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_line_street
 #, python-format
 msgid "Street"
 msgstr ""
 
 #. module: mrp_shipment
-#: code:addons/mrp_shipment/models/mrp_shipment.py:268
+#: code:addons/mrp_shipment/models/mrp_shipment.py:306
 #: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_line_street2
 #, python-format
 msgid "Street2"
 msgstr ""
 
 #. module: mrp_shipment
-#: code:addons/mrp_shipment/models/mrp_shipment.py:315
+#: code:addons/mrp_shipment/models/mrp_shipment.py:368
 #, python-format
 msgid "The quantity available is less than                                       the quantity shipped"
+msgstr ""
+
+#. module: mrp_shipment
+#: code:addons/mrp_shipment/models/mrp_shipment.py:251
+#, python-format
+msgid "The quantity shipped in a                         line is different from 0"
+msgstr ""
+
+#. module: mrp_shipment
+#: code:addons/mrp_shipment/models/mrp_shipment.py:375
+#, python-format
+msgid "The quantity shipped in a                     line is different from 0"
+msgstr ""
+
+#. module: mrp_shipment
+#: model:res.groups,comment:mrp_shipment.group_logistic_superuser
+msgid "The user will have an access to the Logistics data and configurations"
+msgstr ""
+
+#. module: mrp_shipment
+#: model:res.groups,comment:mrp_shipment.group_logistic_user
+msgid "This user has limitations to read"
 msgstr ""
 
 #. module: mrp_shipment
@@ -524,8 +612,22 @@ msgid "Total Segment"
 msgstr ""
 
 #. module: mrp_shipment
+#: code:addons/mrp_shipment/models/mrp_shipment.py:350
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_line_total_cost
+#, python-format
+msgid "Total cost"
+msgstr ""
+
+#. module: mrp_shipment
 #: selection:sale.order,geb_invoice_status:0
 msgid "Total invoice"
+msgstr ""
+
+#. module: mrp_shipment
+#: code:addons/mrp_shipment/models/mrp_shipment.py:346
+#: model:ir.model.fields,field_description:mrp_shipment.field_mrp_shipment_line_total_price
+#, python-format
+msgid "Total price"
 msgstr ""
 
 #. module: mrp_shipment
@@ -536,8 +638,24 @@ msgid "Total shipment"
 msgstr ""
 
 #. module: mrp_shipment
+#: model:res.groups,name:mrp_shipment.group_logistic_user
+msgid "User"
+msgstr ""
+
+#. module: mrp_shipment
+#: model:ir.module.category,description:mrp_shipment.module_logistic
+msgid "User:This user has limitations to read.Manager:The user will have an access to the Logistics data and configurations"
+msgstr ""
+
+#. module: mrp_shipment
 #: selection:mrp.shipment,state:0
 msgid "Validated"
+msgstr ""
+
+#. module: mrp_shipment
+#: code:addons/mrp_shipment/models/mrp_shipment.py:107
+#, python-format
+msgid "You can only delete canceled                     shipments"
 msgstr ""
 
 #. module: mrp_shipment
@@ -565,5 +683,10 @@ msgstr ""
 #. module: mrp_shipment
 #: model:ir.model,name:mrp_shipment.model_report_mrp_shipment_report_shipment
 msgid "report.mrp_shipment.report_shipment"
+msgstr ""
+
+#. module: mrp_shipment
+#: model:ir.model.fields,field_description:mrp_shipment.field_sale_order_shipped_departure_date
+msgid "shipped Departure Date"
 msgstr ""
 
