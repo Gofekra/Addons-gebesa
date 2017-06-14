@@ -18,5 +18,6 @@ class PurchaseOrder(models.Model):
 
     @api.depends('picking_type_id')
     def _compute_account_analytic_id(self):
-        warehouse = self.picking_type_id.warehouse_id
-        self.account_analytic_id = warehouse.account_analytic_id.id
+        for purchase in self:
+            warehouse = purchase.picking_type_id.warehouse_id
+            purchase.account_analytic_id = warehouse.account_analytic_id.id
