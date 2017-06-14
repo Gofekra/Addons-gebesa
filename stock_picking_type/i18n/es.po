@@ -1,32 +1,44 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* stock_picking_type
+#	* stock_picking_type
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 9.0c\n"
+"Project-Id-Version: Odoo Server 9.0e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-30 18:35+0000\n"
-"PO-Revision-Date: 2017-01-20 16:46-0600\n"
+"POT-Creation-Date: 2017-06-14 18:01+0000\n"
+"PO-Revision-Date: 2017-06-14 18:01+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
-"X-Generator: Poedit 1.8.7.1\n"
-"Language: es\n"
 
 #. module: stock_picking_type
-#: code:addons/stock_picking_type/models/type_adjustment.py:47
+#: code:addons/stock_picking_type/models/type_adjustment.py:51
 #: model:ir.model.fields,field_description:stock_picking_type.field_type_adjustment_account_id
 #, python-format
 msgid "Account"
 msgstr "Cuenta"
 
 #. module: stock_picking_type
-#: code:addons/stock_picking_type/models/stock_move_type.py:28
-#: code:addons/stock_picking_type/models/stock_move_type.py:29
+#: model:ir.model.fields,field_description:stock_picking_type.field_type_adjustment_active
+msgid "Active"
+msgstr "Activo"
+
+#. module: stock_picking_type
+#: code:addons/stock_picking_type/models/stock_move_type.py:15
+#: code:addons/stock_picking_type/models/stock_move_type.py:16
+#: model:ir.model.fields,field_description:stock_picking_type.field_stock_move_type_code
+#: model:ir.model.fields,help:stock_picking_type.field_stock_move_type_code
+#, python-format
+msgid "Code"
+msgstr "Código"
+
+#. module: stock_picking_type
+#: code:addons/stock_picking_type/models/stock_move_type.py:31
+#: code:addons/stock_picking_type/models/stock_move_type.py:32
 #: model:ir.model.fields,field_description:stock_picking_type.field_stock_move_type_company_id
 #: model:ir.model.fields,help:stock_picking_type.field_stock_move_type_company_id
 #, python-format
@@ -43,17 +55,22 @@ msgstr "Creado por"
 #: model:ir.model.fields,field_description:stock_picking_type.field_stock_move_type_create_date
 #: model:ir.model.fields,field_description:stock_picking_type.field_type_adjustment_create_date
 msgid "Created on"
-msgstr "Creado en"
+msgstr "Creado el"
 
 #. module: stock_picking_type
-#: code:addons/stock_picking_type/models/type_adjustment.py:31
+#: model:stock.move.type,name:stock_picking_type.mpf_tipomov_E1
+msgid "Customer Returns"
+msgstr "Devoluciones del Cliente"
+
+#. module: stock_picking_type
+#: code:addons/stock_picking_type/models/type_adjustment.py:32
 #: model:ir.model.fields,field_description:stock_picking_type.field_type_adjustment_description
 #, python-format
 msgid "Description"
 msgstr "Descripción"
 
 #. module: stock_picking_type
-#: code:addons/stock_picking_type/models/type_adjustment.py:32
+#: code:addons/stock_picking_type/models/type_adjustment.py:33
 #: model:ir.model.fields,help:stock_picking_type.field_type_adjustment_description
 #, python-format
 msgid "Description type of adjustment"
@@ -66,18 +83,18 @@ msgid "Display Name"
 msgstr "Mostrar nombre"
 
 #. module: stock_picking_type
-#: code:addons/stock_picking_type/models/type_adjustment.py:43
+#: code:addons/stock_picking_type/models/type_adjustment.py:46
 #: selection:type.adjustment,type_calculation:0
 #, python-format
 msgid "Extra inputs"
-msgstr "Entradas extras"
+msgstr "Entradas Adicionales"
 
 #. module: stock_picking_type
-#: code:addons/stock_picking_type/models/type_adjustment.py:41
+#: code:addons/stock_picking_type/models/type_adjustment.py:44
 #: selection:type.adjustment,type_calculation:0
 #, python-format
 msgid "Extra outputs"
-msgstr "Salidas extras"
+msgstr "Salidas Adicionales"
 
 #. module: stock_picking_type
 #: model:ir.model.fields,field_description:stock_picking_type.field_stock_move_type_id
@@ -86,28 +103,47 @@ msgid "ID"
 msgstr "ID"
 
 #. module: stock_picking_type
-#: code:addons/stock_picking_type/models/stock_move_type.py:23
-#: code:addons/stock_picking_type/models/type_adjustment.py:35
-#: selection:stock.move.type,type:0 selection:type.adjustment,type_adjustment:0
+#: model:stock.move.type,name:stock_picking_type.mpf_tipomov_E3
+msgid "Incoming Transfers"
+msgstr "Transferencia Entrate"
+
+#. module: stock_picking_type
+#: code:addons/stock_picking_type/models/stock_move_type.py:25
+#: code:addons/stock_picking_type/models/type_adjustment.py:37
+#: selection:stock.move.type,type:0
+#: selection:type.adjustment,type_adjustment:0
 #, python-format
 msgid "Input"
 msgstr "Entrada"
 
 #. module: stock_picking_type
-#: code:addons/stock_picking_type/models/stock_move_type.py:15
+#: model:stock.move.type,name:stock_picking_type.mpf_tipomov_E4
+msgid "Input Adjustments"
+msgstr "Ajuste de Entrada"
+
+#. module: stock_picking_type
+#: model:stock.move.type,name:stock_picking_type.mpf_tipomov_E5
+msgid "Input for Manufacture"
+msgstr "Entrada por Manufactura"
+
+#. module: stock_picking_type
+#: code:addons/stock_picking_type/models/stock_move_type.py:27
+#: selection:stock.move.type,type:0
+#, python-format
+msgid "Internal"
+msgstr "Interno"
+
+#. module: stock_picking_type
+#: model:stock.move.type,name:stock_picking_type.mpf_tipomov_T1
+msgid "Internal Procurements"
+msgstr "Adquisiciones Internas"
+
+#. module: stock_picking_type
 #: code:addons/stock_picking_type/models/type_adjustment.py:26
-#: model:ir.model.fields,field_description:stock_picking_type.field_stock_move_type_consecutive
 #: model:ir.model.fields,field_description:stock_picking_type.field_type_adjustment_consecutive
 #, python-format
 msgid "Key"
 msgstr "Clave"
-
-#. module: stock_picking_type
-#: code:addons/stock_picking_type/models/stock_move_type.py:16
-#: model:ir.model.fields,help:stock_picking_type.field_stock_move_type_consecutive
-#, python-format
-msgid "Key process"
-msgstr "Clave del proceso"
 
 #. module: stock_picking_type
 #: code:addons/stock_picking_type/models/type_adjustment.py:28
@@ -120,55 +156,86 @@ msgstr "Clave del tipo de ajuste"
 #: model:ir.model.fields,field_description:stock_picking_type.field_stock_move_type___last_update
 #: model:ir.model.fields,field_description:stock_picking_type.field_type_adjustment___last_update
 msgid "Last Modified on"
-msgstr "Ultima actualizacion en"
+msgstr ""
 
 #. module: stock_picking_type
 #: model:ir.model.fields,field_description:stock_picking_type.field_stock_move_type_write_uid
 #: model:ir.model.fields,field_description:stock_picking_type.field_type_adjustment_write_uid
 msgid "Last Updated by"
-msgstr "Ultima actualizacion por"
+msgstr "Ultima actualización en"
 
 #. module: stock_picking_type
 #: model:ir.model.fields,field_description:stock_picking_type.field_stock_move_type_write_date
 #: model:ir.model.fields,field_description:stock_picking_type.field_type_adjustment_write_date
 msgid "Last Updated on"
-msgstr "Ultima actualizacion en"
+msgstr ""
 
 #. module: stock_picking_type
-#: code:addons/stock_picking_type/models/stock_move_type.py:19
+#: code:addons/stock_picking_type/models/stock_move_type.py:20
 #: model:ir.model.fields,field_description:stock_picking_type.field_stock_move_type_name
 #, python-format
 msgid "Name"
 msgstr "Nombre"
 
 #. module: stock_picking_type
-#: code:addons/stock_picking_type/models/type_adjustment.py:42
+#: code:addons/stock_picking_type/models/type_adjustment.py:45
 #: selection:type.adjustment,type_calculation:0
 #, python-format
 msgid "Net changes"
 msgstr "Cambios netos"
 
 #. module: stock_picking_type
-#: code:addons/stock_picking_type/models/type_adjustment.py:40
+#: code:addons/stock_picking_type/models/type_adjustment.py:43
 #: selection:type.adjustment,type_calculation:0
 #, python-format
 msgid "None"
 msgstr "Ninguno"
 
 #. module: stock_picking_type
-#: code:addons/stock_picking_type/models/stock_move_type.py:24
-#: code:addons/stock_picking_type/models/type_adjustment.py:36
-#: selection:stock.move.type,type:0 selection:type.adjustment,type_adjustment:0
+#: model:stock.move.type,name:stock_picking_type.mpf_tipomov_S3
+msgid "Outgoing Transfers"
+msgstr "Transferencia Saliente"
+
+#. module: stock_picking_type
+#: code:addons/stock_picking_type/models/stock_move_type.py:26
+#: code:addons/stock_picking_type/models/type_adjustment.py:38
+#: selection:stock.move.type,type:0
+#: selection:type.adjustment,type_adjustment:0
 #, python-format
 msgid "Output"
 msgstr "Salida"
 
 #. module: stock_picking_type
-#: code:addons/stock_picking_type/models/stock_move_type.py:20
+#: model:stock.move.type,name:stock_picking_type.mpf_tipomov_S4
+msgid "Output Adjustments"
+msgstr "Ajuste de Salida"
+
+#. module: stock_picking_type
+#: model:stock.move.type,name:stock_picking_type.mpf_tipomov_S5
+msgid "Output For Manufacture"
+msgstr "Salida para Manufactura"
+
+#. module: stock_picking_type
+#: code:addons/stock_picking_type/models/stock_move_type.py:21
 #: model:ir.model.fields,help:stock_picking_type.field_stock_move_type_name
 #, python-format
 msgid "Process name"
-msgstr "Nombre del proceso"
+msgstr "Nombre del proces"
+
+#. module: stock_picking_type
+#: model:stock.move.type,name:stock_picking_type.mpf_tipomov_E2
+msgid "Product Purchases"
+msgstr "Compra de Productos"
+
+#. module: stock_picking_type
+#: model:stock.move.type,name:stock_picking_type.mpf_tipomov_S1
+msgid "Product Sales"
+msgstr "Ventas de Productos"
+
+#. module: stock_picking_type
+#: model:ir.model.fields,help:stock_picking_type.field_type_adjustment_active
+msgid "Set active to false to hide the tax without removing it."
+msgstr "Establecer activo a falso para ocultar el impuesto sin eliminarlo."
 
 #. module: stock_picking_type
 #: model:ir.model,name:stock_picking_type.model_stock_move
@@ -181,7 +248,12 @@ msgid "Stock type of move / Manager"
 msgstr "Tipo de movimiento stock / Administrador"
 
 #. module: stock_picking_type
-#: code:addons/stock_picking_type/models/type_adjustment.py:52
+#: model:stock.move.type,name:stock_picking_type.mpf_tipomov_S2
+msgid "Supplier Returns"
+msgstr "Devolución de Proveedores"
+
+#. module: stock_picking_type
+#: code:addons/stock_picking_type/models/type_adjustment.py:60
 #: sql_constraint:type.adjustment:0
 #, python-format
 msgid "This field must be unique!"
@@ -193,8 +265,14 @@ msgid "Transfer"
 msgstr "Transferencia"
 
 #. module: stock_picking_type
-#: code:addons/stock_picking_type/models/type_adjustment.py:37
+#: model:ir.model,name:stock_picking_type.model_stock_move_type
+msgid "Type move of stock"
+msgstr "Tipo movimiento de stock"
+
+#. module: stock_picking_type
+#: code:addons/stock_picking_type/models/type_adjustment.py:39
 #: model:ir.actions.act_window,name:stock_picking_type.action_type_adjustment
+#: model:ir.model,name:stock_picking_type.model_type_adjustment
 #: model:ir.model.fields,field_description:stock_picking_type.field_type_adjustment_type_adjustment
 #: model:ir.ui.menu,name:stock_picking_type.type_adjustment_menu
 #: model:ir.ui.view,arch_db:stock_picking_type.type_adjustment_form
@@ -204,15 +282,15 @@ msgid "Type of adjustment"
 msgstr "Tipo de ajuste"
 
 #. module: stock_picking_type
-#: code:addons/stock_picking_type/models/type_adjustment.py:44
+#: code:addons/stock_picking_type/models/type_adjustment.py:47
 #: model:ir.model.fields,field_description:stock_picking_type.field_type_adjustment_type_calculation
 #, python-format
 msgid "Type of calculation"
 msgstr "Tipo de calculo"
 
 #. module: stock_picking_type
-#: code:addons/stock_picking_type/models/stock_move.py:13
-#: code:addons/stock_picking_type/models/stock_move_type.py:25
+#: code:addons/stock_picking_type/models/stock_move.py:15
+#: code:addons/stock_picking_type/models/stock_move_type.py:28
 #: code:addons/stock_picking_type/models/stock_picking.py:13
 #: model:ir.actions.act_window,name:stock_picking_type.action_stock_move_type
 #: model:ir.model.fields,field_description:stock_picking_type.field_stock_move_stock_move_type_id
@@ -225,12 +303,3 @@ msgstr "Tipo de calculo"
 msgid "Type of move"
 msgstr "Tipo de movimiento"
 
-#. module: stock_picking_type
-#: model:ir.model,name:stock_picking_type.model_stock_move_type
-msgid "type move of stock"
-msgstr "Tipo del movimiento de existencia"
-
-#. module: stock_picking_type
-#: model:ir.model,name:stock_picking_type.model_type_adjustment
-msgid "type of adjustment"
-msgstr "Tipo de ajuste"
