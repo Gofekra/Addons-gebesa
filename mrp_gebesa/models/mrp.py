@@ -29,7 +29,7 @@ class MrpProduction(models.Model):
         'stock.picking',
         string='Picking Production',
         compute='_compute_picking_move_prod_id',
-        store=True,
+        # store=True,
     )
     cancellation_reason = fields.Text(
         string='Cancellation reason',
@@ -40,7 +40,7 @@ class MrpProduction(models.Model):
          ('transferred', _('Transferred'))],
         string=_("Transfer status"),
         compute='_compute_transfer_status',
-        store=True,
+        # store=True,
     )
 
     @api.depends('move_prod_id')
