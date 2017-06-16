@@ -136,7 +136,10 @@
                                                     <t t-set="line" t-value="line.with_context({'lang':'es_MX'})"/>
                                                     <t t-if="line.product_id.id not in kit.keys()">
                                                         <tr>
-                                                            <td><img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', line.product_id.barcode, 600, 100)" style="width:95%;height:50px;padding-top:5px;margin-bottom:4px"/></td>
+                                                            <td align="center" style="font-size: 9pt;font-family: CCode39;">
+                                                                <!--<img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', line.product_id.barcode, 600, 100)" style="width:95%;height:50px;padding-top:5px;margin-bottom:4px"/>-->
+                                                                <span t-esc="line.product_id.default_code"/>
+                                                            </td>
                                                             <td><span t-esc="line.product_id.default_code"/></td>
                                                             <td>
                                                                 <t t-if="line.product_id.individual_name">
@@ -153,7 +156,10 @@
                                                     </t>
                                                     <t t-if="line.product_id.id in kit.keys()">
                                                         <tr class="mrp_shipment_tr_kit">
-                                                            <td><img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', line.product_id.barcode, 600, 100)" style="width:99%;height:50px;padding-top:5px;margin-bottom:4px"/></td>
+                                                            <td align="center" style="font-size: 9pt;font-family: CCode39;">
+                                                                <!--<img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', line.product_id.barcode, 600, 100)" style="width:99%;height:50px;padding-top:5px;margin-bottom:4px"/>-->
+                                                                <span t-esc="line.product_id.default_code"/>
+                                                            </td>
                                                             <td><span t-esc="line.product_id.default_code"/></td>
                                                             <td>
                                                                 <t t-if="line.product_id.individual_name">
@@ -171,7 +177,10 @@
                                                             <t t-set="bom_line" t-value="bom_line.with_context({'lang':'es_MX'})"/>
                                                             <t t-set="bom_line_qty" t-value="line.quantity_shipped * bom_line.product_qty"/>
                                                             <tr class="mrp_shipment_tr_kit_child">
-                                                                <td><img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', bom_line.product_id.barcode, 600, 100)" style="width:99%;height:50px;padding-top:5px;margin-bottom:4px"/></td>
+                                                                <td align="center" style="font-size: 9pt;font-family: CCode39;">
+                                                                    <!--<img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', bom_line.product_id.barcode, 600, 100)" style="width:99%;height:50px;padding-top:5px;margin-bottom:4px"/>-->
+                                                                    <span t-esc="bom_line.product_id.default_code"/>
+                                                                </td>
                                                                 <td><span t-esc="bom_line.product_id.default_code"/></td>
                                                                 <td>
                                                                     <t t-if="bom_line.product_id.individual_name">

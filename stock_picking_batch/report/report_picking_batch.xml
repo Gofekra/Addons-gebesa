@@ -105,8 +105,9 @@
                                                                 <span t-esc="product.description_warehouse and product.description_warehouse or ''"></span>
                                                             </pre>
                                                         </td>
-                                                        <td colspan="2">
-                                                            <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', product.barcode, 180, 70)"/>
+                                                        <td colspan="2" align="center" style="font-size: 9pt;font-family: CCode39;">
+                                                            <!--<img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', product.barcode, 180, 70)"/>-->
+                                                            <span t-esc="product.default_code"/>
                                                         </td>
                                                     </tr>
                                                 </tr>
