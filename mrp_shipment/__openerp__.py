@@ -21,11 +21,11 @@
         "mrp_segment",
     ],
     "data": [
+        "security/shipment_security.xml",
+        "security/ir.model.access.csv",
         "data/ir_sequence.xml",
         "views/mrp_shipment.xml",
         "views/sale_order.xml",
-        "security/shipment_security.xml",
-        "security/ir.model.access.csv",
         "report/mrp_shipment.xml",
         "wizards/mrp_shipment_sale_order.xml",
     ],
