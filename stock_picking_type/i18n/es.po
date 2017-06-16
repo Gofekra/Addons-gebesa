@@ -60,7 +60,7 @@ msgstr "Creado el"
 #. module: stock_picking_type
 #: model:stock.move.type,name:stock_picking_type.mpf_tipomov_E1
 msgid "Customer Returns"
-msgstr "Devoluciones del Cliente"
+msgstr "Devoluciones de Cliente"
 
 #. module: stock_picking_type
 #: code:addons/stock_picking_type/models/type_adjustment.py:32
@@ -105,7 +105,7 @@ msgstr "ID"
 #. module: stock_picking_type
 #: model:stock.move.type,name:stock_picking_type.mpf_tipomov_E3
 msgid "Incoming Transfers"
-msgstr "Transferencia Entrate"
+msgstr "Entradas por Transpaso"
 
 #. module: stock_picking_type
 #: code:addons/stock_picking_type/models/stock_move_type.py:25
@@ -119,12 +119,12 @@ msgstr "Entrada"
 #. module: stock_picking_type
 #: model:stock.move.type,name:stock_picking_type.mpf_tipomov_E4
 msgid "Input Adjustments"
-msgstr "Ajuste de Entrada"
+msgstr "Entradas por Ajuste"
 
 #. module: stock_picking_type
 #: model:stock.move.type,name:stock_picking_type.mpf_tipomov_E5
 msgid "Input for Manufacture"
-msgstr "Entrada por Manufactura"
+msgstr "Entradas por Manufactura"
 
 #. module: stock_picking_type
 #: code:addons/stock_picking_type/models/stock_move_type.py:27
@@ -136,7 +136,7 @@ msgstr "Interno"
 #. module: stock_picking_type
 #: model:stock.move.type,name:stock_picking_type.mpf_tipomov_T1
 msgid "Internal Procurements"
-msgstr "Adquisiciones Internas"
+msgstr "Transferencias Internas"
 
 #. module: stock_picking_type
 #: code:addons/stock_picking_type/models/type_adjustment.py:26
@@ -194,7 +194,7 @@ msgstr "Ninguno"
 #. module: stock_picking_type
 #: model:stock.move.type,name:stock_picking_type.mpf_tipomov_S3
 msgid "Outgoing Transfers"
-msgstr "Transferencia Saliente"
+msgstr "Salida por Transpaso"
 
 #. module: stock_picking_type
 #: code:addons/stock_picking_type/models/stock_move_type.py:26
@@ -208,12 +208,12 @@ msgstr "Salida"
 #. module: stock_picking_type
 #: model:stock.move.type,name:stock_picking_type.mpf_tipomov_S4
 msgid "Output Adjustments"
-msgstr "Ajuste de Salida"
+msgstr "Salidas por Ajuste"
 
 #. module: stock_picking_type
 #: model:stock.move.type,name:stock_picking_type.mpf_tipomov_S5
 msgid "Output For Manufacture"
-msgstr "Salida para Manufactura"
+msgstr "Salida por Manufactura"
 
 #. module: stock_picking_type
 #: code:addons/stock_picking_type/models/stock_move_type.py:21
@@ -225,12 +225,12 @@ msgstr "Nombre del proces"
 #. module: stock_picking_type
 #: model:stock.move.type,name:stock_picking_type.mpf_tipomov_E2
 msgid "Product Purchases"
-msgstr "Compra de Productos"
+msgstr "Entradas por Compra"
 
 #. module: stock_picking_type
 #: model:stock.move.type,name:stock_picking_type.mpf_tipomov_S1
 msgid "Product Sales"
-msgstr "Ventas de Productos"
+msgstr "Salida por Venta"
 
 #. module: stock_picking_type
 #: model:ir.model.fields,help:stock_picking_type.field_type_adjustment_active
@@ -250,7 +250,7 @@ msgstr "Tipo de movimiento stock / Administrador"
 #. module: stock_picking_type
 #: model:stock.move.type,name:stock_picking_type.mpf_tipomov_S2
 msgid "Supplier Returns"
-msgstr "Devolución de Proveedores"
+msgstr "Devoluciones de Proveedores"
 
 #. module: stock_picking_type
 #: code:addons/stock_picking_type/models/type_adjustment.py:60
