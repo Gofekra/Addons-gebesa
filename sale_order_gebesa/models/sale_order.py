@@ -206,7 +206,8 @@ class SaleOrder(models.Model):
                 global_installa += installation
 
             if global_net_sale > 0.000000:
-                global_profit_margin = (1 - (global_cost) / global_net_sale)
+                global_total_pm = currency.compute(global_cost, order.pricelist_id.currency_id)
+                global_profit_margin = (1 - (global_total_pm) / global_net_sale)
                 global_profit_margin = global_profit_margin * 100
 
             order.total_cost = global_cost

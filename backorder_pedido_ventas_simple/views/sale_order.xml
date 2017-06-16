@@ -35,7 +35,7 @@
                     <field name="installation_rate_mex"/>
                     <field name="net_sale_rate_mex"/>
                     <field name="profit_margin" string='Margen de Utilidad'/>
-                    <field name="total_cost" string='Cost X Sur'/>
+                    <field name="standard_cost_pending" string='Cost X Sur'/>
                     <field name="amount_pending_mex" string='Imp X Sur'/>
                     <field name="folio_shipped" string='Fólio Embarque'/>
                     <field name="shipped_departure_date" string='Fecha Salida Embarque'/>
