@@ -49,11 +49,6 @@ class SaleOrder(models.Model):
         compute="_compute_total_rate_",
     )
 
-    standard_cost_pending_mex = fields.Float(
-        'Cost X Sur MXN',
-        compute="_compute_total_rate_",
-    )
-
     @api.depends('pricelist_id.currency_id')
     def _compute_coin(self):
         # currency_obj = self.env['res.currency']
@@ -92,13 +87,11 @@ class SaleOrder(models.Model):
             net_sale = sale.total_net_sale
             rate = sale.rate_mex
             pending = sale.amount_pending
-            standard = sale.standard_cost_pending
             sale.total_rate_mex = amount * rate
             sale.freight_rate_mex = freight * rate
             sale.installation_rate_mex = installation * rate
             sale.net_sale_rate_mex = net_sale * rate
             sale.amount_pending_mex = pending * rate
-            sale.standard_cost_pending_mex = standard * rate
 
     @api.depends('date_order')
     def _compute_week_number(self):
