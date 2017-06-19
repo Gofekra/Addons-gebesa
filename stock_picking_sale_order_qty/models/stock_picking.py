@@ -27,11 +27,13 @@ class StockPicking(models.Model):
                 ])
                 if bom.type == 'phantom':
                     for bom_l in bom.bom_line_ids:
-                        qty = line.product_uom_qty * bom.product_qty * bom_l.product_qty
-                        if bom_l.product_id.id in products.keys():
-                            products[bom_l.product_id.id] += qty
-                        else:
-                            products[bom_l.product_id.id] = qty
+                        if pick.create_date > bom_l.write_date:
+                            qty = line.product_uom_qty * bom.product_qty *\
+                                bom_l.product_qty
+                            if bom_l.product_id.id in products.keys():
+                                products[bom_l.product_id.id] += qty
+                            else:
+                                products[bom_l.product_id.id] = qty
                 else:
                     qty = line.product_uom_qty
                     if line.product_id.id in products.keys():
@@ -39,11 +41,13 @@ class StockPicking(models.Model):
                     else:
                         products[line.product_id.id] = qty
             for move in pick.move_lines_related:
-                products[move.product_id.id] -= move.product_uom_qty
+                if move.product_id.id in products.keys():
+                    products[move.product_id.id] -= move.product_uom_qty
             backorder = pick.backorder_id
             while backorder:
                 for move in backorder.move_lines_related:
-                    products[move.product_id.id] -= move.product_uom_qty
+                    if move.product_id.id in products.keys():
+                        products[move.product_id.id] -= move.product_uom_qty
                 backorder = backorder.backorder_id
             for prod in products:
                 if products[prod] > 0:
