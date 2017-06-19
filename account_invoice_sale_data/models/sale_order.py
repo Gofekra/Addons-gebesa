@@ -22,12 +22,12 @@ class SaleOrder(models.Model):
     def _prepare_invoice(self):
         invoice_vals = super(SaleOrder, self)._prepare_invoice()
         portfolio_type = 'national'
+        if self.partner_id.country_id and \
+                self.partner_id.country_id.code != 'MX':
+            portfolio_type = 'foreign'
         if self.priority == 'replenishment':
             portfolio_type = 'replacement'
         if self.priority == 'sample':
             portfolio_type = 'sample'
-        if self.partner_id.country_id and \
-                self.partner_id.country_id.code != 'MX':
-            portfolio_type = 'foreign'
         invoice_vals['portfolio_type'] = portfolio_type
         return invoice_vals
