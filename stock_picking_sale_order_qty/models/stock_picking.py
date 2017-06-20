@@ -27,13 +27,12 @@ class StockPicking(models.Model):
                 ])
                 if bom.type == 'phantom':
                     for bom_l in bom.bom_line_ids:
-                        if pick.create_date > bom_l.write_date:
-                            qty = line.product_uom_qty * bom.product_qty *\
-                                bom_l.product_qty
-                            if bom_l.product_id.id in products.keys():
-                                products[bom_l.product_id.id] += qty
-                            else:
-                                products[bom_l.product_id.id] = qty
+                        qty = line.product_uom_qty * bom.product_qty *\
+                            bom_l.product_qty
+                        if bom_l.product_id.id in products.keys():
+                            products[bom_l.product_id.id] += qty
+                        else:
+                            products[bom_l.product_id.id] = qty
                 else:
                     qty = line.product_uom_qty
                     if line.product_id.id in products.keys():
@@ -43,11 +42,17 @@ class StockPicking(models.Model):
             for move in pick.move_lines_related:
                 if move.product_id.id in products.keys():
                     products[move.product_id.id] -= move.product_uom_qty
+                else:
+                    raise UserError(_('The BOM %s is not the same as when the \
+                        order was captured') % (bom.product_id.name_template))
             backorder = pick.backorder_id
             while backorder:
                 for move in backorder.move_lines_related:
                     if move.product_id.id in products.keys():
                         products[move.product_id.id] -= move.product_uom_qty
+                    else:
+                        raise UserError(_('The BOM %s is not the same as when the \
+                            order was captured') % (bom.product_id.name_template))
                 backorder = backorder.backorder_id
             for prod in products:
                 if products[prod] > 0:
