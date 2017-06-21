@@ -9,6 +9,31 @@ from openerp.exceptions import UserError
 class StockPicking(models.Model):
     _inherit = 'stock.picking'
 
+    def count_product_bom_panthom(self, bom):
+        bom_obj = self.env['mrp.bom']
+        bom_product = {}
+        for line in bom.bom_line_ids:
+            product = line.product_id
+            line_bom = bom_obj.search([
+                ('product_id', '=', product.id),
+                ('active', '=', True)
+            ])
+            if line_bom.type == 'phantom':
+                bom_line_product = self.count_product_bom_panthom(line_bom)
+                for b_line in bom_line_product:
+                    qty = line.product_qty * bom_line_product[b_line]
+                    if b_line in bom_product.keys():
+                        bom_product[b_line] += qty
+                    else:
+                        bom_product[b_line] = qty
+            else:
+                qty = bom.product_qty * line.product_qty
+                if line.product_id.id in bom_product.keys():
+                    bom_product[line.product_id.id] += qty
+                else:
+                    bom_product[line.product_id.id] = qty
+        return bom_product
+
     @api.multi
     def do_new_transfer(self):
         bom_obj = self.env['mrp.bom']
@@ -26,13 +51,13 @@ class StockPicking(models.Model):
                     ('active', '=', True)
                 ])
                 if bom.type == 'phantom':
-                    for bom_l in bom.bom_line_ids:
-                        qty = line.product_uom_qty * bom.product_qty *\
-                            bom_l.product_qty
-                        if bom_l.product_id.id in products.keys():
-                            products[bom_l.product_id.id] += qty
+                    bom_product = self.count_product_bom_panthom(bom)
+                    for bom_p in bom_product:
+                        qty = line.product_uom_qty * bom_product[bom_p]
+                        if bom_p in products.keys():
+                            products[bom_p] += qty
                         else:
-                            products[bom_l.product_id.id] = qty
+                            products[bom_p] = qty
                 else:
                     qty = line.product_uom_qty
                     if line.product_id.id in products.keys():
@@ -44,7 +69,7 @@ class StockPicking(models.Model):
                     products[move.product_id.id] -= move.product_uom_qty
                 else:
                     raise UserError(_('The BOM %s is not the same as when the \
-                        order was captured') % (bom.product_id.name_template))
+                        order was captured') % (move.product_id.name_template))
             backorder = pick.backorder_id
             while backorder:
                 for move in backorder.move_lines_related:
@@ -52,10 +77,11 @@ class StockPicking(models.Model):
                         products[move.product_id.id] -= move.product_uom_qty
                     else:
                         raise UserError(_('The BOM %s is not the same as when the \
-                            order was captured') % (bom.product_id.name_template))
+                            order was captured') % (
+                            move.product_id.name_template))
                 backorder = backorder.backorder_id
             for prod in products:
-                if products[prod] > 0:
+                if products[prod] != 0:
                     product = product_obj.browse([prod])
                     raise UserError(_('Missing %s %s') % (
                         products[prod], product.name))
