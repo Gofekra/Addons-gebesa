@@ -31,13 +31,36 @@
                         <h2>
                             Folio: <span t-field="o.name"/>
                         </h2>
-                        <h5>
-                            Observ: <span t-field="o.note"/>
-                        </h5>
-                        <h5>
-                            Type: <span t-field="o.type_adjustment_id"/>
-                        </h5>
-
+                        <table  class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Referencia</th>
+                                    <th>Orden de venta</th>
+                                    <th>Origen</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span t-field="o.group_id.name"/> </td>
+                                    <td><span t-field="o.sale_id.name" /> </td>
+                                    <td><span t-field="o.origin"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table  class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Observación</th>
+                                    <th>Tipo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span t-field="o.note"/> </td>
+                                    <td><span t-field="o.type_adjustment_id"/> </td>
+                                </tr>
+                            </tbody>
+                        </table>
                         <table class="table table-condensed">
                             <thead>
                                 <tr>
