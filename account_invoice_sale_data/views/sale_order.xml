@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
+        <!--
         <record model='ir.ui.view' id='view_order_form'>
             <field name='name'>view_order_shiptment_status_form</field>
             <field name='model'>sale.order</field>
@@ -10,8 +11,9 @@
                     <field name='geb_invoice_status' readonly="True"/>
                 </xpath>
             </field>
-        </record>
+        </record> -->
 <!-- OCULTAR EL ESTATUS DE FACTURACION EN LA VISTA DE ARBOL-->
+    <!--
     <record model="ir.ui.view" id="view_status_inovice_invisible">
         <field name="name">status.invoice.invisible</field>
         <field name="model">sale.order</field>
@@ -21,7 +23,7 @@
             <attribute name="invisible">True</attribute>
             </xpath>
         </field>
-    </record>
+    </record> -->
     
 </data>
 </openerp>
