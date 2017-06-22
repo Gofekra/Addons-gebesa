@@ -27,6 +27,12 @@ class SaleOrder(models.Model):
         string=_('Closing Reason'),
     )
 
+    cancel_mo = fields.Boolean(
+        string=_('Cancel MO'),
+        default=False,
+        copy=False,
+    )
+
     @api.multi
     def all_cancel(self):
         # move_obj = self.env['stock.move']
@@ -67,8 +73,8 @@ class SaleOrder(models.Model):
             if order.closing_reason is False:
                 raise UserError(_("You can't close this Order if you don't"
                                   " captured the Closing Reason field!"))
-
-        self.all_cancel()
+            if order.cancel_mo is True:
+                self.all_cancel()
         self.write({'state': 'closed'})
         return True
 
