@@ -30,6 +30,7 @@
         "views/product_product.xml",
         "views/product_tree.xml",
         "views/product_kanban.xml",
+        "views/product_kanban_view.xml",
         "security/ir.model.access.csv",
     ],
     "demo": [
