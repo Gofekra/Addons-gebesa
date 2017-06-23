@@ -17,12 +17,15 @@
     },
     "depends": [
         "base",
+        "stock",
         "stock_account",
         "stock_location_account_account",
         "stock_picking_move_id",
         "stock_picking_type",
+        "system_administrator",
     ],
     "data": [
+        # "views/stock_picking.xml",
     ],
     "demo": [
     ],
