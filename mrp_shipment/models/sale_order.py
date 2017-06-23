@@ -57,12 +57,20 @@ class SaleOrder(models.Model):
         for sale in self:
             ship_qty = 0
             pro_qty = 0
+            prev_status = sale.shiptment_status
             for line in sale.order_line:
                 ship_qty += line.quantity_shipped
                 pro_qty += line.product_uom_qty
             if ship_qty == 0:
                 sale.shiptment_status = 'no_shipment'
+                ship_status = 'No shipment'
             elif ship_qty == pro_qty:
                 sale.shiptment_status = 'total_shipment'
+                ship_status = 'Total shipment'
             else:
                 sale.shiptment_status = 'partial_shipment'
+                ship_status = 'Partial shipment'
+            if prev_status != sale.shiptment_status:
+                sale.message_post(body=_(
+                    "Shipment status <em>%s</em>.") % (
+                    ship_status))

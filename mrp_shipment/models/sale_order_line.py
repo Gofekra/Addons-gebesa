@@ -26,15 +26,15 @@ class SaleOrderLine(models.Model):
         string=_('Shipment'),
     )
 
-    @api.depends('shipment_line_ids.quantity_shipped')
+    @api.depends('shipment_line_ids', 'shipment_line_ids.quantity_shipped')
     def _quantity_shipped(self):
         for line in self:
-            domain = [('order_line_id', '=', line.id)]
+            # domain = [('order_line_id', '=', line.id)]
 
-            shipment_line = self.env['mrp.shipment.line'].search(domain)
+            # shipment_line = self.env['mrp.shipment.line'].search(domain)
             quantity_shipped = 0
 
-            for shipment in shipment_line:
+            for shipment in line.shipment_line_ids:
                 quantity_shipped += shipment.quantity_shipped
 
             line.quantity_shipped = quantity_shipped
