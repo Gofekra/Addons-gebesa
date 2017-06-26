@@ -25,7 +25,7 @@
         "system_administrator",
     ],
     "data": [
-        # "views/stock_picking.xml",
+        "views/stock_picking.xml",
     ],
     "demo": [
     ],
