@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model='ir.ui.view' id='manager_date_supplier_form'>
+            <field name='name'>manager.date.supplier.form</field>
+            <field name='model'>account.invoice</field>
+            <field name='inherit_id' ref='account.invoice_supplier_form'/>
+            <field name='arch' type='xml'>
+                <xpath expr="//group/group/field[@name='date_invoice']" position="replace">
+                    <field name="date_invoice" string="Bill Date" groups="global_privilege_button.group_manager_date_supplier" attrs="{'readonly':[('state','!=','draft')]}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>
