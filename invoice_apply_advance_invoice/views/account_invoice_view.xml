@@ -9,7 +9,7 @@
                 <xpath expr="//field[@name='comment']" position="before">
                     <group>
                         <group>
-                            <field name="advance_id" domain="[('prepayment_ok', '=', True), ('advance_applied', '=', False), ('state', '!=', 'draft')]"/>
+                            <field name="advance_id" domain="[('prepayment_ok', '=', True), ('partner_id','=', partner_id), ('advance_applied', '=', False), ('state', '!=', 'draft')]"/>
                             <field name="amount_advance" widget="monetary" readonly="1"/>
                         </group>
                     </group>
