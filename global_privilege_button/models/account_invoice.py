@@ -8,6 +8,5 @@ from openerp import fields, _, models
 class AccountInvoice(models.Model):
     _inherit = 'account.invoice'
 
-    date_invoice = fields.Date(string='Invoice Date', index=True,
-    	states={},
+    date_invoice = fields.Date(string=_('Invoice Date'), index=True, states={},
     	help="Keep empty to use the current date", copy=False)

@@ -73,6 +73,9 @@ class SaleOrder(models.Model):
             if order.closing_reason is False:
                 raise UserError(_("You can't close this Order if you don't"
                                   " captured the Closing Reason field!"))
+            if order.invoice_status == 'invoiced':
+                raise UserError(_("You can't close this Order if you already"
+                                  " in Billed Status!"))
             if order.cancel_mo is True:
                 self.all_cancel()
         self.write({'state': 'closed'})
