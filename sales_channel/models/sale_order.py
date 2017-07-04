@@ -20,8 +20,13 @@ class SaleOrder(models.Model):
                     inv.partner_id.parent_id.sales_channel_id
             else:
                 inv.sales_channel_id = inv.partner_id.sales_channel_id
+            if inv.partner_id.parent_id:
+                inv.payment_term_id = \
+                    inv.partner_id.parent_id.property_payment_term_id
+            else:
+                inv.payment_term_id = \
+                    inv.partner_id.property_payment_term_id
         return res
-
 
 class SaleAdvancePaymentInv(models.TransientModel):
     _inherit = "sale.advance.payment.inv"
@@ -36,4 +41,10 @@ class SaleAdvancePaymentInv(models.TransientModel):
                     inv.partner_id.parent_id.sales_channel_id
             else:
                 inv.sales_channel_id = inv.partner_id.sales_channel_id
+            if inv.partner_id.parent_id:
+                inv.payment_term_id = \
+                    inv.partner_id.parent_id.property_payment_term_id
+            else:
+                inv.payment_term_id = \
+                    inv.partner_id.property_payment_term_id
         return res

@@ -17,6 +17,10 @@ class AccountInvoice(models.Model):
     def _onchange_partner_id(self):
         super(AccountInvoice, self)._onchange_partner_id()
         sales_channel_id = False
+        payment_term_id = False
         if self.partner_id.sales_channel_id.id:
             sales_channel_id = self.partner_id.sales_channel_id.id
         self.sales_channel_id = sales_channel_id
+        if self.partner_id.property_payment_term_id.id:
+            payment_term_id = self.partner_id.property_payment_term_id.id
+        self.payment_term_id = payment_term_id
