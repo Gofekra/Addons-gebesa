@@ -63,11 +63,9 @@ class StockPicking(models.Model):
                 if move.product_uom_qty <= 0:
                     continue
 
-                if company_to and (location_from.usage not in (
-                        'internal', 'transit') and
-                        location_to.usage == 'internal' or
-                        company_from != company_to):
-                    ctx = self.context.copy()
+                if company_to and (move.location_dest_id.usage == 'internal' or
+                                   company_from != company_to):
+                    ctx = self._context.copy()
                     ctx['force_company'] = company_to.id
                     journal_id, acc_src, acc_dest, acc_valuation = \
                         quant_obj._get_accounting_data_for_valuation(move)
@@ -78,9 +76,7 @@ class StockPicking(models.Model):
                         self.picking_account_move_generate(
                             move, acc_src, acc_valuation, journal_id)
 
-                if company_from and (move.location_id.usage == 'internal' and
-                                     move.location_dest_id.usage not in (
-                                         'internal', 'transit') or
+                if company_from and (move.location_id.usage == 'internal' or
                                      company_from != company_to):
                     ctx = self._context.copy()
                     ctx['force_company'] = company_from.id
