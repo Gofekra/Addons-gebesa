@@ -173,6 +173,9 @@ class stock_quant(osv.osv):
             # + trace
 
         analytic_id = move.location_id.account_analytic_id.id or False
+        if not analytic_id:
+            analytic_id = move.location_dest_id.account_analytic_id.id or False
+
         # Cesar Barron 09 Ago 2016 ####
 
         credit_line_vals = {
@@ -188,7 +191,7 @@ class stock_quant(osv.osv):
             'debit': valuation_amount < 0 and -valuation_amount or 0,
             'account_id': credit_account_id,
         }
-        if move.location_id.usage == 'internal' and move.location_dest_id.usage == 'internal'  and move.location_id.stock_warehouse_id.id != move.location_dest_id.stock_warehouse_id.id:
+        if move.location_id.usage == 'internal' and move.location_dest_id.usage == 'internal' and move.location_id.stock_warehouse_id.id != move.location_dest_id.stock_warehouse_id.id:
             analytic_id = move.location_dest_id.account_analytic_id.id or False
 
         debit_line_vals = {
@@ -289,7 +292,8 @@ class stock_quant(osv.osv):
 
         #in case of routes making the link between several warehouse of the same company, the transit location belongs to this company, so we don't need to create accounting entries
         # Create Journal Entry for products arriving in the company
-        if company_to and (move.location_id.usage not in ('internal', 'transit') and move.location_dest_id.usage == 'internal' or company_from != company_to):
+        # if company_to and (move.location_id.usage not in ('internal', 'transit') and move.location_dest_id.usage == 'internal' or company_from != company_to):
+        if company_to and (move.location_dest_id.usage == 'internal' or company_from != company_to):
             ctx = context.copy()
             ctx['force_company'] = company_to.id
             journal_id, acc_src, acc_dest, acc_valuation = self._get_accounting_data_for_valuation(cr, uid, move, context=ctx)
@@ -300,7 +304,8 @@ class stock_quant(osv.osv):
                 self._create_account_move_line(cr, uid, quants, move, acc_src, acc_valuation, journal_id, context=ctx)
 
         # Create Journal Entry for products leaving the company
-        if company_from and (move.location_id.usage == 'internal' and move.location_dest_id.usage not in ('internal', 'transit') or company_from != company_to):
+        # if company_from and (move.location_id.usage == 'internal' and move.location_dest_id.usage not in ('internal', 'transit') or company_from != company_to):
+        if company_from and (move.location_id.usage == 'internal' or company_from != company_to):
             ctx = context.copy()
             ctx['force_company'] = company_from.id
             journal_id, acc_src, acc_dest, acc_valuation = self._get_accounting_data_for_valuation(cr, uid, move, context=ctx)
