@@ -19,4 +19,13 @@ class AccountInvoice(models.Model):
                 if warehouse not in employee.warehouse_ids:
                     raise ValidationError(_("You do not have privileges to validate \
                                           in this warehouse."))
+            for line in invoice.invoice_line_ids:
+                    if line.quantity == 0:
+                        raise ValidationError(_('Al menos una de las lineas de la \
+                                                Factura tiene Cantidad cero!'
+                                                '\n Por favor asegurese \
+                                                que todas las lineas tengan capturada la Cantidad.'))
+            if invoice.type == 'in_invoice' and not invoice.reference:
+                raise ValidationError(_("Usted no puede validar esta Factura sin \
+                                          el número de Referencia del Proveedor."))
         return super(AccountInvoice, self).invoice_validate()
