@@ -45,6 +45,8 @@ class stock_quant(osv.osv):
 
         if pick_type:
             if pick_type == 'incoming':
+                if move.location_id.usage == 'customer':
+                    acc_dest = move.location_id.account_id.id or False
                 acc_valuation = move.location_dest_id.account_id or False
             elif pick_type == 'outgoing':
                 acc_valuation = move.location_id.account_id or False
