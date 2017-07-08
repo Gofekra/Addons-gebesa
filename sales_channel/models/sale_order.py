@@ -28,6 +28,7 @@ class SaleOrder(models.Model):
                     inv.partner_id.property_payment_term_id
         return res
 
+
 class SaleAdvancePaymentInv(models.TransientModel):
     _inherit = "sale.advance.payment.inv"
 
