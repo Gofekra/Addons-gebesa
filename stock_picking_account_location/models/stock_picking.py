@@ -109,6 +109,16 @@ class StockPicking(models.Model):
                         quant_obj._get_accounting_data_for_valuation(move)
                     self.picking_account_move_generate(
                         move, acc_src, acc_dest, journal_id)
+
+                if move.location_id.usage == 'transit' and  \
+                        move.location_dest_id.usage == 'production':
+                    ctx = self._context.copy()
+                    ctx['force_company'] = move.company_id.id
+                    journal_id, acc_src, acc_dest, acc_valuation =  \
+                        quant_obj._get_accounting_data_for_valuation(move)
+                    self.picking_account_move_generate(
+                        move, acc_src, acc_dest, journal_id)
+
                 if move.acc_move_id:
                     move_ids.append(move.acc_move_id.id)
             if move_ids:
