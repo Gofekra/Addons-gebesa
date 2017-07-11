@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-12 16:45+0000\n"
-"PO-Revision-Date: 2017-05-12 16:45+0000\n"
+"POT-Creation-Date: 2017-07-11 14:32+0000\n"
+"PO-Revision-Date: 2017-07-11 14:32+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -39,6 +39,11 @@ msgid "Country"
 msgstr ""
 
 #. module: mrp_gebesa
+#: model:ir.model.fields,field_description:mrp_gebesa.field_mrp_bom_kilosBom
+msgid "Kilos"
+msgstr ""
+
+#. module: mrp_gebesa
 #: code:addons/mrp_gebesa/models/mrp_bom.py:49
 #: code:addons/mrp_gebesa/models/mrp_bom.py:101
 #, python-format
@@ -65,14 +70,14 @@ msgid "No Production"
 msgstr ""
 
 #. module: mrp_gebesa
-#: code:addons/mrp_gebesa/models/mrp.py:38
+#: code:addons/mrp_gebesa/models/mrp.py:39
 #: selection:mrp.production,transfer_status:0
 #, python-format
 msgid "Not transferred"
 msgstr ""
 
 #. module: mrp_gebesa
-#: code:addons/mrp_gebesa/models/mrp.py:176
+#: code:addons/mrp_gebesa/models/mrp.py:189
 #, python-format
 msgid "Only Administrator can cancel"
 msgstr ""
@@ -121,7 +126,7 @@ msgid "Sales Order"
 msgstr ""
 
 #. module: mrp_gebesa
-#: code:addons/mrp_gebesa/models/mrp.py:179
+#: code:addons/mrp_gebesa/models/mrp.py:192
 #, python-format
 msgid "Specify the reason for cancellation"
 msgstr ""
@@ -201,14 +206,20 @@ msgid "Trace"
 msgstr ""
 
 #. module: mrp_gebesa
-#: code:addons/mrp_gebesa/models/mrp.py:40
+#: code:addons/mrp_gebesa/models/mrp.py:47
+#, python-format
+msgid "Transfer"
+msgstr ""
+
+#. module: mrp_gebesa
+#: code:addons/mrp_gebesa/models/mrp.py:41
 #: model:ir.model.fields,field_description:mrp_gebesa.field_mrp_production_transfer_status
 #, python-format
 msgid "Transfer status"
 msgstr ""
 
 #. module: mrp_gebesa
-#: code:addons/mrp_gebesa/models/mrp.py:39
+#: code:addons/mrp_gebesa/models/mrp.py:40
 #: selection:mrp.production,transfer_status:0
 #, python-format
 msgid "Transferred"
@@ -229,6 +240,18 @@ msgstr ""
 #. module: mrp_gebesa
 #: model:ir.model.fields,help:mrp_gebesa.field_mrp_bom_website_message_ids
 msgid "Website communication history"
+msgstr ""
+
+#. module: mrp_gebesa
+#: code:addons/mrp_gebesa/models/mrp_bom.py:130
+#, python-format
+msgid "You can not add a product that                         has no BOM: %s"
+msgstr ""
+
+#. module: mrp_gebesa
+#: code:addons/mrp_gebesa/models/mrp_bom.py:133
+#, python-format
+msgid "You can not add a product with cost 0: %s"
 msgstr ""
 
 #. module: mrp_gebesa

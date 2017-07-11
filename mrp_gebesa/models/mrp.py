@@ -105,7 +105,6 @@ class MrpProduction(models.Model):
                 prod.transfer_status = 'transferred'
                 self.env.cr.execute("""UPDATE mrp_production SET state = 'transfer'
                                     WHERE id = %s """ % (prod.id))
-                # self._compute_update_transfer_status()
                 # if prod.transfer_status == 'transferred':
                 #    self.write({'state': 'transfer'})
 
