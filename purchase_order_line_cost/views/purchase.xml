@@ -42,7 +42,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='state']" position="after">
                     <!--<attribute name="attrs">{'invisible':1}</attribute>-->
-                    <field name="date_planned"/>
+                    <field name="date_planned" invisible="True"/>
                 </xpath>
                 <xpath expr="//field[@name='date_planned']" position="replace">
                       
