@@ -43,6 +43,8 @@ class StockPicking(models.Model):
                 continue
             if not pick.sale_id:
                 continue
+            if pick.sale_id.id in (1627, 1628, 1629):
+                continue
             products = {}
             for line in pick.sale_id.order_line:
                 product = line.product_id
@@ -69,7 +71,7 @@ class StockPicking(models.Model):
                     products[move.product_id.id] -= move.product_uom_qty
                 else:
                     raise UserError(_('The BOM %s is not the same as when the \
-                        order was captured') % (move.product_id.name_template))
+                        order was captured') % (move.product_id.default_code))
             backorder = pick.backorder_id
             while backorder:
                 for move in backorder.move_lines_related:
@@ -78,7 +80,7 @@ class StockPicking(models.Model):
                     else:
                         raise UserError(_('The BOM %s is not the same as when the \
                             order was captured') % (
-                            move.product_id.name_template))
+                            move.product_id.default_code))
                 backorder = backorder.backorder_id
             for prod in products:
                 if products[prod] != 0:
