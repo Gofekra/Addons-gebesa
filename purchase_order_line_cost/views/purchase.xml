@@ -35,5 +35,23 @@
                 </xpath>
             </field>
         </record>
+        <record id="view_procurement_tree_stock_inherit_gebesa" model="ir.ui.view">
+            <field name="name">procurement.order.tree.stock.inherit.gebesa</field>
+            <field name="model">procurement.order</field>
+            <field name="inherit_id" ref="procurement.procurement_tree_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='state']" position="after">
+                    <!--<attribute name="attrs">{'invisible':1}</attribute>-->
+                    <field name="date_planned"/>
+                </xpath>
+                <xpath expr="//field[@name='date_planned']" position="replace">
+                      
+                </xpath>
+                <xpath expr="//field[@name='location_id']" position="before">
+                    <field name="create_date"/>
+                    <field name="write_date"/>
+                </xpath>
+            </field>
+        </record>
     </data>
 </openerp>
