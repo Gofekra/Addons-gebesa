@@ -255,3 +255,9 @@ msgstr "is for Manufacturing, but has not a Production Route!"
 #: model:ir.model,name:mrp_gebesa.model_mrp_bom_line
 msgid "mrp.bom.line"
 msgstr "mrp.bom.line"
+
+#. module: mrp_gebesa
+#: code:addons/mrp_gebesa/models/mrp.py:47
+#, python-format
+msgid "Transfer"
+msgstr "Transferir"

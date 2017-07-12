@@ -82,6 +82,10 @@
                 <xpath expr="//notebook/page/group/group/field[@name='date_finished']" position="after">
                     <field name='cancellation_reason'/>
                 </xpath>
+                <!--LINEAS PARA EL STATUS -->
+                <xpath expr="//field[@name='state']" position="replace">
+                    <field name="state" widget="statusbar" statusbar_visible="transfer,draft,cancel,confirmed,ready,in_production,done"/>
+                </xpath>
             </field>
         </record>
 

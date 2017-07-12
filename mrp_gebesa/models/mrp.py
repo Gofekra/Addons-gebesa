@@ -43,6 +43,10 @@ class MrpProduction(models.Model):
         # store=True,
     )
 
+    state = fields.Selection(
+        selection_add=[('transfer', _('Transfer'))],
+    )
+
     @api.depends('move_prod_id')
     def _compute_picking_move_prod_id(self):
         for prod in self:
@@ -99,6 +103,10 @@ class MrpProduction(models.Model):
             pick = prod.picking_move_prod_id
             if pick and pick.state == 'done':
                 prod.transfer_status = 'transferred'
+                self.env.cr.execute("""UPDATE mrp_production SET state = 'transfer'
+                                    WHERE id = %s """ % (prod.id))
+                # if prod.transfer_status == 'transferred':
+                #    self.write({'state': 'transfer'})
 
     def _make_consume_line_from_data(
             self, cr, uid, production, product,
