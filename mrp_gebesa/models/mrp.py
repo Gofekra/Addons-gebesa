@@ -44,7 +44,7 @@ class MrpProduction(models.Model):
     )
 
     state = fields.Selection(
-        selection_add=[('transfer', _('Transfer'))],
+        selection_add=[('transfer', _('Transferir'))],
     )
 
     @api.depends('move_prod_id')
@@ -103,7 +103,8 @@ class MrpProduction(models.Model):
             pick = prod.picking_move_prod_id
             if pick and pick.state == 'done':
                 prod.transfer_status = 'transferred'
-                self.env.cr.execute("""UPDATE mrp_production SET state = 'transfer'
+                if prod.state != 'transfer':
+                    self.env.cr.execute("""UPDATE mrp_production SET state = 'transfer'
                                     WHERE id = %s """ % (prod.id))
                 # if prod.transfer_status == 'transferred':
                 #    self.write({'state': 'transfer'})
