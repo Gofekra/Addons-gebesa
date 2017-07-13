@@ -94,6 +94,21 @@
             <field name="model">mrp.production</field>
             <field name="inherit_id" ref="mrp.mrp_production_tree_view"/>
             <field name="arch" type="xml">
+                <xpath expr="//tree" position="replace">
+                    <tree decoration-bf="message_needaction==True" decoration-info="state in ('draft','confirmed')" decoration-danger="date_planned&lt;current_date and state not in ('done','cancel','transfer')" decoration-muted="state in ('done','cancel')" decoration-success="state in ('transfer')" string="Manufacturing Orders">
+                         <field name="message_needaction" invisible="1"/>
+                         <field name="name"/>
+                         <field name="date_planned"/>
+                         <field name="product_id"/>
+                         <field name="product_qty" sum="Total Qty"/>
+                         <field name="product_uom" options="{'no_open':True,'no_create':True}" groups="product.group_uom"/>
+                         <field name="routing_id" groups="mrp.group_mrp_routings"/>
+                         <field name="hour_total" sum="Total Hours"/>
+                         <field name="cycle_total" sum="Total Cycles"/>
+                         <field name="origin"/>
+                         <field name="state"/>
+                         </tree>
+                </xpath>
                 <xpath expr="//field[@name='date_planned']" position="before">
                     <field name="location_dest_id"/>
                     <field name='transfer_status'/>
