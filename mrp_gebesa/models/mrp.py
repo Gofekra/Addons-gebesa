@@ -44,7 +44,7 @@ class MrpProduction(models.Model):
     )
 
     state = fields.Selection(
-        selection_add=[('transfer', _('Transferir'))],
+        selection_add=[('transfer', _('Traspasado'))],
     )
 
     @api.depends('move_prod_id')
