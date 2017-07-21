@@ -69,18 +69,18 @@ class StockPicking(models.Model):
             for move in pick.move_lines_related:
                 if move.product_id.id in products.keys():
                     products[move.product_id.id] -= move.product_uom_qty
-                else:
-                    raise UserError(_('The BOM %s is not the same as when the \
-                        order was captured') % (move.product_id.default_code))
+                # else:
+                #    raise UserError(_('The BOM %s is not the same as when the \
+                #        order was captured') % (move.product_id.default_code))
             backorder = pick.backorder_id
             while backorder:
                 for move in backorder.move_lines_related:
                     if move.product_id.id in products.keys():
                         products[move.product_id.id] -= move.product_uom_qty
-                    else:
-                        raise UserError(_('The BOM %s is not the same as when the \
-                            order was captured') % (
-                            move.product_id.default_code))
+                    # else:
+                    #    raise UserError(_('The BOM %s is not the same as when the \
+                    #        order was captured') % (
+                    #        move.product_id.default_code))
                 backorder = backorder.backorder_id
             for prod in products:
                 if products[prod] != 0:
