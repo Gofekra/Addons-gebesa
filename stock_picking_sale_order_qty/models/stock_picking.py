@@ -53,13 +53,14 @@ class StockPicking(models.Model):
                     ('active', '=', True)
                 ])
                 if bom.type == 'phantom':
-                    bom_product = self.count_product_bom_panthom(bom)
-                    for bom_p in bom_product:
-                        qty = line.product_uom_qty * bom_product[bom_p]
-                        if bom_p in products.keys():
-                            products[bom_p] += qty
-                        else:
-                            products[bom_p] = qty
+                    continue
+                    # bom_product = self.count_product_bom_panthom(bom)
+                    # for bom_p in bom_product:
+                    #    qty = line.product_uom_qty * bom_product[bom_p]
+                    #    if bom_p in products.keys():
+                    #        products[bom_p] += qty
+                    #    else:
+                    #        products[bom_p] = qty
                 else:
                     qty = line.product_uom_qty
                     if line.product_id.id in products.keys():
