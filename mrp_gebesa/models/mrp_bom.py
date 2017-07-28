@@ -119,24 +119,91 @@ class MrpBomLine(models.Model):
     def create(self, values):
         bom_obj = self.env['mrp.bom']
         product_obj = self.env['product.product']
+        location_obj = self.env['stock.location']
+        # warehouse_obj = self.env['stock.warehouse']
         if 'bom_id' in values.keys():
             bom = bom_obj.browse([values['bom_id']])
             product = product_obj.browse([values['product_id']])
+            location = location_obj.browse([values['location_id']])
+            # buscamos BoM del articulo (detalle) a agregar
+            product_bom = bom_obj.search([
+                ('product_id', '=', values['product_id'])])
             if bom.type == 'phantom':
-                product_bom = bom_obj.search([
-                    ('product_id', '=', values['product_id'])])
-            # Comentariado temporalmente para subir detalles restantes
+                # No se pueden agregar productos sin detalle a los Kits
                 if not product_bom:
                     raise UserError(_('You can not add a product that \
                         has no BOM: %s') % (product.name,))
-            if product.standard_price == 0:
+            else:
+                if location.type_stock_loc == 'fp':
+                    raise UserError(_('You can not add a PT detail if this is not a Kit: %s')
+                                    % (product.name,))
+            if product.standard_price == 0.000000:
                 raise UserError(_('You can not add a product with cost 0: %s')
                                 % (product.name,))
+            if location.type_stock_loc == 'rm' and product_bom and product_bom.warehouse_id.id == bom.warehouse_id.id:
+                raise UserError(_('You can not add a MP detail with this product, it is made in this warehouse: %s')
+                                % (product.name,))
+            if location.type_stock_loc == 'wip' and (not product_bom or product_bom.warehouse_id.id != bom.warehouse_id.id):
+                raise UserError(_('You can not add a product without BoM in this location: %s')
+                                % (product.name,))
+
+            if product.id == bom.product_id.id:
+                raise UserError(_('One product cannot be detail of itself'))
+            for line in bom.bom_line_ids:
+                if line.product_id.id == product.id:
+                    raise UserError(_('This product is already in this Bom'))
         return super(MrpBomLine, self).create(values)
 
-    # temporary
     @api.multi
     def write(self, values):
-        if 'bom_id' in values.keys() and self._uid in (1, 37, 38, 86, 107):
-            return
+        # if 'bom_id' in values.keys() and self._uid in (1, 37, 38, 86, 107):
+        #     return
+        bom_obj = self.env['mrp.bom']
+        product_obj = self.env['product.product']
+        location_obj = self.env['stock.location']
+
+        if 'product_id' or 'location_id' in values.keys():
+            if 'product_id' in values.keys():
+                product = product_obj.browse([values['product_id']])
+            else:
+                product = product_obj.browse([self.product_id.id])
+
+            if 'location_id' in values.keys():
+                location = location_obj.browse([values['location_id']])
+            else:
+                location = location_obj.browse([self.location_id.id])
+
+            if 'bom_id' in values.keys():
+                bom = bom_obj.browse([values['bom_id']])
+            else:
+                bom = bom_obj.browse([self.bom_id.id])
+
+            product_bom = bom_obj.search([
+                ('product_id', '=', product.id)])
+            if bom.type == 'phantom':
+                # No se pueden agregar productos sin detalle a los Kits
+                if not product_bom:
+                    raise UserError(_('You can not add a product that \
+                        has no BOM: %s') % (product.name,))
+            else:
+                if location.type_stock_loc == 'fp':
+                    raise UserError(_('You can not add a PT detail if this is not a Kit: %s')
+                                    % (product.name,))
+            if product.standard_price == 0.000000:
+                raise UserError(_('You can not add a product with cost 0: %s')
+                                % (product.name,))
+            if location.type_stock_loc == 'rm' and product_bom and product_bom.warehouse_id.id == bom.warehouse_id.id:
+                raise UserError(_('You can not add a MP detail with this product, it is made in this warehouse: %s')
+                                % (product.name,))
+            if location.type_stock_loc == 'wip' and (not product_bom or product_bom.warehouse_id.id != bom.warehouse_id.id):
+                raise UserError(_('You can not add a product without BoM in this location: %s')
+                                % (product.name,))
+
+            if product.id == bom.product_id.id:
+                raise UserError(_('One product cannot be detail of itself'))
+
+            for line in bom.bom_line_ids:
+                if line.product_id.id == product.id and line.id != self.id:
+                    raise UserError(_('This product is already in this Bom'))
+
         return super(MrpBomLine, self).write(values)
