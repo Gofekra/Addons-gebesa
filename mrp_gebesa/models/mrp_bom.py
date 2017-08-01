@@ -179,7 +179,8 @@ class MrpBomLine(models.Model):
                 bom = bom_obj.browse([self.bom_id.id])
 
             product_bom = bom_obj.search([
-                ('product_id', '=', product.id)])
+                ('product_id', '=', product.id),
+                ('active', '=', True)], limit=1)
             if bom.type == 'phantom':
                 # No se pueden agregar productos sin detalle a los Kits
                 if not product_bom:
