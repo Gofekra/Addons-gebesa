@@ -58,6 +58,7 @@
                             <group>
                                 <field name="date"/>
                                 <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+                                <field name="express" groups="mrp_segment.group_express_mrp_segment"/>
                             </group>
                         </group>
                         <notebook attrs="{'invisible':[('state','=','draft')]}">
