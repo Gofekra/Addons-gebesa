@@ -28,6 +28,7 @@
         "purchase",
     ],
     "data": [
+        'security/security.xml',
         "data/ir_sequence.xml",
         'wizards/mrp_production_segment.xml',
         "wizards/mrp_segment_add_production.xml",

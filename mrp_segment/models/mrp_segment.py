@@ -93,6 +93,10 @@ class MrpSegment(models.Model):
         string='Scheduled goods',
     )
 
+    express = fields.Boolean(
+        string='Expres'
+    )
+
     @api.depends('line_ids.mrp_production_id')
     def _compute_product_lines_ids(self):
         product_lines = []
