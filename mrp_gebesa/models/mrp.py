@@ -96,18 +96,28 @@ class MrpProduction(models.Model):
                             sm4 = sm3.move_dest_id
                             production.trace += ', ' + sm4.picking_id.name
 
-    @api.depends('state', 'picking_move_prod_id', 'picking_move_prod_id.state')
+    @api.depends('state', 'move_created_ids2',
+                 'move_created_ids2.move_dest_id',
+                 'move_created_ids2.move_dest_id.state')
     def _compute_transfer_status(self):
         for prod in self:
+            transfer = True
             prod.transfer_status = 'not_transferred'
-            pick = prod.picking_move_prod_id
-            if pick and pick.state == 'done':
+            if prod.move_created_ids:
+                transfer = False
+                continue
+            for move in prod.move_created_ids2:
+                if move.state != 'done':
+                    transfer = False
+                    continue
+                if move.move_dest_id.state != 'done':
+                    transfer = False
+                    continue
+            if transfer:
                 prod.transfer_status = 'transferred'
-                if prod.state != 'transfer' and prod.state == 'done':
+                if prod.state == 'done':
                     self.env.cr.execute("""UPDATE mrp_production SET state = 'transfer'
-                                    WHERE id = %s """ % (prod.id))
-                # if prod.transfer_status == 'transferred':
-                #    self.write({'state': 'transfer'})
+                                        WHERE id = %s """ % (prod.id))
 
     def _make_consume_line_from_data(
             self, cr, uid, production, product,
