@@ -25,6 +25,11 @@ class ProductTemplate(models.Model):
             raise UserError(_('Error!\nYou do not have privileges to Modify'
                               ' Product(s).\nCheck with your'
                               ' System Administrator.'))
+        if 'active' in vals.keys():
+            if vals.get('active') is False and self.qty_available != 0:
+                raise UserError(_('Error!\nNo puede Inactivar un Producto con'
+                                  ' existencia en el Sistema.'))
+
         return super(ProductTemplate, self).write(vals)
 
     @api.multi
