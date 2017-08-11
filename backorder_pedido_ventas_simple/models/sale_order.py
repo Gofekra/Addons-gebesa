@@ -12,7 +12,8 @@ class SaleOrder(models.Model):
 
     week_number = fields.Integer(
         'Numero de la semana',
-        compute="_compute_week_number"
+        compute="_compute_week_number",
+        store=True,  # STORE DEL NUMERO DE SEMANA
     )
 
     coint = fields.Char(
@@ -42,6 +43,7 @@ class SaleOrder(models.Model):
     net_sale_rate_mex = fields.Float(
         'Vta Neta MXN',
         compute="_compute_total_rate_",
+        store=True,  #CAMPO DEL NET SALE MEX
     )
 
     amount_pending_mex = fields.Float(
