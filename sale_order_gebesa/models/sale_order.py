@@ -269,6 +269,8 @@ class SaleOrder(models.Model):
         invoice_vals['executive'] = self.executive
         invoice_vals['manufacture'] = self.manufacture
 
+        return invoice_vals
+
     @api.multi
     def action_done(self):
         super(SaleOrder, self).action_done()
