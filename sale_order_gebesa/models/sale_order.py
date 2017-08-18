@@ -274,4 +274,5 @@ class SaleOrder(models.Model):
     @api.multi
     def action_done(self):
         super(SaleOrder, self).action_done()
-        self.force_quotation_send()
+        # commented temporary til implementatio of CRM
+        #self.force_quotation_send()
