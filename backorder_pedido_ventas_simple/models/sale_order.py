@@ -95,24 +95,27 @@ class SaleOrder(models.Model):
             sale.net_sale_rate_mex = net_sale * rate
             sale.amount_pending_mex = pending * rate
 
+    @api.multi
     @api.depends('date_order')
     def _compute_week_number(self):
+        # import pdb; pdb.set_trace()
         for sale in self:
-         #   campo1 = '02/02/2016 05:00:00',
-            campo=str(sale.date_order)
-            #en este paso la cadena campo se cortan los espacios
-            #por lo que se crea un arreglo de dos cadenas
-            #quedando asi-->campo= '02/02/201605:00:00'            
-            arreglo= campo.split(" ");
-            #se toma como referencia la cadena de la primera posicion
-            #es este paso se cortan los / de la cadena.
-            #quedando asi -->arreglo2='02022016' 
-            arreglo2=arreglo[0].split("/");
-            #ahora solo se unen por medio de guiones y se guarda en una cadena alterna 
-            cadena_n=("-").join(arreglo2);
+            #  campo1 = '02/02/2016 05:00:00'
+            campo = str(sale.date_order)
+            # en este paso la cadena campo se cortan los espacios
+            # por lo que se crea un arreglo de dos cadenas
+            # quedando asi-->campo= '02/02/201605:00:00'
+            arreglo = campo.split(" ")
+            # se toma como referencia la cadena de la primera posicion
+            # es este paso se cortan los / de la cadena.
+            # quedando asi -->arreglo2='02022016'
+            arreglo2 = arreglo[0].split("/")
+            # ahora solo se unen por medio de guiones y se guarda en una cadena alterna
+            cadena_n = ("-").join(arreglo2)
 
-            sale.week_number = int(datetime.datetime.strptime(
-                cadena_n, '%Y-%m-%d').strftime('%W'))
+            week_number = int(datetime.datetime.strptime(cadena_n, '%Y-%m-%d').strftime('%W'))
+            # sale.write({'week_number': week_number})
+            sale.week_number = week_number
 
 
-#datetime.datetime.strptime('28-09-2014', '%d-%m-%Y').strftime('El dia es: %W')
+# datetime.datetime.strptime('28-09-2014', '%d-%m-%Y').strftime('El dia es: %W')
