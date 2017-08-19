@@ -15,9 +15,9 @@ class StockBatchPicking(models.Model):
     _inherit = ['stock.batch.picking', 'message.post.show.all']
 
 
-class StockWarehouse(models.Model):
-    _name = 'stock.warehouse'
-    _inherit = ['stock.warehouse', 'message.post.show.all']
+# class StockWarehouse(models.Model):
+#     _name = 'stock.warehouse'
+#     _inherit = ['stock.warehouse', 'message.post.show.all']
 
 
 class StockLocation(models.Model):
