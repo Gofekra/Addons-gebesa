@@ -13,7 +13,7 @@ class SaleOrder(models.Model):
     week_number = fields.Integer(
         'Numero de la semana',
         compute="_compute_week_number",
-        store=True,  # STORE DEL NUMERO DE SEMANA
+        # store=True,  # STORE DEL NUMERO DE SEMANA
     )
 
     coint = fields.Char(
