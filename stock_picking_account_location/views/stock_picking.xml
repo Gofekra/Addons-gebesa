@@ -9,6 +9,9 @@
                 <xpath expr="//button[@name='do_new_transfer']" position="after">
                     <button name="picking_prepare_account_move" string="Create accounting entry" type="object" groups="system_administrator.group_system_administrator_gebesa"/>
                 </xpath>
+                <xpath expr="//notebook/page/field[@name='move_lines']" position="attributes">
+                    <attribute name="attrs">{'invisible': [('state', 'not in', ('draft', 'confirmed', 'waiting', 'done'))]}</attribute>
+                </xpath>
             </field>
         </record>
     </data>
