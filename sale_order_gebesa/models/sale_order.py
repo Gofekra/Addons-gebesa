@@ -226,10 +226,10 @@ class SaleOrder(models.Model):
             # [('state', '=', 'draft')])
             dife = 0.0
             dife = order.amount_total - order.total_nste
-
-            if abs(dife) > 0.6000:
-                raise UserError(
-                    _('The amount are differents:\nAnalytic Account'))
+            if order.total_nste > 0.0000000:
+                if abs(dife) > 0.6000:
+                    raise UserError(
+                        _('The amount are differents:\nAnalytic Account'))
 
             for line in order.order_line:
                 if line.product_id:
