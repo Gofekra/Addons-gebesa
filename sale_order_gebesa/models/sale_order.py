@@ -275,4 +275,4 @@ class SaleOrder(models.Model):
     def action_done(self):
         super(SaleOrder, self).action_done()
         # commented temporary til implementatio of CRM
-        #self.force_quotation_send()
+        self.force_quotation_send()
