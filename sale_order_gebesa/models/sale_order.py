@@ -112,6 +112,7 @@ class SaleOrder(models.Model):
 
     approve = fields.Selection(
         [('approved', _('Approved')),
+         ('suggested', _('Suggested for Approval')),
          ('not_approved', _('Not Approved'))],
         default='not_approved',
         string=_('Approve Status'),
@@ -262,6 +263,14 @@ class SaleOrder(models.Model):
             if order.approve == 'approved':
                 raise UserError(_('This Sale Order is already approved'))
         self.write({'approve': 'approved'})
+        return True
+
+    @api.multi
+    def suggested_action(self):
+        for order in self:
+            if order.approve == 'suggested':
+                raise UserError(_('This Sale Order is already Suggested for Approval'))
+        self.write({'approve': 'suggested'})
         return True
 
     @api.multi
