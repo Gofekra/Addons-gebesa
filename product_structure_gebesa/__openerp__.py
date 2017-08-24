@@ -22,6 +22,8 @@
         "purchase",
     ],
     "data": [
+        "security/ir.model.access.csv",
+        "security/security.xml",
         "views/product_family.xml",
         "views/product_group.xml",
         "views/product_line.xml",
@@ -31,7 +33,6 @@
         "views/product_tree.xml",
         "views/product_kanban.xml",
         "views/product_kanban_view.xml",
-        "security/ir.model.access.csv",
     ],
     "demo": [
     ],
