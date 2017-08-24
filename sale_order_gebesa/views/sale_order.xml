@@ -9,11 +9,14 @@
         	<field name='inherit_id' ref="sale.view_order_form"/>
         	<field name='arch' type='xml'>
                 <xpath expr="//button[@name='action_confirm'][2]" position="attributes">
-                    <attribute name="attrs">{'invisible':['|', ('approve','=','not_approved')]}</attribute>
+                    <attribute name="attrs">{'invisible':['|', ('approve','in',('not_approved','suggested'))]}</attribute>
                 </xpath>
                 <xpath expr="//field[@name='state']" position="before">
                     <button name="approve_action" states="draft" type="object" string="Approve"
-                        attrs="{'invisible':['|', ('approve', '=', 'approved')]}" groups="sale_order_gebesa.group_approve_button"/>
+                        attrs="{'invisible':['|', ('approve', 'in', ('approved','not_approved'))]}" groups="sale_order_gebesa.group_approve_button"/>
+                    <button name="suggested_action" states="draft" type="object" 
+                        string="Suggest Approval"
+                        attrs="{'invisible':['|', ('approve', 'in', ('approved','suggested'))]}" groups="sale_order_gebesa.group_suggested_button"/>
                 </xpath>
                 <!--Para poner los campos de flete y instalacion ademas cliente order-->
                 <xpath expr="//notebook/page/group/group/field[@name='client_order_ref']" position="replace">
@@ -62,7 +65,7 @@
                     </group>
                 </xpath>
                 <xpath expr="//field[@name='notify_approval']" position="after">
-                    <field name='approve'/>
+                    <field name='approve' readonly='1'/>
                 </xpath>
                 <xpath expr="//notebook/page/field[@name='order_line']/form/div" position="attributes">
                     <attribute name="invisible">True</attribute>
