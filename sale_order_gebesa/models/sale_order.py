@@ -167,7 +167,6 @@ class SaleOrder(models.Model):
             currency = order.company_id.currency_id
             for line in order.order_line:
                 product = line.product_id
-                import pdb; pdb.set_trace()
                 if product.quotation_product:
                     raise UserError(_('The Product contains Quotation'))
                 standard_cost = product.standard_price or 0.0
