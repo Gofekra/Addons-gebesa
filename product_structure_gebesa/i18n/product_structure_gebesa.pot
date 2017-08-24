@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-26 23:42+0000\n"
-"PO-Revision-Date: 2017-04-26 23:42+0000\n"
+"POT-Creation-Date: 2017-08-24 14:15+0000\n"
+"PO-Revision-Date: 2017-08-24 14:15+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -33,6 +33,17 @@ msgstr ""
 #: model:ir.model.fields,field_description:product_structure_gebesa.field_product_line_code
 #, python-format
 msgid "Code"
+msgstr ""
+
+#. module: product_structure_gebesa
+#: model:ir.ui.view,arch_db:product_structure_gebesa.product_normal_cost_tree_view
+msgid "Costo Producto"
+msgstr ""
+
+#. module: product_structure_gebesa
+#: model:ir.ui.view,arch_db:product_structure_gebesa.product_kanban_view_complete_cost
+#: model:ir.ui.view,arch_db:product_structure_gebesa.product_normal_cost_kanban_view
+msgid "Costo:"
 msgstr ""
 
 #. module: product_structure_gebesa
@@ -251,6 +262,15 @@ msgstr ""
 #. module: product_structure_gebesa
 #: model:ir.ui.menu,name:product_structure_gebesa.product_strucutre_gebesa_menu
 msgid "Product structure gebesa"
+msgstr ""
+
+#. module: product_structure_gebesa
+#: code:addons/product_structure_gebesa/models/product_product.py:22
+#: model:ir.model.fields,field_description:product_structure_gebesa.field_product_product_quotation_product
+#: model:ir.ui.view,arch_db:product_structure_gebesa.product_normal_form_view
+#: model:res.groups,name:product_structure_gebesa.group_quotation_product
+#, python-format
+msgid "Quotation Product"
 msgstr ""
 
 #. module: product_structure_gebesa

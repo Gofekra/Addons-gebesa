@@ -12,6 +12,13 @@
                         <field name='individual_name' readonly="1"/>
                     </div>
                 </xpath>
+                <field name="type" position="before">
+                    <field name="quotation_product" string="Quotation Product" groups="product_structure_gebesa.group_quotation_product"/>
+                </field>
+                <!--
+                <xpath expr="//notebook/page/group/field[@name='type']" position="before">
+                    <field name="quotation_product" string="Quotation Product" groups="product_structure_gebesa.group_quotation_product"/>
+                </xpath> -->
             </field>
         </record>
     </data>

@@ -167,6 +167,8 @@ class SaleOrder(models.Model):
             currency = order.company_id.currency_id
             for line in order.order_line:
                 product = line.product_id
+                if product.quotation_product:
+                    raise UserError(_('The Product contains Quotation'))
                 standard_cost = product.standard_price or 0.0
                 # standard_cost = currency.compute(
                 #    standard_cost, order.pricelist_id.currency_id) or 0.0

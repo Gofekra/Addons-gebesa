@@ -15,7 +15,11 @@ class ProductProduct(models.Model):
     name_template = fields.Char(
         string=_('Template Name'),
         store=True,
-        compute='compute_name_template'
+        compute='compute_name_template',
+    )
+
+    quotation_product = fields.Boolean(
+        string=_('Quotation Product'),
     )
 
     @api.depends('product_tmpl_id.name', 'individual_name')
