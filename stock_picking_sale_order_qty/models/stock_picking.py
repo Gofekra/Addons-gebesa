@@ -43,7 +43,7 @@ class StockPicking(models.Model):
                 continue
             if not pick.sale_id:
                 continue
-            if pick.sale_id.id in (1627, 1628, 1629, 2770, 859, 3140):
+            if pick.sale_id.id in (1627, 1628, 1629, 2770, 859, 3140, 3342):
                 continue
             products = {}
             for line in pick.sale_id.order_line:
