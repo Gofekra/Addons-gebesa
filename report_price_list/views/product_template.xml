@@ -22,11 +22,11 @@
                         </group>      
                         <group>
                             <group>
-                                <field name='weight'/>
+                                <!--field name='weight'/-->
                                 <field name='product_mix_id'/>
                             </group>
                             <group>
-                                <field name='volume'/>
+                                <!--field name='volume'/-->
                                 <field name='vias'/>
                             </group>
                         </group>
