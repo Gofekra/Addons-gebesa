@@ -8,7 +8,7 @@ from openerp import _, fields, models
 class ProductProduct(models.Model):
     _inherit = 'product.product'
 
-    is_line = fields.Boolean(
-        string=_('Is Line'),
-        help=_('Indicates whether the Product is line'),
-    )
+    # is_line = fields.Boolean(
+    #     string=_('Is Line'),
+    #     help=_('Indicates whether the Product is line'),
+    # )
