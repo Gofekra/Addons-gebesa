@@ -263,7 +263,7 @@ class SaleOrder(models.Model):
                 raise UserError(_('This Sale Order is already approved'))
         self.write({'approve': 'approved'})
 
-        # resws = super(SaleOrder, self)._product_data_validation()
+        resws = super(SaleOrder, self)._product_data_validation()
 
         return True
 
