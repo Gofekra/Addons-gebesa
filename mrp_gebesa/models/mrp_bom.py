@@ -26,6 +26,7 @@ class MrpBom(models.Model):
     def write(self, values):
         # te traes el producto anterior
         # val = self.product_tmpl_id
+        template = self.env['product.template']
         if 'type' in values.keys():
             types = values['type']
         else:
@@ -44,9 +45,13 @@ class MrpBom(models.Model):
             if ware.id != routing.location_id.stock_warehouse_id.id:
                 raise UserError(_('The production route must'
                                   ' be in the same warehouse than the bom'))
+            if self.product_tmpl_id:
+                    self.product_tmpl_id.invoice_policy = 'delivery'
         if types == 'phantom':
             if routing.id != 0:
                 raise UserError(_('Kit products should not have route production'))
+            if self.product_tmpl_id:
+                    self.product_tmpl_id.invoice_policy = 'order'
 
         if 'product_tmpl_id' in values.keys():
             # te traes el objeto vacio
