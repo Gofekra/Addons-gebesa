@@ -293,5 +293,18 @@ class SaleOrder(models.Model):
     @api.multi
     def action_done(self):
         super(SaleOrder, self).action_done()
+
         # commented temporary til implementatio of CRM
         self.force_quotation_send()
+
+    @api.multi
+    def force_quotation_send(self):
+        for order in self:
+            email_act = order.action_quotation_send()
+            if email_act and email_act.get('context'):
+                email_ctx = email_act['context']
+                notify = order.notify_approval
+                email_ctx.update(default_email_to=notify)
+                email_ctx.update(default_email_from=order.company_id.email)
+                order.with_context(email_ctx).message_post_with_template(email_ctx.get('default_template_id'))
+        return True
