@@ -263,7 +263,7 @@ class SaleOrder(models.Model):
                 raise UserError(_('This Sale Order is already approved'))
         self.write({'approve': 'approved'})
 
-        resws = super(SaleOrder, self)._product_data_validation()
+        # resws = super(SaleOrder, self)._product_data_validation()
 
         return True
 
@@ -272,7 +272,12 @@ class SaleOrder(models.Model):
         for order in self:
             if order.approve == 'suggested':
                 raise UserError(_('This Sale Order is already Suggested for Approval'))
+            if not order.order_line:
+                raise UserError(_('This Sale Order not has Products Captured'))
         self.write({'approve': 'suggested'})
+
+        resws = super(SaleOrder, self)._product_data_validation()
+
         return True
 
     @api.multi

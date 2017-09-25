@@ -422,6 +422,12 @@ msgid "This Sale Order is already Suggested for Approval"
 msgstr "Esta Orden de Venta ya está Sugerida para la Aprobación"
 
 #. module: sale_order_gebesa
+#: code:addons/sale_order_gebesa/models/sale_order.py:276
+#, python-format
+msgid "This Sale Order not has Products Captured"
+msgstr "Esta Orden de Venta no tiene Productos Capturados"
+
+#. module: sale_order_gebesa
 #: code:addons/sale_order_gebesa/models/sale_order.py:263
 #, python-format
 msgid "This Sale Order is already approved"
