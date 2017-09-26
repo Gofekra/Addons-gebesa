@@ -276,7 +276,7 @@ class SaleOrder(models.Model):
                 raise UserError(_('This Sale Order is already Suggested for Approval'))
             if not order.order_line:
                 raise UserError(_('This Sale Order not has Products Captured'))
-             if not order.client_order_ref:
+            if not order.client_order_ref:
                 raise UserError(_('This Sale Order not has OC captured'))
         self.write({'approve': 'suggested'})
 
