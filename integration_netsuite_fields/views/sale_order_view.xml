@@ -7,7 +7,7 @@
         	<field name='inherit_id' ref="sale.view_order_form"/>
         	<field name='arch' type='xml'>
                 <xpath expr="//field[@name='payment_term_id']" position="before">
-                    <field name="date_netsuite"/>
+                    <field name="date_netsuite" invisible="True"/>
                 </xpath>
                 <xpath expr="//field[@name='total_installation']" position="after">
                     <field name="total_nste" readonly="1"/>
