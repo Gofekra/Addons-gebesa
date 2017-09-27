@@ -10,6 +10,7 @@ class ProductTemplate(models.Model):
 
     is_line = fields.Boolean(
         string=_('Line Product'),
+        copy=False,
         default=False,
     )
 
@@ -25,6 +26,7 @@ class ProductTemplate(models.Model):
 
     line_id = fields.Many2one(
         'product.line',
+        copy=False,
         string=_('Line'),
     )
 
