@@ -169,6 +169,10 @@ class stock_quant(osv.osv):
             # + " " + trace or False
             name = move.name + \
                 ' [' + move.product_id.default_code + '] ' + move.product_id.name
+        elif move.inventory_id:
+            reference = move.inventory_id.name
+            name = move.name + \
+                ' [' + move.product_id.default_code + '] ' + move.product_id.name
         else:
             reference = "W/O Reference "
             name = move.product_id.name
