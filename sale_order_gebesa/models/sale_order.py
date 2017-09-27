@@ -159,6 +159,8 @@ class SaleOrder(models.Model):
             if not order.project_id:
                 raise UserError(
                     _('The following field is not invalid:\nAnalytic Account'))
+            if not order.client_order_ref:
+                raise UserError(_('This Sale Order not has OC captured'))
             global_cost = 0.0
             global_net_sale = 0.0
             global_freight = 0.0
@@ -274,6 +276,8 @@ class SaleOrder(models.Model):
                 raise UserError(_('This Sale Order is already Suggested for Approval'))
             if not order.order_line:
                 raise UserError(_('This Sale Order not has Products Captured'))
+            if not order.client_order_ref:
+                raise UserError(_('This Sale Order not has OC captured'))
         self.write({'approve': 'suggested'})
 
         resws = super(SaleOrder, self)._product_data_validation()
