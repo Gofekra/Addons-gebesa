@@ -38,6 +38,11 @@ msgid "Close Sale Order"
 msgstr "Cerrar Orden de Venta"
 
 #. module: sale_order_state_change
+#: model:res.groups,name:sale_order_state_change.group_cancel_mo_sale_order
+msgid "Cancel MO Sale Order"
+msgstr "Cancelar MO Orden de Venta"
+
+#. module: sale_order_state_change
 #: model:ir.ui.view,arch_db:sale_order_state_change.sale_order_view_form
 msgid "Closed"
 msgstr "Cerrado"

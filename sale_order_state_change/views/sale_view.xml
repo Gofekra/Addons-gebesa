@@ -23,7 +23,7 @@
                 </xpath>
                 <xpath expr="//field[@name='company_id']" position="after">
                     <field name="closing_reason" />
-                    <field name="cancel_mo"/>
+                    <field name="cancel_mo" groups="sale_order_state_change.group_cancel_mo_sale_order"/>
                 </xpath>
         	</field>
         </record>
