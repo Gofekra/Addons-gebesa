@@ -122,3 +122,23 @@ msgstr "mrp.bom.line"
 msgid "mrp.bom.line.detail"
 msgstr "mrp.bom.line.detail"
 
+#. module: global_privilege_button
+#: model:res.groups,name:global_privilege_button.group_manager_is_line_product
+msgid "Manager Line Product"
+msgstr "Administrador Producto Linea"
+
+#. module: global_privilege_button
+#: code:addons/global_privilege_button/models/product_product.py:22
+#: code:addons/global_privilege_button/models/product_template.py:22
+#, python-format
+msgid "Error!\n"
+"You do not have privileges to Create Line Products."
+msgstr "Error! Tu no tienes privilegios para Crear Producto(s) de Linea."
+
+#. module: global_privilege_button
+#: code:addons/global_privilege_button/models/product_product.py:38
+#: code:addons/global_privilege_button/models/product_template.py:38
+#, python-format
+msgid "Error!\n"
+"You do not have privileges to Modify Line Products."
+msgstr "Error! Tu no tienes privilegios para Modificar Producto(s) de Linea."
