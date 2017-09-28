@@ -242,6 +242,8 @@ class stock_quant(osv.osv):
                 reference = move.production_id.name or False
             elif move.raw_material_production_id:
                 reference = move.raw_material_production_id.name or False
+            elif move.inventory_id:
+                reference = move.inventory_id.name or False
             else:
                 reference = "W/O Reference"
             # Cesar Barron 09 Ago 2016 ####
