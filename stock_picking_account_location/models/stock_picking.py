@@ -25,7 +25,7 @@ class StockPicking(models.Model):
         elif move.raw_material_production_id:
             reference = move.raw_material_production_id.name or False
         elif move.inventory_id:
-            reference = move.inventory_id.name or False
+            reference = move.name or False
         else:
             reference = "W/O Reference"
 
