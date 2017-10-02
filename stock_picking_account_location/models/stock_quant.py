@@ -76,7 +76,12 @@ class stock_quant(osv.osv):
                 acc_dest = adjustment.account_id.id
 
         if move.inventory_id:
-            acc_valuation = move.location_dest_id.account_id or False
+            if move.location_dest_id.usage == 'inventory':
+                acc_valuation = move.location_id.account_id or False
+                acc_dest = move.location_dest_id.account_id.id or False
+            else:
+                acc_valuation = move.location_dest_id.account_id or False
+                acc_dest = move.location_id.account_id.id or False
 
         if not acc_valuation:
             acc_valuation = accounts.get('stock_valuation', False)
