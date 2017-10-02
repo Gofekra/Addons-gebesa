@@ -21,7 +21,8 @@
         "mrp"
     ],
     "data": [
-        "views/hr_employee.xml"
+        "views/hr_employee.xml",
+        "views/stock_inventory.xml",
     ],
     "demo": [
     ],
