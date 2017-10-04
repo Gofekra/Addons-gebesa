@@ -520,3 +520,9 @@ msgstr "Justificación Margen Bajo para la Ordern de Venta"
 msgid "not be billed"
 msgstr "No esta Facturada"
 
+#. module: sale_order_gebesa
+#: code:addons/sale_order_gebesa/models/sale_order.py:126
+#: model:ir.model.fields,field_description:sale_order_gebesa.field_sale_order_sale_picking_adm
+msgid "Admin Sale Picking"
+msgstr "Admin Pedido - Picking"
+

@@ -123,6 +123,10 @@ class SaleOrder(models.Model):
         string=_('Total cost'),
     )
 
+    sale_picking_adm = fields.Boolean(
+        string=_(u'Admin Sale Picking'),
+    )
+
     _sql_constraints = [
         ('name_unique',
          'UNIQUE(name)',
