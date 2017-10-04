@@ -39,7 +39,7 @@
                     <field name="amount_pending_mex" string='Imp X Sur'/>
                     <field name="folio_shipped" string='Fólio Embarque'/>
                     <field name="shipped_departure_date" string='Fecha Salida Embarque'/>
-                    <field name="coint"/>
+                    <field name="currency_id"/>
                     <field name='amount_untaxed' string='Total'/>
                     <field name='total_freight' string='Total Flete'/>
                     <field name='total_installation' string='Total Instalación'/>
