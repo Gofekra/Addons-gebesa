@@ -34,3 +34,8 @@ class SalesChannel(models.Model):
     is_export = fields.Boolean(
         string='It is export',
     )
+
+    active = fields.Boolean(
+        string=_('Active'),
+        default=True,
+    )
