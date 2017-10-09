@@ -32,6 +32,7 @@
         					<group>
         						<field name='other_income'/>
                                 <field name='is_export'/>
+                                <field name='active'/>
         					</group>
         				</group>
         				<group>
