@@ -24,8 +24,8 @@
                 </xpath>
                 <xpath expr="//group/group/field[@name='payment_term_id']" position="after">
                     <field name="client_order_ref"/>
-                    <field name="perc_freight"/>
-                    <field name="perc_installation"/>
+                    <field name="perc_freight" attrs="{'readonly': [('state', 'in', ('done','cancel'))]}"/>
+                    <field name="perc_installation" attrs="{'readonly': [('state', 'in', ('done','cancel'))]}"/>
                 </xpath> 
 
 
