@@ -12,6 +12,6 @@ class StockPicking(models.Model):
         'purchase.order',
         string=_('Purchase Order'),
         readonly=True,
-        # store=True,
+        store=True,
         related='move_lines.purchase_line_id.order_id'
     )
