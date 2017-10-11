@@ -60,14 +60,6 @@ class SaleOrder(models.Model):
             else:
                 sale.rate_mex = 1
 
-            campo = str(sale.date_order)
-            arreglo = campo.split(" ")
-            arreglo2 = arreglo[0].split("/")
-            cadena_n = ("-").join(arreglo2)
-            week_number = int(datetime.datetime.strptime(
-                cadena_n, '%Y-%m-%d').strftime('%W'))
-            sale.week_number = week_number
-
             sale.total_rate_mex = sale.rate_mex * sale.amount_untaxed
             sale.freight_rate_mex = sale.rate_mex * sale.total_freight
             sale.installation_rate_mex = sale.rate_mex * sale.total_installation
@@ -77,3 +69,14 @@ class SaleOrder(models.Model):
     def action_done(self):
         super(SaleOrder, self).action_done()
         self.extra_data()
+
+    @api.model
+    def create(self, vals):
+        campo = str(vals['date_order'])
+        arreglo = campo.split(" ")
+        arreglo2 = arreglo[0].split("/")
+        cadena_n = ("-").join(arreglo2)
+        week_number = int(datetime.datetime.strptime(
+            cadena_n, '%Y-%m-%d').strftime('%W'))
+        vals['week_number'] = week_number
+        return super(SaleOrder, self).create(vals)
