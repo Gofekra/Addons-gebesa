@@ -28,6 +28,8 @@ class SaleOrder(models.Model):
     total_net_sale = fields.Float(
         string=_(u'Total net sale'),
         digits_compute=dp.get_precision('Account'),
+        compute='_compute_profit_margin',
+        store=True
     )
 
     perc_freight = fields.Float(
@@ -38,6 +40,8 @@ class SaleOrder(models.Model):
     total_freight = fields.Float(
         string=_(u'Total Freight'),
         digits_compute=dp.get_precision('Account'),
+        compute='_compute_profit_margin',
+        store=True
     )
 
     perc_installation = fields.Float(
@@ -48,11 +52,15 @@ class SaleOrder(models.Model):
     total_installation = fields.Float(
         string=_(u'Total installation'),
         digits_compute=dp.get_precision('Account'),
+        compute='_compute_profit_margin',
+        store=True
     )
 
     profit_margin = fields.Float(
         string=_(u'Profit margin'),
         digits_compute=dp.get_precision('Account'),
+        compute='_compute_profit_margin',
+        store=True
     )
 
     not_be_billed = fields.Boolean(
@@ -121,6 +129,8 @@ class SaleOrder(models.Model):
 
     total_cost = fields.Float(
         string=_('Total cost'),
+        compute='_compute_profit_margin',
+        store=True
     )
 
     sale_picking_adm = fields.Boolean(
@@ -132,6 +142,33 @@ class SaleOrder(models.Model):
          'UNIQUE(name)',
          "The order name must be unique"),
     ]
+
+    @api.depends('order_line.net_sale')
+    def _compute_profit_margin(self):
+        for order in self:
+            global_cost = 0.0
+            global_net_sale = 0.0
+            global_freight = 0.0
+            global_installa = 0.0
+            global_profit_margin = 0.0
+            currency = order.company_id.currency_id
+            for line in order.order_line:
+                global_cost += line.standard_cost
+                global_net_sale += line.net_sale
+                global_freight += line.freight_amount
+                global_installa += line.installation_amount
+            if global_net_sale > 0.000000:
+                global_total_pm = currency.compute(
+                    global_cost, order.pricelist_id.currency_id)
+                global_profit_margin = (
+                    1 - (global_total_pm) / global_net_sale)
+                global_profit_margin = global_profit_margin * 100
+
+            order.total_cost = global_cost
+            order.total_net_sale = global_net_sale
+            order.total_freight = global_freight
+            order.total_installation = global_installa
+            order.profit_margin = global_profit_margin
 
     @api.multi
     @api.onchange('project_id')
@@ -165,65 +202,9 @@ class SaleOrder(models.Model):
                     _('The following field is not invalid:\nAnalytic Account'))
             if not order.client_order_ref:
                 raise UserError(_('This Sale Order not has OC captured'))
-            global_cost = 0.0
-            global_net_sale = 0.0
-            global_freight = 0.0
-            global_installa = 0.0
-            global_profit_margin = 0.0
-            currency = order.company_id.currency_id
             for line in order.order_line:
-                product = line.product_id
-                if product.quotation_product:
+                if line.product_id.quotation_product:
                     raise UserError(_('The Product contains Quotation'))
-                standard_cost = product.standard_price or 0.0
-                # standard_cost = currency.compute(
-                #    standard_cost, order.pricelist_id.currency_id) or 0.0
-                # if standard_cost > 0:
-                # standard_cost = standard_cost
-                # * inv.rate
-                total_cost = standard_cost * line.product_uom_qty
-                perc_freight = order.perc_freight or False
-                freight = 0.0
-                profit_margin = 0.0
-                perc_installation = order.perc_installation or False
-                installation = 0.0
-                if perc_freight:
-                    freight = (line.price_unit * line.product_uom_qty) * (
-                        perc_freight / 100.0)
-                net_sale = (line.price_unit * line.product_uom_qty) - freight
-                if perc_installation:
-                    installation = net_sale * (
-                        perc_installation / 100.0)
-                net_sale = net_sale - installation
-
-                if net_sale > 0.000000:
-                    total_pm = currency.compute(
-                        total_cost, order.pricelist_id.currency_id)
-                    profit_margin = (1 - (total_pm) / net_sale)
-                    profit_margin = profit_margin * 100
-
-                line.freight_amount = freight
-                line.installation_amount = installation
-                line.net_sale = net_sale
-                line.profit_margin = profit_margin
-                line.purchase_price = standard_cost
-                line.standard_cost = total_cost
-
-                global_cost += total_cost
-                global_net_sale += net_sale
-                global_freight += freight
-                global_installa += installation
-
-            if global_net_sale > 0.000000:
-                global_total_pm = currency.compute(global_cost, order.pricelist_id.currency_id)
-                global_profit_margin = (1 - (global_total_pm) / global_net_sale)
-                global_profit_margin = global_profit_margin * 100
-
-            order.total_cost = global_cost
-            order.total_net_sale = global_net_sale
-            order.total_freight = global_freight
-            order.total_installation = global_installa
-            order.profit_margin = global_profit_margin
 
         return super(SaleOrder, self).action_confirm()
 
