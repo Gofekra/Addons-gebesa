@@ -23,6 +23,7 @@
         "views/account_invoice.xml",
         "views/sales_channel.xml",
         "views/res_partner.xml",
+        "views/sale_order_view.xml",
         "security/security.xml",
         "security/ir.model.access.csv",
     ],
