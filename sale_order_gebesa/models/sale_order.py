@@ -137,11 +137,21 @@ class SaleOrder(models.Model):
         string=_(u'Admin Sale Picking'),
     )
 
+    webiste_operator = fields.Boolean(
+        string=_('Captured by Operator'),
+    )
+
     _sql_constraints = [
         ('name_unique',
          'UNIQUE(name)',
          "The order name must be unique"),
     ]
+
+    @api.onchange('partner_id')
+    def _onchange_partner_id(self):
+        self.webiste_operator = False
+        if self.partner_id:
+            self.webiste_operator = True
 
     @api.depends('order_line.net_sale')
     def _compute_profit_margin(self):

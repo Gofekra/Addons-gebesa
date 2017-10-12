@@ -86,6 +86,9 @@
                     <field name="margin_justification"/>
                     <field name="low_mu"/>
                 </xpath>
+                <xpath expr="//notebook/page[2]/group/group[@name='technical']/field[@name='origin']" position="after">
+                    <field name="webiste_operator" widget="boolean_button"/>
+                </xpath>
         		<xpath expr="//notebook/page[2]" position="after">
         			<page string="Sales data">
         				<group>
