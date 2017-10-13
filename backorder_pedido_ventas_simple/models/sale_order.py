@@ -72,14 +72,15 @@ class SaleOrder(models.Model):
 
     @api.model
     def create(self, vals):
+        campo = fields.Datetime.now()
         if 'date_order' in vals.keys():
             campo = str(vals['date_order'])
-            arreglo = campo.split(" ")
-            arreglo2 = arreglo[0].split("/")
-            cadena_n = ("-").join(arreglo2)
-            week_number = int(datetime.datetime.strptime(
-                cadena_n, '%Y-%m-%d').strftime('%W'))
-            vals['week_number'] = week_number
+        arreglo = campo.split(" ")
+        arreglo2 = arreglo[0].split("/")
+        cadena_n = ("-").join(arreglo2)
+        week_number = int(datetime.datetime.strptime(
+            cadena_n, '%Y-%m-%d').strftime('%W'))
+        vals['week_number'] = week_number
         return super(SaleOrder, self).create(vals)
 
     @api.multi
