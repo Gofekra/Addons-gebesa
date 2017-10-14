@@ -25,7 +25,7 @@
         						<field name='not_be_billed'/>
                                 <field name='portfolio_type'/>
         						<field name='manufacture'/>
-        						<field name='executive'/>        						
+        						<!-- <field name='executive'/> -->        						
         					</group>
         				</group>
         			</page>

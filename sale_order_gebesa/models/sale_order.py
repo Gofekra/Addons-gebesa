@@ -200,9 +200,9 @@ class SaleOrder(models.Model):
             if not order.manufacture:
                 raise UserError(
                     _('The following field is not invalid:\nManufacture'))
-            if not order.executive:
-                raise UserError(
-                    _('The following field is not invalid:\nExecutive'))
+            # if not order.executive:
+            #     raise UserError(
+            #         _('The following field is not invalid:\nExecutive'))
             if not order.priority:
                 raise UserError(
                     _('The following field is not invalid:\nManufacturing \
@@ -284,7 +284,7 @@ class SaleOrder(models.Model):
         invoice_vals = super(SaleOrder, self)._prepare_invoice()
         invoice_vals['perc_freight'] = self.perc_freight
         invoice_vals['perc_installation'] = self.perc_installation
-        invoice_vals['executive'] = self.executive
+        # invoice_vals['executive'] = self.executive
         invoice_vals['manufacture'] = self.manufacture
 
         return invoice_vals
