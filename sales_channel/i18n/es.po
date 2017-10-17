@@ -20,49 +20,49 @@ msgstr ""
 #: model:ir.model.fields,field_description:sales_channel.field_sales_channel_active
 #, python-format
 msgid "Active"
-msgstr ""
+msgstr "Activo"
 
 #. module: sales_channel
 #: model:ir.ui.view,arch_db:sales_channel.sc_view_form
 msgid "Channel"
-msgstr ""
+msgstr "Canal"
 
 #. module: sales_channel
 #: model:ir.model.fields,field_description:sales_channel.field_sales_channel_create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Creado por"
 
 #. module: sales_channel
 #: model:ir.model.fields,field_description:sales_channel.field_sales_channel_create_date
 msgid "Created on"
-msgstr ""
+msgstr "Creado en"
 
 #. module: sales_channel
 #: code:addons/sales_channel/models/sales_channel.py:23
 #: model:ir.model.fields,field_description:sales_channel.field_sales_channel_description
 #, python-format
 msgid "Description"
-msgstr ""
+msgstr "Descripción"
 
 #. module: sales_channel
 #: model:ir.model.fields,field_description:sales_channel.field_sales_channel_display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nombre a Mostrar"
 
 #. module: sales_channel
 #: model:ir.ui.view,arch_db:sales_channel.sc_view_form
 msgid "Final Client"
-msgstr ""
+msgstr "Cliente Final"
 
 #. module: sales_channel
 #: model:ir.model.fields,field_description:sales_channel.field_sales_channel_id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: sales_channel
 #: model:ir.model,name:sales_channel.model_account_invoice
 msgid "Invoice"
-msgstr ""
+msgstr "Factura"
 
 #. module: sales_channel
 #: model:ir.model.fields,field_description:sales_channel.field_sales_channel_is_export
@@ -89,26 +89,26 @@ msgstr ""
 #: model:ir.model.fields,field_description:sales_channel.field_sales_channel_name
 #, python-format
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #. module: sales_channel
 #: code:addons/sales_channel/models/sales_channel.py:32
 #: model:ir.model.fields,field_description:sales_channel.field_sales_channel_other_income
 #, python-format
 msgid "Other income"
-msgstr ""
+msgstr "Otro Ingreso"
 
 #. module: sales_channel
 #: code:addons/sales_channel/models/sales_channel.py:28
 #: model:ir.model.fields,field_description:sales_channel.field_sales_channel_parent_id
 #, python-format
 msgid "Parent"
-msgstr ""
+msgstr "Padre"
 
 #. module: sales_channel
 #: model:ir.model,name:sales_channel.model_res_partner
 msgid "Partner"
-msgstr ""
+msgstr "Socio"
 
 #. module: sales_channel
 #: model:ir.model,name:sales_channel.model_sale_advance_payment_inv
@@ -118,7 +118,7 @@ msgstr ""
 #. module: sales_channel
 #: model:ir.model,name:sales_channel.model_sale_order
 msgid "Sales Order"
-msgstr ""
+msgstr "Pedido de Ventas"
 
 #. module: sales_channel
 #: code:addons/sales_channel/models/account_invoice.py:13
@@ -132,22 +132,22 @@ msgstr ""
 #: model:ir.ui.view,arch_db:sales_channel.sales_channel_tree
 #, python-format
 msgid "Sales channel"
-msgstr ""
+msgstr "Canal de Venta"
 
 #. module: sales_channel
 #: model:res.groups,name:sales_channel.group_sales_channel_manager
 msgid "Sales channel Manager"
-msgstr ""
+msgstr "Administrador Canal de Venta"
 
 #. module: sales_channel
 #: model:ir.model,name:sales_channel.model_sales_channel
 msgid "Sales channel for invoices"
-msgstr ""
+msgstr "Canal de Veneta para facturas"
 
 #. module: sales_channel
 #: code:addons/sales_channel/models/sales_channel.py:18
 #: model:ir.model.fields,field_description:sales_channel.field_sales_channel_code
 #, python-format
 msgid "code"
-msgstr ""
+msgstr "Código"
 

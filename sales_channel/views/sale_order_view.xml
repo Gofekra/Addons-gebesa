@@ -7,10 +7,11 @@
     		<field name='inherit_id' ref='sale.view_order_form'/>
     		<field name='arch' type='xml'>
     			<xpath expr="//field[@name='team_id']" position="after">
-    				<field name="sales_channel_id" required='1'/>
+    				<field name="sales_channel_id" string='Final Client' required='1'/>
     			</xpath>
                 <xpath expr="//field[@name='team_id']" position="attributes">
                     <attribute name="attrs">{'required': True}</attribute>
+                    <attribute name="string">Channel</attribute>
                 </xpath>
     		</field>
         </record>
