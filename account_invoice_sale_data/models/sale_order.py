@@ -16,7 +16,23 @@ class SaleOrder(models.Model):
         store=True,
         select=True,
         default='no_invoice',
+        compute='_compute_geb_invoice_status'
     )
+
+    @api.depends('order_line.qty_invoiced')
+    def _compute_geb_invoice_status(self):
+        for sale in self:
+            qty = 0
+            qty_inv = 0
+            for line in sale.order_line:
+                qty += line.product_uom_qty
+                qty_inv += line.qty_invoiced
+            if qty_inv == 0 and not sale.geb_invoice_status:
+                sale.geb_invoice_status = 'no_invoice'
+            elif qty_inv < qty and sale.geb_invoice_status == 'no_invoice':
+                sale.geb_invoice_status = 'partial_invoice'
+            elif qty_inv == qty:
+                sale.geb_invoice_status = 'total_invoice'
 
     @api.multi
     def _prepare_invoice(self):
