@@ -47,7 +47,10 @@ class SaleOrder(models.Model):
     def _compute_amount_pending(self):
         for sale in self:
             for line in sale.order_line:
-                sale.amount_pending += line.pending_qty * (line.net_sale / line.product_uom_qty)
+                if line.product_uom_qty > 0:
+                    sale.amount_pending += line.pending_qty * (line.net_sale / line.product_uom_qty)
+                else:
+                    sale.amount_pending = 0
 
     @api.depends('order_line.standard_cost',
                  'order_line.pending_qty',
