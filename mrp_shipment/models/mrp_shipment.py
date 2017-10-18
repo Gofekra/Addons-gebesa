@@ -4,6 +4,7 @@
 
 from openerp import _, api, fields, models
 from openerp.exceptions import ValidationError
+from openerp.exceptions import UserError
 from openerp.addons import decimal_precision as dp
 
 
@@ -11,6 +12,7 @@ class MrpShipment(models.Model):
     _name = 'mrp.shipment'
     _description = 'Shipment'
     _rec_name = 'reference'
+    _inherit = ['mail.thread', 'ir.needaction_mixin']
 
     state = fields.Selection(
         [('draft', 'Draft'),
@@ -118,6 +120,8 @@ class MrpShipment(models.Model):
         ship_sale_obj = self.env['mrp.shipment.sale']
         concat = ''
         concatenate = ''
+        ordenes = []
+        add = []
         for ship in self:
             concat += ship.folio + ';' + ship.reference + ';' +\
                 ship.date + ';' + ship.departure_date + ';' +\
@@ -125,6 +129,17 @@ class MrpShipment(models.Model):
                 str(ship.amount)
             for line in ship.line_ids:
                 sale_order_id = line.sale_order_id
+                self._cr.execute("""SELECT pvs2.sale_order_id
+                                    FROM pedidos_vinculados_sale_order_rel as pvs
+                                    JOIN pedidos_vinculados_sale_order_rel as pvs2 on(pvs2.pedidos_vinculados_id = pvs.pedidos_vinculados_id)
+                                    LEFT JOIN pedidos_vinculados as pv ON (pv.id = pvs.pedidos_vinculados_id)
+                                    WHERE pv.activo = true AND pvs.sale_order_id = %s""", ([sale_order_id.id]))
+                if self._cr.rowcount:
+                    resultado = self._cr.fetchall()
+                    for x in resultado:
+                        for i in x:
+                            if not i in add:
+                                add.append(i)
                 if line.quantity_shipped == 0:
                     line.unlink()
                     ship_line = ship_line_obj.search([
@@ -153,6 +168,14 @@ class MrpShipment(models.Model):
                         str(line.quantity_shipped) + ';' +\
                         str(line.standard_cost) + ';' +\
                         str(line.price_unit) + '|'
+                for a in ship.line_ids:
+                    new = a.sale_order_id.id
+                    if not new in ordenes:
+                        ordenes.append(new)
+            if add:
+                for op in add:
+                    if not op in ordenes:
+                        raise UserError(_('The Order is Linked'))
             ship.state = 'done'
         return concat, concatenate
 
