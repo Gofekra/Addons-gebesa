@@ -54,6 +54,10 @@ class MrpShipment(models.Model):
         compute='_compute_meters',
         digits_compute=dp.get_precision('Account'),
     )
+    weight = fields.Float(
+        string=_('Weight'),
+        compute='_compute_meters',
+    )
     amount = fields.Float(
         string=_(u'Amount'),
         compute='_compute_meters',
@@ -83,6 +87,7 @@ class MrpShipment(models.Model):
             meters = 0
             freight = 0
             amount = 0
+            weigh = 0
             for line in shipment.line_ids:
                 meters += (line.product_id.volume * line.quantity_shipped)
                 freight += (line.order_line_id.freight_amount /
@@ -91,9 +96,11 @@ class MrpShipment(models.Model):
                 amount += (line.order_line_id.net_sale /
                            line.order_line_id.product_uom_qty) * \
                     line.quantity_shipped
+                weigh += (line.product_id.weight * line.quantity_shipped)
             shipment.meters = meters
             shipment.freight = freight
             shipment.amount = amount
+            shipment.weight = weigh
 
     @api.model
     def create(self, vals):
@@ -267,6 +274,47 @@ class MrpShipmentSale(models.Model):
         readonly=False,
         copy=True
     )
+
+    sale_line_id = fields.Many2one(
+        'sale.order.line',
+        string=_('Line'),
+    )
+    volume = fields.Float(
+        string=_('Volume'),
+        compute='_compute_volume_shipped',
+    )
+
+    weight = fields.Float(
+        string=_('Weight'),
+        compute='_compute_weight_shipped',
+    )
+
+    def _compute_volume_shipped(self):
+        volum = 0.0
+        for line in self:
+            for order in line.sale_id:
+                self._cr.execute("""SELECT sum(pp.volume * msl.quantity_shipped)
+                                    FROM mrp_shipment_line as msl
+                                    JOIN sale_order as so ON so.id = msl.sale_order_id
+                                    JOIN product_product as pp ON (pp.id = msl.product_id)
+                                    WHERE msl.shipment_sale_id =  %s""", ([line.id]))
+                if self._cr.rowcount:
+                    volum = self._cr.fetchone()[0]
+            line.volume = volum
+
+    # @api.depends('sale_line_id')
+    def _compute_weight_shipped(self):
+        weigh = 0
+        for linee in self:
+            for order in linee.sale_id:
+                self._cr.execute("""SELECT sum(pp.weight * msl.quantity_shipped)
+                                    FROM mrp_shipment_line as msl
+                                    JOIN sale_order as so ON so.id = msl.sale_order_id
+                                    JOIN product_product as pp ON (pp.id = msl.product_id)
+                                    WHERE msl.shipment_sale_id =  %s""", ([linee.id]))
+                if self._cr.rowcount:
+                        weigh = self._cr.fetchone()[0]
+            linee.weight = weigh
 
     @api.multi
     def unlink(self):
