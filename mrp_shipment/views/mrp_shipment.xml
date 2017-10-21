@@ -65,6 +65,7 @@
                                 <field name='meters' readonly="1"/>
                                 <field name='freight' readonly="1"/>
                                 <field name='amount' readonly="1"/>
+                                <field name="weight" readonly="1"/>
                             </group>
                             <group>
                                 <field name='date' readonly="0"/>
@@ -81,6 +82,8 @@
                                         <field name='country_id' readonly="1"/>
                                         <field name='state_id' readonly="1"/>
                                         <field name='city' readonly="1"/>
+                                        <field name="weight" readonly="1"/>
+                                        <field name="volume" readonly="1"/>
                                     </tree>
                                  </field>
                             </page>
