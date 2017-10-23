@@ -39,7 +39,7 @@ class SaleOrderLine(models.Model):
 
             line.quantity_shipped = quantity_shipped
 
-    @api.depends('quantity_shipped')
+    @api.depends('quantity_shipped', 'product_uom_qty')
     def _missing_quantity(self):
         for line in self:
             line.missing_quantity = line.product_uom_qty - \
