@@ -132,6 +132,10 @@
                         </group>
                         <label for='credit_note'/>
                         <field name='credit_note'/>
+                        <group>
+                            <field name='date_suggested' readonly="True"/>
+                            <field name='date_approved' readonly="True"/>
+                        </group>
                     </page>
         		</xpath>
         	</field>

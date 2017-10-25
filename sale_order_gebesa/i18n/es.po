@@ -83,6 +83,20 @@ msgid "Conditioned"
 msgstr "Condicionado"
 
 #. module: sale_order_gebesa
+#: code:addons/sale_order_gebesa/models/sale_order.py:150
+#: model:ir.model.fields,field_description:sale_order_gebesa.field_sale_order_date_approved
+#, python-format
+msgid "Credit Release Date"
+msgstr "Fecha Liberación por Crédito"
+
+#. module: sale_order_gebesa
+#: code:addons/sale_order_gebesa/models/sale_order.py:151
+#: model:ir.model.fields,help:sale_order_gebesa.field_sale_order_date_approved
+#, python-format
+msgid "Credit Release Date."
+msgstr "Fecha Liberación por Crédito"
+
+#. module: sale_order_gebesa
 #: model:ir.ui.view,arch_db:sale_order_gebesa.view_order_form
 msgid "Credit and collection"
 msgstr "Crédito y Cobranza"
@@ -325,6 +339,20 @@ msgstr "Costo Estandard"
 #: model:ir.ui.view,arch_db:sale_order_gebesa.view_order_form
 msgid "Suggest Approval"
 msgstr "Sugerir aprobación"
+
+#. module: sale_order_gebesa
+#: code:addons/sale_order_gebesa/models/sale_order.py:146
+#: model:ir.model.fields,field_description:sale_order_gebesa.field_sale_order_date_suggested
+#, python-format
+msgid "Suggestion Date Approval"
+msgstr "Fecha de Sugerencia para Aprobación"
+
+#. module: sale_order_gebesa
+#: code:addons/sale_order_gebesa/models/sale_order.py:147
+#: model:ir.model.fields,help:sale_order_gebesa.field_sale_order_date_suggested
+#, python-format
+msgid "Suggestion Date Approval."
+msgstr "Fecha de Sugerencia para Aprobación"
 
 #. module: sale_order_gebesa
 #: model:res.groups,name:sale_order_gebesa.group_suggested_button

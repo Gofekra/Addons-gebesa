@@ -5,6 +5,7 @@
 from openerp import api, fields, models, _
 from openerp.addons import decimal_precision as dp
 from openerp.exceptions import UserError
+from openerp.exceptions import ValidationError
 
 
 class SaleOrder(models.Model):
@@ -141,6 +142,14 @@ class SaleOrder(models.Model):
         string=_('Captured by Operator'),
     )
 
+    date_suggested = fields.Datetime(
+        string=_('Suggestion Date Approval'),
+        help=_('Suggestion Date Approval.'))
+
+    date_approved = fields.Datetime(
+        string=_('Credit Release Date'),
+        help=_('Credit Release Date.'))
+
     _sql_constraints = [
         ('name_unique',
          'UNIQUE(name)',
@@ -259,6 +268,7 @@ class SaleOrder(models.Model):
             if order.approve == 'approved':
                 raise UserError(_('This Sale Order is already approved'))
         self.write({'approve': 'approved'})
+        self.date_approved = fields.Datetime.now()
 
         # resws = super(SaleOrder, self)._product_data_validation()
 
@@ -274,8 +284,15 @@ class SaleOrder(models.Model):
             if not order.client_order_ref:
                 raise UserError(_('This Sale Order not has OC captured'))
         self.write({'approve': 'suggested'})
+        self.date_suggested = fields.Datetime.now()
 
         resws = super(SaleOrder, self)._product_data_validation()
+        # if resws[0] != 'OK':
+        #     raise ValidationError('Este pedido no podra ser aprobado  \
+        #         debido a errores de configuracion \
+        #         en los productos que ocasionarian \
+        #         excepciones, se ha enviado un correo detallado a los \
+        #         interesados.')
 
         return True
 
