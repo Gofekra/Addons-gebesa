@@ -267,8 +267,8 @@ class SaleOrder(models.Model):
         for order in self:
             if order.approve == 'approved':
                 raise UserError(_('This Sale Order is already approved'))
-        self.write({'approve': 'approved'})
-        self.date_approved = fields.Datetime.now()
+            order.write({'approve': 'approved'})
+            order.date_approved = fields.Datetime.now()
 
         # resws = super(SaleOrder, self)._product_data_validation()
 
@@ -283,10 +283,10 @@ class SaleOrder(models.Model):
                 raise UserError(_('This Sale Order not has Products Captured'))
             if not order.client_order_ref:
                 raise UserError(_('This Sale Order not has OC captured'))
-        self.write({'approve': 'suggested'})
-        self.date_suggested = fields.Datetime.now()
+            order.write({'approve': 'suggested'})
+            order.date_suggested = fields.Datetime.now()
 
-        resws = super(SaleOrder, self)._product_data_validation()
+            resws = order._product_data_validation()
         # if resws[0] != 'OK':
         #     raise ValidationError('Este pedido no podra ser aprobado  \
         #         debido a errores de configuracion \
