@@ -18,6 +18,7 @@
     "depends": [
         "base", "stock",
         "stock_warehouse_analytic_id",
+        "product_product_data_validator",
     ],
     "data": [
         "security/security.xml",
