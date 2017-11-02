@@ -3,6 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from openerp import api, _, fields, models
+import datetime
 import openerp.addons.decimal_precision as dp
 from openerp.exceptions import UserError
 
@@ -97,8 +98,14 @@ class MrpSegment(models.Model):
         string='Expres'
     )
 
-    commitment_date = fields.Date(
-        string=_('Commitment Date')
+    commitment_date = fields.Datetime(
+        string=_('Commitment Date'),
+        track_visibility='onchange',
+    )
+
+    commitment_week_number = fields.Integer(
+        string=_('Commitment Week Number'),
+        track_visibility='onchange',
     )
 
     @api.depends('line_ids.mrp_production_id')
@@ -119,12 +126,29 @@ class MrpSegment(models.Model):
         if vals.get('folio', 'New') == 'New':
             vals['folio'] = self.env['ir.sequence'].next_by_code(
                 'mrp.segment') or '/'
+        campo = fields.Datetime.now()
+        if 'commitment_date' in vals.keys():
+            campo = str(vals['commitment_date'])
+        arreglo = campo.split(" ")
+        arreglo2 = arreglo[0].split("/")
+        cadena_n = ("-").join(arreglo2)
+        week_number = int(datetime.datetime.strptime(
+            cadena_n, '%Y-%m-%d').strftime('%W'))
+        vals['commitment_week_number'] = week_number
         return super(MrpSegment, self).create(vals)
 
     @api.multi
     def write(self, values):
         if self._uid != self.create_uid.id:
             raise UserError(_('You can not modify this segment'))
+        if 'commitment_date' in values.keys():
+            campo = str(values['commitment_date'])
+            arreglo = campo.split(" ")
+            arreglo2 = arreglo[0].split("/")
+            cadena_n = ("-").join(arreglo2)
+            week_number = int(datetime.datetime.strptime(
+                cadena_n, '%Y-%m-%d').strftime('%W'))
+            values['commitment_week_number'] = week_number
         return super(MrpSegment, self).write(values)
 
     @api.multi
