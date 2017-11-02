@@ -97,6 +97,10 @@ class MrpSegment(models.Model):
         string='Expres'
     )
 
+    commitment_date = fields.Date(
+        string=_('Commitment Date')
+    )
+
     @api.depends('line_ids.mrp_production_id')
     def _compute_product_lines_ids(self):
         product_lines = []
