@@ -10,9 +10,9 @@ from openerp.addons import decimal_precision as dp
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
-    week_number = fields.Integer(
-        'Numero de la semana',
-    )
+    # week_number = fields.Integer(
+    #    'Numero de la semana',
+    # )
     # currency_id = fields.Many2one(
     #     'res.currency',
     #     string='Moneda',
@@ -70,27 +70,27 @@ class SaleOrder(models.Model):
         super(SaleOrder, self).action_done()
         self.extra_data()
 
-    @api.model
-    def create(self, vals):
-        campo = fields.Datetime.now()
-        if 'date_order' in vals.keys():
-            campo = str(vals['date_order'])
-        arreglo = campo.split(" ")
-        arreglo2 = arreglo[0].split("/")
-        cadena_n = ("-").join(arreglo2)
-        week_number = int(datetime.datetime.strptime(
-            cadena_n, '%Y-%m-%d').strftime('%W'))
-        vals['week_number'] = week_number
-        return super(SaleOrder, self).create(vals)
+    # @api.model
+    # def create(self, vals):
+    #     campo = fields.Datetime.now()
+    #     if 'date_order' in vals.keys():
+    #         campo = str(vals['date_order'])
+    #     arreglo = campo.split(" ")
+    #     arreglo2 = arreglo[0].split("/")
+    #     cadena_n = ("-").join(arreglo2)
+    #     week_number = int(datetime.datetime.strptime(
+    #         cadena_n, '%Y-%m-%d').strftime('%W'))
+    #     vals['week_number'] = week_number
+    #     return super(SaleOrder, self).create(vals)
 
-    @api.multi
-    def write(self, values):
-        if 'date_order' in values.keys():
-            campo = str(values['date_order'])
-            arreglo = campo.split(" ")
-            arreglo2 = arreglo[0].split("/")
-            cadena_n = ("-").join(arreglo2)
-            week_number = int(datetime.datetime.strptime(
-                cadena_n, '%Y-%m-%d').strftime('%W'))
-            values['week_number'] = week_number
-        return super(SaleOrder, self).write(values)
+    # @api.multi
+    # def write(self, values):
+    #     if 'date_order' in values.keys():
+    #         campo = str(values['date_order'])
+    #         arreglo = campo.split(" ")
+    #         arreglo2 = arreglo[0].split("/")
+    #         cadena_n = ("-").join(arreglo2)
+    #         week_number = int(datetime.datetime.strptime(
+    #             cadena_n, '%Y-%m-%d').strftime('%W'))
+    #         values['week_number'] = week_number
+    #     return super(SaleOrder, self).write(values)
