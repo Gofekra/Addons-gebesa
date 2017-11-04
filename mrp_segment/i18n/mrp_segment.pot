@@ -158,6 +158,13 @@ msgid "Color"
 msgstr ""
 
 #. module: mrp_segment
+#: code:addons/mrp_segment/models/mrp_segment.py:101
+#: model:ir.model.fields,field_description:mrp_segment.field_mrp_segment_commitment_date
+#, python-format
+msgid "Commitment Date"
+msgstr ""
+
+#. module: mrp_segment
 #: code:addons/mrp_segment/models/mrp_segment.py:72
 #: model:ir.model.fields,field_description:mrp_segment.field_mrp_segment_company_id
 #, python-format
