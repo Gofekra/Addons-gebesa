@@ -126,15 +126,15 @@ class MrpSegment(models.Model):
         if vals.get('folio', 'New') == 'New':
             vals['folio'] = self.env['ir.sequence'].next_by_code(
                 'mrp.segment') or '/'
-        campo = fields.Datetime.now()
-        if 'commitment_date' in vals.keys():
-            campo = str(vals['commitment_date'])
-        arreglo = campo.split(" ")
-        arreglo2 = arreglo[0].split("/")
-        cadena_n = ("-").join(arreglo2)
-        week_number = int(datetime.datetime.strptime(
-            cadena_n, '%Y-%m-%d').strftime('%W'))
-        vals['commitment_week_number'] = week_number
+        # campo = fields.Datetime.now()
+        # if 'commitment_date' in vals.keys():
+        #     campo = str(vals['commitment_date'])
+        # arreglo = campo.split(" ")
+        # arreglo2 = arreglo[0].split("/")
+        # cadena_n = ("-").join(arreglo2)
+        # week_number = int(datetime.datetime.strptime(
+        #     cadena_n, '%Y-%m-%d').strftime('%W'))
+        # vals['commitment_week_number'] = week_number
         return super(MrpSegment, self).create(vals)
 
     @api.multi
