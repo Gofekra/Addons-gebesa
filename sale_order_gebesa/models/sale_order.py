@@ -202,7 +202,7 @@ class SaleOrder(models.Model):
     @api.multi
     def action_confirm(self):
         for order in self:
-            # order.validate_manufacturing()
+            order.validate_manufacturing()
             if not order.notify_approval:
                 raise UserError(
                     _('The following field is not invalid:\nNotify approval'))

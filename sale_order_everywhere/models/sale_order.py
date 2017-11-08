@@ -37,7 +37,7 @@ class SaleOrder(models.Model):
                              (order.id, order.id,))
             self._cr.execute('UPDATE stock_picking sp SET sale_id = %s '
                              'FROM procurement_group pg '
-                             'join stock_move sm on pg.id = sm.group_id'
+                             'join stock_move sm on pg.id = sm.group_id '
                              'WHERE pg.sale_id = %s AND sm.picking_id = sp.id',
                              (order.id, order.id,))
         return res
