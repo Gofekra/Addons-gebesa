@@ -10,16 +10,34 @@ class SaleOrder(models.Model):
 
     @api.multi
     def action_confirm(self):
-        group_obj = self.env['procurement.group']
-        move_obj = self.env['stock.move']
+        # group_obj = self.env['procurement.group']
+        # move_obj = self.env['stock.move']
         res = super(SaleOrder, self).action_confirm()
         for order in self:
-            group = group_obj.search([('sale_id', '=', order.id)])
-            for procurement in group.procurement_ids:
-                procurement.sale_id = group.sale_id
-                if procurement.production_id:
-                    procurement.production_id.sale_id = group.sale_id
-            moves = move_obj.search([('group_id', '=', group.id)])
-            for move in moves:
-                move.sale_id = group.sale_id
+            # group = group_obj.search([('sale_id', '=', order.id)])
+            # for procurement in group.procurement_ids:
+            #     procurement.sale_id = group.sale_id
+            #     if procurement.production_id:
+            #         procurement.production_id.sale_id = group.sale_id
+            # moves = move_obj.search([('group_id', '=', group.id)])
+            # for move in moves:
+            #     move.sale_id = group.sale_id
+
+            self._cr.execute('UPDATE procurement_order po SET sale_id = %s '
+                             'FROM procurement_group pg WHERE pg.sale_id = %s '
+                             'AND pg.id = po.group_id', (order.id, order.id,))
+            self._cr.execute('UPDATE mrp_production mp SET sale_id = %s '
+                             'FROM procurement_group pg '
+                             'join procurement_order po on pg.id = po.group_id '
+                             'WHERE pg.sale_id = %s AND po.production_id = mp.id',
+                             (order.id, order.id,))
+            self._cr.execute('UPDATE stock_move sm SET sale_id = %s '
+                             'FROM procurement_group pg '
+                             'WHERE pg.sale_id = %s AND pg.id = sm.group_id',
+                             (order.id, order.id,))
+            self._cr.execute('UPDATE stock_picking sp SET sale_id = %s '
+                             'FROM procurement_group pg '
+                             'join stock_move sm on pg.id = sm.group_id '
+                             'WHERE pg.sale_id = %s AND sm.picking_id = sp.id',
+                             (order.id, order.id,))
         return res
