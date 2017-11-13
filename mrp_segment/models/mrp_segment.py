@@ -108,6 +108,10 @@ class MrpSegment(models.Model):
         track_visibility='onchange',
     )
 
+    progress_date = fields.Date(
+        string=_('Progress Date')
+    )
+
     @api.depends('line_ids.mrp_production_id')
     def _compute_product_lines_ids(self):
         product_lines = []
@@ -242,7 +246,7 @@ class MrpSegment(models.Model):
                         sale.related_segment = ' '
                     if segment.folio not in sale.related_segment:
                         sale.related_segment += segment.folio + ', '
-
+        segment.progress_date = fields.Datetime.now()
         return self.write({'state': 'confirm'})
 
     @api.multi
