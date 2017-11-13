@@ -233,12 +233,12 @@ class SaleOrder(models.Model):
 
             # pending = self.env['sale.order'].search(
             # [('state', '=', 'draft')])
-            dife = 0.0
-            dife = order.amount_total - order.total_nste
-            if order.total_nste > 0.0000000:
-                if abs(dife) > 0.6000:
-                    raise UserError(
-                        _('The amount are differents:\nAnalytic Account'))
+            # dife = 0.0
+            # dife = order.amount_total - order.total_nste
+            # if order.total_nste > 0.0000000:
+            #     if abs(dife) > 0.6000:
+            #         raise UserError(
+            #             _('The amount are differents:\nAnalytic Account'))
 
             for line in order.order_line:
                 if line.product_id:
@@ -258,6 +258,12 @@ class SaleOrder(models.Model):
                         raise UserError(
                             _('%s %s %s' % (
                                 _("The next product has no a Bill of Materials"),
+                                line.product_id.default_code, line.product_id.name)))
+
+                    if not line.product_id.product_service_id:
+                        raise UserError(
+                            _('%s %s %s' % (
+                                _("The next product has not a SAT Code: "),
                                 line.product_id.default_code, line.product_id.name)))
 
         return True
