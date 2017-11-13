@@ -243,12 +243,10 @@ class MrpShipmentSale(models.Model):
     partner_id = fields.Many2one(
         'res.partner',
         string=_(u'Customer'),
-        related='sale_id.partner_id'
     )
     partner_shipping_id = fields.Many2one(
         'res.partner',
         string=_(u'Customer'),
-        related='sale_id.partner_shipping_id'
     )
     country_id = fields.Many2one(
         'res.country',
@@ -343,7 +341,6 @@ class MrpShipmentLine(models.Model):
     partner_shipping_id = fields.Many2one(
         'res.partner',
         string=_(u'Customer'),
-        related='shipment_sale_id.partner_shipping_id'
     )
     country_id = fields.Many2one(
         'res.country',
@@ -388,7 +385,6 @@ class MrpShipmentLine(models.Model):
     )
     standard_cost = fields.Float(
         string=_(u'Standard cost'),
-        related='product_id.standard_price',
     )
     price_unit = fields.Float(
         string=_(u'Price Unit'),
