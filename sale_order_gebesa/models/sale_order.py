@@ -289,6 +289,8 @@ class SaleOrder(models.Model):
                 raise UserError(_('This Sale Order not has Products Captured'))
             if not order.client_order_ref:
                 raise UserError(_('This Sale Order not has OC captured'))
+            if order.partner_id.parent_id:
+                order.partner_id = order.partner_id.parent_id
             order.write({'approve': 'suggested'})
             order.date_suggested = fields.Datetime.now()
 
