@@ -243,29 +243,21 @@ class MrpShipmentSale(models.Model):
     partner_id = fields.Many2one(
         'res.partner',
         string=_(u'Customer'),
-        related='sale_id.partner_id'
     )
     partner_shipping_id = fields.Many2one(
         'res.partner',
         string=_(u'Customer'),
-        related='sale_id.partner_shipping_id'
     )
     country_id = fields.Many2one(
         'res.country',
         string=_(u'Country'),
-        related='partner_shipping_id.country_id',
-        store=True,
     )
     state_id = fields.Many2one(
         'res.country.state',
         string=_(u'State'),
-        related='partner_shipping_id.state_id',
-        store=True,
     )
     city = fields.Char(
         string=_(u'City'),
-        related='partner_shipping_id.city',
-        store=True,
     )
     line_ids = fields.One2many(
         'mrp.shipment.line',
@@ -345,40 +337,27 @@ class MrpShipmentLine(models.Model):
     partner_id = fields.Many2one(
         'res.partner',
         string=_(u'Customer'),
-        related='shipment_sale_id.partner_id',
-        store=True,
     )
     partner_shipping_id = fields.Many2one(
         'res.partner',
         string=_(u'Customer'),
-        related='shipment_sale_id.partner_shipping_id'
     )
     country_id = fields.Many2one(
         'res.country',
         string=_(u'Country'),
-        related='partner_shipping_id.country_id',
-        store=True,
     )
     state_id = fields.Many2one(
         'res.country.state',
         string=_(u'State'),
-        related='partner_shipping_id.state_id',
-        store=True,
     )
     city = fields.Char(
         string=_(u'City'),
-        related='partner_shipping_id.city',
-        store=True,
     )
     street = fields.Char(
         string=_(u'Street'),
-        related='partner_shipping_id.street',
-        store=True,
     )
     street2 = fields.Char(
         string=_(u'Street2'),
-        related='partner_shipping_id.street2',
-        store=True,
     )
     sale_order_id = fields.Many2one(
         'sale.order',
@@ -400,17 +379,12 @@ class MrpShipmentLine(models.Model):
     )
     product_name = fields.Char(
         string=_(u'Name product'),
-        related='product_id.name',
-        store=True
     )
     product_code = fields.Char(
         string=_(u'Code product'),
-        related='product_id.default_code',
-        store=True
     )
     standard_cost = fields.Float(
         string=_(u'Standard cost'),
-        related='product_id.standard_price',
     )
     price_unit = fields.Float(
         string=_(u'Price Unit'),

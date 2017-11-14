@@ -38,7 +38,12 @@ class MrpShipmentSaleOrder(models.TransientModel):
                                 if sale.id not in sale_id:
                                     ship_sale = ship_sale_obj.create({
                                         'sale_id': sale.id,
-                                        'shipment_id': shipment.id
+                                        'shipment_id': shipment.id,
+                                        'partner_id': sale.partner_id.id,
+                                        'partner_shipping_id': sale.partner_shipping_id.id,
+                                        'country_id': sale.partner_shipping_id.country_id.id,
+                                        'state_id': sale.partner_shipping_id.state_id.id,
+                                        'city': sale.partner_shipping_id.city
                                     })
                                     sale_id.append(sale.id)
                                 else:
@@ -56,6 +61,16 @@ class MrpShipmentSaleOrder(models.TransientModel):
                                     'price_unit': line.price_unit,
                                     'quantity': line.missing_quantity,
                                     'quantity_shipped': line.missing_quantity,
+                                    'partner_id': sale.partner_id.id,
+                                    'partner_shipping_id': sale.partner_shipping_id.id,
+                                    'country_id': sale.partner_shipping_id.country_id.id,
+                                    'state_id': sale.partner_shipping_id.state_id.id,
+                                    'city': sale.partner_shipping_id.city,
+                                    'street': sale.partner_shipping_id.street,
+                                    'street2': sale.partner_shipping_id.street2,
+                                    'product_name': line.product_id.name,
+                                    'product_code': line.product_id.default_code,
+                                    'standard_cost': line.product_id.standard_price
                                     # 'quantity': miss_seg,
                                     # 'quantity_shipped': miss_seg,
                                 })
