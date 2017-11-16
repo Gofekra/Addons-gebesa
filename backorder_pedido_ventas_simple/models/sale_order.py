@@ -28,7 +28,7 @@ class SaleOrder(models.Model):
         'Flete MXN',
     )
     installation_rate_mex = fields.Float(
-        'Instalación MXN',
+        u'Instalación MXN',
     )
     net_sale_rate_mex = fields.Float(
         'Vta Neta MXN',
