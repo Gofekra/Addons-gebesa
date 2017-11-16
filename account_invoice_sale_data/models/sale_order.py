@@ -19,17 +19,24 @@ class SaleOrder(models.Model):
         compute='_compute_geb_invoice_status'
     )
 
-    @api.depends('order_line.qty_invoiced')
+    @api.depends('order_line.qty_invoiced', 'order_line.product_uom_qty')
     def _compute_geb_invoice_status(self):
         for sale in self:
             qty = 0
             qty_inv = 0
+            self._cr.execute("""SELECT geb_invoice_status From sale_order
+                            WHERE id = %s
+                            """, ([sale.id]))
+            if self._cr.rowcount:
+                geb_invoice_status = self._cr.fetchone()[0]
+            else:
+                geb_invoice_status = False
             for line in sale.order_line:
                 qty += line.product_uom_qty
                 qty_inv += line.qty_invoiced
-            if qty_inv == 0 and not sale.geb_invoice_status:
+            if qty_inv == 0 and not geb_invoice_status:
                 sale.geb_invoice_status = 'no_invoice'
-            elif qty_inv < qty and sale.geb_invoice_status == 'no_invoice':
+            elif qty_inv < qty and geb_invoice_status == 'no_invoice':
                 sale.geb_invoice_status = 'partial_invoice'
             elif qty_inv == qty:
                 sale.geb_invoice_status = 'total_invoice'
