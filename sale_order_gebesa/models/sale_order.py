@@ -260,11 +260,11 @@ class SaleOrder(models.Model):
                                 _("The next product has no a Bill of Materials"),
                                 line.product_id.default_code, line.product_id.name)))
 
-                    if not line.product_id.product_service_id:
-                        raise UserError(
-                            _('%s %s %s' % (
-                                _("The next product has not a SAT Code: "),
-                                line.product_id.default_code, line.product_id.name)))
+                    # if not line.product_id.product_service_id:
+                    #     raise UserError(
+                    #         _('%s %s %s' % (
+                    #             _("The next product has not a SAT Code: "),
+                    #             line.product_id.default_code, line.product_id.name)))
 
         return True
 
