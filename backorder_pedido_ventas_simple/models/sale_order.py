@@ -35,6 +35,7 @@ class SaleOrder(models.Model):
     )
     amount_pending_mex = fields.Float(
         'Imp X Sur MXN',
+        store=True,
         compute="compute_amount_pending_mex",
     )
 
@@ -42,7 +43,10 @@ class SaleOrder(models.Model):
     def compute_amount_pending_mex(self):
         for sale in self:
             pending = sale.amount_pending
-            sale.amount_pending_mex = pending * sale.rate_mex
+            if not sale.rate_mex:
+                sale.amount_pending = pending
+            else:
+                sale.amount_pending_mex = pending * sale.rate_mex
 
     @api.multi
     def extra_data(self):
