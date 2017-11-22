@@ -35,6 +35,7 @@ class SaleOrder(models.Model):
     )
     amount_pending = fields.Float(
         'Amount pending',
+        store=True,
         compute='_compute_amount_pending'
     )
     standard_cost_pending = fields.Float(
