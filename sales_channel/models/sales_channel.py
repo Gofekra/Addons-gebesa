@@ -39,3 +39,9 @@ class SalesChannel(models.Model):
         string=_('Active'),
         default=True,
     )
+
+    company_id = fields.Many2one(
+        'res.company',
+        string=_('Company'),
+        default=lambda self: self.env['res.company']._company_default_get(
+            'sales.channel'))
