@@ -30,7 +30,7 @@ class SaleOrder(models.Model):
             if self._cr.rowcount:
                 geb_invoice_status = self._cr.fetchone()[0]
             else:
-                geb_invoice_status = False
+                geb_invoice_status = 'no_invoice'
             for line in sale.order_line:
                 qty += line.product_uom_qty
                 qty_inv += line.qty_invoiced
@@ -40,6 +40,8 @@ class SaleOrder(models.Model):
                 sale.geb_invoice_status = 'partial_invoice'
             elif qty_inv == qty:
                 sale.geb_invoice_status = 'total_invoice'
+            else:
+                sale.geb_invoice_status = geb_invoice_status
 
     @api.multi
     def _prepare_invoice(self):
