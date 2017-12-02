@@ -59,7 +59,7 @@
             <field name='view_type'>form</field>
             <field name='view_mode'>tree</field>
             <field name="view_id" ref="backorder_pedido_tree"/>
-            <field name="domain">[('geb_invoice_status', 'in', ['no_invoice','partial_invoice']),('state', 'in', ['done', 'sale'])]</field>
+            <field name="domain">[('geb_invoice_status', 'in', ['no_invoice','partial_invoice', False]),('state', 'in', ['done', 'sale'])]</field>
         </record>
 
 <!--ID: es el identificador del nuevo Submenu.
