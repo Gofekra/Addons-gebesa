@@ -30,9 +30,10 @@ class AccountInvoice(models.Model):
                     self._cr, self._uid, 'sale.config.settings',
                     'deposit_product_id_setting') or False
                 if line.product_id.id == deposit and fact.id != line.id:
-                    resul.append(str(fact.invoice_id.number))
-                    self.prepayment_number = resul
-                    resp.append(fact.invoice_id.move_id.id)
-                    self.prepayment_move_ids = resp
-
+                    if fact.invoice_id.number:
+                        resul.append(str(fact.invoice_id.number))
+                        self.prepayment_number = resul
+                    if fact.invoice_id.move_id.id:
+                        resp.append(fact.invoice_id.move_id.id)
+                        self.prepayment_move_ids = resp
         return res
