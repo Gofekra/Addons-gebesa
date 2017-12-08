@@ -9,10 +9,25 @@ from openerp import SUPERUSER_ID
 class PurchaseConfiguration(models.TransientModel):
     _inherit = 'purchase.config.settings'
 
+    company_id = fields.Many2one(
+        'res.company',
+        string='Company',
+        required=True,
+        default=lambda self: self.env.user.company_id
+    )
+    has_default_company = fields.Boolean(
+        readonly=True,
+        default=lambda self: self._default_has_default_company()
+    )
     purchase_price_account_id = fields.Many2one(
         'account.account',
         string=_('Default Account Purchase Price Difference'),
     )
+
+    @api.model
+    def _default_has_default_company(self):
+        count = self.env['res.company'].search_count([])
+        return bool(count == 1)
 
     @api.v7
     def set_default_account_product_price(self, cr, uid, ids, context=None):

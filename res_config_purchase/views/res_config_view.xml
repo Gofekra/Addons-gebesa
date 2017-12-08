@@ -6,6 +6,19 @@
             <field name="model">purchase.config.settings</field>
             <field name="inherit_id" ref="purchase.view_purchase_configuration"/>
             <field name="arch" type="xml">
+                <xpath expr="//group" position="before">
+                    <field name="has_default_company" invisible="0" />
+                    <group string="Company" groups="base.group_multi_company">
+                        <label for="id" string="Company"/>
+                        <div>
+                            <div attrs="{'invisible': [('has_default_company', '=', True)]}">
+                                <field name="company_id"
+                                    options="{'no_create': True}"
+                                    class="oe_inline"/>
+                            </div>
+                        </div>
+                    </group>
+                </xpath>
                 <xpath expr="//group/field[@name='group_manage_vendor_price']" position="after">
                     <field name="purchase_price_account_id" class="oe_inline"/>
                 </xpath>
