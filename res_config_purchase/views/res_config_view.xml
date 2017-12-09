@@ -7,7 +7,7 @@
             <field name="inherit_id" ref="purchase.view_purchase_configuration"/>
             <field name="arch" type="xml">
                 <xpath expr="//group" position="before">
-                    <field name="has_default_company" invisible="0" />
+                    <field name="has_default_company" invisible="1" />
                     <group string="Company" groups="base.group_multi_company">
                         <label for="id" string="Company"/>
                         <div>
