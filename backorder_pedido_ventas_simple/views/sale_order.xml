@@ -54,7 +54,7 @@
         </record>
 
         <record id='action_week_count' model='ir.actions.act_window'>
-            <field name='name'>week_number</field>
+            <field name='name'>Barckorder Pedidos Ventas</field>
             <field name='res_model'>sale.order</field>
             <field name='view_type'>form</field>
             <field name='view_mode'>tree</field>
