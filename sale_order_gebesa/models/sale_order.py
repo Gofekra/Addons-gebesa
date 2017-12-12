@@ -202,28 +202,29 @@ class SaleOrder(models.Model):
     @api.multi
     def action_confirm(self):
         for order in self:
-            order.validate_manufacturing()
-            if not order.notify_approval:
-                raise UserError(
-                    _('The following field is not invalid:\nNotify approval'))
-            if not order.manufacture:
-                raise UserError(
-                    _('The following field is not invalid:\nManufacture'))
-            # if not order.executive:
-            #     raise UserError(
-            #         _('The following field is not invalid:\nExecutive'))
-            if not order.priority:
-                raise UserError(
-                    _('The following field is not invalid:\nManufacturing \
-                      priority'))
-            if not order.project_id:
-                raise UserError(
-                    _('The following field is not invalid:\nAnalytic Account'))
-            if not order.client_order_ref:
-                raise UserError(_('This Sale Order not has OC captured'))
-            for line in order.order_line:
-                if line.product_id.quotation_product:
-                    raise UserError(_('The Product contains Quotation'))
+            if order.company_id.is_manufacturer:
+                order.validate_manufacturing()
+                if not order.notify_approval:
+                    raise UserError(
+                        _('The following field is not invalid:\nNotify approval'))
+                if not order.manufacture:
+                    raise UserError(
+                        _('The following field is not invalid:\nManufacture'))
+                # if not order.executive:
+                #     raise UserError(
+                #         _('The following field is not invalid:\nExecutive'))
+                if not order.priority:
+                    raise UserError(
+                        _('The following field is not invalid:\nManufacturing \
+                          priority'))
+                if not order.project_id:
+                    raise UserError(
+                        _('The following field is not invalid:\nAnalytic Account'))
+                if not order.client_order_ref:
+                    raise UserError(_('This Sale Order not has OC captured'))
+                for line in order.order_line:
+                    if line.product_id.quotation_product:
+                        raise UserError(_('The Product contains Quotation'))
 
         return super(SaleOrder, self).action_confirm()
 
@@ -294,7 +295,8 @@ class SaleOrder(models.Model):
             order.write({'approve': 'suggested'})
             order.date_suggested = fields.Datetime.now()
 
-            resws = order._product_data_validation()
+            if order.company_id.is_manufacturer:
+                resws = order._product_data_validation()
         # if resws[0] != 'OK':
         #     raise ValidationError('Este pedido no podra ser aprobado  \
         #         debido a errores de configuracion \
