@@ -85,7 +85,7 @@ class SaleOrderLine(models.Model):
                     record.low_mu = True
 
     @api.depends('price_unit', 'product_uom_qty', 'order_id.perc_freight',
-                 'order_id.perc_installation')
+                 'order_id.perc_installation', 'discount')
     def _compute_profit_margin(self):
         for record in self:
             currency = record.order_id.company_id.currency_id
@@ -97,13 +97,13 @@ class SaleOrderLine(models.Model):
             profit_margin = 0.0
             perc_installation = record.order_id.perc_installation or False
             installation = 0.0
+            net_sale = (1 - (record.discount / 100)) * (
+                record.price_unit * record.product_uom_qty)
             if perc_freight:
-                freight = (record.price_unit * record.product_uom_qty) * (
-                    perc_freight / 100.0)
-            net_sale = (record.price_unit * record.product_uom_qty) - freight
+                freight = net_sale * (perc_freight / 100)
+            net_sale = net_sale - freight
             if perc_installation:
-                installation = net_sale * (
-                    perc_installation / 100.0)
+                installation = net_sale * (perc_installation / 100)
             net_sale = net_sale - installation
 
             if net_sale > 0.000000:
