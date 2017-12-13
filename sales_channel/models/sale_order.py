@@ -33,6 +33,15 @@ class SaleOrder(models.Model):
                     inv.partner_id.property_payment_term_id
         return res
 
+    @api.multi
+    @api.onchange('partner_id')
+    def onchange_partner_id(self):
+        res = super(SaleOrder, self).onchange_partner_id()
+        sales_channel_id = False
+        if self.partner_id.sales_channel_id.id:
+            sales_channel_id = self.partner_id.sales_channel_id.id
+            self.sales_channel_id = sales_channel_id
+
 
 class SaleAdvancePaymentInv(models.TransientModel):
     _inherit = "sale.advance.payment.inv"
