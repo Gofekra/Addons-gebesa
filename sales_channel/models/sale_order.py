@@ -36,7 +36,6 @@ class SaleOrder(models.Model):
     @api.multi
     @api.onchange('partner_id')
     def onchange_partner_id(self):
-        import ipdb; ipdb.set_trace()
         res = super(SaleOrder, self).onchange_partner_id()
         sales_channel_id = False
         if self.partner_id.sales_channel_id.id:
