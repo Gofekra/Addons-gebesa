@@ -126,6 +126,7 @@ class SaleOrder(models.Model):
         default='not_approved',
         string=_('Approve Status'),
         store=True,
+        copy=False,
     )
 
     total_cost = fields.Float(
@@ -144,10 +145,12 @@ class SaleOrder(models.Model):
 
     date_suggested = fields.Datetime(
         string=_('Suggestion Date Approval'),
+        copy=False,
         help=_('Suggestion Date Approval.'))
 
     date_approved = fields.Datetime(
         string=_('Credit Release Date'),
+        copy=False,
         help=_('Credit Release Date.'))
 
     _sql_constraints = [
