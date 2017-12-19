@@ -30,5 +30,6 @@ class MrpSegmentAddProduction(models.TransientModel):
                 'product_id': produ.product_id.id,
                 'sale_name': produ.origin,
                 'product_qty': produ.product_qty,
-                'quantity': 0
+                'quantity': 0,
+                'standard_cost': produ.product_id.standard_price,
             })
