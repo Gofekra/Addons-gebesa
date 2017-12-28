@@ -41,43 +41,47 @@ class AccountInvoice(models.Model):
     @api.multi
     def action_move_create(self):
         for inv in self:
-            if inv.advance_id and not inv.advance_id.sale_id:
-                adv_id = inv.advance_id
-                prod_adv = False
-                tax_prod = []
-                for line in adv_id.invoice_line_ids:
-                    deposit = self.pool['ir.values'].get_default(
-                        self._cr, self._uid, 'sale.config.settings',
-                        'deposit_product_id_setting') or False
-                    if line.product_id.id == deposit:
-                        product = self.env['product.product'].search(
-                            [('id', '=', deposit)])
-                        prod_adv = product
-                        tax_prod = [(6, 0, [x.id for x in
-                                     line.product_id.taxes_id])]
-
-                if not prod_adv:
-                    raise UserError(_('The Advance Invoice to which it refers,'
-                                      '\n does not have an Article type'
-                                      'in Advance'))
-
-                inv_line_values2 = {
-                    'name': _('Aplication of advance'),
-                    'origin': inv.advance_id.number,
-                    'account_id': prod_adv.property_account_income_id.id,
-                    'price_unit': inv.amount_advance * -1,
-                    'quantity': 1.0,
-                    'discount': False,
-                    'uom_id': prod_adv.uom_id.id or False,
-                    'product_id': prod_adv.id,
-                    'invoice_line_tax_id': tax_prod,
-                    'account_analytic_id': inv.account_analytic_id.id,
-                    'invoice_id': inv.id,
-                }
-                inv_line_obj = self.env['account.invoice.line']
-                inv_line_id = inv_line_obj.create(inv_line_values2)
-
+            if inv.advance_id:
                 inv.advance_id.advance_applied = True
+                inv.l10n_mx_edi_origin = '07|' + inv.advance_id.cfdi_uuid
+
+            # if inv.advance_id and not inv.advance_id.sale_id:
+            #     adv_id = inv.advance_id
+            #     prod_adv = False
+            #     tax_prod = []
+            #     for line in adv_id.invoice_line_ids:
+            #         deposit = self.pool['ir.values'].get_default(
+            #             self._cr, self._uid, 'sale.config.settings',
+            #             'deposit_product_id_setting') or False
+            #         if line.product_id.id == deposit:
+            #             product = self.env['product.product'].search(
+            #                 [('id', '=', deposit)])
+            #             prod_adv = product
+            #             tax_prod = [(6, 0, [x.id for x in
+            #                          line.product_id.taxes_id])]
+
+            #     if not prod_adv:
+            #         raise UserError(_('The Advance Invoice to which it refers,'
+            #                           '\n does not have an Article type'
+            #                           'in Advance'))
+
+            #     inv_line_values2 = {
+            #         'name': _('Aplication of advance'),
+            #         'origin': inv.advance_id.number,
+            #         'account_id': prod_adv.property_account_income_id.id,
+            #         'price_unit': inv.amount_advance * -1,
+            #         'quantity': 1.0,
+            #         'discount': False,
+            #         'uom_id': prod_adv.uom_id.id or False,
+            #         'product_id': prod_adv.id,
+            #         'invoice_line_tax_id': tax_prod,
+            #         'account_analytic_id': inv.account_analytic_id.id,
+            #         'invoice_id': inv.id,
+            #     }
+            #     inv_line_obj = self.env['account.invoice.line']
+            #     inv_line_id = inv_line_obj.create(inv_line_values2)
+
+            #     inv.advance_id.advance_applied = True
 
         super(AccountInvoice, self).action_move_create()
 
