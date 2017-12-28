@@ -44,6 +44,7 @@ class MrpProductionSegment(models.TransientModel):
                         'quantity': 0,
                         'product_qty': prod.product_qty,
                         'sale_name': prod.origin,
+                        'standard_cost': prod.product_id.standard_price,
                     })
         if segment.line_ids:
             segment.state = 'construction'

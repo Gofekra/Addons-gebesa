@@ -335,7 +335,7 @@ class MrpSegmentLine(models.Model):
 
     standard_cost = fields.Float(
         string=_('Standard Cost'),
-        compute='_compute_standard_price',
+        # compute='_compute_standard_price',
         store=True,
         readonly=True,
     )
@@ -377,10 +377,10 @@ class MrpSegmentLine(models.Model):
                 raise UserError(_("The quantity available is less than \n"
                                   "the quantity segmented"))
 
-    @api.depends('product_id')
-    def _compute_standard_price(self):
-        for line in self:
-            line.standard_cost = line.product_id.standard_price
+    # @api.depends('product_id')
+    # def _compute_standard_price(self):
+    #     for line in self:
+    #         line.standard_cost = line.product_id.standard_price
 
     @api.depends('mrp_production_id.move_created_ids.product_uom_qty')
     def _compute_manufacture_qty(self):
