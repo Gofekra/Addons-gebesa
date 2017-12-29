@@ -16,8 +16,8 @@
     border-bottom: 1px solid black;
 }
 .mrp_shipment_tr_kit{
-	background: gray;
+	background: lightgray;
 }
 .mrp_shipment_tr_kit_child{
-	background: lightgray;
+	background: #f2f2f2;
 }

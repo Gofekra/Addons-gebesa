@@ -27,6 +27,7 @@
         "views/mrp_shipment.xml",
         "views/sale_order.xml",
         "report/mrp_shipment.xml",
+        "report/mrp_shipment_barcode.xml",
         "wizards/mrp_shipment_sale_order.xml",
     ],
     "demo": [
