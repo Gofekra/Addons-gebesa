@@ -146,7 +146,7 @@ class MrpShipment(models.Model):
                     resultado = self._cr.fetchall()
                     for x in resultado:
                         for i in x:
-                            if not i in add:
+                            if i not in add:
                                 add.append(i)
                 if line.quantity_shipped == 0:
                     line.unlink()
@@ -162,6 +162,10 @@ class MrpShipment(models.Model):
                 else:
                     volume = line.quantity_shipped * line.product_id.volume
                     weight = line.quantity_shipped * line.product_id.weight
+                    if not line.city:
+                        raise UserError(
+                            _('The lines of order %s have no city.') % (
+                                sale_order_id.name))
                     concatenate += line.partner_id.name + ';' +\
                         line.country_id.name + ';' + line.state_id.name +\
                         ';' + line.city + ';' + line.street + ' '

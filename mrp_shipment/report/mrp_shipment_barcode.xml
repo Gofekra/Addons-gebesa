@@ -8,15 +8,15 @@
         </template>
 
         <report
-            id="shipment_report"
+            id="shipment_barcode_report"
             model="mrp.shipment"
-            string="Lista de embarques"
+            string="Lista de embarques (Codigos de barras)"
             report_type="qweb-pdf"
-            name="mrp_shipment.report_shipment"
-            file="mrp_shipment.report_shipment"
+            name="mrp_shipment.report_shipment_barcode"
+            file="mrp_shipment.report_shipment_barcode"
         />
 
-        <template id="report_shipment_document">
+        <template id="report_shipment_barcode_document">
             <t t-call="report.internal_layout">
                 <div class="page" style="font-size: 10pt;">
                     <t t-foreach="shipment[doc.id]" t-as="ship">
@@ -125,10 +125,8 @@
                                             <br />
                                             <table width="100%" class="mrp_shipment_table_detail">
                                                 <tr>
-                                                    <td width="20%">Codigo de Barras</td>
-                                                    <td width="15%">Clave</td>
-                                                    <td width="30%">Articulo</td>
-                                                    <td width="15%">Pedido</td>
+                                                    <td width="70%">Articulo</td>
+                                                    <td width="10%">Pedido</td>
                                                     <td width="10%">Embarca</td>
                                                     <td width="10%">Cantidad</td>
                                                 </tr>
@@ -136,18 +134,10 @@
                                                     <t t-set="line" t-value="line.with_context({'lang':'es_MX'})"/>
                                                     <t t-if="line.product_id.id not in kit.keys()">
                                                         <tr>
-                                                            <td align="center" style="font-size: 9pt;font-family: CCode39;vertical-align:middle;">
-                                                                <!--<img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', line.product_id.barcode, 600, 100)" style="width:95%;height:50px;padding-top:5px;margin-bottom:4px"/>-->
+                                                            <td align="center">
+                                                                <span style="font-size: 14pt;font-family: CCode39;" t-esc="line.product_id.default_code"/>
+                                                                <br/>
                                                                 <span t-esc="line.product_id.default_code"/>
-                                                            </td>
-                                                            <td><span t-esc="line.product_id.default_code"/></td>
-                                                            <td>
-                                                                <t t-if="line.product_id.individual_name">
-                                                                    <span t-esc="line.product_id.individual_name"/>
-                                                                </t>
-                                                                <t t-if="not line.product_id.individual_name">
-                                                                    <span t-esc="line.product_id.name_template"/>
-                                                                </t>
                                                             </td>
                                                             <td><span t-esc="line.sale_order_id.name"/></td>
                                                             <td><span t-esc="line.sale_order_id.warehouse_id.name"/></td>
@@ -156,18 +146,10 @@
                                                     </t>
                                                     <t t-if="line.product_id.id in kit.keys()">
                                                         <tr class="mrp_shipment_tr_kit">
-                                                            <td align="center" style="font-size: 9pt;font-family: CCode39;">
-                                                                <!--<img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', line.product_id.barcode, 600, 100)" style="width:99%;height:50px;padding-top:5px;margin-bottom:4px"/>-->
+                                                            <td align="center">
+                                                                <span style="font-size: 14pt;font-family: CCode39;" t-esc="line.product_id.default_code"/>
+                                                                <br/>
                                                                 <span t-esc="line.product_id.default_code"/>
-                                                            </td>
-                                                            <td><span t-esc="line.product_id.default_code"/></td>
-                                                            <td>
-                                                                <t t-if="line.product_id.individual_name">
-                                                                    <span t-esc="line.product_id.individual_name"/>
-                                                                </t>
-                                                                <t t-if="not line.product_id.individual_name">
-                                                                    <span t-esc="line.product_id.name_template"/>
-                                                                </t>
                                                             </td>
                                                             <td><span t-esc="line.sale_order_id.name"/></td>
                                                             <td><span t-esc="line.sale_order_id.warehouse_id.name"/></td>
@@ -177,18 +159,10 @@
                                                             <t t-set="bom_line" t-value="bom_line.with_context({'lang':'es_MX'})"/>
                                                             <t t-set="bom_line_qty" t-value="line.quantity_shipped * bom_line.product_qty"/>
                                                             <tr class="mrp_shipment_tr_kit_child">
-                                                                <td align="center" style="font-size: 9pt;font-family: CCode39;">
-                                                                    <!--<img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', bom_line.product_id.barcode, 600, 100)" style="width:99%;height:50px;padding-top:5px;margin-bottom:4px"/>-->
+                                                                <td align="center">
+                                                                    <span style="font-size: 14pt;font-family: CCode39;" t-esc="bom_line.product_id.default_code"/>
+                                                                    <br/>
                                                                     <span t-esc="bom_line.product_id.default_code"/>
-                                                                </td>
-                                                                <td><span t-esc="bom_line.product_id.default_code"/></td>
-                                                                <td>
-                                                                    <t t-if="bom_line.product_id.individual_name">
-                                                                        <span t-esc="bom_line.product_id.individual_name"/>
-                                                                    </t>
-                                                                    <t t-if="not bom_line.product_id.individual_name">
-                                                                        <span t-esc="bom_line.product_id.name_template"/>
-                                                                    </t>
                                                                 </td>
                                                                 <td><span t-esc="line.sale_order_id.name"/></td>
                                                                 <td><span t-esc="line.sale_order_id.warehouse_id.name"/></td>
@@ -209,10 +183,10 @@
             </t>
         </template>
 
-        <template id="report_shipment">
+        <template id="report_shipment_barcode">
             <t t-call="report.html_container">
                 <t t-foreach="docs" t-as="doc">
-                    <t t-call="mrp_shipment.report_shipment_document"/>
+                    <t t-call="mrp_shipment.report_shipment_barcode_document"/>
                 </t>
             </t>
         </template>
