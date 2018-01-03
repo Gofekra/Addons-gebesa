@@ -53,8 +53,8 @@ class AccountInvoiceRefund(models.Model):
                     ctx)).compute_refund(mode)
         refund_id = res['domain'][1][2][0]
 
-        wf_service.trg_validate(self._uid, 'account.invoice', refund_id,
-                                'invoice_open', self._cr)
+        # wf_service.trg_validate(self._uid, 'account.invoice', refund_id,
+        #                        'invoice_open', self._cr)
 
         for form in self:
             for invoice in invoice_obj.browse(self._context.get('active_ids')):
