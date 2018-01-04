@@ -277,6 +277,11 @@ class SaleOrder(models.Model):
         for order in self:
             if order.approve == 'approved':
                 raise UserError(_('This Sale Order is already approved'))
+            if order.create_uid.id == order.write_uid.id:
+                if order.manufacture != 'replenishment' or \
+                   order.priority != 'replenishment':
+                    raise UserError(_('Este no es un Pedido de Reposición solicita \
+                    la aprobación de Credito y Cobranza.'))
             order.write({'approve': 'approved'})
             order.date_approved = fields.Datetime.now()
 
