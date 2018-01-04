@@ -52,7 +52,7 @@ class AccountInvoiceRefund(models.Model):
         res = super(AccountInvoiceRefund, self.with_context(
                     ctx)).compute_refund(mode)
         refund_id = res['domain'][1][2][0]
-        import pdb; pdb.set_trace()
+        # import pdb; pdb.set_trace()
         refund = invoice_obj.browse(refund_id)
         if refund.type == 'in_refund':
             wf_service.trg_validate(self._uid, 'account.invoice', refund_id,
