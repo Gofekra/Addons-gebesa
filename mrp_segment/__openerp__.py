@@ -26,6 +26,7 @@
         "sale_order_everywhere",
         "mrp_cut_detail",
         "purchase",
+        "stock_warehouse_analytic_id",
     ],
     "data": [
         'security/security.xml',
