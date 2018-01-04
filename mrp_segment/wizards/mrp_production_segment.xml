@@ -8,7 +8,7 @@
                 <form string='Segment'>
                     <group>
                         <field name='name'/>
-                        <field name='location_id' domain="[('usage','=','production')]"/>
+                        <field name='location_id' domain="[('type_stock_loc','=','wip')]"/>
                     </group>
                     <p class="oe_grey">
                         *Do not take into account production orders that are not in the states "Awaiting Raw Materials" or "Ready to Produce".
