@@ -50,9 +50,9 @@ class AccountInvoice(models.Model):
                             picking_id = picking_obj.create(
                                 self._prepare_order_picking(line))
                         # move_id = move_obj.create(
-                        move_obj.create(
-                            self._prepare_order_line_move(line, picking_id,
-                                                          date_planned))
+                        for move in self._prepare_order_line_move(
+                                line, picking_id, date_planned):
+                            move_obj.create(move)
                     # else:
                     #    move_id = False
 
@@ -68,6 +68,11 @@ class AccountInvoice(models.Model):
                 picking.action_confirm()
                 for move in picking.move_lines:
                     move.force_assign()
+                for pack in picking.pack_operation_ids:
+                    if pack.product_qty > 0:
+                        pack.write({'qty_done': pack.product_qty})
+                    else:
+                        pack.unlink()
                 picking.do_transfer()
 
         # for proc_id in proc_ids:
@@ -178,6 +183,7 @@ class AccountInvoice(models.Model):
 
     def _prepare_order_line_move(self, line, picking_id, date_planned):
         location_obj = self.env['stock.location']
+        product_obj = self.env['product.product']
         warehouse_id = self.account_analytic_id.warehouse_id
         location_id = location_obj.search([
             ('stock_warehouse_id', '=', warehouse_id.id),
@@ -185,26 +191,61 @@ class AccountInvoice(models.Model):
         output_id = self.partner_id.property_stock_customer.id
         move_type_obj = self.env['stock.move.type']
         move_type_id = move_type_obj.search([('code', '=', 'S1')]) or False
-        return{
-            'name': line.name[:50],
-            'picking_id': picking_id.id,
-            'product_id': line.product_id.id,
-            'date': date_planned,
-            'date_expected': date_planned,
-            'product_uom_qty': line.quantity,
-            'product_uom': line.product_id.uom_id.id,
-            'product_uos_qty': line.product_id.uom_id.id,
-            'product_uos': line.product_id.uom_id.id,
-            'product_packaging': False,
-            'partner_id': self.partner_shipping_id.id,
-            'location_id': location_id.id,
-            'location_dest_id': output_id,
-            'invoice_line_id': line.id,
-            'tracking_id': False,
-            'company_id': self.company_id.id,
-            'price_unit': line.product_id.standard_price or 0.0,
-            'stock_move_type_id': move_type_id[0].id,
-        }
+        self._cr.execute(
+            """
+            WITH RECURSIVE bom_detail(id_product, code, qty, id_bom, phantom, lv) AS(
+                SELECT
+                    pp.id,
+                    pp.default_code,
+                    CAST(1.000000 AS numeric),
+                    mb.id,
+                    CASE WHEN mb.type = 'phantom' THEN TRUE ELSE FALSE END,
+                    1
+                FROM product_product AS pp
+                LEFT JOIN mrp_bom AS mb ON pp.id = mb.product_id
+                WHERE pp.id = %s
+                UNION SELECT
+                    pp.id,
+                    pp.default_code,
+                    ROUND(bd.qty * mbl.product_qty, 6),
+                    mb.id,
+                    CASE WHEN mb.type = 'phantom' THEN TRUE ELSE FALSE END,
+                    bd.lv + 1
+                FROM mrp_bom_line AS mbl
+                JOIN bom_detail AS bd ON mbl.bom_id = bd.id_bom
+                JOIN product_product AS pp ON mbl.product_id = pp.id
+                LEFT JOIN mrp_bom AS mb ON pp.id = mb.product_id
+                WHERE bd.phantom
+            )
+            SELECT * FROM bom_detail WHERE phantom IS FALSE""", (
+                [line.product_id.id]))
+        res = []
+        if self._cr.rowcount:
+            products = self._cr.fetchall()
+            for prod in products:
+                product = product_obj.browse([prod[0]])
+                move_dict = {
+                    'name': line.name[:50],
+                    'picking_id': picking_id.id,
+                    'product_id': product.id,
+                    'date': date_planned,
+                    'date_expected': date_planned,
+                    'product_uom_qty': line.quantity * prod[2],
+                    'product_uom': product.uom_id.id,
+                    'product_uos_qty': product.uom_id.id,
+                    'product_uos': product.uom_id.id,
+                    'product_packaging': False,
+                    'partner_id': self.partner_shipping_id.id,
+                    'location_id': location_id.id,
+                    'location_dest_id': output_id,
+                    'invoice_line_id': line.id,
+                    'tracking_id': False,
+                    'company_id': self.company_id.id,
+                    'price_unit': product.standard_price or 0.0,
+                    'stock_move_type_id': move_type_id[0].id,
+                }
+                res.append(move_dict)
+        return res
 
     @api.multi
     def cancel_picking(self):
