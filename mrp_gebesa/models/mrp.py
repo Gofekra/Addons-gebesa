@@ -76,25 +76,26 @@ class MrpProduction(models.Model):
         'procurement_ids.move_dest_id.move_dest_id.move_dest_id.picking_id',
         'procurement_ids.move_dest_id.move_dest_id.move_dest_id.move_dest_id.picking_id')
     def _compute_trace(self):
-        for production in self:
-            production.trace = ''
-            produrement = production.procurement_ids
-            if produrement.move_dest_id:
-                sm1 = produrement.move_dest_id
-                if sm1.origin:
-                    production.trace += sm1.origin + ', '
-                if sm1.picking_id.name:
-                    production.trace += sm1.picking_id.name
-                if sm1.move_dest_id.picking_id:
-                    sm2 = sm1.move_dest_id
-                    production.trace += ', ' + sm2.picking_id.name
-                    if sm2.move_dest_id.picking_id:
-                        sm3 = sm2.move_dest_id
-                        if sm3.picking_id.name:
-                            production.trace += ', ' + sm3.picking_id.name
-                        if sm3.move_dest_id.picking_id:
-                            sm4 = sm3.move_dest_id
-                            production.trace += ', ' + sm4.picking_id.name
+        return
+        # for production in self:
+        #     production.trace = ''
+        #     produrement = production.procurement_ids
+        #     if produrement.move_dest_id:
+        #         sm1 = produrement.move_dest_id
+        #         if sm1.origin:
+        #             production.trace += sm1.origin + ', '
+        #         if sm1.picking_id.name:
+        #             production.trace += sm1.picking_id.name
+        #         if sm1.move_dest_id.picking_id:
+        #             sm2 = sm1.move_dest_id
+        #             production.trace += ', ' + sm2.picking_id.name
+        #             if sm2.move_dest_id.picking_id:
+        #                 sm3 = sm2.move_dest_id
+        #                 if sm3.picking_id.name:
+        #                     production.trace += ', ' + sm3.picking_id.name
+        #                 if sm3.move_dest_id.picking_id:
+        #                     sm4 = sm3.move_dest_id
+        #                     production.trace += ', ' + sm4.picking_id.name
 
     @api.depends('state', 'move_created_ids2',
                  'move_created_ids2.move_dest_id',
