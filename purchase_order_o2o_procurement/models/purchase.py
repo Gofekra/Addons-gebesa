@@ -41,6 +41,7 @@ class ProcurementOrder(models.Model):
                 ('state', '=', 'draft'),
                 ('picking_type_id', '=', procurement.rule_id.picking_type_id.id),
                 ('company_id', '=', procurement.company_id.id),
+                ('create_uid', '=', procurement.create_uid.id),
                 # ('origin', '=', procurement.origin), # do not group diferent proc's origins
                 ('dest_address_id', '=', procurement.partner_dest_id.id))
             if group:
