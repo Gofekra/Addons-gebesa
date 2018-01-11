@@ -218,34 +218,47 @@ class MrpSegment(models.Model):
 
     @api.multi
     def validate_segment(self):
-        procurement_obj = self.env['procurement.order']
-        picking_obj = self.env['stock.picking']
-        move_obj = self.env['stock.move']
-        purchase_obj = self.env['purchase.order']
         for segment in self:
             for line in segment.line_ids:
-                procurement = procurement_obj.search([
-                    ('origin', 'like', line.mrp_production_id.name)])
-                for proc in procurement:
-                    proc.related_segment += segment.folio + ', '
-                picking = picking_obj.search([
-                    ('origin', 'like', line.mrp_production_id.name)])
-                for pick in picking:
-                    pick.related_segment += segment.folio + ', '
-                move = move_obj.search([
-                    ('origin', 'like', line.mrp_production_id.name)])
-                for mov in move:
-                    mov.related_segment += segment.folio + ', '
-                purchase = purchase_obj.search([
-                    ('origin', 'like', line.mrp_production_id.name)])
-                for pur in purchase:
-                    pur.related_segment += segment.folio + ', '
+                self.env.cr.execute("""UPDATE procurement_order
+                        SET related_segment = CONCAT(related_segment, %s )
+                        WHERE origin LIKE %s""",
+                                    (segment.folio + ', ',
+                                     '%' + line.mrp_production_id.name + '%'))
+                self.env.cr.execute("""UPDATE stock_picking
+                        SET related_segment = CONCAT(related_segment, %s )
+                        WHERE origin LIKE %s""",
+                                    (segment.folio + ', ',
+                                     '%' + line.mrp_production_id.name + '%'))
+                self.env.cr.execute(
+                    """UPDATE stock_move
+                        SET related_segment = CONCAT(related_segment, %s)
+                        WHERE origin LIKE %s""",
+                    (segment.folio + ', ',
+                     '%' + line.mrp_production_id.name + '%'))
+                self.env.cr.execute(
+                    """UPDATE purchase_order
+                        SET related_segment = CONCAT(related_segment, %s)
+                        WHERE origin LIKE %s""",
+                    (segment.folio + ', ',
+                     '%' + line.mrp_production_id.name + '%'))
                 sale = line.mrp_production_id.sale_id
                 if sale:
                     if not sale.related_segment:
-                        sale.related_segment = ' '
+                        self.env.cr.execute(
+                            """UPDATE sale_order
+                                SET related_segment = %s
+                                WHERE id = %s """,
+                            (segment.folio + ', ', sale.id)
+                        )
                     if segment.folio not in sale.related_segment:
-                        sale.related_segment += segment.folio + ', '
+                        self.env.cr.execute(
+                            """update sale_order
+                                set related_segment = CONCAT(
+                                    related_segment,%s)
+                                where id = %s """,
+                            (segment.folio + ', ', sale.id)
+                        )
         segment.progress_date = fields.Datetime.now()
         return self.write({'state': 'confirm'})
 
