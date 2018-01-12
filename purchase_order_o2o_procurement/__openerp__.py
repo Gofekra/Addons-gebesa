@@ -22,7 +22,8 @@
         "mrp"
     ],
     "data": [
-        # "view/some_model_view.xml",
+        "data/ir_cron_data.xml",
+        "views/procurement_order.xml",
     ],
     "demo": [
         # "demo/res_partner_demo.xml",
