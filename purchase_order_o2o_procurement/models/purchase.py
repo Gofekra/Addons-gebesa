@@ -33,7 +33,6 @@ class ProcurementOrder(models.Model):
     def run_make_po(self):
         procurements = self.search([('state', '=', 'exception'),
                                     ('po_pending', '=', True)])
-        import pdb; pdb.set_trace()
         for procurement in procurements:
             procurement.run()
             if procurement.state != 'exception':
