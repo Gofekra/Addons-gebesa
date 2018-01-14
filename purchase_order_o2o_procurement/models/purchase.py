@@ -3,7 +3,7 @@
 
 # from datetime import datetime
 # from dateutil.relativedelta import relativedelta
-from openerp import api, models, _
+from openerp import api, fields, models, _
 # from openerp.tools import DEFAULT_SERVER_DATETIME_FORMAT
 # from openerp.tools.translate import _
 # from openerp.tools.float_utils import float_is_zero, float_compare
@@ -11,9 +11,32 @@ from openerp import api, models, _
 # from openerp.exceptions import UserError, AccessError
 from openerp.osv import osv
 
+
 class ProcurementOrder(models.Model):
     _inherit = 'procurement.order'
     _name = 'procurement.order'
+
+    po_pending = fields.Boolean(
+        string=_('PO pending'),
+        default=False
+    )
+
+    @api.model
+    def _run(self, procurement):
+        if procurement.rule_id and procurement.rule_id.action == 'buy':
+            if not procurement.po_pending:
+                procurement.write({'po_pending': True})
+                return False
+        return super(ProcurementOrder, self)._run(procurement)
+
+    @api.model
+    def run_make_po(self):
+        procurements = self.search([('state', '=', 'exception'),
+                                    ('po_pending', '=', True)])
+        for procurement in procurements:
+            procurement.run()
+            if procurement.state != 'exception':
+                procurement.write({'po_pending': False})
 
     @api.multi
     def make_po(self):
