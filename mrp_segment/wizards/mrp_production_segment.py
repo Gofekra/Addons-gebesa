@@ -41,7 +41,6 @@ class MrpProductionSegment(models.TransientModel):
                         'segment_id': segment.id,
                         'mrp_production_id': prod.id,
                         'product_id': prod.product_id.id,
-                        'manufacture_qty': prod.product_qty,
                         'quantity': 0,
                         'product_qty': prod.product_qty,
                         'sale_name': prod.origin,
