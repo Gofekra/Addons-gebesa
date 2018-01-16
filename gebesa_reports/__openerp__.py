@@ -17,6 +17,7 @@
     },
     "depends": [
         "base", "account", "board",
+        "system_administrator",
     ],
     "data": [
         "security/security.xml",
