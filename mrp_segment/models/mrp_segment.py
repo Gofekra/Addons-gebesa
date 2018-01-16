@@ -376,7 +376,6 @@ class MrpSegmentLine(models.Model):
         compute='_compute_manufacture_qty',
         digits=dp.get_precision('Product Unit of Measure'),
         readonly=True,
-        store=True,
     )
 
     quantity = fields.Float(
@@ -384,12 +383,12 @@ class MrpSegmentLine(models.Model):
         digits=dp.get_precision('Product Unit of Measure')
     )
 
-    # @api.constrains('quantity')
-    # def _check_qty_segmented(self):
-    #     for line in self:
-    #         if line.quantity > line.manufacture_qty:
-    #             raise UserError(_("The quantity available is less than \n"
-    #                               "the quantity segmented"))
+    @api.constrains('quantity')
+    def _check_qty_segmented(self):
+        for line in self:
+            if line.quantity > line.manufacture_qty:
+                raise UserError(_("The quantity available is less than \n"
+                                  "the quantity segmented"))
 
     # @api.depends('product_id')
     # def _compute_standard_price(self):
