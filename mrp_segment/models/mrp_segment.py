@@ -376,6 +376,7 @@ class MrpSegmentLine(models.Model):
         compute='_compute_manufacture_qty',
         digits=dp.get_precision('Product Unit of Measure'),
         readonly=True,
+        store=True,
     )
 
     quantity = fields.Float(
