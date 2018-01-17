@@ -211,6 +211,7 @@ class MrpSegment(models.Model):
 
     @api.multi
     def validate_segment(self):
+        production_obj = self.env['mrp.production']
         for segment in self:
             for line in segment.line_ids:
                 self.env.cr.execute("""UPDATE procurement_order
@@ -252,7 +253,18 @@ class MrpSegment(models.Model):
                                 where id = %s """,
                             (segment.folio + ', ', sale.id)
                         )
-        segment.progress_date = fields.Datetime.now()
+                    prod = production_obj.search(
+                        [('sale_id', '=', sale.id)])
+                    prod_seg = production_obj.search(
+                        [('sale_id', '=', sale.id),
+                         ('segment_line_ids', '!=', False)])
+                    if not prod_seg:
+                        sale.segment_status = 'no_segment'
+                    elif len(prod) == len(prod_seg):
+                        sale.segment_status = 'total_segment'
+                    else:
+                        sale.segment_status = 'partial_segment'
+                    segment.progress_date = fields.Datetime.now()
         return self.write({'state': 'confirm'})
 
     @api.multi

@@ -14,7 +14,6 @@ class SaleOrder(models.Model):
          ('total_segment', _('Total Segment'))],
         string=_("Segment Status"),
         default='no_segment',
-        compute='_compuete_segment_status',
         store=True,
     )
 
@@ -32,21 +31,6 @@ class SaleOrder(models.Model):
         res = super(SaleOrder, self)._prepare_procurement_group()
         res['sale_id'] = self.id
         return res
-
-    @api.depends('related_segment')
-    def _compuete_segment_status(self):
-        production_obj = self.env['mrp.production']
-        for order in self:
-            prod = production_obj.search([('sale_id', '=', order.id)])
-            prod_seg = production_obj.search([('sale_id', '=', order.id),
-                                              ('segment_line_ids', '!=', False)
-                                              ])
-            if not prod_seg:
-                order.segment_status = 'no_segment'
-            elif len(prod) == len(prod_seg):
-                order.segment_status = 'total_segment'
-            else:
-                order.segment_status = 'partial_segment'
 
     @api.depends('order_line.segment_qty')
     def _compuete_production_status(self):
