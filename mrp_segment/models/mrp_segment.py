@@ -207,13 +207,6 @@ class MrpSegment(models.Model):
                                            produ.quantity,
                                            'consume_produce',
                                            )
-        done = True
-        for produ in self.line_ids:
-            if produ.manufacture_qty > 0:
-                done = False
-            produ.quantity = 0
-        if done:
-            return self.write({'state': 'done'})
         return True
 
     @api.multi
@@ -373,7 +366,6 @@ class MrpSegmentLine(models.Model):
 
     manufacture_qty = fields.Float(
         string=_('Quantity to manufacture'),
-        compute='_compute_manufacture_qty',
         digits=dp.get_precision('Product Unit of Measure'),
         readonly=True,
     )
@@ -390,86 +382,9 @@ class MrpSegmentLine(models.Model):
                 raise UserError(_("The quantity available is less than \n"
                                   "the quantity segmented"))
 
-    # @api.depends('product_id')
-    # def _compute_standard_price(self):
-    #     for line in self:
-    #         line.standard_cost = line.product_id.standard_price
-
-    @api.depends('mrp_production_id.move_created_ids.product_uom_qty')
-    def _compute_manufacture_qty(self):
-        procurement_obj = self.env['procurement.order']
-        segment = []
-        for line in self:
-            line.manufacture_qty = line.mrp_production_id.move_created_ids.\
-                product_uom_qty
-            if line.manufacture_qty == 0:
-                if line.segment_id not in segment:
-                    segment.append(line.segment_id)
-            production = line.mrp_production_id
-            procurement = procurement_obj.search([
-                ('production_id', '=', production.id)])
-            group = procurement.group_id
-            move_dest = procurement.move_dest_id.move_dest_id
-            procurement2 = procurement_obj.search([
-                ('group_id', '=', group.id),
-                ('product_id', '=', production.product_id.id),
-                ('sale_line_id', '!=', False),
-                ('move_ids', '=', move_dest.id)])
-            # procurement3 = procurement_obj.search([
-            #    ('group_id', '=', group.id),
-            #    ('product_id', '=', production.product_id.id),
-            #    ('sale_line_id', '=', False),
-            #    ('production_id', '!=', False)])
-            # count = -1
-            # for proc3 in procurement3:
-            #    count += 1
-            #    if procurement.id == proc3.id:
-            #        break
-            if procurement2:
-                # procurement2[count].sale_line_id.write(
-                procurement2.sale_line_id.write(
-                    {'segment_qty': line.product_qty - line.manufacture_qty})
-        for seg in segment:
-            done = True
-            for produ in seg.line_ids:
-                if produ.manufacture_qty > 0:
-                    done = False
-                produ.quantity = 0
-            if done:
-                # seg.state = 'done'
-                self.env.cr.execute(
-                    "update mrp_segment set state = 'done' where id = %s",
-                    (seg.id,))
-
     @api.model
     def create(self, vals):
-        #     production_obj = self.env['mrp.production']
-        #    segment_obj = self.env['mrp.segment']
         procurement_obj = self.env['procurement.order']
-    #     picking_obj = self.env['stock.picking']
-    #     move_obj = self.env['stock.move']
-    #     purchase_obj = self.env['purchase.order']
-    #     production = production_obj.browse(vals['mrp_production_id'])
-    #     segment = segment_obj.browse(vals['segment_id'])
-    #     procurement = procurement_obj.search([
-    #         ('origin', 'like', production.name)])
-    #     for proc in procurement:
-    #         proc.related_segment += segment.folio + ', '
-    #     picking = picking_obj.search([
-    #         ('origin', 'like', production.name)])
-    #     for pick in picking:
-    #         pick.related_segment += segment.folio + ', '
-    #     move = move_obj.search([
-    #         ('origin', 'like', production.name)])
-    #     for mov in move:
-    #         mov.related_segment += segment.folio + ', '
-    #     purchase = purchase_obj.search([
-    #         ('origin', 'like', production.name)])
-    #     for pur in purchase:
-    #         pur.related_segment += segment.folio + ', '
-    #     sale = production.sale_id
-    #     if segment.folio not in sale.related_segment:
-    #         sale.related_segment += segment.folio + ', '
         procurement = procurement_obj.search(
             [('production_id', '=', vals['mrp_production_id'])])
         if procurement.group_id:

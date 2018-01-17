@@ -99,22 +99,3 @@ class SaleOrder(models.Model):
             sale.familys = fam[1:-1]
             sale.volume = volume
             sale.weight = weight
-
-
-class SaleOrderLine(models.Model):
-    _inherit = 'sale.order.line'
-
-    qty_segmented = fields.Float(
-        string='Quantity Segmented',
-        compute='_compute_qty_segmented',
-    )
-
-    def _compute_qty_segmented(self):
-        segment_line_obj = self.env['mrp.segment.line']
-        for line in self:
-            line.qty_segmented = 0
-            segment_line = segment_line_obj.search(
-                [('sale_name', '=', line.order_id.name)])
-            for segment in segment_line:
-                if line.product_id == segment.product_id:
-                    line.qty_segmented += segment.product_qty - segment.manufacture_qty
