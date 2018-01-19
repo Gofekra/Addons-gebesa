@@ -73,8 +73,8 @@ class StockMove(models.Model):
                     done = False
                 produ.quantity = 0
             if done:
-                seg.write({'state': 'done'})
-                # self.env.cr.execute(
-                #    "update mrp_segment set state = 'done' where id = %s",
-                #    (seg.id,))
+                # seg.write({'state': 'done'})
+                self.env.cr.execute(
+                    "update mrp_segment set state = 'done' where id = %s",
+                    (seg.id,))
         return result
