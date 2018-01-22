@@ -215,7 +215,10 @@ class MrpShipment(models.Model):
                     qty_shipment += ship_line.quantity_shipped
                 qty_invoiced = sale_line.qty_invoiced - qty_shipment
                 if line.quantity_shipped > qty_invoiced:
-                    line.quantity_shipped = qty_invoiced
+                    if qty_invoiced < 0:
+                        line.quantity_shipped = 0
+                    else:
+                        line.quantity_shipped = qty_invoiced
             ship.state = 'finished'
         return True
 
