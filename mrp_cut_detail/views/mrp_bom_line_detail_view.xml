@@ -71,7 +71,16 @@
                         </group>
                         <notebook>
                             <page string="Variants">
-                                <field name="variants" style="font-size:10pt;" readonly="1"/>
+                                <field name="attribute_ids" widget="one2many_list" context="{'show_attribute': False}" readonly="1">
+                                    <tree string="Variants" editable="bottom">
+                                        <field name="attribute_id"/>
+                                        <field name="value_ids" widget="many2many_tags" options="{'no_create_edit': True}" domain="[('attribute_id', '=', attribute_id)]" context="{'default_attribute_id': attribute_id}"/>
+                                    </tree>
+                                    <form>
+                                        <field name="attribute_id"/>
+                                        <field name="value_ids" widget="many2many_tags" options="{'no_create_edit': True}" domain="[('attribute_id', '=', attribute_id)]" context="{'default_attribute_id': attribute_id}"/>
+                                    </form>
+                                </field>
                             </page>
                         </notebook>
                     </sheet>
