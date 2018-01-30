@@ -31,7 +31,11 @@ class MrpBomLine(models.Model):
             # for line in bom.bom_line_ids:
             #     if line.product_id.id == producto.id:
             #         raise UserError(_('This product is already in this Bom'))
-        return super(MrpBomLine, self).write(values)
+        res = super(MrpBomLine, self).write(values)
+        if 'product_id' in values.keys():
+            details = self.mapped('bom_line_detail_ids')
+            details.create_line_attribute()
+        return res
 
     @api.multi
     def create(self, vals):

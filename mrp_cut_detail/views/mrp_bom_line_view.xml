@@ -72,6 +72,7 @@
                                         <field name="thickness"/>
                                         <field name="caliber_id"/>
                                         <field name='production_line_id'/>
+                                        <field name='attribute_ids'/>
                                     </tree>
                                 </field>
                             </page>

@@ -101,6 +101,11 @@ class MrpBomLineDetail(models.Model):
         'mrp.production.line',
         string='Production line',
     )
+    attribute_ids = fields.One2many(
+        'mrp.bom.line.detail.attribute',
+        'line_detail_id',
+        string='Attribute',
+    )
 
     _sql_constraints = [
         ('row_uniq', 'unique (bom_line_id, row)',
@@ -116,6 +121,25 @@ class MrpBomLineDetail(models.Model):
                 reg.meters2 = 0.00
             else:
                 reg.meters2 = width * longs
+
+    @api.model
+    def create(self, vals):
+        detail = super(MrpBomLineDetail, self).create(vals)
+        detail.create_line_attribute()
+        return detail
+
+    @api.multi
+    def create_line_attribute(self):
+        attribute_obj = self.env['mrp.bom.line.detail.attribute']
+        for line in self:
+            line.attribute_ids.unlink()
+            for value in line.product_id.attribute_value_ids:
+                attribute_obj.create({
+                    'line_detail_id': line.id,
+                    'attribute_id': value.attribute_id.id,
+                    'value_ids': [(4, [value.id])]
+                })
+
 
     # @api.depends('bom_line_id.product_id')
     # def _compute_variants(self):
@@ -134,3 +158,25 @@ class MrpBomLineDetail(models.Model):
     #             self.variants = lista
 
     #         return self.variants
+
+
+class MrpBomLineDetailAttribute(models.Model):
+    _name = 'mrp.bom.line.detail.attribute'
+    _rec_name = 'attribute_id'
+
+    line_detail_id = fields.Many2one(
+        'mrp.bom.line.detail',
+        string='Bom line detail',
+        ondelete='cascade'
+    )
+    attribute_id = fields.Many2one(
+        'product.attribute',
+        string='Attribute',
+        ondelete='restrict'
+    )
+    value_ids = fields.Many2many(
+        'product.attribute.value',
+        'bom_line_detail_attribute_values_rel',
+        'detail_attribute_id', 'value_id',
+        string='Attribute Values',
+    )
