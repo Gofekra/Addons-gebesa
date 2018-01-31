@@ -162,8 +162,11 @@ class SaleOrder(models.Model):
     @api.onchange('partner_id')
     def _onchange_partner_id(self):
         self.webiste_operator = False
+        self.notify_approval = False
         if self.partner_id:
             self.webiste_operator = True
+        if self.partner_id.notify_approval:
+            self.notify_approval = self.partner_id.notify_approval
 
     @api.depends('order_line.net_sale')
     def _compute_profit_margin(self):
