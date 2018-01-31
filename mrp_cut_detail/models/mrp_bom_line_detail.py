@@ -41,7 +41,7 @@ class MrpBomLineDetail(models.Model):
     row = fields.Integer(
         _('Row'),
         default=_default_row,
-        copy=False,
+        # copy=False,
         help=_('Gives the row order when displaying.'),
     )
 
