@@ -44,7 +44,7 @@
                     <attribute name="readonly">True</attribute>
                 </xpath-->
         		<xpath expr="//group/group/field[@name='validity_date']" position="after">
-        			<field name="date_delivery" required="True" />
+        			<field name="date_delivery" required="False" invisible="True"/>
         			<field name="date_reception" required="True" />
                     <field name="date_production"/>
         		</xpath>

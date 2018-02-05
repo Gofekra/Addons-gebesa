@@ -221,6 +221,12 @@ msgid "Note Credit and Collections"
 msgstr ""
 
 #. module: sale_order_gebesa
+#: code:addons/sale_order_gebesa/models/res_partner.py:12
+#, python-format
+msgid "Notify Sale Approval"
+msgstr ""
+
+#. module: sale_order_gebesa
 #: code:addons/sale_order_gebesa/models/sale_order.py:14
 #: model:ir.model.fields,field_description:sale_order_gebesa.field_sale_order_notify_approval
 #, python-format

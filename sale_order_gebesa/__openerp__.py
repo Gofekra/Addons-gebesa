@@ -23,7 +23,8 @@
     "data": [
         "security/security.xml",
         "views/sale_order.xml",
-        "views/account_analytic_account_view.xml"
+        "views/account_analytic_account_view.xml",
+        "views/res_partner_view.xml"
     ],
     "demo": [
     ],
